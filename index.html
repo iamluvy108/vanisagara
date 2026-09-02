@@ -744,11 +744,18 @@
         }
 
         /* Responsive Breakpoints */
+        @media (min-width: 901px) {
+            /* Keep the surprise completely hidden on Desktop! */
+            .mobile-bottom-nav { display: none; } 
+        }
+
         @media (max-width: 1200px) {
             .netflix-row { grid-template-columns: repeat(4, 1fr); }
         }
+        
         @media (max-width: 900px) {
             .netflix-row { grid-template-columns: repeat(3, 1fr); }
+            
             .hero-container {
                 flex-direction: column; 
                 text-align: center; 
@@ -762,25 +769,74 @@
                 z-index: 3;
             }
             .divider { justify-content: center; }
+            
+            /* Keeps the top bar clean exactly as you asked! */
             .nav-links { display: none; } 
             
+            /* --- THE MOBILE SURPRISE: APP-STYLE BOTTOM BAR --- */
+            .mobile-bottom-nav {
+                display: flex;
+                position: fixed;
+                bottom: 24px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: var(--bg-nav);
+                backdrop-filter: saturate(180%) blur(20px);
+                -webkit-backdrop-filter: saturate(180%) blur(20px);
+                border: 1px solid var(--border);
+                border-radius: 40px;
+                padding: 12px 36px;
+                gap: 50px;
+                z-index: 1000;
+                box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+            }
+
+            .mobile-bottom-nav a {
+                text-decoration: none;
+                color: var(--text-secondary);
+                font-size: 13px;
+                font-weight: 500;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 6px;
+                transition: color 0.2s ease;
+            }
+            
+            .mobile-bottom-nav a:hover, 
+            .mobile-bottom-nav a:active {
+                color: var(--text-primary);
+            }
+
+            /* --- POLISHING THE MOBILE HERO IMAGE --- */
             .hero-image { 
                 right: 50%;
                 bottom: 0;
                 transform: translateX(50%); 
                 height: auto;
-                max-height: 40vh; 
-                max-width: 90%;
+                max-height: 45vh; 
+                max-width: 110%; /* Makes it punchier on small screens */
                 object-position: bottom center;
             }
             
             .netflix-content { padding: 0 20px 30px; }
             .netflix-title { margin-bottom: 16px; }
             .netflix-desc { font-size: 15px; }
+            
+            /* Mobile Modal Buttons Full Width for Thumbs */
+            .netflix-btn { width: 100%; justify-content: center; }
+            .modal-info-badge { flex-shrink: 0; }
         }
+        
         @media (max-width: 600px) {
-            .netflix-row { grid-template-columns: repeat(2, 1fr); }
+            .netflix-row { grid-template-columns: repeat(2, 1fr); gap: 3vw; }
+            .netflix-banner { height: 250px; } /* Scales banner down for phones */
+            .netflix-content { margin-top: -50px; }
+            
+            /* Ensures bottom bar stays out of the way of library scrolling */
+            .library { padding-bottom: 140px; } 
         }
+    </style>
     </style>
 </head>
 <body>
@@ -810,6 +866,23 @@
             </div>
         </div>
     </nav>
+	
+	</nav>
+
+    <!-- PURE MOBILE BOTTOM NAVIGATION (THE SURPRISE) -->
+    <div class="mobile-bottom-nav">
+        <a href="index.html">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+            Home
+        </a>
+        <a href="About.html">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+            About Us
+        </a>
+    </div>
+
+    <!-- WRAPPER FOR NETFLIX PAGE TRANSITIONS -->
+    <main id="main-content">
 
     <!-- WRAPPER FOR NETFLIX PAGE TRANSITIONS -->
     <main id="main-content">
