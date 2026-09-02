@@ -1099,122 +1099,165 @@
                     });
                 }
 				
-				// 1. The Cinematic Number Formatter
-				function formatDownloadCount(num) {
-					if (num === 0) return "0 Downloads";
-					if (num < 1000) return num + " Downloads";
-					
-					// Defines the massive thresholds (Quadrillion to Thousand)
-					const tiers = [
-						{ value: 1e15, symbol: "Q" },
-						{ value: 1e12, symbol: "T" },
-						{ value: 1e9, symbol: "B" },
-						{ value: 1e6, symbol: "M" },
-						{ value: 1e3, symbol: "K" }
-					];
+			// --- 1. REAL-TIME DATABASE FETCH LOGIC ---
+            function formatDownloadCount(num) {
+                if (num === 0) return "0 Downloads";
+                if (num < 1000) return num + " Downloads";
+                const tiers = [
+                    { value: 1e15, symbol: "Q" },
+                    { value: 1e12, symbol: "T" },
+                    { value: 1e9, symbol: "B" },
+                    { value: 1e6, symbol: "M" },
+                    { value: 1e3, symbol: "K" }
+                ];
+                for (let tier of tiers) {
+                    if (num >= tier.value) {
+                        const formattedNumber = Math.floor(num / tier.value);
+                        return formattedNumber + tier.symbol + "+ Downloads";
+                    }
+                }
+            }
 
-					for (let tier of tiers) {
-						if (num >= tier.value) {
-							// Math.floor ensures 1,999 becomes "1K+", 15,400 becomes "15K+"
-							const formattedNumber = Math.floor(num / tier.value);
-							return formattedNumber + tier.symbol + "+ Downloads";
-						}
-					}
-				}
+            async function fetchRealTimeDownloads() {
+                const supabaseUrl = 'https://kjwtpsnlcqbnxrwclwyr.supabase.co';
+                const publicKey = 'sb_publishable_JnbZR8QXlz9UobvUllaC8g_AftASi9_'; 
 
-				// 2. The Database Fetch Logic (Diagnostic Version)
-				async function fetchRealTimeDownloads() {
-					const supabaseUrl = 'https://kjwtpsnlcqbnxrwclwyr.supabase.co';
-					// PASTE YOUR ACTUAL SUPABASE PUBLISHABLE KEY BELOW
-					const publicKey = 'sb_publishable_JnbZR8QXlz9UobvUllaC8g_AftASi9_'; 
+                const books = document.querySelectorAll('.book-item.downloadable-book');
+                console.log(`[Diagnostic] Found ${books.length} books to check.`);
 
-					const books = document.querySelectorAll('.book-item.downloadable-book');
-					console.log(`[Diagnostic] Found ${books.length} books to check.`);
+                for (let book of books) {
+                    const filename = book.getAttribute('data-filename');
+                    console.log(`[Diagnostic] Requesting downloads for: ${filename}`);
+                    
+                    try {
+                        const safeFilename = encodeURIComponent(filename);
+                        const url = `${supabaseUrl}/rest/v1/unique_downloads?select=book_id&book_id=eq.${safeFilename}`;
+                        
+                        const response = await fetch(url, {
+                            method: 'GET',
+                            headers: {
+                                'apikey': publicKey,
+                                'Authorization': `Bearer ${publicKey}`,
+                                'Prefer': 'count=exact'
+                            }
+                        });
 
-					for (let book of books) {
-						const filename = book.getAttribute('data-filename');
-						console.log(`[Diagnostic] Requesting downloads for: ${filename}`);
-						
-						try {
-							// Safely encode the filename to prevent URL breaking
-							const safeFilename = encodeURIComponent(filename);
-							const url = `${supabaseUrl}/rest/v1/unique_downloads?select=book_id&book_id=eq.${safeFilename}`;
-							
-							const response = await fetch(url, {
-								method: 'GET',
-								headers: {
-									'apikey': publicKey,
-									'Authorization': `Bearer ${publicKey}`,
-									'Prefer': 'count=exact'
-								}
-							});
+                        if (!response.ok) {
+                            console.error(`[Error] Supabase rejected request for ${filename}:`, await response.text());
+                            continue;
+                        }
 
-							if (!response.ok) {
-								console.error(`[Error] Supabase rejected the request for ${filename}:`, await response.text());
-								continue; // Skip to the next book
-							}
+                        const contentRange = response.headers.get('content-range');
+                        let count = 0;
+                        if (contentRange) {
+                            count = parseInt(contentRange.split('/')[1]);
+                        } else {
+                            const data = await response.json();
+                            count = data.length;
+                        }
 
-							// Extract the count
-							const contentRange = response.headers.get('content-range');
-							let count = 0;
-							
-							if (contentRange) {
-								count = parseInt(contentRange.split('/')[1]);
-							} else {
-								// Fallback if the browser hides the header
-								const data = await response.json();
-								count = data.length;
-							}
+                        console.log(`[Diagnostic] Database returned count: ${count} for ${filename}`);
+                        const formattedString = formatDownloadCount(count);
 
-							console.log(`[Diagnostic] Database returned count: ${count} for ${filename}`);
-							const formattedString = formatDownloadCount(count);
+                        let tags = JSON.parse(book.getAttribute('data-tags') || "[]");
+                        tags = tags.filter(tag => !tag.includes('Download'));
+                        tags.push(formattedString);
+                        
+                        book.setAttribute('data-tags', JSON.stringify(tags));
+                        console.log(`[Diagnostic] Successfully updated HTML tags to:`, tags);
+                    } catch (error) {
+                        console.error(`[Error] Network/parsing failure for ${filename}:`, error);
+                    }
+                }
+            }
 
-							// Inject the new tag
-							let tags = JSON.parse(book.getAttribute('data-tags') || "[]");
-							tags = tags.filter(tag => !tag.includes('Download'));
-							tags.push(formattedString);
-							
-							book.setAttribute('data-tags', JSON.stringify(tags));
-							console.log(`[Diagnostic] Successfully updated HTML tags to:`, tags);
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', fetchRealTimeDownloads);
+            } else {
+                fetchRealTimeDownloads();
+            }
 
-						} catch (error) {
-							console.error(`[Error] Network or parsing failure for ${filename}:`, error);
-						}
-					}
-				}
+            // --- 2. MODAL LOGIC ---
+            const netflixModal = document.getElementById('netflixModal');
+            const infoModal = document.getElementById('infoModal');
+            let currentActiveBook = null; 
 
-				// 4. Bulletproof trigger: Run immediately if loaded, otherwise wait
-				if (document.readyState === 'loading') {
-					document.addEventListener('DOMContentLoaded', fetchRealTimeDownloads);
-				} else {
-					fetchRealTimeDownloads();
-				}
-					
-					try {
-						// 2. Send the silent ping to your Supabase Edge Function
-						await fetch('https://kjwtpsnlcqbnxrwclwyr.supabase.co/functions/v1/track-download', {
-							method: 'POST',
-							headers: {
-								'Content-Type': 'application/json',
-								// PASTE YOUR PUBLISHABLE KEY BELOW, KEEPING THE WORD 'Bearer ' IN FRONT OF IT
-								'Authorization': 'Bearer sb_publishable_JnbZR8QXlz9UobvUllaC8g_AftASi9_' 
-							},
-							body: JSON.stringify({ book_id: filename })
-						});
-					} catch (err) {
-						// If an aggressive ad-blocker blocks the ping, we just ignore it
-						console.log("Tracking bypassed.");
-					}
-					
-					// 3. Instantly serve the file from your GitHub Release and restore the button!
-					btnDownload.innerHTML = originalContent;
-					
-					// This connects the base Release URL to your specific filename
-					const releaseBaseURL = 'https://github.com/iamluvy108/vanisagara/releases/download/v1.0/';
-					window.open(releaseBaseURL + filename + '.pdf', '_blank');
-					
-					closeAllModals();
-				};
+            window.closeAllModals = function() {
+                netflixModal.classList.remove('active');
+                infoModal.classList.remove('active');
+                if(currentActiveBook) {
+                    currentActiveBook.classList.remove('locked-hover');
+                    currentActiveBook = null;
+                }
+            }
+
+            window.closeInfoModal = function(event) {
+                if(event) event.stopPropagation();
+                infoModal.classList.remove('active');
+            }
+
+            window.openInfoModal = function(event) {
+                event.stopPropagation(); 
+                infoModal.classList.add('active');
+            }
+
+            function openNetflixModal(bookNode) {
+                const title = bookNode.getAttribute('data-title');
+                const cover = bookNode.getAttribute('data-cover');
+                const banner = bookNode.getAttribute('data-banner') || cover; 
+                const desc = bookNode.getAttribute('data-desc');
+                const tagsRaw = bookNode.getAttribute('data-tags');
+                const filename = bookNode.getAttribute('data-filename');
+                const hasInfo = bookNode.getAttribute('data-info');
+                
+                document.getElementById('netflixTitle').textContent = title;
+                document.getElementById('netflixBanner').style.backgroundImage = `url('${banner}')`;
+                document.getElementById('netflixDesc').innerHTML = desc;
+                
+                const btnInfo = document.getElementById('btnNetflixInfo');
+                if (hasInfo === 'true') {
+                    btnInfo.style.display = 'flex';
+                } else {
+                    btnInfo.style.display = 'none';
+                }
+                
+                const tagsContainer = document.getElementById('netflixTags');
+                tagsContainer.innerHTML = ''; 
+                if (tagsRaw) {
+                    const tags = JSON.parse(tagsRaw);
+                    tags.forEach(tag => {
+                        const span = document.createElement('span');
+                        span.className = 'netflix-tag';
+                        span.textContent = tag;
+                        tagsContainer.appendChild(span);
+                    });
+                }
+                
+                // --- THE FIXED ASYNC BUTTON LOGIC ---
+                const btnDownload = document.getElementById('btnNetflixDownload');
+                btnDownload.onclick = async function() {
+                    const originalContent = btnDownload.innerHTML;
+                    btnDownload.innerHTML = 'Downloading...';
+                    
+                    try {
+                        await fetch('https://kjwtpsnlcqbnxrwclwyr.supabase.co/functions/v1/track-download', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Authorization': 'Bearer sb_publishable_JnbZR8QXlz9UobvUllaC8g_AftASi9_' 
+                            },
+                            body: JSON.stringify({ book_id: filename })
+                        });
+                    } catch (err) {
+                        console.log("Tracking bypassed.");
+                    }
+                    
+                    btnDownload.innerHTML = originalContent;
+                    const releaseBaseURL = 'https://github.com/iamluvy108/vanisagara/releases/download/v1.0/';
+                    window.open(releaseBaseURL + filename + '.pdf', '_blank');
+                    
+                    closeAllModals();
+                };
 
                 bookNode.classList.add('locked-hover');
                 currentActiveBook = bookNode;
@@ -1228,7 +1271,6 @@
                 });
             });
 
-            // Escape key smartly closes the topmost modal first
             document.addEventListener('keydown', function(event) {
                 if (event.key === "Escape") {
                     if (infoModal.classList.contains('active')) {
@@ -1239,7 +1281,6 @@
                 }
             });
 
-            // Clicking outside explicitly targets and closes the specific overlay you clicked
             window.addEventListener('click', function(event) {
                 if (event.target === infoModal) {
                     infoModal.classList.remove('active');
