@@ -753,7 +753,7 @@
         /* --- PREMIUM MOBILE APP MAKEOVER --- */
         @media (max-width: 900px) {
             
-            /* 1 & 5. Header Layout (Centered Logo & Sticky Scroll) */
+            /* Header Layout */
             nav {
                 justify-content: space-between;
                 padding: 0 5%;
@@ -765,13 +765,13 @@
             .nav-brand {
                 position: absolute;
                 left: 50%;
-                top: 55%; /* 1. Shifted slightly downward */
-                transform: translate(-50%, -50%); /* Re-centers based on the new top position */
+                top: 55%; 
+                transform: translate(-50%, -50%); 
                 display: flex;
                 align-items: center;
                 justify-content: center;
             }
-            nav .vanisagara-text { display: none !important; } /* 2. Hides text strictly in the NAVBAR only! */
+            nav .vanisagara-text { display: none !important; } 
             .brand-icon {
                 width: 44px; 
                 height: 44px;
@@ -786,7 +786,6 @@
             }
             .nav-icons { order: 1; } 
             
-            /* Pure White Icons in Dark Mode */
             [data-theme="dark"] .theme-toggle,
             [data-theme="dark"] .color-toggle,
             [data-theme="dark"] .hamburger {
@@ -805,13 +804,12 @@
             .hamburger:active { transform: scale(0.85); }
             .nav-links, .nav-divider { display: none; }
 
-            /* Center the Hue Glow */
             .hero-glow {
                 -webkit-mask-image: radial-gradient(circle at 50% 40%, black 0%, transparent 65%);
                 mask-image: radial-gradient(circle at 50% 40%, black 0%, transparent 65%);
             }
 
-            /* Full-Screen Mobile Menu Overlay */
+            /* Full-Screen Mobile Menu Overlay with Domino Effect */
             .mobile-menu-overlay {
                 display: flex;
                 position: fixed;
@@ -831,47 +829,56 @@
                 transition: opacity 0.3s ease, visibility 0.3s ease;
             }
             .mobile-menu-overlay.active { opacity: 1; visibility: visible; }
-            .mobile-menu-content { display: flex; flex-direction: column; align-items: center; gap: 24px; }
             
-            /* 5. Burger Menu Font Polish */
+            /* Feedback 3: Decreased gap and added cascading Domino animations */
+            .mobile-menu-content { display: flex; flex-direction: column; align-items: center; gap: 14px; }
+            .mobile-menu-content > * {
+                opacity: 0;
+                transform: translateY(-15px);
+                transition: opacity 0.2s ease, transform 0.2s ease;
+            }
+            .mobile-menu-overlay.active .mobile-menu-content > *:nth-child(1) { transition: opacity 0.4s ease 0.1s, transform 0.4s cubic-bezier(0.16,1,0.3,1) 0.1s; opacity: 1; transform: translateY(0); }
+            .mobile-menu-overlay.active .mobile-menu-content > *:nth-child(2) { transition: opacity 0.4s ease 0.2s, transform 0.4s cubic-bezier(0.16,1,0.3,1) 0.2s; opacity: 1; transform: translateY(0); }
+            .mobile-menu-overlay.active .mobile-menu-content > *:nth-child(3) { transition: opacity 0.4s ease 0.3s, transform 0.4s cubic-bezier(0.16,1,0.3,1) 0.3s; opacity: 1; transform: translateY(0); }
+            
             .mobile-menu-content a { 
                 color: var(--text-primary); 
                 font-size: 22px; 
                 text-decoration: none; 
-                font-weight: 400; /* Removed bolding */
-                font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif; /* Matched PC font */
+                font-weight: 400; 
+                font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif; 
             }
-            
-            /* 5. Fading Left-to-Right Divider */
             .mobile-menu-divider { 
-                width: 180px; /* Made longer */
+                width: 180px; 
                 height: 1px; 
-                background: linear-gradient(90deg, transparent, var(--text-primary), transparent); /* Gradient fade */
+                background: linear-gradient(90deg, transparent, var(--text-primary), transparent); 
                 opacity: 0.4; 
             }
             .menu-logo { width: 140px; height: auto; opacity: 0.95; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3)); }
 
-            /* 4. Hero Section Spacing & Overlap Fix */
+            /* Feedback 2: Hero Section Spacing & Magnet Glitch Fix (100svh) */
             .hero {
-                height: 100dvh; 
-                min-height: -webkit-fill-available; 
+                height: 100svh; /* Locks height to bypass Android Address Bar jumping */
+                min-height: 100svh; 
             }
             .hero-container {
                 flex-direction: column; 
                 text-align: center; 
                 align-items: center;
                 justify-content: flex-start;
-                padding-top: 13vh; /* Brought down slightly for balance */
+                padding-top: 13vh; 
             }
             .hero-content { 
                 align-items: center; 
                 max-width: 100%;
                 z-index: 15; 
-                padding-bottom: 43vh; /* 4. INVISIBLE FORCEFIELD: Prevents overlapping Prabhupāda */
+                padding-bottom: 43vh; 
             }
+            
+            /* Feedback 1: Remove logo from title on mobile */
+            .hero-title-logo { display: none !important; }
             .hero h1 { font-size: clamp(38px, 11vw, 60px); margin-bottom: 20px; } 
             
-            /* 3. Description Restoration */
             .hero p { 
                 display: block; 
                 font-size: 15px;
@@ -881,7 +888,6 @@
             } 
             .divider { justify-content: center; margin-bottom: 20px; }
             
-            /* Fixing Prabhupāda Image Sizing */
             .hero-image { 
                 position: absolute;
                 height: auto;
@@ -907,19 +913,20 @@
                 pointer-events: none;
             }
 
-            /* 6. Library Grid Centering & Spacing */
+            /* Feedback 4: Library 100svh Constraint (Prevents scrolling past the bottom) */
             .library {
                 position: relative;
                 z-index: 20; 
                 background-color: var(--bg-main);
-                padding-top: 100px; /* 6. Shifted the entire section downwards */
+                padding-top: 100px; 
+                min-height: 100svh; /* Locks the library to a perfect screen height constraint */
             }
             
             .library-title { 
                 text-align: center; 
                 font-size: 26px; 
                 padding: 0; 
-                margin-bottom: 45px; /* 6. Increased gap between title and books */
+                margin-bottom: 45px; 
             }
             .netflix-row { 
                 display: grid;
@@ -932,7 +939,6 @@
             .book-item[style*="visibility: hidden"] { display: none !important; }
             .book-cover-wrapper { width: 100%; max-width: 160px; } 
 
-            /* Smaller Coming Soon Layout */
             .coming-soon-placeholder { font-size: 15px; gap: 10px; }
             .placeholder-logo { width: 60px; height: 60px; }
 
