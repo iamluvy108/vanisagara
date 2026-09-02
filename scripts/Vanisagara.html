@@ -849,7 +849,7 @@
                     
                     <!-- Book 1 (With data-info set to true) -->
                     <div class="book-item downloadable-book" 
-                         data-filename="../books/Bhagavad-gītā As It Is (1972 Edition)"
+                         data-filename="Bhagavad-Gita-1972"
                          data-title="Bhagavad-gītā As It Is"
                          data-cover="../book covers/bg-cover.png"
                          data-banner="../banners/bg-banner.png" 
@@ -865,7 +865,7 @@
 
                     <!-- Book 2 -->
                     <div class="book-item downloadable-book"
-                         data-filename="../books/Transcendental Teachings of Prahlāda Mahārāja (1995 Edition)"
+                         data-filename="Transcendental-Teachings-of-Prahlada-Maharaja-1995"
                          data-title="Transcendental Teachings of Prahlāda Mahārāja"
                          data-cover="../book covers/ttpm-cover.png"
                          data-banner="../banners/ttpm-banner.png"
@@ -1121,9 +1121,13 @@
 						console.log("Tracking bypassed.");
 					}
 					
-					// 3. Instantly serve the file and restore the button, no matter what!
+					// 3. Instantly serve the file from your GitHub Release and restore the button!
 					btnDownload.innerHTML = originalContent;
-					window.open(filename + '.pdf', '_blank');
+					
+					// This connects the base Release URL to your specific filename
+					const releaseBaseURL = 'https://github.com/iamluvy108/vanisagara/releases/download/v1.0/';
+					window.open(releaseBaseURL + filename + '.pdf', '_blank');
+					
 					closeAllModals();
 				};
 
