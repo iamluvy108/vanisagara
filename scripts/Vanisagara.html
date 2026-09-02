@@ -950,31 +950,22 @@
     </div>
 
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
+		document.addEventListener("DOMContentLoaded", () => {
             
-            // --- NETFLIX PAGE TRANSITION LOGIC ---
+            // --- 1. NETFLIX PAGE TRANSITION LOGIC ---
             const mainContent = document.getElementById('main-content');
-            
             document.querySelectorAll('a').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
                     const target = this.getAttribute('href');
-                    
-                    // Proceed only if it's an internal page link (ending in .html)
                     if (target && target.endsWith('.html') && this.getAttribute('target') !== '_blank') {
-                        
-                        // If they click a link to the page they are already on, just smoothly scroll to top
                         const currentPage = window.location.pathname.split('/').pop() || 'Vanisagara.html';
                         if (target === currentPage) {
                             e.preventDefault();
                             window.scrollTo({ top: 0, behavior: 'smooth' });
                             return;
                         }
-
-                        // Otherwise, trigger the Netflix exit animation
                         e.preventDefault();
                         mainContent.classList.add('page-exit');
-                        
-                        // Wait for the animation to complete before changing the page
                         setTimeout(() => {
                             window.location.href = target;
                         }, 400); 
@@ -982,28 +973,21 @@
                 });
             });
 
-            // --- IMAGE ELEMENT FOR EASTER EGG ---
+            // --- 2. EASTER EGG FADE LOGIC ---
             const prabhupadaImage = document.getElementById('prabhupada-img');
+            function handleEasterEggRoll() {
+                const rareOverlay = document.getElementById('prabhupada-rare-img');
+                if (!rareOverlay) return;
+                const rareProbability = 1e-109;
+                const rollIsRare = Math.random() < rareProbability;
+                if (rollIsRare) {
+                    rareOverlay.style.opacity = '1';
+                } else {
+                    rareOverlay.style.opacity = '0';
+                }
+            }
 
-            // --- EASTER EGG FADE LOGIC ---
-			function handleEasterEggRoll() {
-				const rareOverlay = document.getElementById('prabhupada-rare-img');
-				if (!rareOverlay) return;
-
-				const rareProbability = 1e-109;
-				const rollIsRare = Math.random() < rareProbability;
-				
-				// If the roll succeeds, the Rādhā-Kṛṣṇa overlay fades in. 
-				// If it fails (which it will on the next click), it fades back to 0.
-				// Just like Narada Muni's vision, it will not remain once found!
-				if (rollIsRare) {
-					rareOverlay.style.opacity = '1';
-				} else {
-					rareOverlay.style.opacity = '0';
-				}
-			}
-
-            // --- LOCAL STORAGE THEME TOGGLE LOGIC ---
+            // --- 3. LOCAL STORAGE THEME TOGGLE LOGIC ---
             const themeBtn = document.getElementById('themeBtn');
             const root = document.documentElement;
             const icon = document.getElementById('theme-icon');
@@ -1011,7 +995,6 @@
             const moonSvg = `<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>`;
             const sunSvg = `<circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>`;
 
-            // Set correct icon on load based on saved theme
             if (root.getAttribute('data-theme') === 'light') {
                 icon.innerHTML = moonSvg;
             } else {
@@ -1020,7 +1003,6 @@
 
             themeBtn.addEventListener('click', () => {
                 const currentTheme = root.getAttribute('data-theme');
-                
                 if (currentTheme === 'dark') {
                     root.setAttribute('data-theme', 'light');
                     localStorage.setItem('vanisagara_theme', 'light');
@@ -1030,76 +1012,15 @@
                     localStorage.setItem('vanisagara_theme', 'dark');
                     icon.innerHTML = sunSvg;
                 }
-
-                // Trigger Easter Egg roll on theme change!
                 handleEasterEggRoll();
             });
 
-            // --- SCROLL TO LIBRARY ---
+            // --- 4. SCROLL TO LIBRARY ---
             window.scrollToLibrary = function() {
                 document.getElementById('library-section').scrollIntoView({ behavior: 'smooth' });
             };
 
-            // --- MODAL LOGIC ---
-            const netflixModal = document.getElementById('netflixModal');
-            const infoModal = document.getElementById('infoModal');
-            let currentActiveBook = null; 
-
-            window.closeAllModals = function() {
-                netflixModal.classList.remove('active');
-                infoModal.classList.remove('active');
-                
-                if(currentActiveBook) {
-                    currentActiveBook.classList.remove('locked-hover');
-                    currentActiveBook = null;
-                }
-            }
-
-            // Only closes the top-layer Info modal without ruining the Netflix modal beneath it
-            window.closeInfoModal = function(event) {
-                if(event) event.stopPropagation();
-                infoModal.classList.remove('active');
-            }
-
-            window.openInfoModal = function(event) {
-                event.stopPropagation(); 
-                infoModal.classList.add('active');
-            }
-
-            function openNetflixModal(bookNode) {
-                const title = bookNode.getAttribute('data-title');
-                const cover = bookNode.getAttribute('data-cover');
-                const banner = bookNode.getAttribute('data-banner') || cover; 
-                const desc = bookNode.getAttribute('data-desc');
-                const tagsRaw = bookNode.getAttribute('data-tags');
-                const filename = bookNode.getAttribute('data-filename');
-                const hasInfo = bookNode.getAttribute('data-info');
-                
-                document.getElementById('netflixTitle').textContent = title;
-                document.getElementById('netflixBanner').style.backgroundImage = `url('${banner}')`;
-                document.getElementById('netflixDesc').innerHTML = desc;
-                
-                // Show or hide the Info Badge dynamically based on the book's data-info attribute
-                const btnInfo = document.getElementById('btnNetflixInfo');
-                if (hasInfo === 'true') {
-                    btnInfo.style.display = 'flex';
-                } else {
-                    btnInfo.style.display = 'none';
-                }
-                
-                const tagsContainer = document.getElementById('netflixTags');
-                tagsContainer.innerHTML = ''; 
-                if (tagsRaw) {
-                    const tags = JSON.parse(tagsRaw);
-                    tags.forEach(tag => {
-                        const span = document.createElement('span');
-                        span.className = 'netflix-tag';
-                        span.textContent = tag;
-                        tagsContainer.appendChild(span);
-                    });
-                }
-				
-			// --- 1. REAL-TIME DATABASE FETCH LOGIC ---
+            // --- 5. REAL-TIME DATABASE FETCH LOGIC ---
             function formatDownloadCount(num) {
                 if (num === 0) return "0 Downloads";
                 if (num < 1000) return num + " Downloads";
@@ -1171,13 +1092,10 @@
                 }
             }
 
-            if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', fetchRealTimeDownloads);
-            } else {
-                fetchRealTimeDownloads();
-            }
+            // Fire the fetch command as soon as the rest of the script is loaded
+            fetchRealTimeDownloads();
 
-            // --- 2. MODAL LOGIC ---
+            // --- 6. MODAL LOGIC ---
             const netflixModal = document.getElementById('netflixModal');
             const infoModal = document.getElementById('infoModal');
             let currentActiveBook = null; 
@@ -1289,7 +1207,7 @@
                 }
             });
 
-            // --- COLOR CYCLING LOGIC & EASTER EGG ---
+            // --- 7. COLOR CYCLING LOGIC ---
             const colorBtn = document.getElementById('colorBtn');
             const royalColors = [
                 '#5c4000', // Antique Gold (Default)
@@ -1311,14 +1229,12 @@
             }
 
             colorBtn.addEventListener('click', () => {
-                // 1. Change the hue
                 currentColorIndex = (currentColorIndex + 1) % royalColors.length;
                 const newColor = royalColors[currentColorIndex];
                 
                 document.documentElement.style.setProperty('--hero-glow', newColor);
                 localStorage.setItem('vanisagara_hero_glow', newColor);
 
-                // 2. Trigger Easter Egg roll on hue change!
                 handleEasterEggRoll();
             });
 
