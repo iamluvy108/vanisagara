@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Vāṇīsāgara</title>
+    
+    <!-- PREVENTS THEME FLASHING ON PAGE LOAD -->
+    <script>
+        const savedTheme = localStorage.getItem('vanisagara_theme');
+        if (savedTheme) {
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        }
+    </script>
+
+    <style>
+        /* --- ENABLE SMOOTH GRADIENT COLOR FADING --- */
+        @property --hero-glow {
+            syntax: '<color>';
+            inherits: true;
+            initial-value: #5c4000; 
+        }
+
+        /* --- THEME VARIABLES --- */
+        :root {
+            /* Dark Theme */
+            --bg-main: #141414;
+            --bg-nav: rgba(20, 20, 20, 0.7);
+            --hero-glow: #5c4000; 
+            --text-primary: #f5f5f7;
+            --text-secondary: #86868b;
+            --accent: #ffffff;
+            --btn-bg: #f5f5f7;
+            --btn-text: #000000;
+            --border: rgba(255, 255, 255, 0.1);
+            --link-color: #0a84ff;
+        }
+
+        [data-theme="light"] {
+            /* Light Theme */
+            --bg-main: #ffffff;
+            --bg-nav: rgba(255, 255, 255, 0.7);
+            --text-primary: #000000;
+            --text-secondary: #5e5e60; 
+            --accent: #1d1d1f;
+            --btn-bg: #1d1d1f;
+            --btn-text: #ffffff;
+            --border: rgba(0, 0, 0, 0.1);
+            --link-color: #0061FE;
+        }
+
+        html {
+            scroll-behavior: smooth; 
+        }
+
+        /* Removed global font smoothing here to prevent artificial thinning of serif fonts */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            transition: background-color 0.4s ease, color 0.4s ease;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased; /* Keep sans-serif UI elements crisp */
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* --- BULLETPROOF TITLE FONT CLASS --- */
+        /* This guarantees both Vāṇīsāgara texts are mathematically identical */
+        .vanisagara-text {
+            font-family: 'Times New Roman', Times, serif !important;
+            font-weight: 400 !important;
+            letter-spacing: 0.02em !important; 
+            -webkit-font-smoothing: auto !important; 
+            -moz-osx-font-smoothing: auto !important;
+        }
+
+        /* --- NETFLIX PAGE TRANSITION ANIMATIONS --- */
+        #main-content {
+            animation: netflixEnter 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.4s ease;
+            transform-origin: top center;
+        }
+
+        #main-content.page-exit {
+            transform: scale(0.98);
+            opacity: 0;
+        }
+
+        @keyframes netflixEnter {
+            0% { transform: scale(1.03); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 60px;
+            background: var(--bg-nav);
+            backdrop-filter: saturate(180%) blur(20px);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 5%;
+            z-index: 100;
+            border-bottom: 1px solid var(--border);
+            transition: background 0.4s ease;
+        }
+
+        .nav-brand {
+            display: inline-block;
+            font-size: 22px; 
+            text-decoration: none;
+            color: var(--text-primary);
+            white-space: nowrap;
+        }
+
+        .brand-icon {
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
+            vertical-align: middle;
+            margin-right: 8px; /* Tighter gap */
+            position: relative;
+            top: -1px; 
+        }
+
+        .nav-controls {
+            display: flex;
+            align-items: center;
+            gap: 20px; 
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 24px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-size: 15px;
+            font-weight: 500;
+            transition: opacity 0.2s;
+        }
+
+        .nav-links a:hover { opacity: 0.7; }
+
+        .nav-divider {
+            width: 1px;
+            height: 28px; 
+            background-color: var(--text-secondary);
+            opacity: 0.4;
+        }
+
+        .nav-icons {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .theme-toggle, .color-toggle {
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            cursor: pointer;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease, visibility 0.3s ease;
+        }
+        
+        .hue-icon {
+            width: 20px;
+            height: 20px;
+            object-fit: contain;
+        }
+        
+        .theme-toggle:active, .color-toggle:active { transform: scale(0.85); }
+        .theme-toggle:hover, .color-toggle:hover { opacity: 0.7; }
+
+        [data-theme="dark"] .logo-light,
+        [data-theme="dark"] .hue-light {
+            display: none;
+        }
+        
+        [data-theme="light"] .logo-dark,
+        [data-theme="light"] .hue-dark {
+            display: none;
+        }
+
+        [data-theme="light"] .color-toggle {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        /* --- ABOUT US CONTENT --- */
+        .about-wrapper {
+            position: relative;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 140px 5% 100px 5%;
+            overflow: hidden;
+        }
+
+        .about-glow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--hero-glow);
+            /* Center top radial glow to illuminate the text gracefully */
+            -webkit-mask-image: radial-gradient(circle at 50% 20%, black 0%, transparent 60%);
+            mask-image: radial-gradient(circle at 50% 20%, black 0%, transparent 60%);
+            transition: --hero-glow 0.75s ease-in-out, background-color 0.75s ease-in-out, opacity 0.4s ease;
+            pointer-events: none; 
+            z-index: 1;
+        }
+
+        [data-theme="light"] .about-glow { opacity: 0; }
+
+        .about-content {
+            position: relative;
+            z-index: 2;
+            max-width: 760px; 
+            width: 100%;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .about-title {
+            font-size: clamp(40px, 6vw, 72px); 
+            font-weight: 400; 
+            line-height: 1.1;
+            margin-bottom: 24px;
+            font-family: 'Times New Roman', Times, serif;
+            color: var(--text-primary);
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 40px;
+        }
+        .divider-line {
+            height: 1px;
+            width: 60px;
+            background-color: var(--text-secondary);
+        }
+        .divider-circle {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            border: 1px solid var(--text-secondary);
+        }
+
+        /* Prose / Text Block */
+        .prose {
+            font-size: 24px; 
+            color: var(--text-primary);
+            opacity: 0.9;
+            line-height: 1.7; 
+            text-align: left;
+            width: 100%;
+        }
+
+        .prose p {
+            margin-bottom: 32px;
+            text-align: justify;
+            text-justify: inter-word;
+            
+            /* FORCES WORDS TO NOT BREAK OR HYPHENATE ON NEW LINES */
+            hyphens: none;
+            -webkit-hyphens: none;
+        }
+
+        .prose a {
+            color: var(--link-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.2s;
+        }
+
+        .prose a:hover {
+            opacity: 0.7;
+            text-decoration: underline;
+        }
+
+        .prose strong {
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        /* --- FOOTER CTA --- */
+        .about-footer {
+            margin-top: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .btn-primary {
+            background: var(--btn-bg);
+            color: var(--btn-text);
+            padding: 14px 32px; 
+            width: max-content; 
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: transform;
+        }
+        .btn-primary:hover { transform: scale(1.03); }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .about-wrapper { padding-top: 120px; }
+            .prose { font-size: 20px; } 
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <!-- The pure .vanisagara-text class fixes the font rendering anomaly -->
+        <a href="Vanisagara.html" class="nav-brand" style="text-decoration: none; color: inherit;">
+            <img src="../images/logos/website/transparent/vanisagara-white.png" alt="Vāṇīsāgara Logo" class="brand-icon logo-dark"><img src="../images/logos/website/transparent/vanisagara-black.png" alt="Vāṇīsāgara Logo" class="brand-icon logo-light"><span class="vanisagara-text">Vāṇīsāgara</span>
+        </a>
+        <div class="nav-controls">
+            <ul class="nav-links">
+                <li><a href="Vanisagara.html">Home</a></li>
+                <li><a href="About.html">About Us</a></li>
+            </ul>
+            <div class="nav-divider"></div>
+            
+            <div class="nav-icons">
+                <button class="theme-toggle" id="themeBtn" aria-label="Toggle Theme">
+                    <svg id="theme-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                
+                <button class="color-toggle" id="colorBtn" aria-label="Cycle Glow Color" title="Change Background Hue">
+                    <img src="../images/logos/nav-bar/hue-white.png" alt="Hue Palette" class="hue-icon hue-dark">
+                    <img src="../images/logos/nav-bar/hue-black.png" alt="Hue Palette" class="hue-icon hue-light">
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- WRAPPER FOR NETFLIX PAGE TRANSITIONS -->
+    <main class="about-wrapper" id="main-content">
+        <div class="about-glow"></div>
+        <section class="about-content">
+            <h1 class="about-title">Our Story</h1>
+            
+            <div class="divider">
+                <div class="divider-line"></div>
+                <div class="divider-circle"></div>
+                <div class="divider-line"></div>
+            </div>
+
+            <div class="prose">
+                <p><b>Vāṇīsāgara</b> was established to solve a persistent issue in the digital distribution of Śrīla Prabhupāda’s literature: the widespread reliance on degraded photoscans and haphazardly compiled PDFs. Readers should no longer have to navigate crooked alignments, faded text, or compromised digital formatting. What began as a focused, year-long solo initiative to rigorously typeset the <em>Bhagavad-gītā As It Is (1972 Edition)</em> has scaled into a comprehensive archival project.</p>
+                
+                <p>Operating entirely as an independent, single-developer infrastructure, <b>Vāṇīsāgara</b> brings uncompromising technical standards to these original books. By utilizing the advanced typesetting capabilities of XeLaTeX alongside Noto Serif typography, the geometry of every page is scientifically calculated. This systematic approach guarantees that every character, diacritic, and margin renders natively and flawlessly in 4K resolution.</p>
+
+                <p>This archive is engineered and maintained from the ground up by one person. Keeping this server operational and freely accessible requires ongoing technical resources. To support the transition to a permanent, streamlined domain (<u><em>https://www.vanisagara.co/</em></u>) and bypass the use of complicated hosting addresses, external funding is required.</p>
+				
+				<p>If you wish to contribute toward securing this domain and keeping the project online, please don’t hesitate to direct your correspondence to <u><em>spiritualibrary108@gmail.com</em></u>.</p>
+            </div>
+
+            <div class="about-footer">
+                <a href="Vanisagara.html" class="btn-primary">Return to the Archive</a>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            
+            // --- NETFLIX PAGE TRANSITION LOGIC ---
+            const mainContent = document.getElementById('main-content');
+            
+            document.querySelectorAll('a').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const target = this.getAttribute('href');
+                    
+                    // Proceed only if it's an internal page link (ending in .html)
+                    if (target && target.endsWith('.html') && this.getAttribute('target') !== '_blank') {
+                        
+                        // If they click a link to the page they are already on, just smoothly scroll to top
+                        const currentPage = window.location.pathname.split('/').pop() || 'About.html';
+                        if (target === currentPage) {
+                            e.preventDefault();
+                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                            return;
+                        }
+
+                        // Otherwise, trigger the Netflix exit animation
+                        e.preventDefault();
+                        mainContent.classList.add('page-exit');
+                        
+                        // Wait for the animation to complete before changing the page
+                        setTimeout(() => {
+                            window.location.href = target;
+                        }, 400); 
+                    }
+                });
+            });
+
+            // --- LOCAL STORAGE THEME TOGGLE LOGIC ---
+            const themeBtn = document.getElementById('themeBtn');
+            const root = document.documentElement;
+            const icon = document.getElementById('theme-icon');
+            
+            const moonSvg = `<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>`;
+            const sunSvg = `<circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>`;
+
+            // Set correct icon on load based on saved theme
+            if (root.getAttribute('data-theme') === 'light') {
+                icon.innerHTML = moonSvg;
+            } else {
+                icon.innerHTML = sunSvg;
+            }
+
+            themeBtn.addEventListener('click', () => {
+                const currentTheme = root.getAttribute('data-theme');
+                
+                if (currentTheme === 'dark') {
+                    root.setAttribute('data-theme', 'light');
+                    localStorage.setItem('vanisagara_theme', 'light');
+                    icon.innerHTML = moonSvg;
+                } else {
+                    root.setAttribute('data-theme', 'dark');
+                    localStorage.setItem('vanisagara_theme', 'dark');
+                    icon.innerHTML = sunSvg;
+                }
+            });
+
+            // --- COLOR CYCLING LOGIC ---
+            const colorBtn = document.getElementById('colorBtn');
+            const royalColors = [
+                '#5c4000', // Antique Gold (Default)
+                '#800020', // Classic Burgundy
+                '#002147', // Royal Sapphire
+                '#3b1459', // Imperial Amethyst
+                '#0a3a2a'  // Emerald Forest
+            ];
+            
+            let currentColorIndex = 0;
+            const savedColor = localStorage.getItem('vanisagara_hero_glow');
+            
+            if (savedColor) {
+                const foundIndex = royalColors.indexOf(savedColor);
+                if (foundIndex !== -1) {
+                    currentColorIndex = foundIndex;
+                    document.documentElement.style.setProperty('--hero-glow', royalColors[currentColorIndex]);
+                }
+            }
+
+            colorBtn.addEventListener('click', () => {
+                currentColorIndex = (currentColorIndex + 1) % royalColors.length;
+                const newColor = royalColors[currentColorIndex];
+                
+                document.documentElement.style.setProperty('--hero-glow', newColor);
+                localStorage.setItem('vanisagara_hero_glow', newColor);
+            });
+
+        });
+    </script>
+</body>
+</html>

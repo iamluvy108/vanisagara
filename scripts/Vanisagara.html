@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vāṇīsāgara</title>
+    
+    <!-- PREVENTS THEME FLASHING ON PAGE LOAD -->
+    <script>
+        const savedTheme = localStorage.getItem('vanisagara_theme');
+        if (savedTheme) {
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        }
+    </script>
+
+    <style>
+        /* --- ENABLE SMOOTH GRADIENT COLOR FADING --- */
+        @property --hero-glow {
+            syntax: '<color>';
+            inherits: true;
+            initial-value: #5c4000; 
+        }
+
+        /* --- THEME VARIABLES --- */
+        :root {
+            /* Dark Theme */
+            --bg-main: #141414;
+            --bg-nav: rgba(20, 20, 20, 0.7);
+            --hero-glow: #5c4000; 
+            --text-primary: #f5f5f7;
+            --text-secondary: #86868b;
+            --accent: #ffffff;
+            --btn-bg: #f5f5f7;
+            --btn-text: #000000;
+            --card-bg: #1e1e1e;
+            --border: rgba(255, 255, 255, 0.1);
+            
+            /* Dropbox & Netflix Variables */
+            --dropbox-blue: #0061FE;
+            --netflix-modal-bg: #181818;
+            --sys-yellow: #FFD60A;
+        }
+
+        [data-theme="light"] {
+            /* Light Theme */
+            --bg-main: #ffffff;
+            --bg-nav: rgba(255, 255, 255, 0.7);
+            --text-primary: #000000;
+            --text-secondary: #5e5e60; 
+            --accent: #1d1d1f;
+            --btn-bg: #1d1d1f;
+            --btn-text: #ffffff;
+            --card-bg: #ffffff;
+            --border: rgba(0, 0, 0, 0.1);
+            
+            --dropbox-blue: #0061FE;
+            --netflix-modal-bg: #ffffff;
+            --sys-yellow: #FFCC00;
+        }
+
+        html {
+            scroll-behavior: smooth; 
+        }
+
+        /* Removed global font smoothing here to prevent artificial thinning of serif fonts */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            transition: background-color 0.4s ease, color 0.4s ease;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased; /* Keep sans-serif UI elements crisp */
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* --- BULLETPROOF TITLE FONT CLASS --- */
+        /* This guarantees both Vāṇīsāgara texts are mathematically identical */
+        .vanisagara-text {
+            font-family: 'Times New Roman', Times, serif !important;
+            font-weight: 400 !important;
+            letter-spacing: 0.02em !important; /* Scales proportionally to fix the scrunched mismatch */
+            -webkit-font-smoothing: auto !important; /* Restores thick, native serif rendering */
+            -moz-osx-font-smoothing: auto !important;
+        }
+
+        /* --- NETFLIX PAGE TRANSITION ANIMATIONS --- */
+        #main-content {
+            animation: netflixEnter 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.4s ease;
+            transform-origin: top center;
+        }
+
+        #main-content.page-exit {
+            transform: scale(0.98);
+            opacity: 0;
+        }
+
+        @keyframes netflixEnter {
+            0% { transform: scale(1.03); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 60px;
+            background: var(--bg-nav);
+            backdrop-filter: saturate(180%) blur(20px);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 5%;
+            z-index: 100;
+            border-bottom: 1px solid var(--border);
+            transition: background 0.4s ease;
+        }
+
+        .nav-brand {
+            display: inline-block;
+            font-size: 22px; 
+            text-decoration: none;
+            color: var(--text-primary);
+            white-space: nowrap;
+        }
+
+        .brand-icon {
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
+            vertical-align: middle;
+            margin-right: 8px; /* Tighter gap */
+            position: relative;
+            top: -1px; 
+        }
+
+        .nav-controls {
+            display: flex;
+            align-items: center;
+            gap: 20px; 
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 24px; 
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-size: 15px;
+            font-weight: 500;
+            transition: opacity 0.2s;
+        }
+
+        .nav-links a:hover { opacity: 0.7; }
+
+        .nav-divider {
+            width: 1px;
+            height: 28px; 
+            background-color: var(--text-secondary);
+            opacity: 0.4;
+        }
+
+        .nav-icons {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .theme-toggle, .color-toggle {
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            cursor: pointer;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease, visibility 0.3s ease;
+        }
+        
+        .hue-icon {
+            width: 20px;
+            height: 20px;
+            object-fit: contain;
+        }
+        
+        .theme-toggle:active, .color-toggle:active { transform: scale(0.85); }
+        .theme-toggle:hover, .color-toggle:hover { opacity: 0.7; }
+
+        [data-theme="dark"] .logo-light,
+        [data-theme="dark"] .hue-light {
+            display: none;
+        }
+        
+        [data-theme="light"] .logo-dark,
+        [data-theme="light"] .hue-dark {
+            display: none;
+        }
+
+        [data-theme="light"] .color-toggle {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            position: relative;
+            height: 100vh;
+            height: 100dvh; 
+            z-index: 1;
+            background-color: var(--bg-main);
+            overflow: hidden;
+            transition: background-color 0.4s ease; 
+            display: flex;
+            justify-content: center; 
+        }
+
+        .hero-glow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--hero-glow);
+            -webkit-mask-image: radial-gradient(circle at 75% 50%, black 0%, transparent 70%);
+            mask-image: radial-gradient(circle at 75% 50%, black 0%, transparent 70%);
+            transition: --hero-glow 0.75s ease-in-out, background-color 0.75s ease-in-out, opacity 0.4s ease;
+            pointer-events: none; 
+            z-index: 1;
+        }
+
+        [data-theme="light"] .hero-glow { opacity: 0; }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 150px; 
+            background: linear-gradient(to bottom, transparent, var(--bg-main));
+            pointer-events: none; 
+            z-index: 10;
+        }
+
+        .hero-container {
+            position: relative; 
+            display: flex;
+            align-items: center; 
+            justify-content: flex-start;
+            width: 100%;
+            max-width: 1600px; 
+            height: 100%;
+            margin: 0 auto;
+            padding: 60px 5% 0 5%; 
+        }
+
+        .hero-content {
+            flex: 1;
+            max-width: 55%; 
+            z-index: 3;
+            display: flex;
+            flex-direction: column;
+            justify-content: center; 
+            align-items: flex-start;
+            padding-bottom: 60px; 
+        }
+
+        .hero h1 {
+            display: block;
+            width: fit-content; 
+            font-size: clamp(48px, 7vw, 110px); 
+            line-height: 1;
+            margin-bottom: 30px;
+        }
+
+        .hero-title-text {
+            display: block; 
+            white-space: nowrap; 
+        }
+
+        .hero-title-logo {
+            height: 1.36em; 
+            width: auto;
+            object-fit: contain;
+            vertical-align: middle; 
+            margin-right: 0.06em; /* Incredibly tight gap */
+            margin-top: -0.5em; 
+            margin-bottom: -0.5em; /* Prevents line height from breaking */
+            position: relative;
+            top: -0.05em; 
+        }
+
+        .hero-subtitle {
+            display: block;
+            font-size: 0.545em; 
+            color: var(--text-secondary);
+            margin-top: 8px; /* Pristine spacing restored */
+            white-space: nowrap; 
+            letter-spacing: 0.02em; 
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+        .divider-line {
+            height: 1px;
+            width: 40px;
+            background-color: var(--text-secondary);
+        }
+        .divider-circle {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            border: 1px solid var(--text-secondary);
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--text-primary);
+            opacity: 0.9;
+            margin-bottom: 40px;
+            line-height: 1.5;
+            max-width: 500px;
+        }
+
+        .btn-primary {
+            background: var(--btn-bg);
+            color: var(--btn-text);
+            padding: 12px 20px; 
+            width: max-content; 
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: transform;
+        }
+        .btn-primary:hover { transform: scale(1.03); }
+
+        .hero-image {
+            position: absolute;
+            bottom: 0;
+            right: 5%; 
+            height: 85vh; 
+            max-height: 100%; 
+            width: auto;
+            max-width: 45%; 
+            object-fit: contain;
+            object-position: bottom right; 
+            display: block; 
+            z-index: 2; 
+            filter: drop-shadow(0 20px 40px rgba(0,0,0,0.4));
+            pointer-events: none; 
+            transition: opacity 0.5s ease; /* Important: Smoothly fades opacity via JS */
+        }
+		
+		.rare-overlay {
+			z-index: 3; /* Puts it directly on top of the base image (z-index: 2) */
+			opacity: 0; /* Hidden by default */
+			transition: opacity 1.5s ease-in-out; /* A slower, 1.5-second mystical fade-in */
+		}
+
+        /* --- NETFLIX-STYLE LIBRARY SECTION --- */
+        .library {
+            position: relative;
+            width: 100%;
+            padding: 80px 0 120px; 
+            z-index: 11; 
+            background-color: var(--bg-main); 
+            transition: background-color 0.4s ease;
+            min-height: 100vh; 
+        }
+
+        .library-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: -0.5px;
+            padding: 0 5%; 
+        }
+
+        .netflix-row {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1.5vw; 
+            padding: 40px 5% 60px 5%; 
+            width: 100%;
+        }
+
+        .book-item {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 2 / 3;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), z-index 0.3s;
+            z-index: 1;
+        }
+
+        .book-item:nth-child(1) { animation-delay: 0.1s; }
+        .book-item:nth-child(2) { animation-delay: 0.2s; }
+        .book-item:nth-child(3) { animation-delay: 0.3s; }
+        .book-item:nth-child(4) { animation-delay: 0.4s; }
+        .book-item:nth-child(5) { animation-delay: 0.5s; }
+
+        .book-cover-wrapper {
+            position: relative;
+            display: block;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .book-cover {
+            width: 100%;
+            height: 100%; 
+            aspect-ratio: 2 / 3;
+            object-fit: cover;
+            border-radius: 4px;
+            background-color: var(--card-bg);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            transition: box-shadow 0.3s ease;
+            border: 1px solid var(--border);
+            display: block; 
+        }
+
+        .coming-soon-placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 24px; 
+            color: var(--text-secondary);
+            font-weight: 600;
+            font-size: 26px; 
+            cursor: default;
+            text-align: center;
+        }
+
+        .placeholder-logo {
+            width: 168px; 
+            height: 168px; 
+            object-fit: contain;
+            opacity: 0.5; 
+        }
+
+        .downloadable-book {
+            cursor: pointer;
+        }
+
+        /* FIXED ZOOM ISSUE HERE */
+        .book-item.downloadable-book:hover, .book-item.locked-hover {
+            z-index: 10;
+        }
+
+        .book-item.downloadable-book:hover .book-cover-wrapper, 
+        .book-item.locked-hover .book-cover-wrapper {
+            transform: scale(1.05); /* Subtler zoom */
+        }
+
+        .book-item.downloadable-book:hover .book-cover, .book-item.locked-hover .book-cover {
+            box-shadow: 0 16px 40px rgba(0,0,0,0.5);
+        }
+
+        /* --- DYNAMIC MODAL INFO BADGE --- */
+        .modal-info-badge {
+            width: 36px;
+            height: 36px;
+            background-color: var(--sys-yellow);
+            color: #000000; 
+            border-radius: 50%;
+            display: none; /* Hidden by default, toggled via JS */
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: 800;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .modal-info-badge:hover {
+            transform: scale(1.15);
+        }
+        
+        .modal-info-badge:active {
+            transform: scale(0.95);
+        }
+
+        /* --- DROPBOX STYLE FLAT ALERTS (Info Modal) --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6); 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none; 
+            transition: opacity 0.2s ease;
+        }
+
+        /* Force infoModal to sit on top of the open netflixModal */
+        #infoModal {
+            z-index: 1001; 
+        }
+        
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto; 
+        }
+        
+        .modal-box {
+            background-color: var(--card-bg);
+            border-radius: 6px; 
+            width: 440px; 
+            max-width: 90vw;
+            text-align: left; 
+            transform: translateY(15px); 
+            opacity: 0;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            border: 1px solid var(--border);
+        }
+        
+        .modal-overlay.active .modal-box {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .modal-text-container {
+            padding: 32px 32px 24px; 
+        }
+        
+        .modal-title {
+            font-size: 20px; 
+            font-weight: 600;
+            color: var(--text-primary);
+            letter-spacing: -0.3px;
+            margin-bottom: 12px;
+        }
+
+        .modal-message {
+            font-size: 15px; 
+            font-weight: 400;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .info-text {
+            text-align: justify;
+            text-justify: inter-word;
+        }
+        
+        .modal-actions {
+            display: flex;
+            justify-content: flex-end; 
+            gap: 12px;
+            padding: 0 32px 32px;
+        }
+        
+        .modal-btn {
+            height: auto;
+            padding: 10px 20px; 
+            background: transparent;
+            color: var(--text-primary);
+            font-size: 14px; 
+            font-weight: 500;
+            cursor: pointer;
+            border: 1px solid transparent;
+            border-radius: 4px; 
+            outline: none;
+            transition: background-color 0.1s, border-color 0.1s;
+        }
+
+        .modal-btn.confirm {
+            background-color: var(--dropbox-blue);
+            color: #ffffff;
+            border: 1px solid var(--dropbox-blue);
+        }
+
+        .modal-btn.confirm:hover {
+            background-color: #0050D1;
+            border-color: #0050D1;
+        }
+
+        /* --- NETFLIX ITEM MODAL --- */
+        .netflix-modal-box {
+            background-color: var(--netflix-modal-bg);
+            border-radius: 10px; 
+            width: 680px; 
+            max-width: 90vw;
+            text-align: left; 
+            transform: translateY(20px); 
+            opacity: 0;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            position: relative;
+            overflow: hidden;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        
+        .modal-overlay.active .netflix-modal-box {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .netflix-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(20, 20, 20, 0.6);
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 20;
+            transition: border-color 0.2s, transform 0.2s;
+        }
+
+        .netflix-close:hover {
+            border-color: white;
+            transform: scale(1.05);
+        }
+
+        .netflix-banner {
+            position: relative;
+            width: 100%;
+            height: 350px; 
+            background-size: cover;
+            background-position: top center;
+            background-repeat: no-repeat;
+        }
+
+        .netflix-banner-fade {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 60%;
+            background: linear-gradient(to top, var(--netflix-modal-bg) 0%, transparent 100%);
+        }
+
+        .netflix-content {
+            padding: 0 40px 40px 40px;
+            position: relative;
+            z-index: 2;
+            margin-top: -80px; 
+        }
+
+        .netflix-title {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: clamp(32px, 5vw, 48px);
+            font-weight: 400;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            line-height: 1.1;
+        }
+
+        .netflix-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+
+        .netflix-tag {
+            background-color: rgba(128, 128, 128, 0.2);
+            color: var(--text-primary);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .netflix-desc {
+            font-size: 16px;
+            color: var(--text-primary);
+            line-height: 1.6;
+            margin-bottom: 30px;
+            width: 100%; 
+            text-align: justify; 
+            text-justify: inter-word;
+            hyphens: none;
+            -webkit-hyphens: none;
+        }
+
+        .netflix-btn {
+            background-color: var(--dropbox-blue);
+            color: #ffffff;
+            border: 1px solid var(--dropbox-blue);
+            padding: 12px 28px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 4px;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            transition: background-color 0.2s, border-color 0.2s;
+        }
+
+        .netflix-btn:hover {
+            background-color: #0050D1; 
+            border-color: #0050D1;
+        }
+
+        @keyframes fadeUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 1200px) {
+            .netflix-row { grid-template-columns: repeat(4, 1fr); }
+        }
+        @media (max-width: 900px) {
+            .netflix-row { grid-template-columns: repeat(3, 1fr); }
+            .hero-container {
+                flex-direction: column; 
+                text-align: center; 
+                align-items: center;
+                justify-content: center;
+            }
+            .hero-content { 
+                align-items: center; 
+                padding-bottom: 35vh; 
+                max-width: 100%;
+                z-index: 3;
+            }
+            .divider { justify-content: center; }
+            .nav-links { display: none; } 
+            
+            .hero-image { 
+                right: 50%;
+                bottom: 0;
+                transform: translateX(50%); 
+                height: auto;
+                max-height: 40vh; 
+                max-width: 90%;
+                object-position: bottom center;
+            }
+            
+            .netflix-content { padding: 0 20px 30px; }
+            .netflix-title { margin-bottom: 16px; }
+            .netflix-desc { font-size: 15px; }
+        }
+        @media (max-width: 600px) {
+            .netflix-row { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="Vanisagara.html" class="nav-brand" style="text-decoration: none; color: inherit;">
+            <img src="../images/logos/website/transparent/vanisagara-white.png" alt="Vāṇīsāgara Logo" class="brand-icon logo-dark"><img src="../images/logos/website/transparent/vanisagara-black.png" alt="Vāṇīsāgara Logo" class="brand-icon logo-light"><span class="vanisagara-text">Vāṇīsāgara</span>
+        </a>
+        <div class="nav-controls">
+            <ul class="nav-links">
+                <li><a href="Vanisagara.html">Home</a></li>
+                <li><a href="About.html">About Us</a></li>
+            </ul>
+            <div class="nav-divider"></div>
+            
+            <div class="nav-icons">
+                <button class="theme-toggle" id="themeBtn" aria-label="Toggle Theme">
+                    <svg id="theme-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                
+                <button class="color-toggle" id="colorBtn" aria-label="Cycle Glow Color" title="Change Background Hue">
+                    <img src="../images/logos/nav-bar/hue-white.png" alt="Hue Palette" class="hue-icon hue-dark">
+                    <img src="../images/logos/nav-bar/hue-black.png" alt="Hue Palette" class="hue-icon hue-light">
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- WRAPPER FOR NETFLIX PAGE TRANSITIONS -->
+    <main id="main-content">
+        <header class="hero">
+            <div class="hero-glow"></div>
+            <div class="hero-container">
+                <div class="hero-content">
+                    <h1>
+                        <span class="hero-title-text"><img src="../images/logos/website/transparent/vanisagara-white.png" alt="Vāṇīsāgara Logo" class="hero-title-logo logo-dark"><img src="../images/logos/website/transparent/vanisagara-black.png" alt="Vāṇīsāgara Logo" class="hero-title-logo logo-light"><span class="vanisagara-text">Vāṇīsāgara</span></span>
+                        <span class="hero-subtitle">The Ocean of Knowledge</span>
+                    </h1>
+                    <div class="divider">
+                        <div class="divider-line"></div>
+                        <div class="divider-circle"></div>
+                        <div class="divider-line"></div>
+                    </div>
+                    <p>We deliver high-fidelity, scientifically typeset digital editions of Śrīla Prabhupāda's original books in 4K resolution.</p>
+                    <button class="btn-primary" onclick="scrollToLibrary()">Explore the Archive</button>
+                </div>
+                
+                <!-- Main Śrīla Prabhupāda Image -->
+				<img id="prabhupada-img" src="../images/edited/prabhupada.png" alt="Śrīla Prabhupāda" class="hero-image">
+
+				<!-- Rare Rādhā-Kṛṣṇa Overlay -->
+				<img id="prabhupada-rare-img" src="../images/edited/prabhupada-rare.png" alt="Śrī Śrī Rādhā-Kṛṣṇa Revelation" class="hero-image rare-overlay">
+
+            </div>
+        </header>
+
+        <section class="library" id="library-section">
+            <div class="library-content">
+                <h2 class="library-title">The Library</h2>
+                
+                <div class="netflix-row">
+				
+					<!-- Book Level Categories: (1) Foundational; (2) Keystone; (3) Advanced; (4) Apex; (5) Esoteric -->
+                    
+                    <!-- Book 1 (With data-info set to true) -->
+                    <div class="book-item downloadable-book" 
+                         data-filename="../books/Bhagavad-gītā As It Is (1972 Edition)"
+                         data-title="Bhagavad-gītā As It Is"
+                         data-cover="../book covers/bg-cover.png"
+                         data-banner="../banners/bg-banner.png" 
+                         data-tags='["Śrīla Prabhupāda", "1972 Edition", "Keystone", "10+ Downloads"]'
+                         data-info="true"
+                         data-desc="At the brink of a catastrophic world war, the greatest warrior of his age drops his weapons, paralyzed by grief. Time freezes on the battlefield of Kurukṣetra as his chariot driver, Lord Śrī Kṛṣṇa, reveals the ultimate mechanics of the universe. The <em>Bhagavad-gītā</em> is the definitive conversation on duty, the eternal soul, and the absolute path to spiritual liberation.">
+                        
+                        <div class="book-cover-wrapper">
+                            <img src="../book covers/bg-cover.png" alt="Bhagavad-gītā As It Is" class="book-cover">
+                            <!-- Clean cover design: No exclamation mark here anymore! -->
+                        </div>
+                    </div>
+
+                    <!-- Book 2 -->
+                    <div class="book-item downloadable-book"
+                         data-filename="../books/Transcendental Teachings of Prahlāda Mahārāja (1995 Edition)"
+                         data-title="Transcendental Teachings of Prahlāda Mahārāja"
+                         data-cover="../book covers/ttpm-cover.png"
+                         data-banner="../banners/ttpm-banner.png"
+                         data-tags='["Śrīla Prabhupāda", "1995 Edition", "Foundational", "1+ Downloads"]'
+                         data-desc="In a society ruled by demons and driven by material exploitation, a five-year-old boy holds the key to absolute freedom. <em>Transcendental Teachings of Prahlāda Mahārāja</em> captures his secret classroom lectures on the rare opportunity of human life, the trap of family illusion, and the supreme necessity of finding our dearmost friend, the all-pervading Lord.">
+                        
+                        <div class="book-cover-wrapper">
+                            <img src="../book covers/ttpm-cover.png" alt="Transcendental Teachings of Prahlāda Mahārāja" class="book-cover">
+                        </div>
+                    </div>
+
+                    <!-- Book 3 (Coming Soon Placeholder) -->
+                    <div class="book-item">
+                        <div class="book-cover-wrapper">
+                            <div class="book-cover coming-soon-placeholder">
+                                <span>Coming Soon</span>
+                                <img src="../images/logos/website/transparent/vanisagara-white.png" alt="Vāṇīsāgara Logo" class="placeholder-logo logo-dark">
+                                <img src="../images/logos/website/transparent/vanisagara-black.png" alt="Vāṇīsāgara Logo" class="placeholder-logo logo-light">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Blank placeholders to keep the 5-grid structure stable -->
+                    <div class="book-item" style="visibility: hidden;"></div>
+                    <div class="book-item" style="visibility: hidden;"></div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- NETFLIX STYLE ITEM MENU -->
+    <div id="netflixModal" class="modal-overlay">
+        <div class="netflix-modal-box">
+            <button class="netflix-close" onclick="closeAllModals()">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+            
+            <div class="netflix-banner" id="netflixBanner">
+                <div class="netflix-banner-fade"></div>
+            </div>
+            
+            <div class="netflix-content">
+                <h2 class="netflix-title" id="netflixTitle">Title</h2>
+                
+                <div class="netflix-tags" id="netflixTags"></div>
+                <div class="netflix-desc" id="netflixDesc">Description goes here.</div>
+                
+                <!-- Action Buttons Row -->
+                <div style="display: flex; align-items: center; gap: 16px;">
+                    <button class="netflix-btn" id="btnNetflixDownload">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                        Download PDF
+                    </button>
+                    
+                    <!-- The new dynamic Exclamation Mark Button inside the Modal -->
+                    <div class="modal-info-badge" id="btnNetflixInfo" onclick="openInfoModal(event)" title="Important Notice">!</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- DROPBOX STYLE INFO MODAL -->
+    <div id="infoModal" class="modal-overlay">
+        <div class="modal-box">
+            <div class="modal-text-container">
+                <div class="modal-title">Important Notice</div>
+                <div class="modal-message info-text">
+                    Please note that this edition of the Bhagavad-gītā currently omits the General Index, Index of Sanskrit Verses, References, and Reviews.<br><br>
+                    As our inaugural project, it was digitized prior to the implementation of our advanced computational typesetting frameworks.<br><br>
+                    Future publications will launch comprehensively with complete indexing and reference materials. These omitted sections will be retroactively integrated into this volume upon the completion of the broader archive.
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button class="modal-btn confirm" onclick="closeInfoModal(event)">Understood</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            
+            // --- NETFLIX PAGE TRANSITION LOGIC ---
+            const mainContent = document.getElementById('main-content');
+            
+            document.querySelectorAll('a').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const target = this.getAttribute('href');
+                    
+                    // Proceed only if it's an internal page link (ending in .html)
+                    if (target && target.endsWith('.html') && this.getAttribute('target') !== '_blank') {
+                        
+                        // If they click a link to the page they are already on, just smoothly scroll to top
+                        const currentPage = window.location.pathname.split('/').pop() || 'Vanisagara.html';
+                        if (target === currentPage) {
+                            e.preventDefault();
+                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                            return;
+                        }
+
+                        // Otherwise, trigger the Netflix exit animation
+                        e.preventDefault();
+                        mainContent.classList.add('page-exit');
+                        
+                        // Wait for the animation to complete before changing the page
+                        setTimeout(() => {
+                            window.location.href = target;
+                        }, 400); 
+                    }
+                });
+            });
+
+            // --- IMAGE ELEMENT FOR EASTER EGG ---
+            const prabhupadaImage = document.getElementById('prabhupada-img');
+
+            // --- EASTER EGG FADE LOGIC ---
+			function handleEasterEggRoll() {
+				const rareOverlay = document.getElementById('prabhupada-rare-img');
+				if (!rareOverlay) return;
+
+				const rareProbability = 1e-109;
+				const rollIsRare = Math.random() < rareProbability;
+				
+				// If the roll succeeds, the Rādhā-Kṛṣṇa overlay fades in. 
+				// If it fails (which it will on the next click), it fades back to 0.
+				// Just like Narada Muni's vision, it will not remain once found!
+				if (rollIsRare) {
+					rareOverlay.style.opacity = '1';
+				} else {
+					rareOverlay.style.opacity = '0';
+				}
+			}
+
+            // --- LOCAL STORAGE THEME TOGGLE LOGIC ---
+            const themeBtn = document.getElementById('themeBtn');
+            const root = document.documentElement;
+            const icon = document.getElementById('theme-icon');
+            
+            const moonSvg = `<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>`;
+            const sunSvg = `<circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>`;
+
+            // Set correct icon on load based on saved theme
+            if (root.getAttribute('data-theme') === 'light') {
+                icon.innerHTML = moonSvg;
+            } else {
+                icon.innerHTML = sunSvg;
+            }
+
+            themeBtn.addEventListener('click', () => {
+                const currentTheme = root.getAttribute('data-theme');
+                
+                if (currentTheme === 'dark') {
+                    root.setAttribute('data-theme', 'light');
+                    localStorage.setItem('vanisagara_theme', 'light');
+                    icon.innerHTML = moonSvg;
+                } else {
+                    root.setAttribute('data-theme', 'dark');
+                    localStorage.setItem('vanisagara_theme', 'dark');
+                    icon.innerHTML = sunSvg;
+                }
+
+                // Trigger Easter Egg roll on theme change!
+                handleEasterEggRoll();
+            });
+
+            // --- SCROLL TO LIBRARY ---
+            window.scrollToLibrary = function() {
+                document.getElementById('library-section').scrollIntoView({ behavior: 'smooth' });
+            };
+
+            // --- MODAL LOGIC ---
+            const netflixModal = document.getElementById('netflixModal');
+            const infoModal = document.getElementById('infoModal');
+            let currentActiveBook = null; 
+
+            window.closeAllModals = function() {
+                netflixModal.classList.remove('active');
+                infoModal.classList.remove('active');
+                
+                if(currentActiveBook) {
+                    currentActiveBook.classList.remove('locked-hover');
+                    currentActiveBook = null;
+                }
+            }
+
+            // Only closes the top-layer Info modal without ruining the Netflix modal beneath it
+            window.closeInfoModal = function(event) {
+                if(event) event.stopPropagation();
+                infoModal.classList.remove('active');
+            }
+
+            window.openInfoModal = function(event) {
+                event.stopPropagation(); 
+                infoModal.classList.add('active');
+            }
+
+            function openNetflixModal(bookNode) {
+                const title = bookNode.getAttribute('data-title');
+                const cover = bookNode.getAttribute('data-cover');
+                const banner = bookNode.getAttribute('data-banner') || cover; 
+                const desc = bookNode.getAttribute('data-desc');
+                const tagsRaw = bookNode.getAttribute('data-tags');
+                const filename = bookNode.getAttribute('data-filename');
+                const hasInfo = bookNode.getAttribute('data-info');
+                
+                document.getElementById('netflixTitle').textContent = title;
+                document.getElementById('netflixBanner').style.backgroundImage = `url('${banner}')`;
+                document.getElementById('netflixDesc').innerHTML = desc;
+                
+                // Show or hide the Info Badge dynamically based on the book's data-info attribute
+                const btnInfo = document.getElementById('btnNetflixInfo');
+                if (hasInfo === 'true') {
+                    btnInfo.style.display = 'flex';
+                } else {
+                    btnInfo.style.display = 'none';
+                }
+                
+                const tagsContainer = document.getElementById('netflixTags');
+                tagsContainer.innerHTML = ''; 
+                if (tagsRaw) {
+                    const tags = JSON.parse(tagsRaw);
+                    tags.forEach(tag => {
+                        const span = document.createElement('span');
+                        span.className = 'netflix-tag';
+                        span.textContent = tag;
+                        tagsContainer.appendChild(span);
+                    });
+                }
+                
+                const btnDownload = document.getElementById('btnNetflixDownload');
+				btnDownload.onclick = async function() {
+					// 1. Temporarily change the button text to show it's processing
+					const originalContent = btnDownload.innerHTML;
+					btnDownload.innerHTML = 'Preparing...';
+					
+					try {
+						// 2. Send the silent ping to your Supabase Edge Function
+						await fetch('https://kjwtpsnlcqbnxrwclwyr.supabase.co/functions/v1/track-download', {
+							method: 'POST',
+							headers: {
+								'Content-Type': 'application/json',
+								// PASTE YOUR PUBLISHABLE KEY BELOW, KEEPING THE WORD 'Bearer ' IN FRONT OF IT
+								'Authorization': 'Bearer sb_publishable_JnbZR8QXlz9UobvUllaC8g_AftASi9_' 
+							},
+							body: JSON.stringify({ book_id: filename })
+						});
+					} catch (err) {
+						// If an aggressive ad-blocker blocks the ping, we just ignore it
+						console.log("Tracking bypassed.");
+					}
+					
+					// 3. Instantly serve the file and restore the button, no matter what!
+					btnDownload.innerHTML = originalContent;
+					window.open(filename + '.pdf', '_blank');
+					closeAllModals();
+				};
+
+                bookNode.classList.add('locked-hover');
+                currentActiveBook = bookNode;
+                netflixModal.classList.add('active');
+            }
+
+            const books = document.querySelectorAll('.downloadable-book');
+            books.forEach(book => {
+                book.addEventListener('click', function() {
+                    openNetflixModal(this); 
+                });
+            });
+
+            // Escape key smartly closes the topmost modal first
+            document.addEventListener('keydown', function(event) {
+                if (event.key === "Escape") {
+                    if (infoModal.classList.contains('active')) {
+                        infoModal.classList.remove('active');
+                    } else {
+                        closeAllModals();
+                    }
+                }
+            });
+
+            // Clicking outside explicitly targets and closes the specific overlay you clicked
+            window.addEventListener('click', function(event) {
+                if (event.target === infoModal) {
+                    infoModal.classList.remove('active');
+                } else if (event.target === netflixModal) {
+                    closeAllModals();
+                }
+            });
+
+            // --- COLOR CYCLING LOGIC & EASTER EGG ---
+            const colorBtn = document.getElementById('colorBtn');
+            const royalColors = [
+                '#5c4000', // Antique Gold (Default)
+                '#800020', // Classic Burgundy
+                '#002147', // Royal Sapphire
+                '#3b1459', // Imperial Amethyst
+                '#0a3a2a'  // Emerald Forest
+            ];
+            
+            let currentColorIndex = 0;
+            const savedColor = localStorage.getItem('vanisagara_hero_glow');
+            
+            if (savedColor) {
+                const foundIndex = royalColors.indexOf(savedColor);
+                if (foundIndex !== -1) {
+                    currentColorIndex = foundIndex;
+                    document.documentElement.style.setProperty('--hero-glow', royalColors[currentColorIndex]);
+                }
+            }
+
+            colorBtn.addEventListener('click', () => {
+                // 1. Change the hue
+                currentColorIndex = (currentColorIndex + 1) % royalColors.length;
+                const newColor = royalColors[currentColorIndex];
+                
+                document.documentElement.style.setProperty('--hero-glow', newColor);
+                localStorage.setItem('vanisagara_hero_glow', newColor);
+
+                // 2. Trigger Easter Egg roll on hue change!
+                handleEasterEggRoll();
+            });
+
+        });
+    </script>
+</body>
+</html>
