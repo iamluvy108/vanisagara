@@ -757,24 +757,25 @@
             nav {
                 justify-content: space-between;
                 padding: 0 5%;
-                position: fixed; /* 5. Ensures navbar is always locked to top */
+                position: fixed; 
                 top: 0;
                 width: 100%;
-                z-index: 9999 !important; /* Forces it above all scrolling elements */
+                z-index: 9999 !important; 
             }
             .nav-brand {
                 position: absolute;
                 left: 50%;
-                transform: translateX(-50%);
+                top: 55%; /* 1. Shifted slightly downward */
+                transform: translate(-50%, -50%); /* Re-centers based on the new top position */
                 display: flex;
                 align-items: center;
                 justify-content: center;
             }
-            .vanisagara-text { display: none !important; } /* 1. Hides text strictly on mobile */
+            nav .vanisagara-text { display: none !important; } /* 2. Hides text strictly in the NAVBAR only! */
             .brand-icon {
-                width: 44px; /* 1. Scaled up logo size */
+                width: 44px; 
                 height: 44px;
-                margin-right: 0; /* Ensures perfect mathematical center */
+                margin-right: 0; 
             }
             
             .nav-controls {
@@ -785,7 +786,7 @@
             }
             .nav-icons { order: 1; } 
             
-            /* 2. Pure White Icons in Dark Mode */
+            /* Pure White Icons in Dark Mode */
             [data-theme="dark"] .theme-toggle,
             [data-theme="dark"] .color-toggle,
             [data-theme="dark"] .hamburger {
@@ -804,7 +805,7 @@
             .hamburger:active { transform: scale(0.85); }
             .nav-links, .nav-divider { display: none; }
 
-            /* 8. Center the Hue Glow */
+            /* Center the Hue Glow */
             .hero-glow {
                 -webkit-mask-image: radial-gradient(circle at 50% 40%, black 0%, transparent 65%);
                 mask-image: radial-gradient(circle at 50% 40%, black 0%, transparent 65%);
@@ -831,47 +832,69 @@
             }
             .mobile-menu-overlay.active { opacity: 1; visibility: visible; }
             .mobile-menu-content { display: flex; flex-direction: column; align-items: center; gap: 24px; }
-            .mobile-menu-content a { color: var(--text-primary); font-size: 24px; text-decoration: none; font-weight: 500; }
-            .mobile-menu-divider { width: 80px; height: 1px; background-color: var(--text-primary); opacity: 0.4; }
+            
+            /* 5. Burger Menu Font Polish */
+            .mobile-menu-content a { 
+                color: var(--text-primary); 
+                font-size: 22px; 
+                text-decoration: none; 
+                font-weight: 400; /* Removed bolding */
+                font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif; /* Matched PC font */
+            }
+            
+            /* 5. Fading Left-to-Right Divider */
+            .mobile-menu-divider { 
+                width: 180px; /* Made longer */
+                height: 1px; 
+                background: linear-gradient(90deg, transparent, var(--text-primary), transparent); /* Gradient fade */
+                opacity: 0.4; 
+            }
             .menu-logo { width: 140px; height: auto; opacity: 0.95; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3)); }
 
-            /* 4. Hero Section Spacing */
+            /* 4. Hero Section Spacing & Overlap Fix */
             .hero {
                 height: 100dvh; 
-                min-height: -webkit-fill-available; /* Stabilizes mobile browser height jumps */
+                min-height: -webkit-fill-available; 
             }
             .hero-container {
                 flex-direction: column; 
                 text-align: center; 
                 align-items: center;
                 justify-content: flex-start;
-                padding-top: 18vh; 
+                padding-top: 13vh; /* Brought down slightly for balance */
             }
             .hero-content { 
                 align-items: center; 
                 max-width: 100%;
-                z-index: 15; /* Sits cleanly above the image fade */
-                padding-bottom: 0;
+                z-index: 15; 
+                padding-bottom: 43vh; /* 4. INVISIBLE FORCEFIELD: Prevents overlapping Prabhupāda */
             }
-            .hero h1 { font-size: clamp(38px, 11vw, 60px); margin-bottom: 24px; } /* 4. Increased spacing under title */
-            .hero p { display: none; } 
-            .divider { justify-content: center; margin-bottom: 40px; } /* 4. Increased spacing before button */
+            .hero h1 { font-size: clamp(38px, 11vw, 60px); margin-bottom: 20px; } 
             
-            /* 3. Fixing Prabhupāda Image Sizing & Fade Glitch */
+            /* 3. Description Restoration */
+            .hero p { 
+                display: block; 
+                font-size: 15px;
+                margin-bottom: 30px;
+                padding: 0 10px;
+                line-height: 1.4;
+            } 
+            .divider { justify-content: center; margin-bottom: 20px; }
+            
+            /* Fixing Prabhupāda Image Sizing */
             .hero-image { 
                 position: absolute;
                 height: auto;
-                max-height: 40vh; /* 3. Decreased image size by ~40% */
+                max-height: 40vh; 
                 max-width: 80%; 
-                bottom: 0 !important; /* 3. Hard-anchored to the bottom */
+                bottom: 0 !important; 
                 left: 50%;
                 transform: translateX(-50%);
                 z-index: 2;
-                -webkit-mask-image: none !important; /* Removed dynamic mask to fix line glitch */
+                -webkit-mask-image: none !important; 
                 mask-image: none !important;
             }
 
-            /* This solid base fade prevents the "straight line" glitch while scrolling */
             .hero::after {
                 content: '';
                 position: absolute;
@@ -884,31 +907,36 @@
                 pointer-events: none;
             }
 
-            /* 6 & 7. Library Grid Centering & Coming Soon Size */
+            /* 6. Library Grid Centering & Spacing */
             .library {
                 position: relative;
-                z-index: 20; /* Ensures the library scrolls heavily over the hero background */
+                z-index: 20; 
                 background-color: var(--bg-main);
+                padding-top: 100px; /* 6. Shifted the entire section downwards */
             }
             
-            /* 6. Perfect Grid Centering */
-            .library-title { text-align: center; font-size: 26px; padding: 0; margin-bottom: 30px; }
+            .library-title { 
+                text-align: center; 
+                font-size: 26px; 
+                padding: 0; 
+                margin-bottom: 45px; /* 6. Increased gap between title and books */
+            }
             .netflix-row { 
                 display: grid;
                 grid-template-columns: repeat(2, 1fr); 
                 gap: 6vw;
                 padding: 0 5% 60px 5%;
-                justify-items: center; /* Forces the books to center inside their column cells */
+                justify-items: center; 
             }
-            /* Hide the blank placeholders completely on mobile so they don't break the visual grid balance */
+            
             .book-item[style*="visibility: hidden"] { display: none !important; }
-            .book-cover-wrapper { width: 100%; max-width: 160px; } /* Caps size to look elegant */
+            .book-cover-wrapper { width: 100%; max-width: 160px; } 
 
-            /* 7. Smaller Coming Soon Layout */
+            /* Smaller Coming Soon Layout */
             .coming-soon-placeholder { font-size: 15px; gap: 10px; }
             .placeholder-logo { width: 60px; height: 60px; }
 
-            /* Modal (Sketch 3) */
+            /* Modal */
             .modal-box, .netflix-modal-box {
                 width: 90vw;
                 border-radius: 12px;
