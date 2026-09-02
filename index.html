@@ -753,6 +753,11 @@
         /* --- PREMIUM MOBILE APP MAKEOVER --- */
         @media (max-width: 900px) {
             
+            /* 2. Annihilate the primitive blue tap highlight on mobile */
+            * {
+                -webkit-tap-highlight-color: transparent;
+            }
+
             /* Header Layout */
             nav {
                 justify-content: space-between;
@@ -809,7 +814,7 @@
                 mask-image: radial-gradient(circle at 50% 40%, black 0%, transparent 65%);
             }
 
-            /* Full-Screen Mobile Menu Overlay with Domino Effect */
+            /* 1. Full-Screen Mobile Menu Overlay - Dead Centered */
             .mobile-menu-overlay {
                 display: flex;
                 position: fixed;
@@ -821,16 +826,15 @@
                 background-image: radial-gradient(circle at center 30%, var(--hero-glow) 0%, transparent 80%);
                 z-index: 9998;
                 flex-direction: column;
-                justify-content: space-between;
+                justify-content: center; /* Forces the internal content to exact center */
                 align-items: center;
-                padding: 25vh 0 10vh 0;
+                padding: 0; 
                 opacity: 0;
                 visibility: hidden;
                 transition: opacity 0.3s ease, visibility 0.3s ease;
             }
             .mobile-menu-overlay.active { opacity: 1; visibility: visible; }
             
-            /* Feedback 3: Decreased gap and added cascading Domino animations */
             .mobile-menu-content { display: flex; flex-direction: column; align-items: center; gap: 14px; }
             .mobile-menu-content > * {
                 opacity: 0;
@@ -854,11 +858,16 @@
                 background: linear-gradient(90deg, transparent, var(--text-primary), transparent); 
                 opacity: 0.4; 
             }
+            /* 1. Locks the logo to the absolute bottom so links stay perfectly centered */
+            .mobile-menu-footer {
+                position: absolute;
+                bottom: 8vh;
+            }
             .menu-logo { width: 140px; height: auto; opacity: 0.95; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3)); }
 
-            /* Feedback 2: Hero Section Spacing & Magnet Glitch Fix (100svh) */
+            /* Hero Section */
             .hero {
-                height: 100svh; /* Locks height to bypass Android Address Bar jumping */
+                height: 100svh; 
                 min-height: 100svh; 
             }
             .hero-container {
@@ -875,7 +884,6 @@
                 padding-bottom: 43vh; 
             }
             
-            /* Feedback 1: Remove logo from title on mobile */
             .hero-title-logo { display: none !important; }
             .hero h1 { font-size: clamp(38px, 11vw, 60px); margin-bottom: 20px; } 
             
@@ -913,13 +921,21 @@
                 pointer-events: none;
             }
 
-            /* Feedback 4: Library 100svh Constraint (Prevents scrolling past the bottom) */
+            /* 3. Library Mathematical Scroll Lock */
             .library {
                 position: relative;
                 z-index: 20; 
                 background-color: var(--bg-main);
-                padding-top: 100px; 
-                min-height: 100svh; /* Locks the library to a perfect screen height constraint */
+                
+                /* Aesthetic gap between the navbar and the title when snapped */
+                padding-top: 50px; 
+                
+                /* Mathematical lock: Total height is exactly the viewport minus the 60px navbar */
+                height: calc(100svh - 60px); 
+                overflow: hidden; /* Strictly prevents scrolling inside or past the grid */
+                
+                /* Ensures the Explore jump-link snaps exactly under the navbar */
+                scroll-margin-top: 60px; 
             }
             
             .library-title { 
