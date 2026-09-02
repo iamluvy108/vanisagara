@@ -1098,6 +1098,83 @@
                         tagsContainer.appendChild(span);
                     });
                 }
+				
+				// 1. The Cinematic Number Formatter
+				function formatDownloadCount(num) {
+					if (num === 0) return "0 Downloads";
+					if (num < 1000) return num + " Downloads";
+					
+					// Defines the massive thresholds (Quadrillion to Thousand)
+					const tiers = [
+						{ value: 1e15, symbol: "Q" },
+						{ value: 1e12, symbol: "T" },
+						{ value: 1e9, symbol: "B" },
+						{ value: 1e6, symbol: "M" },
+						{ value: 1e3, symbol: "K" }
+					];
+
+					for (let tier of tiers) {
+						if (num >= tier.value) {
+							// Math.floor ensures 1,999 becomes "1K+", 15,400 becomes "15K+"
+							const formattedNumber = Math.floor(num / tier.value);
+							return formattedNumber + tier.symbol + "+ Downloads";
+						}
+					}
+				}
+
+				// 2. The Database Fetch Logic
+				async function fetchRealTimeDownloads() {
+					const supabaseUrl = 'https://kjwtpsnlcqbnxrwclwyr.supabase.co';
+					// PASTE YOUR PUBLISHABLE KEY BELOW
+					const publicKey = 'sb_publishable_JnbZR8QXlz9UobvUllaC8g_AftASi9_'; 
+
+					// Find every downloadable book on the page
+					const books = document.querySelectorAll('.book-item.downloadable-book');
+
+					for (let book of books) {
+						const filename = book.getAttribute('data-filename');
+						
+						try {
+							// Ask Supabase to count rows exactly matching this specific filename
+							const response = await fetch(`${supabaseUrl}/rest/v1/unique_downloads?select=book_id&book_id=eq.${filename}&limit=1`, {
+								method: 'GET',
+								headers: {
+									'apikey': publicKey,
+									'Authorization': `Bearer ${publicKey}`,
+									'Prefer': 'count=exact' // This header forces Supabase to return the total count
+								}
+							});
+
+							// Extract the exact count from the network headers
+							const contentRange = response.headers.get('content-range');
+							let count = 0;
+							if (contentRange) {
+								count = parseInt(contentRange.split('/')[1]);
+							}
+
+							// Format the number (e.g., 1000 -> 1K+)
+							const formattedString = formatDownloadCount(count);
+
+							// 3. Inject the real number into the UI tags array
+							let tags = JSON.parse(book.getAttribute('data-tags') || "[]");
+							
+							// Strip out any old hardcoded "Downloads" tag
+							tags = tags.filter(tag => !tag.includes('Download'));
+							
+							// Insert the live data
+							tags.push(formattedString);
+							
+							// Save it back to the HTML element for your modal to read
+							book.setAttribute('data-tags', JSON.stringify(tags));
+
+						} catch (error) {
+							console.log('Could not fetch count for:', filename);
+						}
+					}
+				}
+
+				// 4. Trigger the fetch the second the page loads
+				document.addEventListener('DOMContentLoaded', fetchRealTimeDownloads);
                 
                 const btnDownload = document.getElementById('btnNetflixDownload');
 				btnDownload.onclick = async function() {
