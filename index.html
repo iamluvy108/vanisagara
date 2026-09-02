@@ -753,39 +753,64 @@
         /* --- PREMIUM MOBILE APP MAKEOVER --- */
         @media (max-width: 900px) {
             
-            /* 1. Header Layout (Icons Left, Logo Center, Hamburger Right - Sketch 1) */
+            /* 1 & 5. Header Layout (Centered Logo & Sticky Scroll) */
             nav {
                 justify-content: space-between;
                 padding: 0 5%;
-                position: relative;
+                position: fixed; /* 5. Ensures navbar is always locked to top */
+                top: 0;
+                width: 100%;
+                z-index: 9999 !important; /* Forces it above all scrolling elements */
             }
             .nav-brand {
                 position: absolute;
                 left: 50%;
                 transform: translateX(-50%);
-                font-size: 20px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
             }
+            .vanisagara-text { display: none !important; } /* 1. Hides text strictly on mobile */
+            .brand-icon {
+                width: 44px; /* 1. Scaled up logo size */
+                height: 44px;
+                margin-right: 0; /* Ensures perfect mathematical center */
+            }
+            
             .nav-controls {
                 width: 100%;
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
             }
-            .nav-icons { order: 1; } /* Pushes icons to the far left */
+            .nav-icons { order: 1; } 
+            
+            /* 2. Pure White Icons in Dark Mode */
+            [data-theme="dark"] .theme-toggle,
+            [data-theme="dark"] .color-toggle,
+            [data-theme="dark"] .hamburger {
+                color: #ffffff !important; 
+            }
+
             .hamburger {
-                order: 2; /* Pushes hamburger to the far right */
+                order: 2; 
                 display: block;
                 background: none;
                 border: none;
-                color: var(--text-primary);
                 cursor: pointer;
-                z-index: 201; /* Keeps it clickable above the menu */
+                z-index: 10000; 
                 transition: transform 0.2s ease;
             }
             .hamburger:active { transform: scale(0.85); }
             .nav-links, .nav-divider { display: none; }
 
-            /* 2. Full-Screen Mobile Menu Overlay (Sketch 4) */
+            /* 8. Center the Hue Glow */
+            .hero-glow {
+                -webkit-mask-image: radial-gradient(circle at 50% 40%, black 0%, transparent 65%);
+                mask-image: radial-gradient(circle at 50% 40%, black 0%, transparent 65%);
+            }
+
+            /* Full-Screen Mobile Menu Overlay */
             .mobile-menu-overlay {
                 display: flex;
                 position: fixed;
@@ -794,85 +819,96 @@
                 width: 100%;
                 height: 100dvh;
                 background-color: var(--bg-main);
-                /* Premium gradient fade matching your glow color */
                 background-image: radial-gradient(circle at center 30%, var(--hero-glow) 0%, transparent 80%);
-                z-index: 150;
+                z-index: 9998;
                 flex-direction: column;
                 justify-content: space-between;
                 align-items: center;
-                padding: 30vh 0 10vh 0;
+                padding: 25vh 0 10vh 0;
                 opacity: 0;
                 visibility: hidden;
                 transition: opacity 0.3s ease, visibility 0.3s ease;
             }
-            .mobile-menu-overlay.active {
-                opacity: 1;
-                visibility: visible;
-            }
-            .mobile-menu-content {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                gap: 24px;
-            }
-            .mobile-menu-content a {
-                color: var(--text-primary);
-                font-size: 24px;
-                text-decoration: none;
-                font-weight: 500;
-                letter-spacing: 0.5px;
-            }
-            .mobile-menu-divider {
-                width: 80px;
-                height: 1px;
-                background-color: var(--text-primary);
-                opacity: 0.4;
-            }
-            .menu-logo {
-                width: 140px;
-                height: auto;
-                opacity: 0.95;
-                filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3));
-            }
+            .mobile-menu-overlay.active { opacity: 1; visibility: visible; }
+            .mobile-menu-content { display: flex; flex-direction: column; align-items: center; gap: 24px; }
+            .mobile-menu-content a { color: var(--text-primary); font-size: 24px; text-decoration: none; font-weight: 500; }
+            .mobile-menu-divider { width: 80px; height: 1px; background-color: var(--text-primary); opacity: 0.4; }
+            .menu-logo { width: 140px; height: auto; opacity: 0.95; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3)); }
 
-            /* 3. Hero Section (Sketch 1 Alignment) */
+            /* 4. Hero Section Spacing */
+            .hero {
+                height: 100dvh; 
+                min-height: -webkit-fill-available; /* Stabilizes mobile browser height jumps */
+            }
             .hero-container {
                 flex-direction: column; 
                 text-align: center; 
                 align-items: center;
                 justify-content: flex-start;
-                padding-top: 15vh;
+                padding-top: 18vh; 
             }
             .hero-content { 
                 align-items: center; 
                 max-width: 100%;
-                z-index: 3;
+                z-index: 15; /* Sits cleanly above the image fade */
                 padding-bottom: 0;
             }
-            .hero h1 { font-size: clamp(42px, 11vw, 60px); margin-bottom: 12px; }
-            .hero p { display: none; } /* Hide bulky paragraph on mobile for cleaner UI */
-            .divider { justify-content: center; margin-bottom: 24px; }
+            .hero h1 { font-size: clamp(38px, 11vw, 60px); margin-bottom: 24px; } /* 4. Increased spacing under title */
+            .hero p { display: none; } 
+            .divider { justify-content: center; margin-bottom: 40px; } /* 4. Increased spacing before button */
             
+            /* 3. Fixing Prabhupāda Image Sizing & Fade Glitch */
             .hero-image { 
-                position: relative;
+                position: absolute;
                 height: auto;
-                max-height: 55vh; 
-                max-width: 110%; /* Makes image pop cleanly */
-                margin-top: auto;
+                max-height: 40vh; /* 3. Decreased image size by ~40% */
+                max-width: 80%; 
+                bottom: 0 !important; /* 3. Hard-anchored to the bottom */
+                left: 50%;
+                transform: translateX(-50%);
+                z-index: 2;
+                -webkit-mask-image: none !important; /* Removed dynamic mask to fix line glitch */
+                mask-image: none !important;
+            }
+
+            /* This solid base fade prevents the "straight line" glitch while scrolling */
+            .hero::after {
+                content: '';
+                position: absolute;
                 bottom: 0;
-                right: auto;
-                transform: none;
+                left: 0;
+                width: 100%;
+                height: 25vh; 
+                background: linear-gradient(to bottom, transparent 0%, var(--bg-main) 85%, var(--bg-main) 100%);
+                z-index: 10;
+                pointer-events: none;
             }
 
-            /* 4. Library 2-Column Grid (Sketch 2) */
-            .library-title { padding: 0 5%; font-size: 26px; }
+            /* 6 & 7. Library Grid Centering & Coming Soon Size */
+            .library {
+                position: relative;
+                z-index: 20; /* Ensures the library scrolls heavily over the hero background */
+                background-color: var(--bg-main);
+            }
+            
+            /* 6. Perfect Grid Centering */
+            .library-title { text-align: center; font-size: 26px; padding: 0; margin-bottom: 30px; }
             .netflix-row { 
+                display: grid;
                 grid-template-columns: repeat(2, 1fr); 
-                gap: 5vw;
-                padding: 20px 5% 60px 5%;
+                gap: 6vw;
+                padding: 0 5% 60px 5%;
+                justify-items: center; /* Forces the books to center inside their column cells */
             }
+            /* Hide the blank placeholders completely on mobile so they don't break the visual grid balance */
+            .book-item[style*="visibility: hidden"] { display: none !important; }
+            .book-cover-wrapper { width: 100%; max-width: 160px; } /* Caps size to look elegant */
 
-            /* 5. Floating Centered Modal (Sketch 3) */
+            /* 7. Smaller Coming Soon Layout */
+            .coming-soon-placeholder { font-size: 15px; gap: 10px; }
+            .placeholder-logo { width: 60px; height: 60px; }
+
+            /* Modal (Sketch 3) */
             .modal-box, .netflix-modal-box {
                 width: 90vw;
                 border-radius: 12px;
