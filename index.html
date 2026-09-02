@@ -743,43 +743,149 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Responsive Breakpoints */
+        /* --- DESKTOP PROTECTION --- */
+        .hamburger, .mobile-menu-overlay { display: none; }
+
         @media (max-width: 1200px) {
             .netflix-row { grid-template-columns: repeat(4, 1fr); }
         }
+
+        /* --- PREMIUM MOBILE APP MAKEOVER --- */
         @media (max-width: 900px) {
-            .netflix-row { grid-template-columns: repeat(3, 1fr); }
+            
+            /* 1. Header Layout (Icons Left, Logo Center, Hamburger Right - Sketch 1) */
+            nav {
+                justify-content: space-between;
+                padding: 0 5%;
+                position: relative;
+            }
+            .nav-brand {
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                font-size: 20px;
+            }
+            .nav-controls {
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .nav-icons { order: 1; } /* Pushes icons to the far left */
+            .hamburger {
+                order: 2; /* Pushes hamburger to the far right */
+                display: block;
+                background: none;
+                border: none;
+                color: var(--text-primary);
+                cursor: pointer;
+                z-index: 201; /* Keeps it clickable above the menu */
+                transition: transform 0.2s ease;
+            }
+            .hamburger:active { transform: scale(0.85); }
+            .nav-links, .nav-divider { display: none; }
+
+            /* 2. Full-Screen Mobile Menu Overlay (Sketch 4) */
+            .mobile-menu-overlay {
+                display: flex;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100dvh;
+                background-color: var(--bg-main);
+                /* Premium gradient fade matching your glow color */
+                background-image: radial-gradient(circle at center 30%, var(--hero-glow) 0%, transparent 80%);
+                z-index: 150;
+                flex-direction: column;
+                justify-content: space-between;
+                align-items: center;
+                padding: 30vh 0 10vh 0;
+                opacity: 0;
+                visibility: hidden;
+                transition: opacity 0.3s ease, visibility 0.3s ease;
+            }
+            .mobile-menu-overlay.active {
+                opacity: 1;
+                visibility: visible;
+            }
+            .mobile-menu-content {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 24px;
+            }
+            .mobile-menu-content a {
+                color: var(--text-primary);
+                font-size: 24px;
+                text-decoration: none;
+                font-weight: 500;
+                letter-spacing: 0.5px;
+            }
+            .mobile-menu-divider {
+                width: 80px;
+                height: 1px;
+                background-color: var(--text-primary);
+                opacity: 0.4;
+            }
+            .menu-logo {
+                width: 140px;
+                height: auto;
+                opacity: 0.95;
+                filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3));
+            }
+
+            /* 3. Hero Section (Sketch 1 Alignment) */
             .hero-container {
                 flex-direction: column; 
                 text-align: center; 
                 align-items: center;
-                justify-content: center;
+                justify-content: flex-start;
+                padding-top: 15vh;
             }
             .hero-content { 
                 align-items: center; 
-                padding-bottom: 35vh; 
                 max-width: 100%;
                 z-index: 3;
+                padding-bottom: 0;
             }
-            .divider { justify-content: center; }
-            .nav-links { display: none; } 
+            .hero h1 { font-size: clamp(42px, 11vw, 60px); margin-bottom: 12px; }
+            .hero p { display: none; } /* Hide bulky paragraph on mobile for cleaner UI */
+            .divider { justify-content: center; margin-bottom: 24px; }
             
             .hero-image { 
-                right: 50%;
-                bottom: 0;
-                transform: translateX(50%); 
+                position: relative;
                 height: auto;
-                max-height: 40vh; 
-                max-width: 90%;
-                object-position: bottom center;
+                max-height: 55vh; 
+                max-width: 110%; /* Makes image pop cleanly */
+                margin-top: auto;
+                bottom: 0;
+                right: auto;
+                transform: none;
             }
-            
-            .netflix-content { padding: 0 20px 30px; }
-            .netflix-title { margin-bottom: 16px; }
-            .netflix-desc { font-size: 15px; }
-        }
-        @media (max-width: 600px) {
-            .netflix-row { grid-template-columns: repeat(2, 1fr); }
+
+            /* 4. Library 2-Column Grid (Sketch 2) */
+            .library-title { padding: 0 5%; font-size: 26px; }
+            .netflix-row { 
+                grid-template-columns: repeat(2, 1fr); 
+                gap: 5vw;
+                padding: 20px 5% 60px 5%;
+            }
+
+            /* 5. Floating Centered Modal (Sketch 3) */
+            .modal-box, .netflix-modal-box {
+                width: 90vw;
+                border-radius: 12px;
+                margin: 0 auto;
+            }
+            .netflix-banner { height: 200px; }
+            .netflix-content { padding: 0 24px 30px 24px; margin-top: -40px; }
+            .netflix-title { font-size: 24px; margin-bottom: 12px; line-height: 1.2; }
+            .netflix-tags { gap: 6px; margin-bottom: 16px; }
+            .netflix-tag { font-size: 12px; padding: 4px 8px; }
+            .netflix-desc { font-size: 14px; margin-bottom: 24px; line-height: 1.5; }
+            .netflix-btn { width: 100%; justify-content: center; }
+            .modal-info-badge { flex-shrink: 0; }
         }
     </style>
 </head>
@@ -799,7 +905,7 @@
             <div class="nav-icons">
                 <button class="theme-toggle" id="themeBtn" aria-label="Toggle Theme">
                     <svg id="theme-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                        <!-- SVGs omitted for brevity, keep yours! -->
                     </svg>
                 </button>
                 
@@ -808,8 +914,26 @@
                     <img src="images/logos/nav-bar/hue-black.png" alt="Hue Palette" class="hue-icon hue-light">
                 </button>
             </div>
+
+            <!-- NEW: HAMBURGER BUTTON -->
+            <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            </button>
         </div>
     </nav>
+
+    <!-- NEW: FULL-SCREEN MOBILE MENU OVERLAY (SKETCH 4) -->
+    <div class="mobile-menu-overlay" id="mobileMenu">
+        <div class="mobile-menu-content">
+            <a href="index.html">Home</a>
+            <div class="mobile-menu-divider"></div>
+            <a href="About.html">About Us</a>
+        </div>
+        <div class="mobile-menu-footer">
+            <img src="images/logos/website/transparent/vanisagara-white.png" alt="Logo" class="menu-logo logo-dark">
+            <img src="images/logos/website/transparent/vanisagara-black.png" alt="Logo" class="menu-logo logo-light">
+        </div>
+    </div>
 
     <!-- WRAPPER FOR NETFLIX PAGE TRANSITIONS -->
     <main id="main-content">
@@ -1239,7 +1363,32 @@
 
                 handleEasterEggRoll();
             });
+		
+		// --- 8. MOBILE HAMBURGER MENU LOGIC ---
+            const hamburgerBtn = document.getElementById('hamburgerBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+            
+            if (hamburgerBtn && mobileMenu) {
+                hamburgerBtn.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('active');
+                    
+                    // Morph hamburger icon to 'X' when open
+                    if (mobileMenu.classList.contains('active')) {
+                        hamburgerBtn.innerHTML = `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>`;
+                    } else {
+                        hamburgerBtn.innerHTML = `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>`;
+                    }
+                });
 
+                // Close menu if a link inside it is clicked
+                const menuLinks = mobileMenu.querySelectorAll('a');
+                menuLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenu.classList.remove('active');
+                        hamburgerBtn.innerHTML = `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>`;
+                    });
+                });
+            }
         });
     </script>
 </body>
