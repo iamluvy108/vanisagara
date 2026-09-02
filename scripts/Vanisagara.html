@@ -1023,7 +1023,9 @@
             // --- 5. REAL-TIME DATABASE FETCH LOGIC ---
             function formatDownloadCount(num) {
                 if (num === 0) return "0 Downloads";
+                if (num === 1) return "1 Download"; // The grammatical fix!
                 if (num < 1000) return num + " Downloads";
+                
                 const tiers = [
                     { value: 1e15, symbol: "Q" },
                     { value: 1e12, symbol: "T" },
