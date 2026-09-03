@@ -1223,10 +1223,10 @@
 		document.addEventListener("DOMContentLoaded", () => {
 		
 			// --- 0. ORBITAL STRIKE: PREVENT CHROME CACHE SCROLL HIJACKING ---
-				if ('scrollRestoration' in history) {
-					history.scrollRestoration = 'manual';
-				}
-				window.scrollTo(0, 0);
+			if ('scrollRestoration' in history) {
+				history.scrollRestoration = 'manual';
+			}
+			window.scrollTo(0, 0);
             
             // --- 1. NETFLIX PAGE TRANSITION LOGIC ---
             const mainContent = document.getElementById('main-content');
