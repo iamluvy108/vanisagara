@@ -819,7 +819,13 @@
             .brand-icon { width: 44px; height: 44px; margin-right: 0; }
             
             .nav-controls { width: 100%; display: flex; justify-content: space-between; align-items: center; }
-            .nav-icons { order: 1; } 
+            .nav-icons { 
+                order: 1; 
+                
+                /* The pixel-perfect micro-nudge for both theme and hue buttons */
+                position: relative;
+                top: 4.5px; 
+            } 
             
             [data-theme="dark"] .theme-toggle,
             [data-theme="dark"] .color-toggle,
