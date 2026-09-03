@@ -802,7 +802,17 @@
             * { -webkit-tap-highlight-color: transparent; }
             /* Handing scroll control back to the native browser engine to fix URL bar retraction */
             * { -webkit-tap-highlight-color: transparent; }
-            body { margin: 0; }
+            body {
+				background-color: var(--bg-main);
+				color: var(--text-primary);
+				transition: background-color 0.4s ease, color 0.4s ease;
+				
+				/* Kills the URL bar intercept bug by switching from 'hidden' to 'clip' */
+				overflow-x: clip; 
+				
+				-webkit-font-smoothing: antialiased; 
+				-moz-osx-font-smoothing: grayscale;
+			}
             
             /* The Universal Double-Lock Handbrake */
             html.no-scroll, body.no-scroll { 
