@@ -364,6 +364,17 @@
 				-webkit-font-smoothing: antialiased; 
 				-moz-osx-font-smoothing: grayscale;
 			}
+			
+			/* ORBITAL STRIKE: Kills the compositor hijack during cached reloads */
+            #main-content {
+                animation: mobileFadeIn 0.5s ease forwards !important;
+                transform: none !important; 
+            }
+            
+            @keyframes mobileFadeIn {
+                0% { opacity: 0; }
+                100% { opacity: 1; }
+            }
             
             /* The Universal Double-Lock Handbrake */
             html.no-scroll, body.no-scroll { 
@@ -596,6 +607,12 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
+		
+			// --- 0. ORBITAL STRIKE: PREVENT CHROME CACHE SCROLL HIJACKING ---
+				if ('scrollRestoration' in history) {
+					history.scrollRestoration = 'manual';
+				}
+				window.scrollTo(0, 0);
             
             // --- NETFLIX PAGE TRANSITION LOGIC ---
             const mainContent = document.getElementById('main-content');
