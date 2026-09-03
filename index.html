@@ -921,8 +921,8 @@
                 background-color: var(--bg-main);
                 padding-top: 110px; 
                 
-                /* Changed to svh to prevent background recalculation jumps */
-                min-height: 100svh !important;
+                /* KILLS the artificial empty space! 
+                   (min-height: 100svh has been permanently deleted) */
                 height: auto !important; 
             }
             
