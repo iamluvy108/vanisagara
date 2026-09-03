@@ -903,6 +903,14 @@
             
             .netflix-banner { height: 200px; flex-shrink: 0; }
             
+            /* The Sub-Pixel Crack Fix */
+            .netflix-banner-fade { 
+                bottom: -2px !important; /* Pulls the fade physically over the microscopic crack */
+                height: 75% !important; 
+                /* Anchors the bottom 5% as a solid block before fading up */
+                background: linear-gradient(to top, var(--netflix-modal-bg) 5%, transparent 100%) !important; 
+            }
+            
             .netflix-content { 
                 /* Reduced bottom padding for a tight, elegant mobile finish */
                 padding: 0 24px 24px 24px !important; 
@@ -1025,7 +1033,7 @@
                          data-banner="banners/bg-banner.png" 
                          data-tags='["Śrīla Prabhupāda", "1972 Edition", "Keystone"]'
                          data-info="true"
-                         data-desc="At the brink of a catastrophic world war, the greatest warrior of his age drops his weapons, paralyzed by grief. Time freezes on the battlefield of Kurukṣetra as his chariot driver, Lord Śrī Kṛṣṇa, reveals the ultimate mechanics of the universe. The <em>Bhagavad-gītā</em> is the definitive conversation on duty, the eternal soul, and the absolute path to spiritual liberation.">
+                         data-desc="At the brink of a catastrophic world war, the greatest warrior of his age drops his weapons, paralyzed by grief. Time freezes on the battlefield of Kurukṣetra as his chariot driver, Lord Śrī Kṛṣṇa, reveals the ultimate mechanics of the universe. The <em>Bhagavad-gītā</em> is the definitive conversation on duty, the eternal soul, and the only path to spiritual liberation.">
                         
                         <div class="book-cover-wrapper">
                             <img src="book covers/bg-cover.png" alt="Bhagavad-gītā As It Is" class="book-cover">
