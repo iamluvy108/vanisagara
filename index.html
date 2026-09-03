@@ -1232,12 +1232,19 @@
             window.scrollTo(0, 0);
 
             // --- 0.5 THE TITANIUM PIXEL LOCK ---
-            // Measures the exact physical pixel height of the screen and locks it in
             function setMobileHeight() {
                 document.documentElement.style.setProperty('--app-height', `${window.innerHeight}px`);
             }
-            window.addEventListener('resize', setMobileHeight);
-            window.addEventListener('orientationchange', setMobileHeight);
+            
+            // KILLED the 'resize' event listener here! 
+            // Now, the URL bar hiding will NEVER trigger a height recalculation.
+            
+            // We only recalculate if the user physically rotates their phone sideways
+            window.addEventListener('orientationchange', () => {
+                setTimeout(setMobileHeight, 150); // Small delay to let the OS finish rotating
+            });
+            
+            // Set it once on initial load and lock it in forever
             setMobileHeight();
             
             // --- 1. NETFLIX PAGE TRANSITION LOGIC ---
