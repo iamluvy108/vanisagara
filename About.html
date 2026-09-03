@@ -343,17 +343,18 @@
         /* --- DESKTOP PROTECTION FIREWALL --- */
         .hamburger, .mobile-menu-overlay { display: none; }
 
+        /* --- DESKTOP PROTECTION FIREWALL --- */
+        .hamburger, .mobile-menu-overlay { display: none; }
+
         /* --- PREMIUM MOBILE APP MAKEOVER --- */
         @media (max-width: 900px) {
             
             * { -webkit-tap-highlight-color: transparent; }
-            
-            /* Feedback 2: THE ULTIMATE MAGNETIC SCROLL SNAP */
-            html {
-                scroll-snap-type: y mandatory;
-                overscroll-behavior-y: none;
-            }
+            html { scroll-snap-type: y mandatory; overscroll-behavior-y: none; }
             body { overscroll-behavior-y: none; margin: 0; }
+            
+            /* The Universal Handbrake */
+            body.no-scroll { overflow: hidden; }
 
             /* Header Layout */
             nav { justify-content: space-between; padding: 0 5%; position: fixed; top: 0; width: 100%; z-index: 9999 !important; }
@@ -390,10 +391,11 @@
             .mobile-menu-footer { position: absolute; bottom: 8vh; }
             .menu-logo { width: 140px; height: auto; opacity: 0.95; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3)); }
 
-            /* Hero Section (Magnetically Snapped) */
+            /* Feedback 1: Hero Section (Strict VH Synchronization) */
             .hero { 
-                height: 100svh; 
-                min-height: 100svh; 
+                height: 100vh; 
+                min-height: 100vh; 
+                max-height: 100vh; 
                 scroll-snap-align: start; 
                 scroll-snap-stop: always; 
             }
@@ -407,21 +409,21 @@
             .hero-image { position: absolute; height: auto; max-height: 40vh; max-width: 80%; bottom: 0 !important; left: 50%; transform: translateX(-50%); z-index: 2; -webkit-mask-image: none !important; mask-image: none !important; }
             .hero::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 25vh; background: linear-gradient(to bottom, transparent 0%, var(--bg-main) 85%, var(--bg-main) 100%); z-index: 10; pointer-events: none; }
 
-            /* Library Section (Magnetically Snapped) */
+            /* Feedback 1: Library Section (Strict VH Synchronization) */
             .library {
                 position: relative;
                 z-index: 20; 
                 background-color: var(--bg-main);
                 padding-top: 110px; 
                 
-                height: 100svh; 
-                min-height: 100svh;
-                max-height: 100svh;
+                height: 100vh; 
+                min-height: 100vh;
+                max-height: 100vh;
                 overflow: hidden; 
                 
-                /* Magnetic snap properties */
                 scroll-snap-align: start;
                 scroll-snap-stop: always;
+                scroll-margin-top: 0; 
             }
             
             .library-title { text-align: center; font-size: 26px; padding: 0; margin-bottom: 45px; }
@@ -431,12 +433,18 @@
             .coming-soon-placeholder { font-size: 15px; gap: 10px; }
             .placeholder-logo { width: 60px; height: 60px; }
 
-            /* Feedback 4: Mobile Modal Scaling */
-            .modal-box, .netflix-modal-box { 
-                width: 95vw; /* Increased for maximum mobile real estate */
-                border-radius: 12px; 
-                margin: 0 auto; 
+            /* Feedback 2: Perfectly Centered & Sized Modals */
+            .modal-overlay { 
+                align-items: center !important; 
+                justify-content: center !important; 
             }
+            .modal-box, .netflix-modal-box { 
+                width: 90vw !important; /* Mathematically matches the 5% grid padding */
+                margin: auto !important; 
+                border-radius: 12px; 
+                max-height: 85vh; /* Prevents touching the top/bottom of screen */
+            }
+            
             .netflix-banner { height: 200px; }
             .netflix-content { padding: 0 24px 30px 24px; margin-top: -40px; }
             .netflix-title { font-size: 24px; margin-bottom: 12px; line-height: 1.2; }
@@ -446,13 +454,8 @@
             .netflix-btn { width: 100%; justify-content: center; }
             .modal-info-badge { flex-shrink: 0; }
 
-            /* Feedback 3: ABOUT PAGE TEXT & SPACING REFINEMENTS */
-            .about-wrapper { 
-                padding-top: 14vh; 
-                padding-bottom: 80px; 
-                padding-left: 8vw; /* Adds generous breathing room to stop edge-touching */
-                padding-right: 8vw;
-            }
+            /* ABOUT PAGE TEXT & SPACING */
+            .about-wrapper { padding-top: 14vh; padding-bottom: 80px; padding-left: 8vw; padding-right: 8vw; }
             .about-title { font-size: 36px; margin-bottom: 20px; }
             .prose { font-size: 16px; line-height: 1.6; }
             .prose p { margin-bottom: 24px; }
@@ -523,9 +526,9 @@
                 
                 <p>Operating entirely as an independent, single-developer infrastructure, <b>Vāṇīsāgara</b> brings uncompromising technical standards to these original books. By utilizing the advanced typesetting capabilities of XeLaTeX alongside Noto Serif typography, the geometry of every page is scientifically calculated. This systematic approach guarantees that every character, diacritic, and margin renders natively and flawlessly in 4K resolution.</p>
 
-                <p>This archive is engineered and maintained from the ground up by one person. Keeping this server operational and freely accessible requires ongoing technical resources. To support the transition to a permanent, streamlined domain (<u><em>https://www.vanisagara.co/</em></u>) and bypass the use of complicated hosting addresses, external funding is required.</p>
+                <p>This archive is engineered and maintained from the ground up by one person. Keeping this server operational and freely accessible requires ongoing technical resources. To support the transition to a permanent domain (<u><em>https://www.vanisagara.co/</em></u>) and bypass the use of complicated hosting addresses, external funding is required.</p>
 				
-				<p>If you wish to contribute toward securing this domain and keeping the project online, please don’t hesitate to direct your correspondence to <u><em>spiritualibrary108@gmail.com</em></u>.</p>
+				<p>If you wish to contribute toward securing this domain and keeping the project online, please write to us: <u><em>spiritualibrary108@gmail.com</em></u>.</p>
             </div>
 
             <div class="about-footer">
