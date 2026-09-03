@@ -452,39 +452,37 @@
             .mobile-menu-footer { position: absolute; bottom: 8vh; }
             .menu-logo { width: 140px; height: auto; opacity: 0.95; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3)); }
 
-            /* Feedback 1: Hero Section (Strict VH Synchronization) */
+            /* Hero Section (The Ultimate 'lvh' Buffer) */
             .hero { 
-                height: 100vh; 
-                min-height: 100vh; 
-                max-height: 100vh; 
-                scroll-snap-align: start; 
-                scroll-snap-stop: always; 
+                /* Upgraded to lvh (Large Viewport Height) so the hero acts as a physical buffer */
+                height: 100lvh !important; 
+                min-height: 100lvh !important; 
+                max-height: 100lvh !important; 
             }
-            .hero-container { flex-direction: column; text-align: center; align-items: center; justify-content: flex-start; padding-top: 13vh; }
-            .hero-content { align-items: center; max-width: 100%; z-index: 15; padding-bottom: 43vh; }
+            .hero-container { flex-direction: column; text-align: center; align-items: center; justify-content: flex-start; padding-top: 13lvh; }
+            .hero-content { align-items: center; max-width: 100%; z-index: 15; padding-bottom: 43lvh; }
             .hero-title-logo { display: none !important; }
             .hero h1 { font-size: clamp(38px, 11vw, 60px); margin-bottom: 20px; } 
             .hero p { display: block; font-size: 15px; margin-bottom: 30px; padding: 0 10px; line-height: 1.4; } 
             .divider { justify-content: center; margin-bottom: 20px; }
             
-            .hero-image { position: absolute; height: auto; max-height: 40vh; max-width: 80%; bottom: 0 !important; left: 50%; transform: translateX(-50%); z-index: 2; -webkit-mask-image: none !important; mask-image: none !important; }
-            .hero::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 25vh; background: linear-gradient(to bottom, transparent 0%, var(--bg-main) 85%, var(--bg-main) 100%); z-index: 10; pointer-events: none; }
+            .hero-image { position: absolute; height: auto; max-height: 40lvh; max-width: 80%; bottom: 0 !important; left: 50%; transform: translateX(-50%); z-index: 2; -webkit-mask-image: none !important; mask-image: none !important; }
+            .hero::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 25lvh; background: linear-gradient(to bottom, transparent 0%, var(--bg-main) 85%, var(--bg-main) 100%); z-index: 10; pointer-events: none; }
 
-            /* Feedback 1: Library Section (Strict VH Synchronization) */
+            /* Library Section (Fluid Scroll Edition) */
             .library {
                 position: relative;
                 z-index: 20; 
                 background-color: var(--bg-main);
-                padding-top: 110px; 
                 
-                height: 100vh; 
-                min-height: 100vh;
-                max-height: 100vh;
-                overflow: hidden; 
+                /* Locked paddings to kill the desktop bleed */
+                padding-top: 110px !important; 
+                padding-bottom: 20px !important; 
                 
-                scroll-snap-align: start;
-                scroll-snap-stop: always;
-                scroll-margin-top: 0; 
+                /* NEW: Mathematically protects the title from the 60px navbar during scroll */
+                scroll-margin-top: 60px !important; 
+                
+                height: auto !important; 
             }
             
             .library-title { text-align: center; font-size: 26px; padding: 0; margin-bottom: 45px; }
