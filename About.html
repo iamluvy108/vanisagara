@@ -340,13 +340,22 @@
         /* The Menu Handbrake */
         body.no-scroll { overflow: hidden; }
 
+        /* --- DESKTOP PROTECTION FIREWALL --- */
+        .hamburger, .mobile-menu-overlay { display: none; }
+
         /* --- PREMIUM MOBILE APP MAKEOVER --- */
         @media (max-width: 900px) {
             
             * { -webkit-tap-highlight-color: transparent; }
-            html, body { overscroll-behavior-y: none; }
+            
+            /* Feedback 2: THE ULTIMATE MAGNETIC SCROLL SNAP */
+            html {
+                scroll-snap-type: y mandatory;
+                overscroll-behavior-y: none;
+            }
+            body { overscroll-behavior-y: none; margin: 0; }
 
-            /* Header Layout Sync */
+            /* Header Layout */
             nav { justify-content: space-between; padding: 0 5%; position: fixed; top: 0; width: 100%; z-index: 9999 !important; }
             .nav-brand { position: absolute; left: 50%; top: 55%; transform: translate(-50%, -50%); display: flex; align-items: center; justify-content: center; }
             nav .vanisagara-text { display: none !important; } 
@@ -363,7 +372,9 @@
             .hamburger:active { transform: scale(0.85); }
             .nav-links, .nav-divider { display: none; }
 
-            /* Full-Screen Menu Overlay Sync */
+            .hero-glow { -webkit-mask-image: radial-gradient(circle at 50% 40%, black 0%, transparent 65%); mask-image: radial-gradient(circle at 50% 40%, black 0%, transparent 65%); }
+
+            /* Full-Screen Mobile Menu Overlay */
             .mobile-menu-overlay { display: flex; position: fixed; top: 0; left: 0; width: 100%; height: 100dvh; background-color: var(--bg-main); background-image: radial-gradient(circle at center 30%, var(--hero-glow) 0%, transparent 80%); z-index: 9998; flex-direction: column; justify-content: center; align-items: center; padding-top: 0; padding-bottom: 12vh; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; }
             [data-theme="light"] .mobile-menu-overlay { background-image: none !important; }
             .mobile-menu-overlay.active { opacity: 1; visibility: visible; }
@@ -379,32 +390,73 @@
             .mobile-menu-footer { position: absolute; bottom: 8vh; }
             .menu-logo { width: 140px; height: auto; opacity: 0.95; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3)); }
 
-            /* --- ABOUT PAGE TEXT & SPACING REFINEMENTS --- */
-            .about-wrapper { 
-                padding-top: 14vh; /* Pushes content safely below the fixed navbar */
-                padding-bottom: 80px; 
+            /* Hero Section (Magnetically Snapped) */
+            .hero { 
+                height: 100svh; 
+                min-height: 100svh; 
+                scroll-snap-align: start; 
+                scroll-snap-stop: always; 
             }
-            .about-title { 
-                font-size: 36px; /* Scaled down from the massive 72px desktop max */
-                margin-bottom: 20px; 
-            }
-            .divider { 
-                margin-bottom: 30px; 
-            }
-            .prose { 
-                font-size: 16px; /* Scaled down significantly for comfortable mobile reading */
-                line-height: 1.6; 
-            }
-            .prose p { 
-                margin-bottom: 24px; 
+            .hero-container { flex-direction: column; text-align: center; align-items: center; justify-content: flex-start; padding-top: 13vh; }
+            .hero-content { align-items: center; max-width: 100%; z-index: 15; padding-bottom: 43vh; }
+            .hero-title-logo { display: none !important; }
+            .hero h1 { font-size: clamp(38px, 11vw, 60px); margin-bottom: 20px; } 
+            .hero p { display: block; font-size: 15px; margin-bottom: 30px; padding: 0 10px; line-height: 1.4; } 
+            .divider { justify-content: center; margin-bottom: 20px; }
+            
+            .hero-image { position: absolute; height: auto; max-height: 40vh; max-width: 80%; bottom: 0 !important; left: 50%; transform: translateX(-50%); z-index: 2; -webkit-mask-image: none !important; mask-image: none !important; }
+            .hero::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 25vh; background: linear-gradient(to bottom, transparent 0%, var(--bg-main) 85%, var(--bg-main) 100%); z-index: 10; pointer-events: none; }
+
+            /* Library Section (Magnetically Snapped) */
+            .library {
+                position: relative;
+                z-index: 20; 
+                background-color: var(--bg-main);
+                padding-top: 110px; 
+                
+                height: 100svh; 
+                min-height: 100svh;
+                max-height: 100svh;
+                overflow: hidden; 
+                
+                /* Magnetic snap properties */
+                scroll-snap-align: start;
+                scroll-snap-stop: always;
             }
             
-            /* Make the return button thumb-friendly */
-            .btn-primary { 
-                width: 100%; 
-                text-align: center; 
-                padding: 16px 20px; 
+            .library-title { text-align: center; font-size: 26px; padding: 0; margin-bottom: 45px; }
+            .netflix-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 6vw; padding: 0 5% 60px 5%; justify-items: center; }
+            .book-item[style*="visibility: hidden"] { display: none !important; }
+            .book-cover-wrapper { width: 100%; max-width: 160px; } 
+            .coming-soon-placeholder { font-size: 15px; gap: 10px; }
+            .placeholder-logo { width: 60px; height: 60px; }
+
+            /* Feedback 4: Mobile Modal Scaling */
+            .modal-box, .netflix-modal-box { 
+                width: 95vw; /* Increased for maximum mobile real estate */
+                border-radius: 12px; 
+                margin: 0 auto; 
             }
+            .netflix-banner { height: 200px; }
+            .netflix-content { padding: 0 24px 30px 24px; margin-top: -40px; }
+            .netflix-title { font-size: 24px; margin-bottom: 12px; line-height: 1.2; }
+            .netflix-tags { gap: 6px; margin-bottom: 16px; }
+            .netflix-tag { font-size: 12px; padding: 4px 8px; }
+            .netflix-desc { font-size: 14px; margin-bottom: 24px; line-height: 1.5; }
+            .netflix-btn { width: 100%; justify-content: center; }
+            .modal-info-badge { flex-shrink: 0; }
+
+            /* Feedback 3: ABOUT PAGE TEXT & SPACING REFINEMENTS */
+            .about-wrapper { 
+                padding-top: 14vh; 
+                padding-bottom: 80px; 
+                padding-left: 8vw; /* Adds generous breathing room to stop edge-touching */
+                padding-right: 8vw;
+            }
+            .about-title { font-size: 36px; margin-bottom: 20px; }
+            .prose { font-size: 16px; line-height: 1.6; }
+            .prose p { margin-bottom: 24px; }
+            .btn-primary { width: 100%; text-align: center; padding: 16px 20px; }
         }
     </style>
 </head>

@@ -539,7 +539,7 @@
         .modal-box {
             background-color: var(--card-bg);
             border-radius: 6px; 
-            width: 440px; 
+            width: 480px; 
             max-width: 90vw;
             text-align: left; 
             transform: translateY(15px); 
@@ -616,7 +616,7 @@
         .netflix-modal-box {
             background-color: var(--netflix-modal-bg);
             border-radius: 10px; 
-            width: 680px; 
+            width: 720px; 
             max-width: 90vw;
             text-align: left; 
             transform: translateY(20px); 
@@ -752,32 +752,24 @@
             .netflix-row { grid-template-columns: repeat(4, 1fr); }
         }
 
+        /* --- DESKTOP PROTECTION FIREWALL --- */
+        .hamburger, .mobile-menu-overlay { display: none; }
+
         /* --- PREMIUM MOBILE APP MAKEOVER --- */
         @media (max-width: 900px) {
             
             * { -webkit-tap-highlight-color: transparent; }
-            html, body { overscroll-behavior-y: none; }
-			/* The Menu Handbrake */
-            body.no-scroll { overflow: hidden; }
+            
+            /* Feedback 2: THE ULTIMATE MAGNETIC SCROLL SNAP */
+            html {
+                scroll-snap-type: y mandatory;
+                overscroll-behavior-y: none;
+            }
+            body { overscroll-behavior-y: none; margin: 0; }
 
             /* Header Layout */
-            nav {
-                justify-content: space-between;
-                padding: 0 5%;
-                position: fixed; 
-                top: 0;
-                width: 100%;
-                z-index: 9999 !important; 
-            }
-            .nav-brand {
-                position: absolute;
-                left: 50%;
-                top: 55%; 
-                transform: translate(-50%, -50%); 
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
+            nav { justify-content: space-between; padding: 0 5%; position: fixed; top: 0; width: 100%; z-index: 9999 !important; }
+            .nav-brand { position: absolute; left: 50%; top: 55%; transform: translate(-50%, -50%); display: flex; align-items: center; justify-content: center; }
             nav .vanisagara-text { display: none !important; } 
             .brand-icon { width: 44px; height: 44px; margin-right: 0; }
             
@@ -788,56 +780,19 @@
             [data-theme="dark"] .color-toggle,
             [data-theme="dark"] .hamburger { color: #ffffff !important; }
 
-            .hamburger {
-                order: 2; 
-                display: block;
-                background: none;
-                border: none;
-                cursor: pointer;
-                z-index: 10000; 
-                transition: transform 0.2s ease;
-            }
+            .hamburger { order: 2; display: block; background: none; border: none; cursor: pointer; z-index: 10000; transition: transform 0.2s ease; }
             .hamburger:active { transform: scale(0.85); }
             .nav-links, .nav-divider { display: none; }
 
-            .hero-glow {
-                -webkit-mask-image: radial-gradient(circle at 50% 40%, black 0%, transparent 65%);
-                mask-image: radial-gradient(circle at 50% 40%, black 0%, transparent 65%);
-            }
+            .hero-glow { -webkit-mask-image: radial-gradient(circle at 50% 40%, black 0%, transparent 65%); mask-image: radial-gradient(circle at 50% 40%, black 0%, transparent 65%); }
 
             /* Full-Screen Mobile Menu Overlay */
-            .mobile-menu-overlay {
-                display: flex;
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100dvh;
-                background-color: var(--bg-main);
-                background-image: radial-gradient(circle at center 30%, var(--hero-glow) 0%, transparent 80%);
-                z-index: 9998;
-                flex-direction: column;
-                
-                /* Feedback 1: Shifted slightly up from absolute center using padding-bottom */
-                justify-content: center; 
-                align-items: center;
-                padding-top: 0;
-                padding-bottom: 12vh; 
-                
-                opacity: 0;
-                visibility: hidden;
-                transition: opacity 0.3s ease, visibility 0.3s ease;
-            }
-            
+            .mobile-menu-overlay { display: flex; position: fixed; top: 0; left: 0; width: 100%; height: 100dvh; background-color: var(--bg-main); background-image: radial-gradient(circle at center 30%, var(--hero-glow) 0%, transparent 80%); z-index: 9998; flex-direction: column; justify-content: center; align-items: center; padding-top: 0; padding-bottom: 12vh; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; }
             [data-theme="light"] .mobile-menu-overlay { background-image: none !important; }
             .mobile-menu-overlay.active { opacity: 1; visibility: visible; }
             
             .mobile-menu-content { display: flex; flex-direction: column; align-items: center; gap: 14px; }
-            .mobile-menu-content > * {
-                opacity: 0;
-                transform: translateY(-15px);
-                transition: opacity 0.2s ease, transform 0.2s ease;
-            }
+            .mobile-menu-content > * { opacity: 0; transform: translateY(-15px); transition: opacity 0.2s ease, transform 0.2s ease; }
             .mobile-menu-overlay.active .mobile-menu-content > *:nth-child(1) { transition: opacity 0.4s ease 0.1s, transform 0.4s cubic-bezier(0.16,1,0.3,1) 0.1s; opacity: 1; transform: translateY(0); }
             .mobile-menu-overlay.active .mobile-menu-content > *:nth-child(2) { transition: opacity 0.4s ease 0.2s, transform 0.4s cubic-bezier(0.16,1,0.3,1) 0.2s; opacity: 1; transform: translateY(0); }
             .mobile-menu-overlay.active .mobile-menu-content > *:nth-child(3) { transition: opacity 0.4s ease 0.3s, transform 0.4s cubic-bezier(0.16,1,0.3,1) 0.3s; opacity: 1; transform: translateY(0); }
@@ -847,10 +802,12 @@
             .mobile-menu-footer { position: absolute; bottom: 8vh; }
             .menu-logo { width: 140px; height: auto; opacity: 0.95; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3)); }
 
-            /* Hero Section */
-            .hero {
-                height: 100vh; 
-                min-height: 100vh; 
+            /* Hero Section (Magnetically Snapped) */
+            .hero { 
+                height: 100svh; 
+                min-height: 100svh; 
+                scroll-snap-align: start; 
+                scroll-snap-stop: always; 
             }
             .hero-container { flex-direction: column; text-align: center; align-items: center; justify-content: flex-start; padding-top: 13vh; }
             .hero-content { align-items: center; max-width: 100%; z-index: 15; padding-bottom: 43vh; }
@@ -862,23 +819,21 @@
             .hero-image { position: absolute; height: auto; max-height: 40vh; max-width: 80%; bottom: 0 !important; left: 50%; transform: translateX(-50%); z-index: 2; -webkit-mask-image: none !important; mask-image: none !important; }
             .hero::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 25vh; background: linear-gradient(to bottom, transparent 0%, var(--bg-main) 85%, var(--bg-main) 100%); z-index: 10; pointer-events: none; }
 
-            /* Feedback 2: THE PHYSICAL SCROLL LOCK */
+            /* Library Section (Magnetically Snapped) */
             .library {
                 position: relative;
                 z-index: 20; 
                 background-color: var(--bg-main);
-                
-                /* 110px padding pushes the title down perfectly past the 60px navbar */
                 padding-top: 110px; 
                 
-                /* Lock the box height to exactly 100vh. This means the absolute bottom 
-                   of the page stops exactly when the top of this box reaches 0px! */
-                height: 100vh; 
-                min-height: 100vh;
-                max-height: 100vh;
+                height: 100svh; 
+                min-height: 100svh;
+                max-height: 100svh;
                 overflow: hidden; 
                 
-                scroll-margin-top: 0; 
+                /* Magnetic snap properties */
+                scroll-snap-align: start;
+                scroll-snap-stop: always;
             }
             
             .library-title { text-align: center; font-size: 26px; padding: 0; margin-bottom: 45px; }
@@ -888,8 +843,12 @@
             .coming-soon-placeholder { font-size: 15px; gap: 10px; }
             .placeholder-logo { width: 60px; height: 60px; }
 
-            /* Modal */
-            .modal-box, .netflix-modal-box { width: 90vw; border-radius: 12px; margin: 0 auto; }
+            /* Feedback 4: Mobile Modal Scaling */
+            .modal-box, .netflix-modal-box { 
+                width: 95vw; /* Increased for maximum mobile real estate */
+                border-radius: 12px; 
+                margin: 0 auto; 
+            }
             .netflix-banner { height: 200px; }
             .netflix-content { padding: 0 24px 30px 24px; margin-top: -40px; }
             .netflix-title { font-size: 24px; margin-bottom: 12px; line-height: 1.2; }
@@ -898,6 +857,18 @@
             .netflix-desc { font-size: 14px; margin-bottom: 24px; line-height: 1.5; }
             .netflix-btn { width: 100%; justify-content: center; }
             .modal-info-badge { flex-shrink: 0; }
+
+            /* Feedback 3: ABOUT PAGE TEXT & SPACING REFINEMENTS */
+            .about-wrapper { 
+                padding-top: 14vh; 
+                padding-bottom: 80px; 
+                padding-left: 8vw; /* Adds generous breathing room to stop edge-touching */
+                padding-right: 8vw;
+            }
+            .about-title { font-size: 36px; margin-bottom: 20px; }
+            .prose { font-size: 16px; line-height: 1.6; }
+            .prose p { margin-bottom: 24px; }
+            .btn-primary { width: 100%; text-align: center; padding: 16px 20px; }
         }
     </style>
 </head>
