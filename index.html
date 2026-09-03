@@ -844,7 +844,13 @@
             .book-cover-wrapper { width: 100%; max-width: 160px; } 
             .coming-soon-placeholder { font-size: 15px; gap: 10px; }
             .placeholder-logo { width: 60px; height: 60px; }
-
+			
+			/* Kills the desktop hover/zoom effect so the book doesn't swell past the modal edges */
+            .book-item.downloadable-book:hover .book-cover-wrapper,
+            .book-item.locked-hover .book-cover-wrapper {
+                transform: none !important;
+            }
+			
             /* Perfectly Centered & Sized Modals (Absolute Math Lock) */
             .modal-overlay { 
                 left: 0 !important;
