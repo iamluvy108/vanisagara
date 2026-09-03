@@ -919,15 +919,24 @@
                 position: relative;
                 z-index: 20; 
                 background-color: var(--bg-main);
-                padding-top: 110px; 
                 
-                /* KILLS the artificial empty space! 
-                   (min-height: 100svh has been permanently deleted) */
+                /* explicitly locked padding to kill desktop bleed */
+                padding-top: 110px !important; 
+                padding-bottom: 20px !important; 
+                
                 height: auto !important; 
             }
             
             .library-title { text-align: center; font-size: 26px; padding: 0; margin-bottom: 45px; }
-            .netflix-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 6vw; padding: 0 5% 60px 5%; justify-items: center; }
+            
+            /* Kills the 60px desktop bleed on the grid row */
+            .netflix-row { 
+                display: grid; 
+                grid-template-columns: repeat(2, 1fr); 
+                gap: 6vw; 
+                padding: 0 5% 20px 5% !important; /* Bottom padding crushed to 20px */
+                justify-items: center; 
+            }
             .book-item[style*="visibility: hidden"] { display: none !important; }
             .book-cover-wrapper { width: 100%; max-width: 160px; } 
             .coming-soon-placeholder { font-size: 15px; gap: 10px; }
