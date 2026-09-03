@@ -88,6 +88,10 @@
             animation: netflixEnter 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
             transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.4s ease;
             transform-origin: top center;
+            
+            /* THE HOWITZER: Protects against horizontal scrolling without confusing Chrome */
+            width: 100%;
+            overflow-x: hidden; 
         }
 
         #main-content.page-exit {
@@ -356,13 +360,7 @@
 				background-color: var(--bg-main);
 				color: var(--text-primary);
 				transition: background-color 0.4s ease, color 0.4s ease;
-				
-				/* Kills the URL bar intercept bug by switching from 'hidden' to 'clip' */
-				overflow-x: clip; 
-				
-				display: flex;
-				flex-direction: column;
-				min-height: 100vh;
+				/* THE HOWITZER: All overflow restrictions completely vaporized */
 				-webkit-font-smoothing: antialiased; 
 				-moz-osx-font-smoothing: grayscale;
 			}
