@@ -936,10 +936,13 @@
                 z-index: 20; 
                 background-color: var(--bg-main);
                 
-                /* explicitly locked padding to kill desktop bleed */
                 padding-top: 110px !important; 
-                padding-bottom: 20px !important; 
                 
+                /* THE SHOCK ABSORBER: Creates a massive void at the bottom of the page.
+                   When Chrome's URL bar causes a 56px jump, it happens harmlessly in this empty space! */
+                padding-bottom: 35vh !important; 
+                
+                scroll-margin-top: 60px !important; 
                 height: auto !important; 
             }
             
