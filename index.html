@@ -74,18 +74,19 @@
             background-color: var(--bg-main);
             color: var(--text-primary);
             transition: background-color 0.4s ease, color 0.4s ease;
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased; /* Keep sans-serif UI elements crisp */
+            
+            /* overflow-x completely removed here to free the Chrome engine! */
+            
+            -webkit-font-smoothing: antialiased; 
             -moz-osx-font-smoothing: grayscale;
         }
 
         /* --- BULLETPROOF TITLE FONT CLASS --- */
-        /* This guarantees both Vāṇīsāgara texts are mathematically identical */
         .vanisagara-text {
             font-family: 'Times New Roman', Times, serif !important;
             font-weight: 400 !important;
-            letter-spacing: 0.02em !important; /* Scales proportionally to fix the scrunched mismatch */
-            -webkit-font-smoothing: auto !important; /* Restores thick, native serif rendering */
+            letter-spacing: 0.02em !important; 
+            -webkit-font-smoothing: auto !important; 
             -moz-osx-font-smoothing: auto !important;
         }
 
@@ -94,6 +95,10 @@
             animation: netflixEnter 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
             transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.4s ease;
             transform-origin: top center;
+            
+            /* Moved horizontal scroll protection safely to the wrapper! */
+            width: 100%;
+            overflow-x: hidden; 
         }
 
         #main-content.page-exit {
@@ -913,12 +918,12 @@
             .mobile-menu-footer { position: absolute; bottom: 8vh; }
             .menu-logo { width: 140px; height: auto; opacity: 0.95; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3)); }
 
-            /* Hero Section (Fluid Scroll Edition) */
+            /* Hero Section (Titanium Pixel Lock Edition) */
             .hero { 
-                /* Upgraded from dvh to svh to permanently kill the URL bar resizing hiccup! */
-                height: 100svh !important; 
-                min-height: 100svh !important; 
-                max-height: 100svh !important; 
+                /* Anchors to your JS variable to completely stop the viewport jump */
+                height: var(--app-height, 100vh) !important; 
+                min-height: var(--app-height, 100vh) !important; 
+                max-height: var(--app-height, 100vh) !important; 
             }
             .hero-container { flex-direction: column; text-align: center; align-items: center; justify-content: flex-start; padding-top: 13vh; }
             .hero-content { align-items: center; max-width: 100%; z-index: 15; padding-bottom: 43vh; }
@@ -936,15 +941,13 @@
                 z-index: 20; 
                 background-color: var(--bg-main);
                 
-                /* Standard spacing for the title */
-                padding-top: 110px !important; 
+                /* 1. Tighter gap above the title when you tap "Explore the Archive" */
+                padding-top: 70px !important; 
                 
-                /* A clean, natural gap at the very bottom of the page */
-                padding-bottom: 40px !important; 
+                /* 2. Extra free space at the bottom for the title to glide completely behind the nav-bar */
+                padding-bottom: 120px !important; 
                 
-                /* Ensures the "Explore" button anchors the section perfectly below the 60px navbar */
                 scroll-margin-top: 60px !important; 
-                
                 height: auto !important; 
             }
             
