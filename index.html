@@ -858,14 +858,14 @@
                 margin: 0 !important;
                 line-height: 0 !important; 
                 
-                /* The ultimate bypass: physically pulls the icons down 4.5px */
-                transform: translateY(4.5px) !important; 
+                /* TUNE THIS VALUE: 4.5px was too much. Try 1.5px or 2px. */
+                transform: translateY(1.5px) !important; 
             }
             
             .hamburger { order: 2; background: none; border: none; cursor: pointer; z-index: 10000; transition: transform 0.2s ease; }
             
-            /* Keeps the 4.5px drop even when you press the button down! */
-            .hamburger:active { transform: translateY(4.5px) scale(0.85) !important; }
+            /* Make sure to match the same value here so the icon doesn't jump when tapped! */
+            .hamburger:active { transform: translateY(1.5px) scale(0.85) !important; }
             
             /* 3. Forces the SVGs and images to stop acting like text elements */
             .hamburger svg, .theme-toggle svg, .color-toggle img { display: block; }
