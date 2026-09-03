@@ -845,16 +845,29 @@
             .coming-soon-placeholder { font-size: 15px; gap: 10px; }
             .placeholder-logo { width: 60px; height: 60px; }
 
-            /* Feedback 2: Perfectly Centered & Sized Modals */
+            /* Perfectly Centered & Sized Modals (Absolute Math Lock) */
             .modal-overlay { 
-                align-items: center !important; 
-                justify-content: center !important; 
+                left: 0 !important;
+                top: 0 !important;
+                width: 100vw !important;
+                height: 100vh !important;
             }
             .modal-box, .netflix-modal-box { 
-                width: 90vw !important; /* Mathematically matches the 5% grid padding */
-                margin: auto !important; 
+                position: absolute !important;
+                top: 50% !important;
+                left: 50% !important;
+                width: 90vw !important; 
+                margin: 0 !important; 
                 border-radius: 12px; 
-                max-height: 85vh; /* Prevents touching the top/bottom of screen */
+                max-height: 85vh; 
+                /* Replaces the slide animation with a perfectly centered scale-up */
+                transform: translate(-50%, -50%) scale(0.95) !important;
+            }
+            
+            .modal-overlay.active .modal-box, 
+            .modal-overlay.active .netflix-modal-box {
+                /* Locks to dead-center when active */
+                transform: translate(-50%, -50%) scale(1) !important;
             }
             
             .netflix-banner { height: 200px; }
@@ -865,13 +878,6 @@
             .netflix-desc { font-size: 14px; margin-bottom: 24px; line-height: 1.5; }
             .netflix-btn { width: 100%; justify-content: center; }
             .modal-info-badge { flex-shrink: 0; }
-
-            /* ABOUT PAGE TEXT & SPACING */
-            .about-wrapper { padding-top: 14vh; padding-bottom: 80px; padding-left: 8vw; padding-right: 8vw; }
-            .about-title { font-size: 36px; margin-bottom: 20px; }
-            .prose { font-size: 16px; line-height: 1.6; }
-            .prose p { margin-bottom: 24px; }
-            .btn-primary { width: 100%; text-align: center; padding: 16px 20px; }
         }
     </style>
 </head>
