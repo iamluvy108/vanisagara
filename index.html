@@ -899,10 +899,10 @@
 
             /* Hero Section (Fluid Scroll Edition) */
             .hero { 
-                height: 100dvh !important; 
-                min-height: 100dvh !important; 
-                max-height: 100dvh !important; 
-                /* scroll-snap locks removed! */
+                /* Upgraded from dvh to svh to permanently kill the URL bar resizing hiccup! */
+                height: 100svh !important; 
+                min-height: 100svh !important; 
+                max-height: 100svh !important; 
             }
             .hero-container { flex-direction: column; text-align: center; align-items: center; justify-content: flex-start; padding-top: 13vh; }
             .hero-content { align-items: center; max-width: 100%; z-index: 15; padding-bottom: 43vh; }
@@ -921,11 +921,9 @@
                 background-color: var(--bg-main);
                 padding-top: 110px; 
                 
-                /* Allows the library to grow naturally as you add more books! */
-                min-height: 100dvh !important;
+                /* Changed to svh to prevent background recalculation jumps */
+                min-height: 100svh !important;
                 height: auto !important; 
-                
-                /* overflow: hidden and scroll-snap locks removed! */
             }
             
             .library-title { text-align: center; font-size: 26px; padding: 0; margin-bottom: 45px; }
