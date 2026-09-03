@@ -754,8 +754,6 @@
         @media (max-width: 900px) {
             
             * { -webkit-tap-highlight-color: transparent; }
-            
-            /* 3. Stops the phone's native rubber-banding bounce effect */
             html, body { overscroll-behavior-y: none; }
 
             /* Header Layout */
@@ -816,19 +814,18 @@
                 z-index: 9998;
                 flex-direction: column;
                 
-                /* 1. Shifted options slightly upwards using flex-start & padding */
-                justify-content: flex-start; 
+                /* Feedback 1: Shifted slightly up from absolute center using padding-bottom */
+                justify-content: center; 
                 align-items: center;
-                padding-top: 25vh; 
+                padding-top: 0;
+                padding-bottom: 12vh; 
                 
                 opacity: 0;
                 visibility: hidden;
                 transition: opacity 0.3s ease, visibility 0.3s ease;
             }
             
-            /* 2. Completely removes the background hue in Light Mode */
             [data-theme="light"] .mobile-menu-overlay { background-image: none !important; }
-            
             .mobile-menu-overlay.active { opacity: 1; visibility: visible; }
             
             .mobile-menu-content { display: flex; flex-direction: column; align-items: center; gap: 14px; }
@@ -848,7 +845,6 @@
 
             /* Hero Section */
             .hero {
-                /* 3. Uses standard VH so address bar movement does not dynamically resize the math */
                 height: 100vh; 
                 min-height: 100vh; 
             }
@@ -862,21 +858,23 @@
             .hero-image { position: absolute; height: auto; max-height: 40vh; max-width: 80%; bottom: 0 !important; left: 50%; transform: translateX(-50%); z-index: 2; -webkit-mask-image: none !important; mask-image: none !important; }
             .hero::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 25vh; background: linear-gradient(to bottom, transparent 0%, var(--bg-main) 85%, var(--bg-main) 100%); z-index: 10; pointer-events: none; }
 
-            /* 3. Library HARD SCROLL LOCK */
+            /* Feedback 2: THE PHYSICAL SCROLL LOCK */
             .library {
                 position: relative;
                 z-index: 20; 
                 background-color: var(--bg-main);
-                padding-top: 50px; 
                 
-                /* Locks section strictly to screen height minus navbar.
-                   Using standard VH means address bar changes are completely ignored. */
-                height: calc(100vh - 60px); 
-                min-height: calc(100vh - 60px);
-                max-height: calc(100vh - 60px);
+                /* 110px padding pushes the title down perfectly past the 60px navbar */
+                padding-top: 110px; 
+                
+                /* Lock the box height to exactly 100vh. This means the absolute bottom 
+                   of the page stops exactly when the top of this box reaches 0px! */
+                height: 100vh; 
+                min-height: 100vh;
+                max-height: 100vh;
                 overflow: hidden; 
                 
-                scroll-margin-top: 60px; 
+                scroll-margin-top: 0; 
             }
             
             .library-title { text-align: center; font-size: 26px; padding: 0; margin-bottom: 45px; }
