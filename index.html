@@ -813,12 +813,39 @@
             .modal-overlay { overscroll-behavior: contain; }
 
             /* Header Layout */
-            nav { justify-content: space-between; padding: 0 5%; position: fixed; top: 0; width: 100%; z-index: 9999 !important; }
-            .nav-brand { position: absolute; left: 50%; top: 55%; transform: translate(-50%, -50%); display: flex; align-items: center; justify-content: center; }
+            /* Header Layout - STRICT 60PX GEOMETRY */
+            nav { 
+                justify-content: space-between; 
+                padding: 0 5%; 
+                position: fixed; 
+                top: 0; 
+                width: 100%; 
+                height: 60px; /* The missing rigid boundary! */
+                z-index: 9999 !important; 
+                display: flex;
+                align-items: center;
+            }
+            
+            .nav-brand { 
+                position: absolute; 
+                left: 50%; 
+                top: 50%; /* Reverted from 55% back to absolute dead-center */
+                transform: translate(-50%, -50%); 
+                display: flex; 
+                align-items: center; 
+                justify-content: center; 
+            }
+            
             nav .vanisagara-text { display: none !important; } 
             .brand-icon { width: 44px; height: 44px; margin-right: 0; }
             
-            .nav-controls { width: 100%; display: flex; justify-content: space-between; align-items: center; }
+            .nav-controls { 
+                width: 100%; 
+                height: 100%; /* Forces controls to fill the exact 60px height */
+                display: flex; 
+                justify-content: space-between; 
+                align-items: center; 
+            }
             
             /* Align the left-side wrapper */
             .nav-icons { order: 1; display: flex; align-items: center; gap: 15px; } 
