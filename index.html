@@ -765,8 +765,14 @@
             html { scroll-snap-type: y mandatory; overscroll-behavior-y: none; }
             body { overscroll-behavior-y: none; margin: 0; }
             
-            /* The Universal Handbrake */
-            body.no-scroll { overflow: hidden; }
+            /* The Universal Double-Lock Handbrake */
+            html.no-scroll, body.no-scroll { 
+                overflow: hidden !important; 
+                scroll-snap-type: none !important; 
+            }
+            
+            /* Prevents swipe gestures from "leaking" through the modal to the background */
+            .modal-overlay { overscroll-behavior: contain; }
 
             /* Header Layout */
             nav { justify-content: space-between; padding: 0 5%; position: fixed; top: 0; width: 100%; z-index: 9999 !important; }
@@ -1254,6 +1260,7 @@
                 const mobileMenu = document.getElementById('mobileMenu');
                 if (!mobileMenu || !mobileMenu.classList.contains('active')) {
                     document.body.classList.remove('no-scroll');
+                    document.documentElement.classList.remove('no-scroll'); /* NEW: Unlocks the HTML Root */
                 }
             }
 
@@ -1269,8 +1276,9 @@
             }
 
             function openNetflixModal(bookNode) {
-                // Apply the scroll handbrake instantly when a book is tapped
+                // NEW: Apply the Double-Lock handbrake instantly when a book is tapped
                 document.body.classList.add('no-scroll');
+                document.documentElement.classList.add('no-scroll');
                 
                 const title = bookNode.getAttribute('data-title');
                 const cover = bookNode.getAttribute('data-cover');
