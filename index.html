@@ -691,6 +691,12 @@
             margin-bottom: 20px;
             text-shadow: 0 2px 10px rgba(0,0,0,0.5);
             line-height: 1.1;
+            
+            /* Feedback 2: Hard 2-Line Limit */
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
 
         .netflix-tags {
@@ -713,7 +719,7 @@
             font-size: 16px;
             color: var(--text-primary);
             line-height: 1.6;
-            margin-bottom: 30px;
+            margin-bottom: 30px; /* Feedback 1: Locked, identical spacing above buttons */
             width: 100%; 
             text-align: justify; 
             text-justify: inter-word;
@@ -858,22 +864,18 @@
             }
 			
             /* Perfectly Centered & Sized Modals */
-            .modal-overlay { 
-                align-items: center !important; 
-                justify-content: center !important; 
-            }
+            .modal-overlay { align-items: center !important; justify-content: center !important; }
             
             .modal-box, .netflix-modal-box { 
                 position: absolute !important;
                 top: 50% !important;
                 left: 50% !important;
-                width: 92vw !important; 
+                width: 90vw !important; 
                 margin: 0 !important; 
                 border-radius: 12px; 
-                max-height: 72vh; /* Your perfect vertical scale value! */
+                /* Removed exact height limits so the box wraps snugly around the exact content every time */
+                max-height: 85vh; 
                 transform: translate(-50%, -50%) scale(0.95) !important;
-                
-                /* Enables dynamic flexbox math for the internal content */
                 display: flex; 
                 flex-direction: column;
             }
@@ -886,26 +888,31 @@
             .netflix-banner { height: 200px; flex-shrink: 0; }
             
             .netflix-content { 
-                padding: 0 24px 0 24px; /* Bottom padding stripped to let math take over */
+                padding: 0 24px 30px 24px; /* Locked bottom padding */
                 margin-top: -40px; 
                 display: flex;
                 flex-direction: column;
-                flex: 1; /* Forces this section to fill all remaining 72vh space */
             }
             
-            .netflix-title { font-size: 24px; margin-bottom: 12px; line-height: 1.2; }
+            .netflix-title { 
+                font-size: 24px; margin-bottom: 12px; line-height: 1.2; 
+                /* Feedback 2: 2-Line Limit */
+                display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+            }
+            
             .netflix-tags { gap: 6px; margin-bottom: 16px; }
             .netflix-tag { font-size: 12px; padding: 4px 8px; }
-            .netflix-desc { font-size: 14px; margin-bottom: 0; line-height: 1.5; } /* Margin stripped */
             
-            /* Dynamically suspends the button row dead-center in the empty space */
-            .netflix-content > div:last-child {
-                margin-top: auto;
-                margin-bottom: auto;
-                padding-top: 24px; 
-                padding-bottom: 24px; 
+            .netflix-desc { 
+                font-size: 14px; 
+                margin-bottom: 24px; /* Feedback 1: Pixel-perfect identical gap above buttons */
+                line-height: 1.5; 
+                /* Feedback 1: 8-Line Limit */
+                display: -webkit-box; -webkit-line-clamp: 8; -webkit-box-orient: vertical; overflow: hidden;
             }
-
+            
+            /* Forces the button container to stop bouncing around */
+            .netflix-content > div:last-child { margin: 0; padding: 0; }
             .netflix-btn { width: 100%; justify-content: center; }
             .modal-info-badge { flex-shrink: 0; }
         }
@@ -1247,8 +1254,12 @@
             const netflixModal = document.getElementById('netflixModal');
             const infoModal = document.getElementById('infoModal');
             let currentActiveBook = null; 
+            
+            // NEW: Tracks if we pushed a fake state to the phone's history
+            let isModalHistoryPushed = false;
 
-            window.closeAllModals = function() {
+            // Updated: Accepts a flag so we don't accidentally double-trigger the back button
+            window.closeAllModals = function(fromBackButton = false) {
                 netflixModal.classList.remove('active');
                 infoModal.classList.remove('active');
                 if(currentActiveBook) {
@@ -1256,18 +1267,32 @@
                     currentActiveBook = null;
                 }
                 
-                // Release handbrake ONLY if the hamburger menu is also closed
                 const mobileMenu = document.getElementById('mobileMenu');
                 if (!mobileMenu || !mobileMenu.classList.contains('active')) {
                     document.body.classList.remove('no-scroll');
-                    document.documentElement.classList.remove('no-scroll'); /* NEW: Unlocks the HTML Root */
+                    document.documentElement.classList.remove('no-scroll');
+                }
+                
+                // NEW: If closed manually via 'X' or background click, clean up the fake history
+                if (!fromBackButton && isModalHistoryPushed) {
+                    isModalHistoryPushed = false;
+                    history.back(); 
+                } else {
+                    isModalHistoryPushed = false;
                 }
             }
+
+            // NEW: Listens for the physical Android Back Button
+            window.addEventListener('popstate', function(event) {
+                if (isModalHistoryPushed) {
+                    // Triggers the close UI sequence, but tells it NOT to fire history.back() again
+                    closeAllModals(true); 
+                }
+            });
 
             window.closeInfoModal = function(event) {
                 if(event) event.stopPropagation();
                 infoModal.classList.remove('active');
-                // Note: We do not release the handbrake here because the Netflix modal is still underneath!
             }
 
             window.openInfoModal = function(event) {
@@ -1276,9 +1301,14 @@
             }
 
             function openNetflixModal(bookNode) {
-                // NEW: Apply the Double-Lock handbrake instantly when a book is tapped
                 document.body.classList.add('no-scroll');
                 document.documentElement.classList.add('no-scroll');
+                
+                // NEW: Push a dummy state to the browser history to trap the back button
+                if (!isModalHistoryPushed) {
+                    history.pushState({ modal: 'open' }, '');
+                    isModalHistoryPushed = true;
+                }
                 
                 const title = bookNode.getAttribute('data-title');
                 const cover = bookNode.getAttribute('data-cover');
