@@ -353,17 +353,14 @@
         /* --- PREMIUM MOBILE APP MAKEOVER --- */
         @media (max-width: 900px) {
             
+            /* THE SILVER BULLET: Kills the invisible load animation that eats the first swipe */
+            html { scroll-behavior: auto !important; }
+            
+            /* Handing scroll control back to the native browser engine */
             * { -webkit-tap-highlight-color: transparent; }
-            /* Unlocked for fluid, free-scrolling */
-            html { overscroll-behavior-y: none; }
-            body {
-				background-color: var(--bg-main);
-				color: var(--text-primary);
-				transition: background-color 0.4s ease, color 0.4s ease;
-				/* THE HOWITZER: All overflow restrictions completely vaporized */
-				-webkit-font-smoothing: antialiased; 
-				-moz-osx-font-smoothing: grayscale;
-			}
+            body { margin: 0; }
+            
+            /* ... keep the rest of your mobile CSS exactly as it is ... */
 			
 			/* ORBITAL STRIKE: Kills the compositor hijack during cached reloads */
             #main-content {
