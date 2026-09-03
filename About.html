@@ -362,10 +362,11 @@
             
             /* ... keep the rest of your mobile CSS exactly as it is ... */
 			
-			/* ORBITAL STRIKE: Kills the compositor hijack during cached reloads */
+			/* Removed overflow-x entirely so Chrome's engine is 100% unrestricted */
             #main-content {
                 animation: mobileFadeIn 0.5s ease forwards !important;
                 transform: none !important; 
+                width: 100%;
             }
             
             @keyframes mobileFadeIn {
@@ -458,22 +459,23 @@
             .mobile-menu-footer { position: absolute; bottom: 8vh; }
             .menu-logo { width: 140px; height: auto; opacity: 0.95; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3)); }
 
-            /* Hero Section (The Ultimate 'lvh' Buffer) */
+            /* Hero Section (Titanium Pixel Lock Edition) */
             .hero { 
-                /* Upgraded to lvh (Large Viewport Height) so the hero acts as a physical buffer */
-                height: 100lvh !important; 
-                min-height: 100lvh !important; 
-                max-height: 100lvh !important; 
+                /* Binds directly to the JS measurement. It will NEVER stretch mid-scroll again. */
+                height: var(--app-height, 100vh) !important; 
+                min-height: var(--app-height, 100vh) !important; 
+                max-height: var(--app-height, 100vh) !important; 
             }
-            .hero-container { flex-direction: column; text-align: center; align-items: center; justify-content: flex-start; padding-top: 13lvh; }
-            .hero-content { align-items: center; max-width: 100%; z-index: 15; padding-bottom: 43lvh; }
+            
+            .hero-container { flex-direction: column; text-align: center; align-items: center; justify-content: flex-start; padding-top: 13vh; }
+            .hero-content { align-items: center; max-width: 100%; z-index: 15; padding-bottom: 43vh; }
             .hero-title-logo { display: none !important; }
             .hero h1 { font-size: clamp(38px, 11vw, 60px); margin-bottom: 20px; } 
             .hero p { display: block; font-size: 15px; margin-bottom: 30px; padding: 0 10px; line-height: 1.4; } 
             .divider { justify-content: center; margin-bottom: 20px; }
             
-            .hero-image { position: absolute; height: auto; max-height: 40lvh; max-width: 80%; bottom: 0 !important; left: 50%; transform: translateX(-50%); z-index: 2; -webkit-mask-image: none !important; mask-image: none !important; }
-            .hero::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 25lvh; background: linear-gradient(to bottom, transparent 0%, var(--bg-main) 85%, var(--bg-main) 100%); z-index: 10; pointer-events: none; }
+            .hero-image { position: absolute; height: auto; max-height: 40vh; max-width: 80%; bottom: 0 !important; left: 50%; transform: translateX(-50%); z-index: 2; -webkit-mask-image: none !important; mask-image: none !important; }
+            .hero::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 25vh; background: linear-gradient(to bottom, transparent 0%, var(--bg-main) 85%, var(--bg-main) 100%); z-index: 10; pointer-events: none; }
 
             /* Library Section (Fluid Scroll Edition) */
             .library {
@@ -606,10 +608,19 @@
         document.addEventListener("DOMContentLoaded", () => {
 		
 			// --- 0. ORBITAL STRIKE: PREVENT CHROME CACHE SCROLL HIJACKING ---
-			if ('scrollRestoration' in history) {
-				history.scrollRestoration = 'manual';
-			}
-			window.scrollTo(0, 0);
+            if ('scrollRestoration' in history) {
+                history.scrollRestoration = 'manual';
+            }
+            window.scrollTo(0, 0);
+
+            // --- 0.5 THE TITANIUM PIXEL LOCK ---
+            // Measures the exact physical pixel height of the screen and locks it in
+            function setMobileHeight() {
+                document.documentElement.style.setProperty('--app-height', `${window.innerHeight}px`);
+            }
+            window.addEventListener('resize', setMobileHeight);
+            window.addEventListener('orientationchange', setMobileHeight);
+            setMobileHeight();
             
             // --- NETFLIX PAGE TRANSITION LOGIC ---
             const mainContent = document.getElementById('main-content');
