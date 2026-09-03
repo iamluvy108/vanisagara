@@ -350,7 +350,8 @@
         @media (max-width: 900px) {
             
             * { -webkit-tap-highlight-color: transparent; }
-            html { scroll-snap-type: y mandatory; overscroll-behavior-y: none; }
+            /* Unlocked for fluid, free-scrolling */
+            html { overscroll-behavior-y: none; }
             body { overscroll-behavior-y: none; margin: 0; }
             
             /* The Universal Double-Lock Handbrake */
