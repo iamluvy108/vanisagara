@@ -800,9 +800,9 @@
         @media (max-width: 900px) {
             
             * { -webkit-tap-highlight-color: transparent; }
-            /* Unlocked for fluid, free-scrolling */
-            html { overscroll-behavior-y: none; }
-            body { overscroll-behavior-y: none; margin: 0; }
+            /* Handing scroll control back to the native browser engine to fix URL bar retraction */
+            * { -webkit-tap-highlight-color: transparent; }
+            body { margin: 0; }
             
             /* The Universal Double-Lock Handbrake */
             html.no-scroll, body.no-scroll { 
