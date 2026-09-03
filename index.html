@@ -60,23 +60,14 @@
 
         html {
             scroll-behavior: smooth; 
-        }
-
-        /* Removed global font smoothing here to prevent artificial thinning of serif fonts */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            -webkit-text-size-adjust: 100%; /* Forbids iOS/Safari from auto-scaling text */
+            text-size-adjust: 100%;         /* Forbids Android/Chrome from auto-scaling text */
         }
 
         body {
             background-color: var(--bg-main);
             color: var(--text-primary);
             transition: background-color 0.4s ease, color 0.4s ease;
-            
-            /* overflow-x completely removed here to free the Chrome engine! */
-            
             -webkit-font-smoothing: antialiased; 
             -moz-osx-font-smoothing: grayscale;
         }
@@ -926,13 +917,16 @@
                 max-height: var(--app-height, 100vh) !important; 
             }
             .hero-container { flex-direction: column; text-align: center; align-items: center; justify-content: flex-start; padding-top: 13vh; }
-            .hero-content { align-items: center; max-width: 100%; z-index: 15; padding-bottom: 43vh; }
+            /* Give the content slightly more runway above the image */
+            .hero-content { align-items: center; max-width: 100%; z-index: 15; padding-bottom: 40vh; }
             .hero-title-logo { display: none !important; }
             .hero h1 { font-size: clamp(38px, 11vw, 60px); margin-bottom: 20px; } 
-            .hero p { display: block; font-size: 15px; margin-bottom: 30px; padding: 0 10px; line-height: 1.4; } 
+            /* Tighten the gap under the paragraph to save space */
+            .hero p { display: block; font-size: 15px; margin-bottom: 20px; padding: 0 10px; line-height: 1.4; } 
             .divider { justify-content: center; margin-bottom: 20px; }
             
-            .hero-image { position: absolute; height: auto; max-height: 40vh; max-width: 80%; bottom: 0 !important; left: 50%; transform: translateX(-50%); z-index: 2; -webkit-mask-image: none !important; mask-image: none !important; }
+            /* Shrink the maximum image height by just 2% to ensure absolute clearance */
+            .hero-image { position: absolute; height: auto; max-height: 38vh; max-width: 80%; bottom: 0 !important; left: 50%; transform: translateX(-50%); z-index: 2; -webkit-mask-image: none !important; mask-image: none !important; }
             .hero::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 25vh; background: linear-gradient(to bottom, transparent 0%, var(--bg-main) 85%, var(--bg-main) 100%); z-index: 10; pointer-events: none; }
 
             /* Library Section (Fluid Scroll Edition) */
