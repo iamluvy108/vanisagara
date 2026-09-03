@@ -245,7 +245,22 @@
             
             /* --- THE REPLICATION FIX --- */
             /* Replaced rigid 15px with clamp to dynamically preserve 3-line wrap on all phones! */
-            .hero p { display: block; font-size: clamp(13px, 3.85vw, 15px); margin-bottom: 30px; padding: 0 10px; line-height: 1.4; } 
+            /* --- THE REPLICATION FIX + JUSTIFIED TEXT --- */
+            .hero p { 
+                display: block; 
+                font-size: clamp(13px, 3.85vw, 15px); 
+                margin-bottom: 30px; 
+                padding: 0 10px; 
+                line-height: 1.4; 
+                
+                /* The Justification Magic */
+                text-align: justify; 
+                text-justify: inter-word; 
+                
+                /* Prevents whole words from being cut or hyphenated */
+                hyphens: none; 
+                -webkit-hyphens: none; 
+            } 
             
             .divider { justify-content: center; margin-bottom: 20px; }
             .hero-image { position: absolute; height: auto; max-height: 40vh; max-width: 80%; bottom: 0 !important; left: 50%; transform: translateX(-50%); z-index: 2; -webkit-mask-image: none !important; mask-image: none !important; }
