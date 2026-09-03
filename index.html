@@ -898,9 +898,10 @@
 
             /* Feedback 1: Hero Section (Strict VH Synchronization) */
             .hero { 
-                height: 100vh; 
-                min-height: 100vh; 
-                max-height: 100vh; 
+                /* Upgraded to dvh for flawless mobile geometry */
+                height: 100dvh !important; 
+                min-height: 100dvh !important; 
+                max-height: 100dvh !important; 
                 scroll-snap-align: start; 
                 scroll-snap-stop: always; 
             }
@@ -921,9 +922,10 @@
                 background-color: var(--bg-main);
                 padding-top: 110px; 
                 
-                height: 100vh; 
-                min-height: 100vh;
-                max-height: 100vh;
+                /* Upgraded to dvh to create a brick-wall scroll boundary */
+                height: 100dvh !important; 
+                min-height: 100dvh !important;
+                max-height: 100dvh !important;
                 overflow: hidden; 
                 
                 scroll-snap-align: start;
