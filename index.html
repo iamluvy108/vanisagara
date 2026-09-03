@@ -819,16 +819,28 @@
             .brand-icon { width: 44px; height: 44px; margin-right: 0; }
             
             .nav-controls { width: 100%; display: flex; justify-content: space-between; align-items: center; }
-            .nav-controls { width: 100%; display: flex; justify-content: space-between; align-items: center; }
-            .nav-icons { order: 1; } 
             
+            /* Align the left-side wrapper */
+            .nav-icons { order: 1; display: flex; align-items: center; gap: 15px; } 
+            
+            /* 1. Transform the buttons themselves into flex-boxes to trap the icons in the center */
+            .theme-toggle, .color-toggle, .hamburger { 
+                display: flex !important;
+                align-items: center;
+                justify-content: center;
+                padding: 0 !important;
+                margin: 0 !important;
+                line-height: 0 !important; /* 2. Annihilates the invisible letter-tail gap */
+            }
+            
+            /* 3. Forces the SVGs and images to stop acting like text elements */
+            .hamburger svg, .theme-toggle svg, .color-toggle img { display: block; }
+
             [data-theme="dark"] .theme-toggle,
             [data-theme="dark"] .color-toggle,
             [data-theme="dark"] .hamburger { color: #ffffff !important; }
 
-            .hamburger { order: 2; display: block; background: none; border: none; cursor: pointer; z-index: 10000; transition: transform 0.2s ease; }
-            .hamburger:active { transform: scale(0.85); }
-            .nav-links, .nav-divider { display: none; }
+            .hamburger { order: 2; background: none; border: none; cursor: pointer; z-index: 10000; transition: transform 0.2s ease; }
             .hamburger:active { transform: scale(0.85); }
             .nav-links, .nav-divider { display: none; }
 
