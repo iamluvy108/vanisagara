@@ -851,13 +851,12 @@
                 transform: none !important;
             }
 			
-            /* Perfectly Centered & Sized Modals (Absolute Math Lock) */
+            /* Perfectly Centered & Sized Modals */
             .modal-overlay { 
-                left: 0 !important;
-                top: 0 !important;
-                width: 100vw !important;
-                height: 100vh !important;
+                align-items: center !important; 
+                justify-content: center !important; 
             }
+            
             .modal-box, .netflix-modal-box { 
                 position: absolute !important;
                 top: 50% !important;
@@ -865,23 +864,42 @@
                 width: 92vw !important; 
                 margin: 0 !important; 
                 border-radius: 12px; 
-                max-height: 72vh; /* Swapped vw to vh so it scales vertically! */
-                /* Replaces the slide animation with a perfectly centered scale-up */
+                max-height: 72vh; /* Your perfect vertical scale value! */
                 transform: translate(-50%, -50%) scale(0.95) !important;
+                
+                /* Enables dynamic flexbox math for the internal content */
+                display: flex; 
+                flex-direction: column;
             }
             
             .modal-overlay.active .modal-box, 
             .modal-overlay.active .netflix-modal-box {
-                /* Locks to dead-center when active */
                 transform: translate(-50%, -50%) scale(1) !important;
             }
             
-            .netflix-banner { height: 200px; }
-            .netflix-content { padding: 0 24px 30px 24px; margin-top: -40px; }
+            .netflix-banner { height: 200px; flex-shrink: 0; }
+            
+            .netflix-content { 
+                padding: 0 24px 0 24px; /* Bottom padding stripped to let math take over */
+                margin-top: -40px; 
+                display: flex;
+                flex-direction: column;
+                flex: 1; /* Forces this section to fill all remaining 72vh space */
+            }
+            
             .netflix-title { font-size: 24px; margin-bottom: 12px; line-height: 1.2; }
             .netflix-tags { gap: 6px; margin-bottom: 16px; }
             .netflix-tag { font-size: 12px; padding: 4px 8px; }
-            .netflix-desc { font-size: 14px; margin-bottom: 24px; line-height: 1.5; }
+            .netflix-desc { font-size: 14px; margin-bottom: 0; line-height: 1.5; } /* Margin stripped */
+            
+            /* Dynamically suspends the button row dead-center in the empty space */
+            .netflix-content > div:last-child {
+                margin-top: auto;
+                margin-bottom: auto;
+                padding-top: 24px; 
+                padding-bottom: 24px; 
+            }
+
             .netflix-btn { width: 100%; justify-content: center; }
             .modal-info-badge { flex-shrink: 0; }
         }
