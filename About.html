@@ -739,28 +739,31 @@
                 });
             }
 			
-			// --- 9. MOBILE SCROLL MEMORY (Chill Mode) ---
-            // Only execute this logic on mobile devices (matching your 900px CSS firewall)
+			// --- 9. MOBILE SCROLL MEMORY (Refresh-Only Mode) ---
             if (window.innerWidth <= 900) {
-                
-                // NEW: Create a unique memory key for EACH specific page so they don't cross-contaminate
                 const scrollKey = 'vanisagara_scroll_' + window.location.pathname;
                 
-                // 1. Restore the scroll position when the page reloads
-                const savedScrollPosition = sessionStorage.getItem(scrollKey);
+                // Ask the browser HOW we arrived at this page
+                const navEntries = performance.getEntriesByType("navigation");
+                const isReload = navEntries.length > 0 && navEntries[0].type === "reload";
                 
-                if (savedScrollPosition !== null) {
-                    // Give the Titanium Pixel Lock 150ms to finish painting the screen, then jump
-                    setTimeout(() => {
-                        window.scrollTo({
-                            top: parseInt(savedScrollPosition, 10),
-                            behavior: 'instant' // Instant jump, no dizzying scroll animation
-                        });
-                    }, 150); 
+                if (isReload) {
+                    // 1. If it was a REFRESH, restore the scroll position
+                    const savedScrollPosition = sessionStorage.getItem(scrollKey);
+                    if (savedScrollPosition !== null) {
+                        setTimeout(() => {
+                            window.scrollTo({
+                                top: parseInt(savedScrollPosition, 10),
+                                behavior: 'instant' 
+                            });
+                        }, 150); 
+                    }
+                } else {
+                    // 2. If they navigated here from a link, wipe the old memory and start at the top
+                    sessionStorage.removeItem(scrollKey);
                 }
 
-                // 2. Quietly save the scroll position as the user scrolls
-                // We use a "debounce" timer (150ms) so it doesn't fire 1000 times a second and drain the phone battery
+                // 3. Quietly save the scroll position as the user scrolls
                 let scrollTimeout;
                 window.addEventListener('scroll', () => {
                     clearTimeout(scrollTimeout);
