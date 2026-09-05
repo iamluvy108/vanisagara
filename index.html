@@ -861,7 +861,12 @@
                 history.scrollRestoration = 'manual';
             }
 
-            const currentPath = window.location.pathname;
+            // NEW: Normalize the URL path so "/" and "/index.html" share the exact same memory!
+            let currentPath = window.location.pathname;
+            if (currentPath.endsWith('/')) {
+                currentPath += 'index.html';
+            }
+            
             const scrollKey = 'vanisagara_scroll_' + currentPath;
             
             // 2. Check the browser's flight recorder to see exactly HOW the user got here
