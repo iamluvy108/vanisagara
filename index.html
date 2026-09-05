@@ -854,49 +854,47 @@
                 });
             }
             
-            // --- 9. MOBILE SCROLL MEMORY (The Perfected App Mode) ---
-            if (window.innerWidth <= 900) {
-                const currentPath = window.location.pathname;
-                const scrollKey = 'vanisagara_scroll_' + currentPath;
-                
-                // 1. Check the browser's flight recorder to see exactly HOW the user got here
-                const navType = performance.getEntriesByType("navigation")[0]?.type;
-                const previousPath = sessionStorage.getItem('vanisagara_current_page');
-                
-                // 2. We restore the scroll if they hit the refresh button, used the back/forward buttons,
-                // OR if they tapped the URL bar and hit enter (which registers as a 'navigate' on the same page)
-                const isRefreshEquivalent = (navType === 'reload') || 
-                                            (navType === 'back_forward') || 
-                                            (navType === 'navigate' && previousPath === currentPath);
-                
-                if (isRefreshEquivalent) {
-                    // It's a refresh or back-button return: restore the scroll position
-                    const savedScrollPosition = sessionStorage.getItem(scrollKey);
-                    if (savedScrollPosition !== null) {
-                        setTimeout(() => {
-                            window.scrollTo({
-                                top: parseInt(savedScrollPosition, 10),
-                                behavior: 'instant' 
-                            });
-                        }, 150); 
-                    }
-                } else {
-                    // Fresh visit from another page: wipe the old memory and start at the top
-                    sessionStorage.removeItem(scrollKey);
+            // --- 9. UNIVERSAL SCROLL MEMORY (The Perfected App Mode) ---
+            const currentPath = window.location.pathname;
+            const scrollKey = 'vanisagara_scroll_' + currentPath;
+            
+            // 1. Check the browser's flight recorder to see exactly HOW the user got here
+            const navType = performance.getEntriesByType("navigation")[0]?.type;
+            const previousPath = sessionStorage.getItem('vanisagara_current_page');
+            
+            // 2. We restore the scroll if they hit the refresh button, used the back/forward buttons,
+            // OR if they tapped the URL bar and hit enter (which registers as a 'navigate' on the same page)
+            const isRefreshEquivalent = (navType === 'reload') || 
+                                        (navType === 'back_forward') || 
+                                        (navType === 'navigate' && previousPath === currentPath);
+            
+            if (isRefreshEquivalent) {
+                // It's a refresh or back-button return: restore the scroll position
+                const savedScrollPosition = sessionStorage.getItem(scrollKey);
+                if (savedScrollPosition !== null) {
+                    setTimeout(() => {
+                        window.scrollTo({
+                            top: parseInt(savedScrollPosition, 10),
+                            behavior: 'instant' 
+                        });
+                    }, 150); 
                 }
-
-                // Update the "current page" tracker for the next navigation action
-                sessionStorage.setItem('vanisagara_current_page', currentPath);
-
-                // 3. Quietly save the scroll position as the user scrolls
-                let scrollTimeout;
-                window.addEventListener('scroll', () => {
-                    clearTimeout(scrollTimeout);
-                    scrollTimeout = setTimeout(() => {
-                        sessionStorage.setItem(scrollKey, window.scrollY);
-                    }, 150);
-                });
+            } else {
+                // Fresh visit from another page: wipe the old memory and start at the top
+                sessionStorage.removeItem(scrollKey);
             }
+
+            // Update the "current page" tracker for the next navigation action
+            sessionStorage.setItem('vanisagara_current_page', currentPath);
+
+            // 3. Quietly save the scroll position as the user scrolls
+            let scrollTimeout;
+            window.addEventListener('scroll', () => {
+                clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(() => {
+                    sessionStorage.setItem(scrollKey, window.scrollY);
+                }, 150);
+            });
 		});
     </script>
 </body>
