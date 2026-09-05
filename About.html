@@ -551,11 +551,6 @@
                         <!-- Keep your existing SVG paths here! -->
                     </svg>
                 </button>
-                
-                <button class="color-toggle" id="colorBtn" aria-label="Cycle Glow Color" title="Change Background Hue">
-                    <img src="images/logos/nav-bar/hue-white.png" alt="Hue Palette" class="hue-icon hue-dark">
-                    <img src="images/logos/nav-bar/hue-black.png" alt="Hue Palette" class="hue-icon hue-light">
-                </button>
             </div>
 
             <!-- THE HAMBURGER BUTTON -->
@@ -580,7 +575,6 @@
 
     <!-- WRAPPER FOR NETFLIX PAGE TRANSITIONS -->
     <main class="about-wrapper" id="main-content">
-        <div class="about-glow"></div>
         <section class="about-content">
             <h1 class="about-title">Our Story</h1>
             
@@ -676,35 +670,7 @@
                     icon.innerHTML = sunSvg;
                 }
             });
-
-            // --- COLOR CYCLING LOGIC ---
-            const colorBtn = document.getElementById('colorBtn');
-            const royalColors = [
-                '#5c4000', // Antique Gold (Default)
-                '#800020', // Classic Burgundy
-                '#002147', // Royal Sapphire
-                '#3b1459', // Imperial Amethyst
-                '#0a3a2a'  // Emerald Forest
-            ];
-            
-            let currentColorIndex = 0;
-            const savedColor = localStorage.getItem('vanisagara_hero_glow');
-            
-            if (savedColor) {
-                const foundIndex = royalColors.indexOf(savedColor);
-                if (foundIndex !== -1) {
-                    currentColorIndex = foundIndex;
-                    document.documentElement.style.setProperty('--hero-glow', royalColors[currentColorIndex]);
-                }
-            }
-
-            colorBtn.addEventListener('click', () => {
-                currentColorIndex = (currentColorIndex + 1) % royalColors.length;
-                const newColor = royalColors[currentColorIndex];
-                
-                document.documentElement.style.setProperty('--hero-glow', newColor);
-                localStorage.setItem('vanisagara_hero_glow', newColor);
-            });
+			
 		// --- MOBILE HAMBURGER MENU LOGIC ---
             const hamburgerBtn = document.getElementById('hamburgerBtn');
             const mobileMenu = document.getElementById('mobileMenu');
