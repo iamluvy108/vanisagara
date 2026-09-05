@@ -858,8 +858,11 @@
             // Only execute this logic on mobile devices (matching your 900px CSS firewall)
             if (window.innerWidth <= 900) {
                 
+                // NEW: Create a unique memory key for EACH specific page so they don't cross-contaminate
+                const scrollKey = 'vanisagara_scroll_' + window.location.pathname;
+                
                 // 1. Restore the scroll position when the page reloads
-                const savedScrollPosition = sessionStorage.getItem('vanisagara_mobile_scroll');
+                const savedScrollPosition = sessionStorage.getItem(scrollKey);
                 
                 if (savedScrollPosition !== null) {
                     // Give the Titanium Pixel Lock 150ms to finish painting the screen, then jump
@@ -877,11 +880,10 @@
                 window.addEventListener('scroll', () => {
                     clearTimeout(scrollTimeout);
                     scrollTimeout = setTimeout(() => {
-                        sessionStorage.setItem('vanisagara_mobile_scroll', window.scrollY);
+                        sessionStorage.setItem(scrollKey, window.scrollY);
                     }, 150);
                 });
             }
-        });
     </script>
 </body>
 </html>
