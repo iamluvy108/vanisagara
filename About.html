@@ -738,6 +738,34 @@
                     });
                 });
             }
+			
+			// --- 9. MOBILE SCROLL MEMORY (Chill Mode) ---
+            // Only execute this logic on mobile devices (matching your 900px CSS firewall)
+            if (window.innerWidth <= 900) {
+                
+                // 1. Restore the scroll position when the page reloads
+                const savedScrollPosition = sessionStorage.getItem('vanisagara_mobile_scroll');
+                
+                if (savedScrollPosition !== null) {
+                    // Give the Titanium Pixel Lock 150ms to finish painting the screen, then jump
+                    setTimeout(() => {
+                        window.scrollTo({
+                            top: parseInt(savedScrollPosition, 10),
+                            behavior: 'instant' // Instant jump, no dizzying scroll animation
+                        });
+                    }, 150); 
+                }
+
+                // 2. Quietly save the scroll position as the user scrolls
+                // We use a "debounce" timer (150ms) so it doesn't fire 1000 times a second and drain the phone battery
+                let scrollTimeout;
+                window.addEventListener('scroll', () => {
+                    clearTimeout(scrollTimeout);
+                    scrollTimeout = setTimeout(() => {
+                        sessionStorage.setItem('vanisagara_mobile_scroll', window.scrollY);
+                    }, 150);
+                });
+            }
         });
     </script>
 </body>

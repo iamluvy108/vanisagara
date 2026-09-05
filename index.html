@@ -821,7 +821,7 @@
                 handleEasterEggRoll();
             });
 		
-		// --- 8. MOBILE HAMBURGER MENU LOGIC ---
+			// --- 8. MOBILE HAMBURGER MENU LOGIC ---
             const hamburgerBtn = document.getElementById('hamburgerBtn');
             const mobileMenu = document.getElementById('mobileMenu');
             
@@ -851,6 +851,34 @@
                         
                         hamburgerBtn.innerHTML = `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>`;
                     });
+                });
+            }
+            
+            // --- 9. MOBILE SCROLL MEMORY (Chill Mode) ---
+            // Only execute this logic on mobile devices (matching your 900px CSS firewall)
+            if (window.innerWidth <= 900) {
+                
+                // 1. Restore the scroll position when the page reloads
+                const savedScrollPosition = sessionStorage.getItem('vanisagara_mobile_scroll');
+                
+                if (savedScrollPosition !== null) {
+                    // Give the Titanium Pixel Lock 150ms to finish painting the screen, then jump
+                    setTimeout(() => {
+                        window.scrollTo({
+                            top: parseInt(savedScrollPosition, 10),
+                            behavior: 'instant' // Instant jump, no dizzying scroll animation
+                        });
+                    }, 150); 
+                }
+
+                // 2. Quietly save the scroll position as the user scrolls
+                // We use a "debounce" timer (150ms) so it doesn't fire 1000 times a second and drain the phone battery
+                let scrollTimeout;
+                window.addEventListener('scroll', () => {
+                    clearTimeout(scrollTimeout);
+                    scrollTimeout = setTimeout(() => {
+                        sessionStorage.setItem('vanisagara_mobile_scroll', window.scrollY);
+                    }, 150);
                 });
             }
         });
