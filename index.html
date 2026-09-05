@@ -855,15 +855,19 @@
             }
             
             // --- 9. UNIVERSAL SCROLL MEMORY (The Perfected App Mode) ---
+            
+            // 1. Shut down the browser's native scroll engine so it stops fighting our code
+            if ('scrollRestoration' in history) {
+                history.scrollRestoration = 'manual';
+            }
+
             const currentPath = window.location.pathname;
             const scrollKey = 'vanisagara_scroll_' + currentPath;
             
-            // 1. Check the browser's flight recorder to see exactly HOW the user got here
+            // 2. Check the browser's flight recorder to see exactly HOW the user got here
             const navType = performance.getEntriesByType("navigation")[0]?.type;
             const previousPath = sessionStorage.getItem('vanisagara_current_page');
             
-            // 2. We restore the scroll if they hit the refresh button, used the back/forward buttons,
-            // OR if they tapped the URL bar and hit enter (which registers as a 'navigate' on the same page)
             const isRefreshEquivalent = (navType === 'reload') || 
                                         (navType === 'back_forward') || 
                                         (navType === 'navigate' && previousPath === currentPath);
@@ -880,8 +884,9 @@
                     }, 150); 
                 }
             } else {
-                // Fresh visit from another page: wipe the old memory and start at the top
+                // Fresh visit from a link: wipe memory AND mathematically guarantee we start at the top
                 sessionStorage.removeItem(scrollKey);
+                window.scrollTo({ top: 0, behavior: 'instant' });
             }
 
             // Update the "current page" tracker for the next navigation action
