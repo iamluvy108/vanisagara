@@ -740,7 +740,7 @@
                 history.scrollRestoration = 'manual';
             }
 
-            // NEW: Normalize the URL path so "/" and "/index.html" share the exact same memory!
+            // Normalize the URL path so "/" and "/index.html" share the exact same memory
             let currentPath = window.location.pathname;
             if (currentPath.endsWith('/')) {
                 currentPath += 'index.html';
@@ -760,12 +760,20 @@
                 // It's a refresh or back-button return: restore the scroll position
                 const savedScrollPosition = sessionStorage.getItem(scrollKey);
                 if (savedScrollPosition !== null) {
+                    
+                    // Temporarily kill the CSS smooth scrolling so it doesn't fight the instant jump
+                    document.documentElement.style.scrollBehavior = 'auto';
+                    
+                    // Jump IMMEDIATELY before the browser paints the first frame (no setTimeout!)
+                    window.scrollTo({
+                        top: parseInt(savedScrollPosition, 10),
+                        behavior: 'instant' 
+                    });
+                    
+                    // Turn CSS smooth scrolling back on a split-second later for normal navigation
                     setTimeout(() => {
-                        window.scrollTo({
-                            top: parseInt(savedScrollPosition, 10),
-                            behavior: 'instant' 
-                        });
-                    }, 150); 
+                        document.documentElement.style.scrollBehavior = 'smooth';
+                    }, 50);
                 }
             } else {
                 // Fresh visit from a link: wipe memory AND mathematically guarantee we start at the top
