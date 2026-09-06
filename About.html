@@ -444,7 +444,7 @@
 
             /* Full-Screen Mobile Menu Overlay */
             .mobile-menu-overlay { display: flex; position: fixed; top: 0; left: 0; width: 100%; height: 100dvh; background-color: var(--bg-main); z-index: 9998; flex-direction: column; justify-content: center; align-items: center; padding-top: 0; padding-bottom: 12vh; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; }
-            
+            .mobile-menu-overlay.active { opacity: 1; visibility: visible; }
             .mobile-menu-content { display: flex; flex-direction: column; align-items: center; gap: 14px; }
             .mobile-menu-content > * { opacity: 0; transform: translateY(-15px); transition: opacity 0.2s ease, transform 0.2s ease; }
             .mobile-menu-overlay.active .mobile-menu-content > *:nth-child(1) { transition: opacity 0.4s ease 0.1s, transform 0.4s cubic-bezier(0.16,1,0.3,1) 0.1s; opacity: 1; transform: translateY(0); }
