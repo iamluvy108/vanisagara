@@ -7,65 +7,70 @@ import glob
 INPUT_DIR = "."
 OUTPUT_FILE = "chapters.json"
 
-def clean_text(text):
-    """Core cleaning: strips LaTeX syntax and converts bold/italics."""
+def clean_latex_formatting(text):
+    """Surgically cleans text, handles nested bold/italics, and strips raw LaTeX."""
     if not text: return ""
     
-    # 1. Destroy spacing commands completely (catches \vspace{...} and rogue \vspace0.5em)
-    text = re.sub(r'\\[vh]space\*?\{[^}]*\}', '', text)
-    text = re.sub(r'\\[vh]space[a-zA-Z0-9.]+', '', text) 
+    # Strip raw layout commands
+    text = text.replace('\\noindent', '').replace('\\devanagari\\setstretch{0.85}', '').replace('\\centering', '')
     
-    # 2. Strip raw layout commands
-    text = text.replace('\\noindent', '').replace('\\devanagari\\setstretch{0.85}', '')
-    text = text.replace('\\centering', '')
-    
-    # 3. Handle double-nested bolding from LaTeX
-    text = text.replace('\\textbf{\\textbf{', '<strong>').replace('}}', '</strong>')
-    
-    # 4. Standard Bold and Italics (Loops to catch any remaining basic nesting)
-    for _ in range(3):
-        text = re.sub(r'\\textbf\{([^{}]+)\}', r'<strong>\1</strong>', text)
-        text = re.sub(r'\\textit\{([^{}]+)\}', r'<em>\1</em>', text)
+    # Recursively un-nest bold and italics safely to prevent HTML bleeding
+    while True:
+        new_text = re.sub(r'\\textbf\{([^{}]+)\}', r'<strong>\1</strong>', text)
+        new_text = re.sub(r'\\textit\{([^{}]+)\}', r'<em>\1</em>', new_text)
+        if new_text == text: break
+        text = new_text
         
-    # 5. Catch any unmatched tags and line breaks
-    text = text.replace('\\textbf{', '<strong>').replace('\\textit{', '<em>')
-    text = re.sub(r'\\\\(?:\*)?\s*', '<br>', text)
-    
-    # 6. THE KILL SWITCH: Strip ALL remaining '{' and '}'
+    # THE KILL SWITCH: Strip any remaining raw tags and braces
+    text = text.replace('\\textbf', '').replace('\\textit', '')
     text = text.replace('{', '').replace('}', '')
-    
     return text.strip()
 
 def process_inline(text):
-    """Processes simple text blocks (Synonyms, Translation)."""
-    text = clean_text(text)
-    return text.replace('\\par', '<br>').replace('\n\n', '<br>')
+    """Processes simple text blocks (Synonyms, Translation, Devanagari)."""
+    if not text: return ""
+    # Destroy any \vspace or \hspace, with or without braces
+    text = re.sub(r'\\[vh]space\*?(?:\{[^}]*\}|\s*[0-9.]+[a-zA-Z]+)', '', text)
+    
+    text = clean_latex_formatting(text)
+    text = re.sub(r'\\\\(?:\*)?\s*', '<br>', text)
+    text = text.replace('\\par', '<br>').replace('\n\n', '<br>')
+    text = re.sub(r'(<br>\s*)+$', '', text)
+    return text.strip()
 
 def process_purport(text):
     """Processes complex purports, creating quote blocks and paragraph tags."""
     if not text: return ""
     
-    # Extract the centered Sanskrit quotes BEFORE stripping braces
-    text = re.sub(r'\{\s*\\centering(.*?)\\par\}', r'<blockquote class="quote-block">\1</blockquote>', text, flags=re.DOTALL)
+    # Remove the "Thus end the..." sign-off at the end of chapters
+    text = re.sub(r'\\vspace\*?(?:\{[^}]*\}|\s*[0-9.]+[a-zA-Z]+)?\s*\\textit\{Thus end the Bhaktivedanta.*', '', text, flags=re.DOTALL)
     
-    # Send through the core cleaner to strip everything else
-    text = clean_text(text)
+    # Destroy spacing commands
+    text = re.sub(r'\\[vh]space\*?(?:\{[^}]*\}|\s*[0-9.]+[a-zA-Z]+)', '', text)
     
-    # Standardize paragraph breaks
-    text = text.replace('\\par', '\n\n')
-    blocks = re.split(r'\n\s*\n', text)
+    # Extract centered quotes and turn them into HTML blockquotes
+    text = re.sub(r'\{\s*\\centering(.*?)\\par\}', r'\n\n<blockquote class="quote-block">\1</blockquote>\n\n', text, flags=re.DOTALL)
+    text = re.sub(r'\{\s*\\centering(.*?)\}', r'\n\n<blockquote class="quote-block">\1</blockquote>\n\n', text, flags=re.DOTALL)
+    
+    # Clean the rest of the text
+    text = clean_latex_formatting(text)
+    
+    # Split the text into actual paragraphs
+    text = text.replace('\\par', '\n\n').replace('<br>', '\n\n')
+    paragraphs = re.split(r'\n\s*\n', text)
     
     html_blocks = []
-    for block in blocks:
-        block = block.strip()
-        if not block: continue
-        
-        # If it is our centered quote, keep it isolated
-        if '<blockquote' in block:
-            html_blocks.append(block)
+    for p in paragraphs:
+        p = p.strip()
+        if not p: continue
+        if p.startswith('<blockquote'):
+            # Convert internal linebreaks within the quote block to <br>
+            p = re.sub(r'\\\\(?:\*)?\s*', '<br>', p)
+            html_blocks.append(p)
         else:
-            # Wrap regular text in paragraph tags for perfect CSS indentation
-            html_blocks.append(f'<p>{block}</p>')
+            # Wrap standard text in paragraph tags for perfect CSS indentation
+            p = re.sub(r'\\\\(?:\*)?\s*', ' ', p)
+            html_blocks.append(f'<p>{p}</p>')
             
     return '\n'.join(html_blocks)
 
@@ -78,7 +83,7 @@ def parse_chapter(filepath):
     
     chapter_data = {
         "chapter_number": chapter_num_match.group(1) if chapter_num_match else "UNKNOWN",
-        "chapter_title": clean_text(chapter_title_match.group(1)) if chapter_title_match else "UNKNOWN",
+        "chapter_title": clean_latex_formatting(chapter_title_match.group(1)) if chapter_title_match else "UNKNOWN",
         "verses": []
     }
 
@@ -117,8 +122,6 @@ def parse_chapter(filepath):
             elif sec_type == "TRANSLATION":
                 verse_data["translation"] = process_inline(sec_content)
             elif sec_type == "PURPORT":
-                # Remove the "Thus end the..." sign-off if it exists
-                sec_content = re.sub(r'\\vspace\{.*?\\textit\{Thus end the Bhaktivedanta.*', '', sec_content, flags=re.DOTALL)
                 verse_data["purport"] = process_purport(sec_content)
                 
         chapter_data["verses"].append(verse_data)

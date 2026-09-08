@@ -103,14 +103,14 @@
         
         .verse-block { margin-bottom: 120px; }
         
-        /* Greatly Enlarged TEXT Header */
+        /* Enlarged Headers */
         .verse-number { color: var(--reader-red); font-size: 38px; font-weight: 700; text-align: center; margin-bottom: 40px; letter-spacing: 0.05em; }
+        
+        /* Adjusted Section Labels (Reduced 1.5pt from previous, tighter bottom margin) */
+        .section-label { font-size: 32px; font-weight: 700; text-align: center; margin-bottom: 12px; letter-spacing: 0.05em; margin-top: 55px; text-transform: uppercase; }
         
         .devanagari-text { text-align: center; font-size: 34px; line-height: 1.8; margin-bottom: 32px; font-weight: 600; }
         .roman-text { text-align: center; font-size: 24px; line-height: 1.6; margin-bottom: 40px; font-style: italic; }
-        
-        /* Greatly Enlarged SYNONYMS, TRANSLATION, PURPORT Headers */
-        .section-label { font-size: 34px; font-weight: 700; text-align: center; margin-bottom: 30px; letter-spacing: 0.05em; margin-top: 60px; text-transform: uppercase; }
         
         .synonyms-text { font-size: 22px; line-height: 1.8; margin-bottom: 36px; text-align: justify; text-justify: inter-word; }
         .translation-text { font-size: 26px; font-weight: 700; line-height: 1.7; margin-bottom: 40px; text-align: justify; text-justify: inter-word; }
@@ -171,7 +171,7 @@
             
             /* Upscaled Mobile Reader Typography */
             .verse-number { font-size: 30px; margin-bottom: 30px; }
-            .section-label { font-size: 28px; margin-bottom: 24px; margin-top: 40px; }
+            .section-label { font-size: 26px; margin-bottom: 10px; margin-top: 40px; }
             .devanagari-text { font-size: 28px; }
             .roman-text { font-size: 22px; }
             .synonyms-text { font-size: 20px; }
@@ -357,8 +357,7 @@
                     if (verse.translation) html += `<div class="section-label">TRANSLATION</div><div class="translation-text">${verse.translation}</div>`;
                     
                     if (verse.purport) {
-                        // The Python script now outputs perfect <p> and <blockquote> tags natively!
-                        // No need for messy JS string splitting anymore.
+                        // The Python script now injects perfect <p> and <blockquote> tags!
                         html += `<div class="section-label">PURPORT</div><div class="purport-text">${verse.purport}</div>`;
                     }
                     
