@@ -260,6 +260,7 @@
             .mobile-menu-overlay.active .mobile-menu-content > *:nth-child(1) { transition: opacity 0.4s ease 0.1s, transform 0.4s cubic-bezier(0.16,1,0.3,1) 0.1s; opacity: 1; transform: translateY(0); }
             .mobile-menu-overlay.active .mobile-menu-content > *:nth-child(2) { transition: opacity 0.4s ease 0.2s, transform 0.4s cubic-bezier(0.16,1,0.3,1) 0.2s; opacity: 1; transform: translateY(0); }
             .mobile-menu-overlay.active .mobile-menu-content > *:nth-child(3) { transition: opacity 0.4s ease 0.3s, transform 0.4s cubic-bezier(0.16,1,0.3,1) 0.3s; opacity: 1; transform: translateY(0); }
+            .mobile-menu-overlay.active .mobile-menu-content > *:nth-child(4) { transition: opacity 0.4s ease 0.4s, transform 0.4s cubic-bezier(0.16,1,0.3,1) 0.4s; opacity: 1; transform: translateY(0); }
             .mobile-menu-content a { color: var(--text-primary); font-size: 22px; text-decoration: none; font-weight: 400; font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif; }
             .mobile-menu-divider { width: 180px; height: 1px; background: linear-gradient(90deg, transparent, var(--text-primary), transparent); opacity: 0.4; }
             .mobile-menu-footer { position: absolute; bottom: 8vh; }
@@ -362,8 +363,9 @@
 
     <!-- NEW: FULL-SCREEN MOBILE MENU OVERLAY (SKETCH 4) -->
     <div class="mobile-menu-overlay" id="mobileMenu">
-        <div class="mobile-menu-content">
+		<div class="mobile-menu-content">
             <a href="/">Home</a>
+            <a href="/sanctum">Sanctum</a>
             <div class="mobile-menu-divider"></div>
             <a href="/about-us">About Us</a>
         </div>

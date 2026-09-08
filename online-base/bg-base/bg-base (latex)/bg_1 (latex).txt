@@ -1,0 +1,730 @@
+% !TEX TS-program = xelatex
+\documentclass[twoside]{book}
+
+% DECREASED BASE FONT (from 11pt to 10pt)
+% All 'em' spaces will now automatically scale down to match this!
+\usepackage[fontsize=10pt]{scrextend} 
+
+\usepackage[
+  paperwidth=6in, paperheight=9in, 
+  top=0.7in, bottom=0.8in, left=0.75in, right=0.75in, 
+  headheight=15pt, headsep=0.25in, footskip=0.55in, % <-- Increased to 0.55in for vertical symmetry
+  heightrounded
+]{geometry}
+
+\usepackage{fontspec}
+\setmainfont{Noto Serif}
+\newfontfamily\devanagari{Noto Serif Devanagari}[Script=Devanagari, Scale=1.2]
+
+\usepackage{xcolor}
+\definecolor{textred}{HTML}{7A1111}
+\usepackage{graphicx}
+\usepackage{setspace}
+\setstretch{1.15} 
+
+\setlength{\parskip}{0.4em plus 0.25em minus 0.1em}
+\setlength{\parindent}{0pt}
+\hyphenpenalty=10000
+\exhyphenpenalty=10000
+\sloppy
+
+\flushbottom 
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyheadoffset{0pt} 
+\fancyfootoffset{0pt}
+
+% MERGED HEADER AND INCREASED FONT (from 6pt/8pt to 9pt/11pt)
+% Places everything on the left and seamlessly pulls the current TEXT # using \rightmark
+\fancyhead[CE,CO]{\fontsize{7pt}{9pt}\selectfont\textbf{Observing the Armies on the Battlefield of Kurukṣetra | Ch. 1, \rightmark}}
+
+% INCREASED FOOTER FONT (from 6pt/8pt to 9pt/11pt)
+\fancyfoot[RE,RO]{\fontsize{8pt}{10pt}\selectfont\textbf{\thepage}}
+\renewcommand{\headrulewidth}{0pt}
+
+\fancypagestyle{plain}{
+  \fancyhf{}
+  \fancyfoot[RE,RO]{\fontsize{8pt}{10pt}\selectfont\textbf{\thepage}}
+}
+
+\makeatletter
+\let\oldmarkright\markright
+\def\strip@brackets[#1]#2\@nil{\oldmarkright{#1}\nopagebreak}
+\def\no@strip@brackets#1\@nil{\oldmarkright{#1}\nopagebreak}
+\renewcommand{\markright}[1]{%
+  \@ifnextchar[{\strip@brackets}{\no@strip@brackets}#1\@nil
+}
+
+% DECREASED TEXT TITLE (from 13pt/15pt to 12pt/14pt)
+\newcommand{\texttitle}[1]{%
+  \par\vspace{1.2em plus 0.5em minus 0.2em}%
+  {\centering\color{textred}\fontsize{12pt}{14pt}\selectfont\textbf{#1}\par}%
+  \vspace*{0.8em plus 0.3em minus 0.1em}%
+  \par\@afterindentfalse\@afterheading
+}
+
+% DECREASED SECTION TITLE (from 12pt/14pt to 11pt/13pt)
+\newcommand{\sectitle}[1]{%
+  \par\vspace{0.6em plus 0.3em minus 0.1em}%
+  {\centering\fontsize{11pt}{13pt}\selectfont\textbf{#1}\par}%
+  \vspace*{0.1em plus 0.1em minus 0.05em}%
+  \par\@afterindentfalse\@afterheading
+}
+\makeatother
+
+\clubpenalty=10000
+\widowpenalty=10000
+
+\begin{document}
+\thispagestyle{plain}
+\setcounter{page}{33}
+{\centering
+\vspace*{-2em}
+% DECREASED CHAPTER NUMBER (from 14pt/16pt to 13pt/15pt)
+{\fontsize{13pt}{15pt}\selectfont CHAPTER ONE\par}
+\vspace{1em}
+\includegraphics[width=0.45\textwidth]{BG (Chapter Picture Transparent).png}\par
+\vspace{0.2em}
+% DECREASED CHAPTER TITLE (from 20pt/22pt to 19pt/21pt)
+{\fontsize{19pt}{21pt}\selectfont\textbf{Observing the Armies on the \\* Battlefield of Kurukṣetra}\par}
+}
+\vspace{1.5em}
+
+\texttitle{TEXT 1}
+\markright{[TEXT 1]}
+{\centering\devanagari\setstretch{0.85} \textbf{धृतराष्ट्र उवाच} \\* \textbf{धर्मक्षेत्रे कुरुक्षेत्रे समवेता युयुत्सव: ।} \\* \textbf{मामका: पाण्डवाश्चैव किमकुर्वत सञ्जय ॥ १ ॥} \par}
+\vspace{0.8em}
+
+{\centering \textit{dhṛtarāṣṭra uvāca} \\* \textit{dharma-kṣetre kuru-kṣetre} \\* \textit{samavetā yuyutsavaḥ} \\ \textit{māmakāḥ pāṇḍavāś caiva} \\* \textit{kim akurvata sañjaya} \par}
+
+\sectitle{SYNONYMS}
+\noindent \textit{dhṛtarāṣṭraḥ} — King Dhṛtarāṣṭra; \textit{uvāca} — said; \textit{dharma-kṣetre} — in the place of pilgrimage; \textit{kuru-kṣetre} — in the place named Kurukṣetra; \textit{samavetāḥ} — assembled; \textit{yuyatsavaḥ} — desiring to fight; \textit{māmakāḥ} — my party (sons); \textit{pāṇḍavāḥ} — the sons of Pāṇḍu; \textit{ca} — and; \textit{eva} — certainly; \textit{kim} — what; \textit{akurvata} — did they do; \textit{sañjaya} — O Sañjaya.\par
+
+\sectitle{TRANSLATION}
+\noindent \textbf{\textbf{Dhṛtarāṣṭra said: O Sañjaya, after assembling in the place of pilgrimage at Kurukṣetra, what did my sons and the sons of Pāṇḍu do, being desirous to fight?}}\par
+
+\sectitle{PURPORT}
+\noindent \textit{Bhagavad-gītā} is the widely read theistic science summarized in the \textit{Gītā-māhātmya} (\textit{Glorification of }\textit{the}\textit{ Gītā}). There it says that one should read \textit{Bhagavad-gītā} very scrutinizingly with the help of a person who is a devotee of Śrī Kṛṣṇa and try to understand it without personally motivated interpretations. The example of clear understanding is there in the \textit{Bhagavad-gītā} itself, in the way the teaching is understood by Arjuna, who heard the \textit{Gītā} directly from the Lord. If someone is fortunate enough to understand \textit{Bhagavad-gītā} in that line of disciplic succession, without motivated interpretation, then he surpasses all studies of Vedic wisdom, and all scriptures of the world. One will find in the \textit{Bhagavad-gītā} all that is contained in other scriptures, but the reader will also find things which are not to be found elsewhere. That is the specific standard of the \textit{Gītā}. It is the perfect theistic science because it is directly spoken by the Supreme Personality of Godhead, Lord Śrī Kṛṣṇa.\par
+
+\hspace*{0.5cm}The topics discussed by Dhṛtarāṣṭra and Sañjaya, as described in the \textit{Mahābhārata}, form the basic principle for this great philosophy. It is understood that this philosophy evolved on the Battlefield of Kurukṣetra, which is a sacred place of pilgrimage from the immemorial time of the Vedic age. It was spoken by the Lord when He was present personally on this planet for the guidance of mankind.\par
+
+\hspace*{0.5cm}The word \textit{dharma-kṣetra} (a place where religious rituals are performed) is significant because, on the Battlefield of Kurukṣetra, the Supreme Personality of Godhead was present on the side of Arjuna. Dhṛtarāṣṭra, the father of the Kurus, was highly doubtful about the possibility of his sons’ ultimate victory. In his doubt, he inquired from his secretary Sañjaya, “What did my sons and the sons of Pāṇḍu do?” He was confident that both his sons and the sons of his younger brother Pāṇḍu were assembled in that Field of Kurukṣetra for a determined engagement of the war. Still, his inquiry is significant. He did not want a compromise between the cousins and brothers, and he wanted to be sure of the fate of his sons on the battlefield. Because the battle was arranged to be fought at Kurukṣetra, which is mentioned elsewhere in the \textit{Vedas} as a place of worship — even for the denizens of heaven — Dhṛtarāṣṭra became very fearful about the influence of the holy place on the outcome of the battle. He knew very well that this would influence Arjuna and the sons of Pāṇḍu favorably, because by nature they were all virtuous. Sañjaya was a student of Vyāsa, and therefore, by the mercy of Vyāsa, Sañjaya was able to envision the Battlefield of Kurukṣetra even while he was in the room of Dhṛtarāṣṭra. And so, Dhṛtarāṣṭra asked him about the situation on the battlefield.\par
+
+\hspace*{0.5cm}Both the Pāṇḍavas and the sons of Dhṛtarāṣṭra belong to the same family, but Dhṛtarāṣṭra’s mind is disclosed herein. He deliberately claimed only his sons as Kurus, and he separated the sons of Pāṇḍu from the family heritage. One can thus understand the specific position of Dhṛtarāṣṭra in his relationship with his nephews, the sons of Pāṇḍu. As in the paddy field the unnecessary plants are taken out, so it is expected from the very beginning of these topics that in the religious field of Kurukṣetra where the father of religion, Śrī Kṛṣṇa, was present, the unwanted plants like Dhṛtarāṣṭra’s son Duryodhana and others would be wiped out and the thoroughly religious persons, headed by Yudhiṣṭhira, would be established by the Lord. This is the significance of the words \textit{dharma-kṣetre} and \textit{kuru-kṣetre}, apart from their historical and Vedic importance.\par
+
+\texttitle{TEXT 2}
+\markright{[TEXT 2]}
+{\centering\devanagari\setstretch{0.85} \textbf{सञ्जय उवाच} \\* \textbf{दृष्ट्वा तु पाण्डवानीकं व्यूढं दुर्योधनस्तदा ।} \\* \textbf{आचार्यमुपसङ्गम्य राजा वचनमब्रवीत् ॥ २ ॥} \par}
+\vspace{0.8em}
+
+{\centering \textit{sañjaya uvāca} \\* \textit{dṛṣṭvā tu pāṇḍavānīkaṁ} \\* \textit{vyūḍhaṁ duryodhanas tadā} \\ \textit{ācāryam upasaṅgamya} \\* \textit{rājā vacanam abravīt} \par}
+
+\sectitle{SYNONYMS}
+\noindent \textit{sañjayaḥ} — Sañjaya; \textit{uvāca} — said; \textit{dṛṣṭvā} — after seeing; \textit{tu} — but; \textit{pāṇḍava-anīkam} — the soldiers of the Pāṇḍavas; \textit{vyūḍham} — arranged in military phalanx; \textit{duryodhanaḥ} — King Duryodhana; \textit{tadā} — at that time; \textit{ācāryam} — the teacher; \textit{upasaṅgamya} — approaching nearby; \textit{rājā} — the king; \textit{vacanam} — words; \textit{abravīt} — spoke.\par
+
+\sectitle{TRANSLATION}
+\noindent \textbf{\textbf{Sañjaya said: O King, after looking over the army gathered by the sons of Pāṇḍu, King Duryodhana went to his teacher and began to speak the following words:}}\par
+
+\sectitle{PURPORT}
+\noindent Dhṛtarāṣṭra was blind from birth. Unfortunately, he was also bereft of spiritual vision. He knew very well that his sons were equally blind in the matter of religion, and he was sure that they could never reach an understanding with the Pāṇḍavas, who were all pious since birth. Still he was doubtful about the influence of the place of pilgrimage, and Sañjaya could understand his motive in asking about the situation on the battlefield. He wanted, therefore, to encourage the despondent King, and thus he warned him that his sons were not going to make any sort of compromise under the influence of the holy place. Sañjaya therefore informed the King that his son, Duryodhana, after seeing the military force of the Pāṇḍavas, at once went to the commander-in-chief, Droṇācārya, to inform him of the real position. Although Duryodhana is mentioned as the king, he still had to go to the commander on account of the seriousness of the situation. He was therefore quite fit to be a politician. But Duryodhana’s diplomatic veneer could not disguise the fear he felt when he saw the military arrangement of the Pāṇḍavas.\par
+
+\texttitle{TEXT 3}
+\markright{[TEXT 3]}
+{\centering\devanagari\setstretch{0.85} \textbf{पश्यैतां पाण्डुपुत्राणामाचार्य महतीं चमूम् ।} \\* \textbf{व्यूढां द्रुपदपुत्रेण तव शिष्येण धीमता ॥ ३ ॥} \par}
+\vspace{0.8em}
+
+{\centering \textit{paśyaitāṁ pāṇḍu-putrāṇām} \\* \textit{ācārya mahatīṁ camūm} \\ \textit{vyūḍhāṁ drupada-putreṇa} \\* \textit{tava śiṣyeṇa dhīmatā} \par}
+
+\sectitle{SYNONYMS}
+\noindent \textit{paśya} — behold; \textit{etām} — this; \textit{pāṇḍu-putrāṇām} — of the sons of Pāṇḍu; \textit{ācārya} — O teacher; \textit{mahatīm} — great; \textit{camūm} — military force; \textit{vyuḍham} — arranged; \textit{drupada-putreṇa} — by the son of Drupada; \textit{tava} — your; \textit{śiṣyeṇa} — disciple; \textit{dhīmatā} — very intelligent.\par
+
+\sectitle{TRANSLATION}
+\noindent \textbf{\textbf{O my teacher, behold the great army of the sons of Pāṇḍu, so expertly arranged by your intelligent disciple, the son of Drupada}.}\par
+
+\sectitle{PURPORT}
+\noindent Duryodhana, a great diplomat, wanted to point out the defects of Droṇācārya, the great \textit{brāhmaṇa} commander-in-chief. Droṇācārya had some political quarrel with King Drupada, the father of Draupadī, who was Arjuna’s wife. As a result of this quarrel, Drupada performed a great sacrifice, by which he received the benediction of having a son who would be able to kill Droṇācārya. Droṇācārya knew this perfectly well, and yet, as a liberal \textit{brāhmaṇa}, he did not hesitate to impart all his military secrets when the son of Drupada, Dhṛṣṭadyumna, was entrusted to him for military education. Now, on the Battlefield of Kurukṣetra, Dhṛṣṭadyumna took the side of the Pāṇḍavas, and it was he who arranged for their military phalanx, after having learned the art from Droṇācārya. Duryodhana pointed out this mistake of Droṇācārya’s so that he might be alert and uncompromising in the fighting. By this he wanted to point out also that he should not be similarly lenient in battle against the Pāṇḍavas, who were also Droṇācārya’s affectionate students. Arjuna, especially, was his most affectionate and brilliant student. Duryodhana also warned that such leniency in the fight would lead to defeat.\par
+
+\texttitle{TEXT 4}
+\markright{[TEXT 4]}
+{\centering\devanagari\setstretch{0.85} \textbf{अत्र श‍ूरा महेष्वासा भीमार्जुनसमा युधि ।} \\* \textbf{युयुधानो विराटश्च द्रुपदश्च महारथः ॥ ४ ॥} \par}
+\vspace{0.8em}
+
+{\centering \textit{atra śūrā maheṣv-āsā} \\* \textit{bhīmārjuna-samā yudhi} \\ \textit{yuyudhāno virāṭaś ca} \\* \textit{drupadaś ca mahā-rathaḥ} \par}
+
+\sectitle{SYNONYMS}
+\noindent \textit{atra} — here; \textit{śūrāḥ} — heroes; \textit{maheṣvāsāḥ} — mighty bowmen; \textit{bhīma-arjuna} — Bhīma and Arjuna; \textit{samāḥ} — equal; \textit{yudhi} — in the fight; \textit{yuyudhānaḥ} — Yuyudhāna; \textit{virāṭaḥ} — Virāṭa; \textit{ca} — also; \textit{drupadaḥ} — Drupada; \textit{ca} — also; \textit{mahārathaḥ} — great fighter.\par
+
+\sectitle{TRANSLATION}
+\noindent \textbf{\textbf{Here in this army, there are many heroic bowmen equal in fighting to Bhīma and Arjuna; there are also great fighters like Yuyudhāna, Virāṭa and Drupada}.}\par
+
+\sectitle{PURPORT}
+\noindent Even though Dhṛṣṭadyumna was not a very important obstacle in the face of Droṇācārya’s very great power in the military art, there were many others who were the cause of fear. They are mentioned by Duryodhana as great stumbling blocks on the path of victory because each and every one of them was as formidable as Bhīma and Arjuna. He knew the strength of Bhīma and Arjuna, and thus he compared the others with them.\par
+
+\texttitle{TEXT 5}
+\markright{[TEXT 5]}
+{\centering\devanagari\setstretch{0.85} \textbf{धृष्टकेतुश्चेकितानः काशिराजश्च वीर्यवान् ।} \\* \textbf{पुरुजित्कुन्तिभोजश्च शैब्यश्च नरपुङ्गवः ॥ ५ ॥} \par}
+\vspace{0.8em}
+
+{\centering \textit{dhṛṣṭaketuś cekitānaḥ} \\* \textit{kāśirājaś ca vīryavān} \\ \textit{purujit kuntibhojaś ca} \\* \textit{śaibyaś ca nara-puṅgavaḥ} \par}
+
+\sectitle{SYNONYMS}
+\noindent \textit{dhṛṣṭaketuḥ} — Dhṛṣṭaketu; \textit{cekitānaḥ} — Cekitāna; \textit{kāśirājaḥ} — Kaśirāja; \textit{ca} — also; \textit{vīryavān} — very powerful; \textit{purujit} — Purujit; \textit{kuntibhojaḥ} — Kuntibhoja; \textit{ca} — and; \textit{śaibyaḥ} — Śaibya; \textit{ca} — and; \textit{nara-puṅgavaḥ} — heroes in human society.\par
+
+\sectitle{TRANSLATION}
+\noindent \textbf{\textbf{There are also great, heroic, powerful fighters like Dhṛṣṭaketu, Cekitāna, Kāśirāja, Purujit, Kuntibhoja and Śaibya}.}\par
+
+\texttitle{TEXT 6}
+\markright{[TEXT 6]}
+{\centering\devanagari\setstretch{0.85} \textbf{युधामन्युश्च विक्रान्त उत्तमौजाश्च वीर्यवान् ।} \\* \textbf{सौभद्रो द्रौपदेयाश्च सर्व एव महारथाः ॥ ६ ॥} \par}
+\vspace{0.8em}
+
+{\centering \textit{yudhāmanyuś ca vikrānta} \\* \textit{uttamaujāś ca vīryavān} \\ \textit{saubhadro draupadeyāś ca} \\* \textit{sarva eva mahā-rathāḥ} \par}
+
+\sectitle{SYNONYMS}
+\noindent \textit{yudhāmanyuḥ} — Yudhāmanyu; \textit{ca} — and; \textit{vikrāntaḥ} — mighty; \textit{uttamaujāḥ} — Uttamaujā; \textit{ca} — and; \textit{vīryavān} — very powerful; \textit{saubhadraḥ} — the son of Subhadrā; \textit{draupadeyāḥ} — the sons of Draupadī; \textit{ca} — and; \textit{sarve} — all; \textit{eva} — certainly; \textit{mahā-rathāḥ} — great chariot fighters.\par
+
+\sectitle{TRANSLATION}
+\noindent \textbf{\textbf{There are the mighty Yudhāmanyu, the very powerful Uttamaujā, the son of Subhadrā and the sons of Draupadī}.\textbf{ All these warriors are great chariot fighters}.}\par
+
+\texttitle{TEXT 7}
+\markright{[TEXT 7]}
+{\centering\devanagari\setstretch{0.85} \textbf{अस्माकं तु विशिष्टा ये तान्निबोध द्विजोत्तम ।} \\* \textbf{नायका मम सैन्यस्य संज्ञार्थ तान्ब्रवीमि ते ॥ ७ ॥} \par}
+\vspace{0.8em}
+
+{\centering \textit{asmākaṁ tu viśiṣṭā ye} \\* \textit{tān nibodha dvijottama} \\ \textit{nāyakā mama sainyasya} \\* \textit{saṁjñārthaṁ tān bravīmi te} \par}
+
+\sectitle{SYNONYMS}
+\noindent \textit{asmākam} — our; \textit{tu} — but; \textit{viśiṣṭāḥ} — especially powerful; \textit{ye} — those; \textit{tān} — them; \textit{nibodha} — just take note, be informed; \textit{dvijottama} — the best of the \textit{brāhmaṇas}; \textit{nāyakāḥ} — captains; \textit{mama} — my; \textit{sainyasya} — of the soldiers; \textit{saṁjñā-artham} — for information; \textit{tān} — them; \textit{bravīmi} — I am speaking; \textit{te} — your.\par
+
+\sectitle{TRANSLATION}
+\noindent \textbf{\textbf{O best of the brāhmaṇas, for your information, let me tell you about the captains who are especially qualified to lead my military force}.}\par
+
+\texttitle{TEXT 8}
+\markright{[TEXT 8]}
+{\centering\devanagari\setstretch{0.85} \textbf{भवान्भीष्मश्च कर्णश्च कृपश्च समितिंजयः ।} \\* \textbf{अश्वत्थामा विकर्णश्च सौमदत्तिस्तथैव च ॥ ८ ॥} \par}
+\vspace{0.8em}
+
+{\centering \textit{bhavān bhīṣmaś ca karṇaś ca} \\* \textit{kṛpaś ca samitiṁ-jayaḥ} \\ \textit{aśvatthāmā vikarṇaś ca} \\* \textit{saumadattis tathaiva ca} \par}
+
+\sectitle{SYNONYMS}
+\noindent \textit{bhavān} — yourself; \textit{bhīṣmaḥ} — Grandfather Bhīṣma; \textit{ca} — also; \textit{karṇaḥ} — Karṇa; \textit{ca} — and; \textit{kṛpaḥ} — Kṛpa; \textit{ca} — and; \textit{samitiñjayaḥ} — always victorious in battle; \textit{aśvatthāmā} — Aśvatthāmā; \textit{vikarṇaḥ} — Vikarṇa; \textit{ca} — as well as; \textit{saumadattiḥ} — the son of Somadatta; \textit{tathā} — and as; \textit{eva} — certainly; \textit{ca} — and.\par
+
+\sectitle{TRANSLATION}
+\noindent \textbf{\textbf{There are personalities like yourself, Bhīṣma, Karṇa, Kṛpa, Aśvatthāmā, Vikarṇa and the son of Somadatta called Bhūriśravā, who are always victorious in battle}.}\par
+
+\sectitle{PURPORT}
+\noindent Duryodhana mentioned the exceptional heroes in the battle, all of whom are ever-victorious. Vikarṇa is the brother of Duryodhana, Aśvatthāmā is the son of Droṇācārya, and Saumadatti, or Bhūriśravā, is the son of the King of the Bāhlīkas. Karṇa is the half brother of Arjuna, as he was born of Kuntī before her marriage with King Pāṇḍu. Kṛpācārya married the twin sister of Droṇācārya.\par
+
+\texttitle{TEXT 9}
+\markright{[TEXT 9]}
+{\centering\devanagari\setstretch{0.85} \textbf{अन्ये च बहवः श‍ूरा मदर्थे त्यक्तजीविताः ।} \\* \textbf{नानाशस्त्रप्रहरणाः सर्वे युद्धविशारदाः ॥ ९ ॥} \par}
+\vspace{0.8em}
+
+{\centering \textit{anye ca bahavaḥ śūrā} \\* \textit{mad-arthe tyakta-jīvitāḥ} \\ \textit{nānā-śastra-praharaṇāḥ} \\* \textit{sarve yuddha-viśāradāḥ} \par}
+
+\sectitle{SYNONYMS}
+\noindent \textit{anye} — many others; \textit{ca} — also; \textit{bahavaḥ} — in great numbers; \textit{śūrāḥ} — heroes; \textit{mad-arthe} — for my sake; \textit{tyakta-jīvitāḥ} — prepared to risk life; \textit{nānā} — many; \textit{śastra} — weapons; \textit{praharaṇāḥ} — equipped with; \textit{sarve} — all of them; \textit{yuddha} — battle; \textit{viśāradāḥ} — experienced in military science.\par
+
+\sectitle{TRANSLATION}
+\noindent \textbf{\textbf{There are many other heroes who are prepared to lay down their lives for my sake}.\textbf{ All of them are well equipped with different kinds of weapons, and all are experienced in military science}.}\par
+
+\sectitle{PURPORT}
+\noindent As far as the others are concerned — like Jayadratha, Kṛtavarmā, Śalya, etc. — all are determined to lay down their lives for Duryodhana’s sake. In other words, it is already concluded that all of them would die in the Battle of Kurukṣetra for joining the party of the sinful Duryodhana. Duryodhana was, of course, confident of his victory on account of the above-mentioned combined strength of his friends.\par
+
+\texttitle{TEXT 10}
+\markright{[TEXT 10]}
+{\centering\devanagari\setstretch{0.85} \textbf{अपर्याप्त‍ं तदस्माकं बलं भीष्माभिरक्षितम् ।} \\* \textbf{पर्याप्त‍ं त्विदमेतेषां बलं भीमाभिरक्षितम् ॥ १० ॥} \par}
+\vspace{0.8em}
+
+{\centering \textit{aparyāptaṁ tad asmākaṁ} \\* \textit{balaṁ bhīṣmābhirakṣitam} \\ \textit{paryāptaṁ tv idam eteṣāṁ} \\* \textit{balaṁ bhīmābhirakṣitam} \par}
+
+\sectitle{SYNONYMS}
+\noindent \textit{aparyāptam} — immeasurable; \textit{tat} — that; \textit{asmākam} — of ours; \textit{balam} — strength; \textit{bhīṣma} — by Grandfather Bhīṣma; \textit{abhirakṣitam} — perfectly protected; \textit{paryāptam} — limited; \textit{tu} — but; \textit{idam} — all these; \textit{eteṣām} — of the Pāṇḍavas; \textit{balam} — strength; \textit{bhīma} — by Bhīma; \textit{abhirakṣitam} — carefully protected.\par
+
+\sectitle{TRANSLATION}
+\noindent \textbf{\textbf{Our strength is immeasurable, and we are perfectly protected by Grandfather Bhīṣma, whereas the strength of the Pāṇḍavas, carefully protected by Bhīma, is limited}.}\par
+
+\sectitle{PURPORT}
+\noindent Herein an estimation of comparative strength is made by Duryodhana. He thinks that the strength of his armed forces is immeasurable, being specifically protected by the most experienced general, Grandfather Bhīṣma. On the other hand, the forces of the Pāṇḍavas are limited, being protected by a less experienced general, Bhīma, who is like a fig in the presence of Bhīṣma. Duryodhana was always envious of Bhīma because he knew perfectly well that if he should die at all, he would only be killed by Bhīma. But at the same time, he was confident of his victory on account of the presence of Bhīṣma, who was a far superior general. His conclusion that he would come out of the battle victorious was well ascertained.\par
+
+\texttitle{TEXT 11}
+\markright{[TEXT 11]}
+{\centering\devanagari\setstretch{0.85} \textbf{अयनेषु च सर्वेषु यथाभागवमस्थिताः ।} \\* \textbf{भीष्ममेवाभिरक्षन्तु भवन्तः सर्व एव हि ॥ ११ ॥} \par}
+\vspace{0.8em}
+
+{\centering \textit{ayaneṣu ca sarveṣu} \\* \textit{yathā-bhāgam avasthitāḥ} \\ \textit{bhīṣmam evābhirakṣantu} \\* \textit{bhavantaḥ sarva eva hi} \par}
+
+\sectitle{SYNONYMS}
+\noindent \textit{ayaneṣu} — in the strategic points; \textit{ca} — also; \textit{sarveṣu} — everywhere; \textit{yathābhāgam} — as they are differently arranged; \textit{avasthitāḥ} — situated; \textit{bhīṣmam} — unto Grandfather Bhīṣma; \textit{eva} — certainly; \textit{abhirakṣantu} — support may be given; \textit{bhavantaḥ} — all of you; \textit{sarve} — respectively; \textit{eva} — certainly; \textit{hi} — and exactly.\par
+
+\sectitle{TRANSLATION}
+\noindent \textbf{\textbf{Now all of you must give full support to Grandfather Bhīṣma, standing at your respective strategic points in the phalanx of the army}.}\par
+
+\sectitle{PURPORT}
+\noindent Duryodhana, after praising the prowess of Bhīṣma, further considered that others might think that they had been considered less important, so in his usual diplomatic way, he tried to adjust the situation in the above words. He emphasized that Bhīṣmadeva was undoubtedly the greatest hero, but he was an old man, so everyone must especially think of his protection from all sides. He might become engaged in the fight, and the enemy might take advantage of his full engagement on one side. Therefore, it was important that other heroes would not leave their strategic positions and allow the enemy to break the phalanx. Duryodhana clearly felt that the victory of the Kurus depended on the presence of Bhīṣmadeva. He was confident of the full support of Bhīṣmadeva and Droṇācārya in the battle because he well knew that they did not even speak a word when Arjuna’s wife Draupadī, in her helpless condition, had appealed to them for justice while she was being forced to strip naked in the presence of all the great generals in the assembly. Although he knew that the two generals had some sort of affection for the Pāṇḍavas, he hoped that all such affection would now be completely given up by them, as was customary during the gambling performances.\par
+
+\texttitle{TEXT 12}
+\markright{[TEXT 12]}
+{\centering\devanagari\setstretch{0.85} \textbf{तस्य सञ्जनयन्हर्षं कुरुवृद्धः पितामहः ।} \\* \textbf{सिंहनादं विनद्योच्च‍ैः शङ्खं दध्मौ प्रतापवान् ॥ १२ ॥} \par}
+\vspace{0.8em}
+
+{\centering \textit{tasya sañjanayan harṣaṁ} \\* \textit{kuru-vṛddhaḥ pitāmahaḥ} \\ \textit{siṁha-nādaṁ vinadyoccaiḥ} \\* \textit{śaṅkhaṁ dadhmau pratāpavān} \par}
+
+\sectitle{SYNONYMS}
+\noindent \textit{tasya} — his; \textit{sañjanayan} — increasing; \textit{harṣam} — cheerfulness; \textit{kuru-vṛddhaḥ} — the grandsire of the Kuru dynasty (Bhīṣma); \textit{pitāmahaḥ} — the grandfather; \textit{siṁha-nādam} — roaring sound, like a lion; \textit{vinadya} — vibrating; \textit{uccaiḥ} — very loudly; \textit{śaṅkham} — conchshell; \textit{dadhmau} — blew; \textit{pratāpavān} — the valiant.\par
+
+\sectitle{TRANSLATION}
+\noindent \textbf{\textbf{Then Bhīṣma, the great valiant grandsire of the Kuru dynasty, the grandfather of the fighters, blew his conchshell very loudly like the sound of a lion, giving Duryodhana joy}.}\par
+
+\sectitle{PURPORT}
+\noindent The grandsire of the Kuru dynasty could understand the inner meaning of the heart of his grandson Duryodhana, and out of his natural compassion for him he tried to cheer him by blowing his conchshell very loudly, befitting his position as a lion. Indirectly, by the symbolism of the conchshell, he informed his depressed grandson Duryodhana that he had no chance of victory in the battle, because the Supreme Lord Kṛṣṇa was on the other side. But still, it was his duty to conduct the fight, and no pains would be spared in that connection.\par
+
+\texttitle{TEXT 13}
+\markright{[TEXT 13]}
+{\centering\devanagari\setstretch{0.85} \textbf{ततः शङ्खाश्च भेर्यश्च पणवानकगोमुखाः ।} \\* \textbf{सहसैवाभ्यहन्यन्त स शब्दस्तुमुलोऽभवत् ॥ १३ ॥} \par}
+\vspace{0.8em}
+
+{\centering \textit{tataḥ śaṅkhāś ca bheryaś ca} \\* \textit{paṇavānaka-gomukhāḥ} \\ \textit{sahasaivābhyahanyanta} \\* \textit{sa śabdas tumulo ’bhavat} \par}
+
+\sectitle{SYNONYMS}
+\noindent \textit{tataḥ} — thereafter; \textit{śaṅkhāḥ} — conchshells; \textit{ca} — also; \textit{bheryaḥ} — bugles; \textit{ca} — and; \textit{paṇava-ānaka} — trumpets and drums; \textit{go-mukhāḥ} — horns; \textit{sahasā} — all of a sudden; \textit{eva} — certainly; \textit{abhyahanyanta} — being simultaneously sounded; \textit{saḥ} — that; \textit{śabdaḥ} — combined sound; \textit{tumulaḥ} — tumultuous; \textit{abhavat} — became.\par
+
+\sectitle{TRANSLATION}
+\noindent \textbf{\textbf{After that, the conchshells, bugles, trumpets, drums and horns were all suddenly sounded, and the combined sound was tumultuous}.}\par
+
+\texttitle{TEXT 14}
+\markright{[TEXT 14]}
+{\centering\devanagari\setstretch{0.85} \textbf{ततः श्वेतैर्हयैर्युक्ते महति स्यन्दने स्थितौ ।} \\* \textbf{माधवः पाण्डवश्चैव दिव्यौ शङ्खौ प्रदध्मतुः ॥ १४ ॥} \par}
+\vspace{0.8em}
+
+{\centering \textit{tataḥ śvetair hayair yukte} \\* \textit{mahati syandane sthitau} \\ \textit{mādhavaḥ pāṇḍavaś caiva} \\* \textit{divyau śaṅkhau pradadhmatuḥ} \par}
+
+\sectitle{SYNONYMS}
+\noindent \textit{tataḥ} — thereafter; \textit{śvetaiḥ} — by white; \textit{hayaiḥ} — horses; \textit{yukte} — being yoked with; \textit{mahati} — in the great; \textit{syandane} — chariot; \textit{sthitau} — so situated; \textit{mādhavaḥ} — Kṛṣṇa (the husband of the goddess of fortune); \textit{pāṇḍavaḥ} — Arjuna (the son of Pāṇḍu); \textit{ca} — also; \textit{eva} — certainly; \textit{divyau} — transcendental; \textit{śaṅkhau} — conchshells; \textit{pradadhmatuḥ} — sounded.\par
+
+\sectitle{TRANSLATION}
+\noindent \textbf{\textbf{On the other side, both Lord Kṛṣṇa and Arjuna, stationed on a great chariot drawn by white horses, sounded their transcendental conchshells}.}\par
+
+\sectitle{PURPORT}
+\noindent In contrast with the conchshell blown by Bhīṣmadeva, the conchshells in the hands of Kṛṣṇa and Arjuna are described as transcendental. The sounding of the transcendental conchshells indicated that there was no hope of victory for the other side because Kṛṣṇa was on the side of the Pāṇḍavas. \textit{Jayas tu pāṇḍu-putrāṇāṁ yeṣāṁ pakṣe janārdanaḥ}. Victory is always with persons like the sons of Pāṇḍu because Lord Kṛṣṇa is associated with them. And whenever and wherever the Lord is present, the goddess of fortune is also there because the goddess of fortune never lives alone without her husband. Therefore, victory and fortune were awaiting Arjuna, as indicated by the transcendental sound produced by the conchshell of Viṣṇu, or Lord Kṛṣṇa. Besides that, the chariot on which both the friends were seated was donated by Agni (the fire-god) to Arjuna, and this indicated that this chariot was capable of conquering all sides, wherever it was drawn over the three worlds.\par
+
+\texttitle{TEXT 15}
+\markright{[TEXT 15]}
+{\centering\devanagari\setstretch{0.85} \textbf{पाञ्चजन्यं हृषीकेशो देवदत्तं धनञ्जयः ।} \\* \textbf{पौण्ड्रं दध्मौ महाशङ्खं भीमकर्मा वृकोदरः ॥ १५ ॥} \par}
+\vspace{0.8em}
+
+{\centering \textit{pāñcajanyaṁ hṛṣīkeśo} \\* \textit{devadattaṁ dhanañjayaḥ} \\ \textit{pauṇḍraṁ dadhmau mahā-śaṅkhaṁ} \\* \textit{bhīma-karmā vṛkodaraḥ} \par}
+
+\sectitle{SYNONYMS}
+\noindent \textit{pāñcajanyam} — the conchshell named Pāñcajanya; \textit{hṛṣīkeśaḥ} — Hṛṣīkeśa (Kṛṣṇa, the Lord who directs the senses of the devotees); \textit{devadattam} — the conchshell named Devadatta; \textit{dhanañjayaḥ} — Dhanañjaya (Arjuna, the winner of wealth); \textit{pauṇḍram} — the conch named Pauṇḍram; \textit{dadhmau} — blew; \textit{mahā-śaṅkham} — the terrific conchshell; \textit{bhīma-karmā} — one who performs Herculean tasks; \textit{vṛkodaraḥ} — the voracious eater (Bhīma).\par
+
+\sectitle{TRANSLATION}
+\noindent \textbf{\textbf{Then, Lord Kṛṣṇa blew His conchshell, called Pāñcajanya; Arjuna blew his, the Devadatta; and Bhīma, the voracious eater and performer of Herculean tasks, blew his terrific conchshell called Pauṇḍram}.}\par
+
+\sectitle{PURPORT}
+\noindent Lord Kṛṣṇa is referred to as Hṛṣīkeśa in this verse because He is the owner of all senses. The living entities are part and parcel of Him, and, therefore, the senses of the living entities are also part and parcel of His senses. The impersonalists cannot account for the senses of the living entities, and therefore they are always anxious to describe all living entities as sense-less, or impersonal. The Lord, situated in the hearts of all living entities, directs their senses. But, He directs in terms of the surrender of the living entity, and in the case of a pure devotee He directly controls the senses. Here, on the Battlefield of Kurukṣetra, the Lord directly controls the transcendental senses of Arjuna, and thus His particular name of Hṛṣīkeśa. The Lord has different names according to His different activities. For example, His name is Madhusūdana because He killed the demon of the name Madhu; His name is Govinda because He gives pleasure to the cows and to the senses; His name is Vāsudeva because He appeared as the son of Vasudeva; His name is Devakī-nandana because He accepted Devakī as His mother; His name is Yaśodā-nandana because He awarded His childhood pastimes to Yaśodā at Vṛndāvana; His name is Pārtha-sārathi because He worked as charioteer of His friend Arjuna. Similarly, His name is Hṛṣīkeśa because He gave direction to Arjuna on the Battlefield of Kurukṣetra.\par
+
+\hspace*{0.5cm}Arjuna is referred to as Dhanañjaya in this verse because he helped his elder brother in fetching wealth when it was required by the King to make expenditures for different sacrifices. Similarly, Bhīma is known as Vṛkodara because he could eat as voraciously as he could perform Herculean tasks, such as killing the demon Hiḍimba. So, the particular types of conchshell blown by the different personalities on the side of the Pāṇḍavas, beginning with the Lord’s, were all very encouraging to the fighting soldiers. On the other side, there were no such credits, nor the presence of Lord Kṛṣṇa, the supreme director, nor that of the goddess of fortune. So, they were predestined to lose the battle — and that was the message announced by the sounds of the conchshells.\par
+
+\texttitle{TEXTS 16-18}
+\markright{[TEXTS 16-18]}
+{\centering\devanagari\setstretch{0.85} \textbf{अनन्तविजयं राजा कुन्तीपुत्रो युधिष्ठिरः ।} \\* \textbf{नकुलः सहदेवश्च सुघोषमणिपुष्पकौ ॥ १६ ॥} \\ \textbf{काश्यश्च परमेष्वास: शिखण्डी च महारथ: ।} \\* \textbf{धृष्टद्युम्न‍ो विराटश्च सात्यकिश्‍चापराजित: ॥ १७ ॥} \\ \textbf{द्रुपदो द्रौपदेयाश्च सर्वश: पृथिवीपते ।} \\* \textbf{सौभद्रश्च महाबाहु: शङ्खान्दध्मु: पृथक्पृथक् ॥ १८ ॥} \par}
+\vspace{0.8em}
+
+{\centering \textit{anantavijayaṁ rājā} \\* \textit{kuntī-putro yudhiṣṭhiraḥ} \\ \textit{nakulaḥ sahadevaś ca} \\* \textit{sughoṣa-maṇipuṣpakau} \\[0.8em] \textit{kāśyaś ca parameṣv-āsaḥ} \\* \textit{śikhaṇḍī ca mahā-rathaḥ} \\ \textit{dhṛṣṭadyumno virāṭaś ca} \\* \textit{sātyakiś cāparājitaḥ} \\[0.8em] \textit{drupado draupadeyāś ca} \\* \textit{sarvaśaḥ pṛthivī-pate} \\ \textit{saubhadraś ca mahā-bāhuḥ} \\* \textit{śaṅkhān dadhmuḥ pṛthak pṛthak} \par}
+
+\sectitle{SYNONYMS}
+\noindent \textit{ananta-vijayam} — the conch named Anantavijaya; \textit{rājā} — the king; \textit{kuntī-putraḥ} — the son of Kuntī; \textit{yudhiṣṭhiraḥ} — Yudhiṣṭhira; \textit{nakulaḥ} — Nakula; \textit{sahadevaḥ} — Sahadeva; \textit{ca} — and; \textit{sughoṣa-maṇipuṣpakau} — the conches named Sughoṣa and Maṇipuṣpaka; \textit{kāśyaḥ} — the King of Kāśī (Vārāṇasī); \textit{ca} — and; \textit{parama-iṣu-āsaḥ} — the great archer; \textit{śikhaṇḍī} — Śikhaṇḍī; \textit{ca} — also; \textit{mahā-rathaḥ} — one who can fight alone against thousands; \textit{dhṛṣṭadyumnaḥ} — Dhṛṣṭadyumna (the son of King Drupada); \textit{virāṭaḥ} — Virāṭa (the prince who gave shelter to the Pāṇḍavas while they were in disguise); \textit{ca} — also; \textit{sātyakiḥ} — Sātyaki (the same as Yuyudhāna, the charioteer of Lord Kṛṣṇa); \textit{ca} — and; \textit{aparājitaḥ} — who had never been vanquished; \textit{drupadaḥ} — Drupada, the King of Pāñcāla; \textit{draupadeyāḥ} — the sons of Draupadī; \textit{ca} — also; \textit{sarvaśaḥ} — all; \textit{pṛthivī-pate} — O King; \textit{saubhadraḥ} — Abhimanyu, the son of Subhadrā; \textit{ca} — also; \textit{mahā-bāhuḥ} — mighty-armed; \textit{śaṅkhān} — conchshells; \textit{dadhmuḥ} — blew; \textit{pṛthak pṛthak} — each separately.\par
+
+\sectitle{TRANSLATION}
+\noindent \textbf{\textbf{King Yudhiṣṭhira, the son of Kuntī, blew his conchshell, the Anantavijaya, and Nakula and Sahadeva blew the Sughoṣa and Maṇipuṣpaka}.\textbf{ That great archer the King of Kāśī, the great fighter Śikhaṇḍī, Dhṛṣṭadyumna, Virāṭa }\textbf{and the unconquerable Sātyaki, Drupada, the sons of Draupadī, and the others, O King, such as the son of Subhadrā, greatly armed, all blew their respective conchshells}.}\par
+
+\sectitle{PURPORT}
+\noindent Sañjaya informed King Dhṛtarāṣṭra very tactfully that his unwise policy of deceiving the sons of Pāṇḍu and endeavoring to enthrone his own sons on the seat of the kingdom was not very laudable. The signs already clearly indicated that the whole Kuru dynasty would be killed in that great battle. Beginning with the grandsire, Bhīṣma, down to the grandsons like Abhimanyu and others — including kings from many states of the world — all were present there, and all were doomed. The whole catastrophe was due to King Dhṛtarāṣṭra, because he encouraged the policy followed by his sons.\par
+
+\texttitle{TEXT 19}
+\markright{[TEXT 19]}
+{\centering\devanagari\setstretch{0.85} \textbf{स घोषो धार्तराष्ट्राणां हृदयानि व्यदारयत् ।} \\* \textbf{नभश्च पृथिवीं चैव तुमुलोऽभ्यनुनादयन् ॥ १९ ॥} \par}
+\vspace{0.8em}
+
+{\centering \textit{sa ghoṣo dhārtarāṣṭrāṇāṁ} \\* \textit{hṛdayāni vyadārayat} \\ \textit{nabhaś ca pṛthivīṁ caiva} \\* \textit{tumulo ’bhyanunādayan} \par}
+
+\sectitle{SYNONYMS}
+\noindent \textit{saḥ} — that; \textit{ghoṣaḥ} — vibration; \textit{dhārtarāṣṭrāṇām} — of the sons of Dhṛtarāṣṭra; \textit{hṛdayāni} — hearts; \textit{vyadārayat} — shattered; \textit{nabhaḥ} — the sky; \textit{ca} — also; \textit{pṛthivīm} — the surface of the earth; \textit{ca} — also; \textit{eva} — certainly; \textit{tumulaḥ} — uproarious; \textit{abhyanunādayan} — by resounding.\par
+
+\sectitle{TRANSLATION}
+\noindent \textbf{\textbf{The blowing of these different conchshells became uproarious, and thus, vibrating both in the sky and on the earth, it shattered the hearts of the sons of Dhṛtarāṣṭra}.}\par
+
+\sectitle{PURPORT}
+\noindent When Bhīṣma and the others on the side of Duryodhana blew their respective conchshells, there was no heart-breaking on the part of the Pāṇḍavas. Such occurrences are not mentioned, but in this particular verse it is mentioned that the hearts of the sons of Dhṛtarāṣṭra were shattered by the sounds vibrated by the Pāṇḍavas’ party. This is due to the Pāṇḍavas and their confidence in Lord Kṛṣṇa. One who takes shelter of the Supreme Lord has nothing to fear, even in the midst of the greatest calamity.\par
+
+\texttitle{TEXT 20}
+\markright{[TEXT 20]}
+{\centering\devanagari\setstretch{0.85} \textbf{अथ व्यवस्थितान्दृष्ट्वा धार्तराष्ट्रान्कपिध्वजः ।} \\* \textbf{प्रवृत्ते शस्त्रसम्पाते धनुरुद्यम्य पाण्डवः ।} \\ \textbf{हृषीकेशं तदा वाक्यमिदमाह महीपते ॥ २० ॥} \par}
+\vspace{0.8em}
+
+{\centering \textit{atha vyavasthitān dṛṣṭvā} \\* \textit{dhārtarāṣṭrān kapi-dhvajaḥ} \\ \textit{pravṛtte śastra-sampāte} \\* \textit{dhanur udyamya pāṇḍavaḥ} \\[0.8em] \textit{hṛṣīkeśaṁ tadā vākyam} \\* \textit{idam āha mahī-pate} \par}
+
+\sectitle{SYNONYMS}
+\noindent \textit{atha} — thereupon; \textit{vyavasthitān} — situated; \textit{dṛṣṭvā} — looking on; \textit{dhārtarāṣṭrān} — the sons of Dhṛtarāṣṭra; \textit{kapi-dhvajaḥ} — one whose flag is marked with Hanumān; \textit{pravṛtte} — while about to be engaged; \textit{śastra-sampāte} — the arrows released; \textit{dhanuḥ} — bow; \textit{udyamya} — after taking up; \textit{pāṇḍavaḥ} — the son of Pāṇḍu (Arjuna); \textit{hṛṣīkeśam} — unto Lord Kṛṣṇa; \textit{tadā} — at that time; \textit{vākyam} — words; \textit{idam} — these; \textit{āha} — said; \textit{mahī-pate} — O King.\par
+
+\sectitle{TRANSLATION}
+\noindent \textbf{\textbf{O King, at that time Arjuna, the son of Pāṇḍu, who was seated in his chariot, his flag marked with Hanumān, }\textbf{took up his bow and prepared to shoot his arrows, looking at the sons of Dhṛtarāṣṭra}.\textbf{ O King, Arjuna then spoke to Hṛṣīkeśa [Kṛṣṇa] these word}\textbf{s:}}\par
+
+\sectitle{PURPORT}
+\noindent The battle was just about to begin. It is understood from the above statement that the sons of Dhṛtarāṣṭra were more or less disheartened by the unexpected arrangement of military force by the Pāṇḍavas, who were guided by the direct instructions of Lord Kṛṣṇa on the battlefield. The emblem of Hanumān on the flag of Arjuna is another sign of victory because Hanumān cooperated with Lord Rāma in the battle between Rāma and Rāvaṇa, and Lord Rāma emerged victorious. Now both Rāma and Hanumān were present on the chariot of Arjuna to help him. Lord Kṛṣṇa is Rāma Himself, and wherever Lord Rāma is, His eternal servitor Hanumān and His eternal consort Sītā, the goddess of fortune, are present. Therefore, Arjuna had no cause to fear any enemies whatsoever. And above all, the Lord of the senses, Lord Kṛṣṇa, was personally present to give him direction. Thus, all good counsel was available to Arjuna in the matter of executing the battle. In such auspicious conditions, arranged by the Lord for His eternal devotee, lay the signs of assured victory.\par
+
+\texttitle{TEXTS 21-22}
+\markright{[TEXTS 21-22]}
+{\centering\devanagari\setstretch{0.85} \textbf{अर्जुन उवाच} \\* \textbf{सेनयोरुभयोर्मध्ये रथं स्थापय मेऽच्युत ।} \\* \textbf{यावदेतान्निरीक्षेऽहं योद्‍धुकामानवस्थितान् ॥ २१ ॥} \\ \textbf{कैर्मया सह योद्धव्यमस्मिन्‍रणसमुद्यमे ॥ २२ ॥} \par}
+\vspace{0.8em}
+
+{\centering \textit{arjuna uvāca} \\* \textit{senayor ubhayor madhye} \\* \textit{rathaṁ sthāpaya me ’cyuta} \\ \textit{yāvad etān nirīkṣe ’haṁ} \\* \textit{yoddhu-kāmān avasthitān} \\[0.8em] \textit{kair mayā saha yoddhavyam} \\* \textit{asmin raṇa-samudyame} \par}
+
+\sectitle{SYNONYMS}
+\noindent \textit{arjunaḥ} — Arjuna; \textit{uvāca} — said; \textit{senayoḥ} — of the armies; \textit{ubhayoḥ} — of both the parties; \textit{madhye} — in between them; \textit{ratham} — the chariot; \textit{sthāpaya} — please keep; \textit{me} — my; \textit{acyuta} — O infallible one; \textit{yāvat} — as long as; \textit{etān} — all these; \textit{nirīkṣe} — may look; \textit{aham} — I; \textit{yoddhu-kāmān} — desiring to fight; \textit{avasthitān} — arrayed on the battlefield; \textit{kaiḥ} — with whom; \textit{mayā} — by me; \textit{saha} — with; \textit{yoddhavyam} — to fight with; \textit{asmin} — in this; \textit{raṇa} — strife; \textit{samudyame} — in the attempt.\par
+
+\sectitle{TRANSLATION}
+\noindent \textbf{\textbf{Arjuna said: O infallible one, please draw my chariot between the two armies so that I may see who is present here, who is desirous of fighting, and with whom I must contend in this great battle attempt}.}\par
+
+\sectitle{PURPORT}
+\noindent Although Lord Kṛṣṇa is the Supreme Personality of Godhead, out of His causeless mercy He was engaged in the service of His friend. He never fails in His affection for His devotees, and thus He is addressed herein as infallible. As charioteer, He had to carry out the orders of Arjuna, and since He did not hesitate to do so, He is addressed as infallible. Although He had accepted the position of a charioteer for His devotee, His supreme position was not challenged. In all circumstances, He is the Supreme Personality of Godhead, Hṛṣīkeśa, the Lord of the total senses. The relationship between the Lord and His servitor is very sweet and transcendental. The servitor is always ready to render a service to the Lord, and, similarly, the Lord is always seeking an opportunity to render some service to the devotee. He takes greater pleasure in His pure devotee’s assuming the advantageous position of ordering Him than He does in being the giver of orders. As master, everyone is under His orders, and no one is above Him to order Him. But when he finds that a pure devotee is ordering Him, He obtains transcendental pleasure, although He is the infallible master of all circumstances.\par
+
+\hspace*{0.5cm}As a pure devotee of the Lord, Arjuna had no desire to fight with his cousins and brothers, but he was forced to come onto the battlefield by the obstinacy of Duryodhana, who was never agreeable to any peaceful negotiation. Therefore, he was very anxious to see who the leading persons present on the battlefield were. Although there was no question of a peacemaking endeavor on the battlefield, he wanted to see them again, and to see how much they were bent upon demanding an unwanted war.\par
+
+\texttitle{TEXT 23}
+\markright{[TEXT 23]}
+{\centering\devanagari\setstretch{0.85} \textbf{योत्स्यमानानवेक्षेऽहं य एतेऽत्र समागताः ।} \\* \textbf{धार्तराष्ट्रस्य दुर्बुद्धेर्युद्धे प्रियचिकीर्षवः ॥ २३ ॥} \par}
+\vspace{0.8em}
+
+{\centering \textit{yotsyamānān avekṣe ’haṁ} \\* \textit{ya ete ’tra samāgatāḥ} \\ \textit{dhārtarāṣṭrasya durbuddher} \\* \textit{yuddhe priya-cikīrṣavaḥ} \par}
+
+\sectitle{SYNONYMS}
+\noindent \textit{yotsyamānān} — those who will be fighting; \textit{avekṣe} — let me see; \textit{aham} — I; \textit{ye} — who; \textit{ete} — those; \textit{atra} — here; \textit{samāgatāḥ} — assembled; \textit{dhārtarāṣṭrasya} — the son of Dhṛtarāṣṭra; \textit{durbuddheḥ} — evil-minded; \textit{yuddhe} — in the fight; \textit{priya} — well; \textit{cikīrṣavaḥ} — wishing.\par
+
+\sectitle{TRANSLATION}
+\noindent \textbf{\textbf{Let me see those who have come here to fight, wishing to please the evil-minded son of Dhṛtarāṣṭra}.}\par
+
+\sectitle{PURPORT}
+\noindent It was an open secret that Duryodhana wanted to usurp the kingdom of the Pāṇḍavas by evil plans, in collaboration with his father, Dhṛtarāṣṭra. Therefore, all persons who had joined the side of Duryodhana must have been birds of the same feather. Arjuna wanted to see them in the battlefield before the fight was begun, just to learn who they were, but he had no intention of proposing peace negotiations with them. It was also a fact that he wanted to see them to make an estimate of the strength which he had to face, although he was quite confident of victory because Kṛṣṇa was sitting by his side.\par
+
+\texttitle{TEXT 24}
+\markright{[TEXT 24]}
+{\centering\devanagari\setstretch{0.85} \textbf{सञ्जय उवाच} \\* \textbf{एवमुक्तो हृषीकेशो गुडाकेशेन भारत ।} \\* \textbf{सेनयोरुभयोर्मध्ये स्थापयित्वा रथोत्तमम् ॥ २४ ॥} \par}
+\vspace{0.8em}
+
+{\centering \textit{sañjaya uvāca} \\* \textit{evam ukto hṛṣīkeśo} \\* \textit{guḍākeśena bhārata} \\ \textit{senayor ubhayor madhye} \\* \textit{sthāpayitvā rathottamam} \par}
+
+\sectitle{SYNONYMS}
+\noindent \textit{sañjayaḥ} — Sañjaya; \textit{uvāca} — said; \textit{evam} — thus; \textit{uktaḥ} — addressed; \textit{hṛṣīkeśaḥ} — Lord Kṛṣṇa; \textit{guḍākeśena} — by Arjuna; \textit{bhārata} — O descendant of Bharata; \textit{senayoḥ} — of armies; \textit{ubhayoḥ} — of both; \textit{madhye} — in the midst of; \textit{sthāpayitvā} — by placing; \textit{rathottamam} — the finest chariot.\par
+
+\sectitle{TRANSLATION}
+\noindent \textbf{\textbf{Sañjaya said: O descendant of Bharata, being thus addressed by Arjuna, Lord Kṛṣṇa drew up the fine chariot in the midst of the armies of both parties}.}\par
+
+\sectitle{PURPORT}
+\noindent In this verse, Arjuna is referred to as Guḍākeśa. Guḍāka means sleep, and one who conquers sleep is called \textit{guḍākeśa}. Sleep also means ignorance. So, Arjuna conquered both sleep and ignorance because of his friendship with Kṛṣṇa. As a great devotee of Kṛṣṇa, he could not forget Kṛṣṇa even for a moment, because that is the nature of a devotee. Either in waking or in sleep, a devotee of the Lord can never be free from thinking of Kṛṣṇa’s name, form, quality and pastimes. Thus, a devotee of Kṛṣṇa can conquer both sleep and ignorance simply by thinking of Kṛṣṇa constantly. This is called Kṛṣṇa consciousness, or \textit{samādhi}. As Hṛṣīkeśa, or the director of the senses and mind of every living entity, Kṛṣṇa could understand Arjuna’s purpose in placing the chariot in the midst of the armies. Thus, He did so, and spoke as follows.\par
+
+\texttitle{TEXT 25}
+\markright{[TEXT 25]}
+{\centering\devanagari\setstretch{0.85} \textbf{भीष्मद्रोणप्रमुखतः सर्वेषां च महीक्षिताम् ।} \\* \textbf{उवाच पार्थ पश्यैतान्समवेतान्कुरुनिति ॥ २५ ॥} \par}
+\vspace{0.8em}
+
+{\centering \textit{bhīṣma-droṇa-pramukhataḥ} \\* \textit{sarveṣāṁ ca mahī-kṣitām} \\* \textit{uvāca pārtha paśyaitān} \\ \textit{samavetān kurūn iti} \par}
+
+\sectitle{SYNONYMS}
+\noindent \textit{bhīṣma} — Grandfather Bhīṣma; \textit{droṇa} — the teacher Droṇa; \textit{pramukhataḥ} — in the front of; \textit{sarveṣām} — all; \textit{ca} — also; \textit{mahīkṣitām} — chiefs of the world; \textit{uvāca} — said; \textit{pārtha} — O Pārtha (son of Pṛthā); \textit{paśya} — just behold; \textit{etān} — all of them; \textit{samavetān} — assembled; \textit{kurūn} — all the members of the Kuru dynasty; \textit{iti} — thus.\par
+
+\sectitle{TRANSLATION}
+\noindent \textbf{\textbf{In the presence of Bhīṣma, Droṇa and all other chieftains of the world, Hṛṣīkeśa, the Lord, said, “Just behold, Pārtha, all the Kurus who are assembled here}.”}\par
+
+\sectitle{PURPORT}
+\noindent As the Supersoul of all living entities, Lord Kṛṣṇa could understand what was going on in the mind of Arjuna. The use of the word Hṛṣīkeśa in this connection indicates that He knew everything. And the word Pārtha, or the son of Kuntī or Pṛthā, is also similarly significant in reference to Arjuna. As a friend, He wanted to inform Arjuna that because Arjuna was the son of Pṛthā, the sister of His own father Vasudeva, He had agreed to be the charioteer of Arjuna. Now what did Kṛṣṇa mean when He told Arjuna to “behold the Kurus”? Did Arjuna want to stop there and not fight? Kṛṣṇa never expected such things from the son of His aunt Pṛthā. The mind of Arjuna was thus predicated by the Lord in friendly joking.\par
+
+\texttitle{TEXT 26}
+\markright{[TEXT 26]}
+{\centering\devanagari\setstretch{0.85} \textbf{तत्रापश्यत्स्थितान्पार्थः पितॄनथ पितामहान्।} \\* \textbf{आचार्यान्मातुलान्भ्रातॄन्पुत्रान्पौत्रान्सखींस्तथा।} \\ \textbf{श्वश‍ुरान्सुहृदश्चैव सेनयोरुभयोरपि ॥ २६ ॥} \par}
+\vspace{0.8em}
+
+{\centering \textit{tatrāpaśyat sthitān pārthaḥ} \\* \textit{pitṝn atha pitāmahān} \\ \textit{ācāryān mātulān bhrātṝn} \\* \textit{putrān pautrān sakhīṁs tathā} \\[0.8em] \textit{śvaśurān suhṛdaś caiva} \\* \textit{senayor ubhayor api} \par}
+
+\sectitle{SYNONYMS}
+\noindent \textit{tatra} — there; \textit{apaśyat} — he could see; \textit{sthitān} — standing; \textit{pārthaḥ} — Arjuna; \textit{pitṝn} — fathers; \textit{atha} — also; \textit{pitāmahān} — grandfathers; \textit{ācāryān} — teachers; \textit{mātulān} — maternal uncles; \textit{bhrātṝn} — brothers; \textit{putrān} — sons; \textit{pautrān} — grandsons; \textit{sakhīn} — friends; \textit{tathā} — too; \textit{śvaśurān} — fathers-in-law; \textit{suhṛdaḥ} — well-wishers; \textit{ca} — also; \textit{eva} — certainly; \textit{senayoḥ} — of the armies; \textit{ubhayoḥ} — of both parties; \textit{api} — including.\par
+
+\sectitle{TRANSLATION}
+\noindent \textbf{\textbf{There Arjuna could see, within the midst of the armies of both parties, his fathers, grandfathers, teachers, maternal uncles, brothers, sons, grandsons, friends, and also his father-in-law and well-wishers — all present there}.}\par
+
+\sectitle{PURPORT}
+\noindent On the battlefield, Arjuna could see all kinds of relatives. He could see persons like Bhūriśravā, who were his father’s contemporaries, grandfathers Bhīṣma and Somadatta, teachers like Droṇācārya and Kṛpācārya, maternal uncles like Śalya and Śakuni, brothers like Duryodhana, sons like Lakṣmaṇa, friends like Aśvatthāmā, well-wishers like Kṛtavarmā, etc. He could see also the armies which contained many of his friends.\par
+
+\texttitle{TEXT 27}
+\markright{[TEXT 27]}
+{\centering\devanagari\setstretch{0.85} \textbf{तान्समीक्ष्य स कौन्तेयः सर्वान्बन्धूनवस्थितान् ।} \\* \textbf{कृपया परयाविष्टो विषीदन्निदमब्रवीत् ॥ २७ ॥} \par}
+\vspace{0.8em}
+
+{\centering \textit{tān samīkṣya sa kaunteyaḥ} \\* \textit{sarvān bandhūn avasthitān} \\ \textit{kṛpayā parayāviṣṭo} \\* \textit{viṣīdann idam abravīt} \par}
+
+\sectitle{SYNONYMS}
+\noindent \textit{tān} — all of them; \textit{samīkṣya} — after seeing; \textit{saḥ} — he; \textit{kaunteyaḥ} — the son of Kuntī; \textit{sarvān} — all kinds of; \textit{bandhūn} — relatives; \textit{avasthitān} — situated; \textit{kṛpayā} — by compassion; \textit{parayā} — of a high grade; \textit{āviṣṭaḥ} — overwhelmed by; \textit{viṣīdan} — while lamenting; \textit{idam} — thus; \textit{abravīt} — spoke.\par
+
+\sectitle{TRANSLATION}
+\noindent \textbf{\textbf{When the son of Kuntī, Arjuna, saw all these different grades of friends and relatives, he became overwhelmed with compassion and spoke thus:}}\par
+
+\texttitle{TEXT 28}
+\markright{[TEXT 28]}
+{\centering\devanagari\setstretch{0.85} \textbf{अर्जुन उवाच} \\* \textbf{दृष्ट्वेमं स्वजनं कृष्ण युयुत्सुं समुपस्थितम् ।} \\* \textbf{सीदन्ति मम गात्राणि मुखं च परिश‍ुष्यति ॥ २८ ॥} \par}
+\vspace{0.8em}
+
+{\centering \textit{arjuna uvāca} \\* \textit{dṛṣṭvemaṁ sva-janaṁ kṛṣṇa} \\* \textit{yuyutsuṁ samupasthitam} \\ \textit{sīdanti mama gātrāṇi} \\* \textit{mukhaṁ ca pariśuṣyati} \par}
+
+\sectitle{SYNONYMS}
+\noindent \textit{arjunaḥ} — Arjuna; \textit{uvāca} — said; \textit{dṛṣṭvā} — after seeing; \textit{imam} — all these; \textit{svajanam} — kinsmen; \textit{kṛṣṇa} — O Kṛṣṇa; \textit{yuyutsum} — all in fighting spirit; \textit{samupasthitam} — all present; \textit{sīdanti} — quivering; \textit{mama} — my; \textit{gātrāṇi} — limbs of the body; \textit{mukham} — mouth; \textit{ca} — also; \textit{pariśuṣyati} — drying up.\par
+
+\sectitle{TRANSLATION}
+\noindent \textbf{\textbf{Arjuna said: My dear Kṛṣṇa, seeing my friends and relatives present before me in such a fighting spirit, I feel the limbs of my body quivering and my mouth drying up}.}\par
+
+\sectitle{PURPORT}
+\noindent Any man who has genuine devotion to the Lord has all the good qualities which are found in godly persons or in the demigods, whereas the nondevotee, however advanced he may be in material qualifications by education and culture, lacks in godly qualities. As such, Arjuna, just after seeing his kinsmen, friends and relatives on the battlefield, was at once overwhelmed by compassion for them who had so decided to fight amongst themselves. As far as his soldiers were concerned, he was sympathetic from the beginning, but he felt compassion even for the soldiers of the opposite party, foreseeing their imminent death. And so thinking, the limbs of his body began to quiver, and his mouth became dry. He was more or less astonished to see their fighting spirit. Practically the whole community, all blood relatives of Arjuna, had come to fight with him. This overwhelmed a kind devotee like Arjuna. Although it is not mentioned here, still one can easily imagine that not only were Arjuna’s bodily limbs quivering and his mouth drying up, but that he was also crying out of compassion. Such symptoms in Arjuna were not due to weakness but to his softheartedness, a characteristic of a pure devotee of the Lord. It is said therefore:\par
+
+\vspace{0.5em}
+{\centering \textit{yasyāsti bhaktir bhagavaty akiñcanā} \\* \textit{sarvair guṇais tatra samāsate surāḥ} \\ \textit{harāv abhaktasya kuto mahad-guṇā} \\* \textit{mano-rathenāsati dhāvato bahiḥ} \par}
+\vspace{0.5em}
+
+\hspace*{0.5cm}“One who has unflinching devotion for the Personality of Godhead has all the good qualities of the demigods. But one who is not a devotee of the Lord has only material qualifications that are of little value. This is because he is hovering on the mental plane and is certain to be attracted by the glaring material energy.” (\textit{Bhāg}. 5.18.12)\par
+
+\texttitle{TEXT 29}
+\markright{[TEXT 29]}
+{\centering\devanagari\setstretch{0.85} \textbf{वेपथुश्च शरीरे मे रोमहर्षश्च जायते ।} \\* \textbf{गाण्डीवं स्रंसते हस्तात्त्वक्च‍ैव परिदह्यते ॥ २९ ॥} \par}
+\vspace{0.8em}
+
+{\centering \textit{vepathuś ca śarīre me} \\* \textit{roma-harṣaś ca jāyate} \\ \textit{gāṇḍīvaṁ sraṁsate hastāt} \\* \textit{tvak caiva paridahyate} \par}
+
+\sectitle{SYNONYMS}
+\noindent \textit{vepathuḥ} — trembling of the body; \textit{ca} — also; \textit{śarīre} — on the body; \textit{me} — my; \textit{roma-harṣaḥ} — standing of hair on end; \textit{ca} — also; \textit{jāyate} — is taking place; \textit{gāṇḍīvam} — the bow of Arjuna; \textit{sraṁsate} — is slipping; \textit{hastāt} — from the hands; \textit{tvak} — skin; \textit{ca} — also; \textit{eva} — certainly; \textit{paridahyate} — burning.\par
+
+\sectitle{TRANSLATION}
+\noindent \textbf{\textbf{My whole body is trembling, and my hair is standing on end}.\textbf{ My bow Gāṇḍīva is slipping from my hand, and my skin is burning}.}\par
+
+\sectitle{PURPORT}
+\noindent There are two kinds of trembling of the body, and two kinds of standings of the hair on end. Such phenomena occur either in great spiritual ecstasy or out of great fear under material conditions. There is no fear in transcendental realization. Arjuna’s symptoms in this situation are out of material fear — namely, loss of life. This is evident from other symptoms also; he became so impatient that his famous bow Gāṇḍīva was slipping from his hands, and, because his heart was burning within him, he was feeling a burning sensation of the skin. All these are due to a material conception of life.\par
+
+\texttitle{TEXT 30}
+\markright{[TEXT 30]}
+{\centering\devanagari\setstretch{0.85} \textbf{न च शक्न‍ोम्यवस्थातुं भ्रमतीव च मे मनः ।} \\* \textbf{निमित्तानि च पश्यामि विपरीतानि केशव ॥ ३० ॥} \par}
+\vspace{0.8em}
+
+{\centering \textit{na ca śaknomy avasthātuṁ} \\* \textit{bhramatīva ca me manaḥ} \\ \textit{nimittāni ca paśyāmi} \\* \textit{viparītāni keśava} \par}
+
+\sectitle{SYNONYMS}
+\noindent \textit{na} — nor; \textit{ca} — also; \textit{śaknomi} — am I able; \textit{avasthātum} — to stay; \textit{bhramati} — forgetting; \textit{iva} — as; \textit{ca} — and; \textit{me} — my; \textit{manaḥ} — mind; \textit{nimittāni} — causes; \textit{ca} — also; \textit{paśyāmi} — I foresee; \textit{viparītāni} — just the opposite; \textit{keśava} — O killer of the demon Keśī (Kṛṣṇa).\par
+
+\sectitle{TRANSLATION}
+\noindent \textbf{\textbf{I am now unable to stand here any longer}.\textbf{ I am forgetting myself, and my mind is reeling}.\textbf{ I foresee only evil, O killer of the Keśī demon}.}\par
+
+\sectitle{PURPORT}
+\noindent Due to his impatience, Arjuna was unable to stay on the battlefield, and he was forgetting himself on account of the weakness of his mind. Excessive attachment for material things puts a man in a bewildering condition of existence. \textit{Bhayaṁ dvitīyābhiniveśataḥ}: such fearfulness and loss of mental equilibrium take place in persons who are too affected by material conditions. Arjuna envisioned only unhappiness in the battlefield — he would not be happy even by gaining victory over the foe. The word \textit{nimitta} is significant. When a man sees only frustration in his expectations, he thinks, “Why am I here?” Everyone is interested in himself and his own welfare. No one is interested in the Supreme Self. Arjuna is supposed to show disregard for self-interest by submission to the will of Kṛṣṇa, who is everyone’s real self-interest. The conditioned soul forgets this, and therefore suffers material pains. Arjuna thought that his victory in the battle would only be a cause of lamentation for him.\par
+
+\texttitle{TEXT 31}
+\markright{[TEXT 31]}
+{\centering\devanagari\setstretch{0.85} \textbf{न च श्रेयोऽनुपश्यामि हत्वा स्वजनमाहवे ।} \\* \textbf{न काङ्क्षे विजयं कृष्ण न च राज्यं सुखानि च ॥ ३१ ॥} \par}
+\vspace{0.8em}
+
+{\centering \textit{na ca śreyo ’nupaśyāmi} \\* \textit{hatvā svajanam āhave} \\ \textit{na kāṅkṣe vijayaṁ kṛṣṇa} \\* \textit{na ca rājyaṁ sukhāni ca} \par}
+
+\sectitle{SYNONYMS}
+\noindent \textit{na} — nor; \textit{ca} — also; \textit{śreyaḥ} — good; \textit{anupaśyāmi} — do I foresee; \textit{hatvā} — by killing; \textit{svajanam} — own kinsmen; \textit{āhave} — in the fight; \textit{na} — nor; \textit{kānkṣe} — do I desire; \textit{vijayam} — victory; \textit{kṛṣṇa} — O Kṛṣṇa; \textit{na} — nor; \textit{ca} — also; \textit{rājyam} — kingdom; \textit{sukhāni} — happiness thereof; \textit{ca} — also.\par
+
+\sectitle{TRANSLATION}
+\noindent \textbf{\textbf{I do not see how any good can come from killing my own kinsmen in this battle, nor can I, my dear Kṛṣṇa, desire any subsequent victory, kingdom, or happiness}.}\par
+
+\sectitle{PURPORT}
+\noindent Without knowing that one’s self-interest is in Viṣṇu (or Kṛṣṇa), conditioned souls are attracted by bodily relationships, hoping to be happy in such situations. Under delusion, they forget that Kṛṣṇa is also the cause of material happiness. Arjuna appears to have even forgotten the moral codes for a \textit{kṣatriya}. It is said that two kinds of men, namely the \textit{kṣatriya} who dies directly in front of the battlefield under Kṛṣṇa’s personal orders and the person in the renounced order of life who is absolutely devoted to spiritual culture, are eligible to enter into the sun-globe, which is so powerful and dazzling. Arjuna is reluctant even to kill his enemies, let alone his relatives. He thought that by killing his kinsmen there would be no happiness in his life, and therefore he was not willing to fight, just as a person who does not feel hunger is not inclined to cook. He has now decided to go into the forest and live a secluded life in frustration. But as a \textit{kṣatriya}, he requires a kingdom for his subsistence, because the \textit{kṣatriyas} cannot engage themselves in any other occupation. But Arjuna has had no kingdom. Arjuna’s sole opportunity for gaining a kingdom lay in fighting with his cousins and brothers and reclaiming the kingdom inherited from his father, which he does not like to do. Therefore, he considers himself fit to go to the forest to live a secluded life of frustration.\par
+
+\texttitle{TEXTS 32-35}
+\markright{[TEXTS 32-35]}
+{\centering\devanagari\setstretch{0.85} \textbf{किं नो राज्येन गोविन्द किं भोगैर्जीवितेन वा ।} \\* \textbf{येषामर्थे काङ्‍‍क्षितं नो राज्यं भोगाः सुखानि च ॥ ३२ ॥} \\ \textbf{त इमेऽवस्थिता युद्धे प्राणांस्त्यक्त्वा धनानि च ।} \\* \textbf{आचार्याः पितरः पुत्रास्तथैव च पितामहाः ॥ ३३ ॥} \\ \textbf{मातुलाः श्वश‍ुराः पौत्राः श्यालाः सम्बन्धिनस्तथा ।} \\* \textbf{एतान्न हन्तुमिच्छामि घ्न‍तोऽपि मधुसूदन ॥ ३४ ॥} \\ \textbf{अपि त्रैलोक्यराज्यस्य हेतोः किं नु महीकृते ।} \\* \textbf{निहत्य धार्तराष्ट्रान्नः का प्रीतिः स्याज्ज‍नार्दन ॥ ३५ ॥} \par}
+\vspace{0.8em}
+
+{\centering \textit{kiṁ no rājyena govinda} \\* \textit{kiṁ bhogair jīvitena vā} \\ \textit{yeṣām arthe kāṅkṣitaṁ no} \\* \textit{rājyaṁ bhogāḥ sukhāni ca} \\[0.8em] \textit{ta ime ’vasthitā yuddhe} \\* \textit{prāṇāṁs tyaktvā dhanāni ca} \\ \textit{ācāryāḥ pitaraḥ putrās} \\* \textit{tathaiva ca pitāmahāḥ} \\[0.8em] \textit{mātulāḥ śvaśurāḥ pautrāḥ} \\* \textit{śyālāḥ sambandhinas tathā} \\ \textit{etān na hantum icchāmi} \\* \textit{ghnato ’pi madhusūdana} \\[0.8em] \textit{api trailokya-rājyasya} \\* \textit{hetoḥ kiṁ nu mahī-kṛte} \\ \textit{nihatya dhārtarāṣṭrān naḥ} \\* \textit{kā prītiḥ syāj janārdana} \par}
+
+\sectitle{SYNONYMS}
+\noindent \textit{kim} — what use; \textit{naḥ} — to us; \textit{rājyena} — is the kingdom; \textit{govinda} — O Kṛṣṇa; \textit{kim} — what; \textit{bhogaiḥ} — enjoyment; \textit{jīvitena} — by living; \textit{vā} — either; \textit{yeṣām} — for whom; \textit{arthe} — for the matter of; \textit{kāṅkṣitam} — desired; \textit{naḥ} — our; \textit{rājyam} — kingdom; \textit{bhogāḥ} — material enjoyment; \textit{sukhāni} — all happiness; \textit{ca} — also; \textit{te} — all of them; \textit{ime} — these; \textit{avasthitāḥ} — situated; \textit{yuddhe} — in this battlefield; \textit{prāṇān} — lives; \textit{tyaktvā} — giving up; \textit{dhanāni} — riches; \textit{ca} — also; \textit{ācāryāḥ} — teachers; \textit{pitaraḥ} — fathers; \textit{putrāḥ} — sons; \textit{tathā} — as well as; \textit{eva} — certainly; \textit{ca} — also; \textit{pitāmahāḥ} — grandfathers; \textit{mātulāḥ} — maternal uncles; \textit{śvaśurāḥ} — fathers-in-law; \textit{pautrāḥ} — grandsons; \textit{śyālāḥ} — brothers-in-law; \textit{sambandhinaḥ} — relatives; \textit{tathā} — as well as; \textit{etān} — all these; \textit{na} — never; \textit{hantum} — for killing; \textit{icchāmi} — do I wish; \textit{ghnataḥ} — being killed; \textit{api} — even; \textit{madhusūdana} — O killer of the demon Madhu (Kṛṣṇa); \textit{api} — even if; \textit{trailokya} — of the three worlds; \textit{rājyasya} — of the kingdoms; \textit{hetoḥ} — in exchange; \textit{kim} — what to speak of; \textit{nu} — only; \textit{mahī-kṛte} — for the sake of earth; \textit{nihatya} — by killing; \textit{dhārtarāṣṭrān} — the sons of Dhṛtarāṣṭra; \textit{naḥ} — our; \textit{kā} — what; \textit{prītiḥ} — pleasure; \textit{syāt} — will there be; \textit{janārdana} — O maintainer of all living entities.\par
+
+\sectitle{TRANSLATION}
+\noindent \textbf{\textbf{O Govinda, of what avail to us are kingdoms, happiness or even life itself when all those for whom we may desire them are now arrayed in this battlefield? O Madhusūdana, when teachers, fathers, sons, grandfathers, maternal uncles, fathers-in-law, grandsons, brothers-in-law and all relatives are ready to give up their lives and properties and are standing before me, then why should I wish to kill them, though I may survive? O maintainer of all creatures, I am not prepared to fight with them even in exchange for the three worlds, let alone this earth}.}\par
+
+\sectitle{PURPORT}
+\noindent Arjuna has addressed Lord Kṛṣṇa as Govinda because Kṛṣṇa is the object of all pleasures for cows and the senses. By using this significant word, Arjuna indicates what will satisfy his senses. Although Govinda is not meant for satisfying our senses, if we try to satisfy the senses of Govinda, then automatically our own senses are satisfied. Materially, everyone wants to satisfy his senses, and he wants God to be the order supplier for such satisfaction. The Lord will satisfy the senses of the living entities as much as they deserve, but not to the extent that they may covet. But when one takes the opposite way — namely, when one tries to satisfy the senses of Govinda without desiring to satisfy one’s own senses — then by the grace of Govinda all desires of the living entity are satisfied. Arjuna’s deep affection for community and family members is exhibited here partly due to his natural compassion for them. He is therefore not prepared to fight. Everyone wants to show his opulence to friends and relatives, but Arjuna fears that all his relatives and friends will be killed in the battlefield, and he will be unable to share his opulence after victory. This is a typical calculation of material life. The transcendental life is, however, different. Since a devotee wants to satisfy the desires of the Lord, he can, Lord willing, accept all kinds of opulence for the service of the Lord, and if the Lord is not willing, he should not accept a farthing. Arjuna did not want to kill his relatives, and if there were any need to kill them, he desired that Kṛṣṇa kill them personally. At this point, he did not know that Kṛṣṇa had already killed them before their coming into the battlefield and that he was only to become an instrument for Kṛṣṇa. This fact is disclosed in following chapters. As a natural devotee of the Lord, Arjuna did not like to retaliate against his miscreant cousins and brothers, but it was the Lord’s plan that they should all be killed. The devotee of the Lord does not retaliate against the wrongdoer, but the Lord does not tolerate any mischief done to the devotee by the miscreants. The Lord can excuse a person on His own account, but He excuses no one who has done harm to His devotees. Therefore, the Lord was determined to kill the miscreants, although Arjuna wanted to excuse them.\par
+
+\texttitle{TEXT 36}
+\markright{[TEXT 36]}
+{\centering\devanagari\setstretch{0.85} \textbf{पापमेवाश्रयेदस्मान्हत्वैतानाततायिनः ।} \\* \textbf{तस्मान्नार्हा वयं हन्तुं धार्तराष्ट्रान्सबान्धवान् ।} \\ \textbf{स्वजनं हि कथं हत्वा सुखिनः स्याम माधव ॥ ३६ ॥} \par}
+\vspace{0.8em}
+
+{\centering \textit{pāpam evāśrayed asmān} \\* \textit{hatvaitān ātatāyinaḥ} \\ \textit{tasmān nārhā vayaṁ hantuṁ} \\* \textit{dhārtarāṣṭrān sa-bāndhavān} \\[0.8em] \textit{svajanaṁ hi kathaṁ hatvā} \\* \textit{sukhinaḥ syāma mādhava} \par}
+
+\sectitle{SYNONYMS}
+\noindent \textit{pāpam} — vices; \textit{eva} — certainly; \textit{āśrayet} — must take upon; \textit{asmān} — us; \textit{hatvā} — by killing; \textit{etān} — all these; \textit{ātatāyinaḥ} — aggressors; \textit{tasmāt} — therefore; \textit{na} — never; \textit{arhāḥ} — deserving; \textit{vayam} — us; \textit{hantum} — to kill; \textit{dhārtarāṣṭrān} — the sons of Dhṛtarāṣṭra; \textit{svabāndhavān} — along with friends; \textit{svajanam} — kinsmen; \textit{hi} — certainly; \textit{katham} — how; \textit{hatvā} — by killing; \textit{sukhinaḥ} — happy; \textit{syāma} — become; \textit{mādhava} — O Kṛṣṇa, husband of the goddess of fortune.\par
+
+\sectitle{TRANSLATION}
+\noindent \textbf{\textbf{Sin will overcome us if we slay such aggressors}.\textbf{ Therefore}\textbf{,}\textbf{ it is not proper for us to kill the sons of Dhṛtarāṣṭra and our friends}.\textbf{ What should we gain, O Kṛṣṇa, husband of the goddess of fortune, and how could we be happy by killing our own kinsmen?}}\par
+
+\sectitle{PURPORT}
+\noindent According to Vedic injunctions, there are six kinds of aggressors: 1) a poison giver, 2) one who sets fire to the house, 3) one who attacks with deadly weapons, 4) one who plunders riches, 5) one who occupies another’s land, and 6) one who kidnaps a wife. Such aggressors are at once to be killed, and no sin is incurred by killing such aggressors. Such killing of aggressors is quite befitting for any ordinary man, but Arjuna was not an ordinary person. He was saintly by character, and therefore he wanted to deal with them in saintliness. This kind of saintliness, however, is not for a \textit{kṣatriya}. Although a responsible man in the administration of a state is required to be saintly, he should not be cowardly. For example, Lord Rāma was so saintly that people were anxious to live in His kingdom, (\textit{Rāma-rājya}), but Lord Rāma never showed any cowardice. Rāvaṇa was an aggressor against Rāma because he kidnapped Rāma’s wife, Sītā, but Lord Rāma gave him sufficient lessons, unparalleled in the history of the world. In Arjuna’s case, however, one should consider the special type of aggressors, namely his own grandfather, own teacher, friends, sons, grandsons, etc. Because of them, Arjuna thought that he should not take the severe steps necessary against ordinary aggressors. Besides that, saintly persons are advised to forgive. Such injunctions for saintly persons are more important than any political emergency. Arjuna considered that rather than kill his own kinsmen for political reasons, it would be better to forgive them on grounds of religion and saintly behavior. He did not, therefore, consider such killing profitable simply for the matter of temporary bodily happiness. After all, kingdoms and pleasures derived therefrom are not permanent, so why should he risk his life and eternal salvation by killing his own kinsmen? Arjuna’s addressing of Kṛṣṇa as “Mādhava,” or the husband of the goddess of fortune, is also significant in this connection. He wanted to point out to Kṛṣṇa that, as husband of the goddess of fortune, He should not have to induce Arjuna to take up a matter which would ultimately bring about misfortune. Kṛṣṇa, however, never brings misfortune to anyone, to say nothing of His devotees.\par
+
+\texttitle{TEXTS 37-38}
+\markright{[TEXTS 37-38]}
+{\centering\devanagari\setstretch{0.85} \textbf{यद्यप्येते न पश्यन्ति लोभोपहतचेतसः ।} \\* \textbf{कुलक्षयकृतं दोषं मित्रद्रोहे च पातकम् ॥ ३७ ॥} \\ \textbf{कथं न ज्ञेयमस्माभिः पापादस्मन्निवर्तितुम् ।} \\* \textbf{कुलक्षयकृतं दोषं प्रपश्यद्भ‍िर्जनार्दन ॥ ३८ ॥} \par}
+\vspace{0.8em}
+
+{\centering \textit{yady apy ete na paśyanti} \\* \textit{lobhopahata-cetasaḥ} \\ \textit{kula-kṣaya-kṛtaṁ doṣaṁ} \\* \textit{mitra-drohe ca pātakam} \\[0.8em] \textit{kathaṁ na jñeyam asmābhiḥ} \\* \textit{pāpād asmān nivartitum} \\ \textit{kula-kṣaya-kṛtaṁ doṣaṁ} \\* \textit{prapaśyadbhir janārdana} \par}
+
+\sectitle{SYNONYMS}
+\noindent \textit{yadi} — if; \textit{api} — certainly; \textit{ete} — they; \textit{na} — do not; \textit{paśyanti} — see; \textit{lobha} — greed; \textit{upahata} — overpowered; \textit{cetasaḥ} — the hearts; \textit{kula-kṣaya} — in killing the family; \textit{kṛtam} — done; \textit{doṣam} — fault; \textit{mitra-drohe} — quarreling with friends; \textit{ca} — also; \textit{pātakam} — sinful reactions; \textit{katham} — why; \textit{na} — shall not; \textit{jñeyam} — know this; \textit{asmābhiḥ} — by us; \textit{pāpāt} — from sins; \textit{asmāt} — ourselves; \textit{nivartitum} — to cease; \textit{kula-kṣaya} — the destruction of a dynasty; \textit{kṛtam} — by so doing; \textit{doṣam} — crime; \textit{prapaśyadbhiḥ} — by those who can see; \textit{janārdana} — O Kṛṣṇa.\par
+
+\sectitle{TRANSLATION}
+\noindent \textbf{\textbf{O Janārdana, although these men, overtaken by greed, see no fault in killing one’s family or quarreling with friends, why should we, with knowledge of the sin, engage in these acts?}}\par
+
+\sectitle{PURPORT}
+\noindent A \textit{kṣatriya} is not supposed to refuse to battle or gamble when he is so invited by some rival party. Under such obligation, Arjuna could not refuse to fight because he was challenged by the party of Duryodhana. In this connection, Arjuna considered that the other party might be blind to the effects of such a challenge. Arjuna, however, could see the evil consequences and could not accept the challenge. Obligation is actually binding when the effect is good, but when the effect is otherwise, then no one can be bound. Considering all these pros and cons, Arjuna decided not to fight.\par
+
+\texttitle{TEXT 39}
+\markright{[TEXT 39]}
+{\centering\devanagari\setstretch{0.85} \textbf{कुलक्षये प्रणश्यन्ति कुलधर्माः सनातनाः ।} \\* \textbf{धर्मे नष्टे कुलं कृत्स्नमधर्मोऽभिभवत्युत ॥ ३९ ॥} \par}
+\vspace{0.8em}
+
+{\centering \textit{kula-kṣaye praṇaśyanti} \\* \textit{kula-dharmāḥ sanātanāḥ} \\ \textit{dharme naṣṭe kulaṁ kṛtsnam} \\* \textit{adharmo ’bhibhavaty uta} \par}
+
+\sectitle{SYNONYMS}
+\noindent \textit{kula-kṣaye} — in destroying the family; \textit{praṇaśyanti} — becomes vanquished; \textit{kula-dharmāḥ} — the family traditions; \textit{sanātanāḥ} — eternal; \textit{dharme} — in religion; \textit{naṣṭe} — being destroyed; \textit{kulam} — family; \textit{kṛtsnam} — wholesale; \textit{adharmaḥ} — irreligious; \textit{abhibhavati} — transforms; \textit{uta} — it is said.\par
+
+\sectitle{TRANSLATION}
+\noindent \textbf{\textbf{With the destruction of dynasty, the eternal family tradition is vanquished, and thus the rest of the family becomes involved in irreligious practice}.}\par
+
+\sectitle{PURPORT}
+\noindent In the system of the \textit{varṇāśrama} institution, there are many principles of religious traditions to help members of the family grow properly and attain spiritual values. The elder members are responsible for such purifying processes in the family, beginning from birth to death. But on the death of the elder members, such family traditions of purification may stop, and the remaining younger family members may develop irreligious habits and thereby lose their chance for spiritual salvation. Therefore, for no purpose should the elder members of the family be slain.\par
+
+\texttitle{TEXT 40}
+\markright{[TEXT 40]}
+{\centering\devanagari\setstretch{0.85} \textbf{अधर्माभिभवात्कृष्ण प्रदुष्यन्ति कुलस्त्रियः ।} \\* \textbf{स्त्रीषु दुष्टासु वार्ष्णेय जायते वर्णसङ्करः ॥ ४० ॥} \par}
+\vspace{0.8em}
+
+{\centering \textit{adharmābhibhavāt kṛṣṇa} \\* \textit{praduṣyanti kula-striyaḥ} \\ \textit{strīṣu duṣṭāsu vārṣṇeya} \\* \textit{jāyate varṇa-saṅkaraḥ} \par}
+
+\sectitle{SYNONYMS}
+\noindent \textit{adharma} — irreligion; \textit{abhibhavāt} — having been predominant; \textit{kṛṣṇa} — O Kṛṣṇa; \textit{praduṣyanti} — become polluted; \textit{kula-striyaḥ} — family ladies; \textit{strīṣu} — of the womanhood; \textit{duṣṭāsu} — being so polluted; \textit{vārṣṇeya} — O descendant of Vṛṣṇi; \textit{jāyate} — it so becomes; \textit{varṇa-saṅkaraḥ} — unwanted progeny.\par
+
+\sectitle{TRANSLATION}
+\noindent \textbf{\textbf{When irreligion is prominent in the family, O Kṛṣṇa, the women of the family become corrupt, and from the degradation of womanhood, O descendant of Vṛṣṇi, comes unwanted progeny}.}\par
+
+\sectitle{PURPORT}
+\noindent Good population in human society is the basic principle for peace, prosperity and spiritual progress in life. The \textit{varṇāśrama} religion’s principles were so designed that the good population would prevail in society for the general spiritual progress of state and community. Such population depends on the chastity and faithfulness of its womanhood. As children are very prone to be misled, women are similarly very prone to degradation. Therefore, both children and women require protection by the elder members of the family. By being engaged in various religious practices, women will not be misled into adultery. According to Cāṇakya Paṇḍit, women are generally not very intelligent and therefore not trustworthy. So, the different family traditions of religious activities should always engage them, and thus their chastity and devotion will give birth to a good population eligible for participating in the \textit{varṇāśrama} system. On the failure of such \textit{varṇāśrama-dharma}, naturally the women become free to act and mix with men, and thus adultery is indulged in at the risk of unwanted population. Irresponsible men also provoke adultery in society, and thus unwanted children flood the human race at the risk of war and pestilence.\par
+
+\texttitle{TEXT 41}
+\markright{[TEXT 41]}
+{\centering\devanagari\setstretch{0.85} \textbf{सङ्करो नरकायैव कुलघ्न‍ानां कुलस्य च ।} \\* \textbf{पतन्ति पितरो ह्येषां लुप्तपिण्डोदकक्रियाः ॥ ४१ ॥} \par}
+\vspace{0.8em}
+
+{\centering \textit{saṅkaro narakāyaiva} \\* \textit{kula-ghnānāṁ kulasya ca} \\ \textit{patanti pitaro hy eṣāṁ} \\* \textit{lupta-piṇḍodaka-kriyāḥ} \par}
+
+\sectitle{SYNONYMS}
+\noindent \textit{saṅkaraḥ} — such unwanted children; \textit{narakāya} — for hellish life; \textit{eva} — certainly; \textit{kula-ghnānām} — of those who are killers of the family; \textit{kulasya} — of the family; \textit{ca} — also; \textit{patanti} — fall down; \textit{pitaraḥ} — forefathers; \textit{hi} — certainly; \textit{eṣām} — of them; \textit{lupta} — stopped; \textit{piṇḍa} — offerings; \textit{udaka} — water; \textit{kriyāḥ} — performance.\par
+
+\sectitle{TRANSLATION}
+\noindent \textbf{\textbf{When there is increase of unwanted population, a hellish situation is created both for the family and for those who destroy the family tradition}.\textbf{ In such corrupt }\textbf{families, there is no offering of oblations of food and water to the ancestors}.}\par
+
+\sectitle{PURPORT}
+\noindent According to the rules and regulations of fruitive activities, there is a need to offer periodical food and water to the forefathers of the family. This offering is performed by worship of Viṣṇu, because eating the remnants of food offered to Viṣṇu can deliver one from all kinds of sinful actions. Sometimes, the forefathers may be suffering from various types of sinful reactions, and sometimes some of them cannot even acquire a gross material body and are forced to remain in subtle bodies as ghosts. Thus, when remnants of \textit{prasādam} food are offered to forefathers by descendants, the forefathers are released from ghostly or other kinds of miserable life. Such help rendered to forefathers is a family tradition, and those who are not in devotional life are required to perform such rituals. One who is engaged in the devotional life is not required to perform such actions. Simply by performing devotional service, one can deliver hundreds and thousands of forefathers from all kinds of misery. It is stated in the \textit{Bhāgavatam}:\par
+
+\vspace{0.5em}
+{\centering \textit{devarṣi-bhūtāpta-nṛṇāṁ pitṝṇāṁ} \\* \textit{na kiṅkaro nāyam ṛṇī ca rājan} \\ \textit{sarvātmanā yaḥ śaraṇaṁ śaraṇyaṁ} \\* \textit{gato mukundaṁ parihṛtya kartam} \par}
+\vspace{0.5em}
+
+\hspace*{0.5cm}“Anyone who has taken shelter of the lotus feet of Mukunda, the giver of liberation, giving up all kinds of obligation, and has taken to the path in all seriousness, owes neither duties nor obligations to the demigods, sages, general living entities, family members, humankind or forefathers.” (\textit{Bhāg}. 11.5.41) Such obligations are automatically fulfilled by performance of devotional service to the Supreme Personality of Godhead.\par
+
+\texttitle{TEXT 42}
+\markright{[TEXT 42]}
+{\centering\devanagari\setstretch{0.85} \textbf{दोषैरेतैः कुलघ्न‍ानां वर्णसङ्करकारकैः ।} \\* \textbf{उत्साद्यन्ते जातिधर्माः कुलधर्माश्च शाश्वताः ॥ ४२ ॥} \par}
+\vspace{0.8em}
+
+{\centering \textit{doṣair etaiḥ kula-ghnānāṁ} \\* \textit{varṇa-saṅkara-kārakaiḥ} \\ \textit{utsādyante jāti-dharmāḥ} \\* \textit{kula-dharmāś ca śāśvatāḥ} \par}
+
+\sectitle{SYNONYMS}
+\noindent \textit{doṣaiḥ} — by such faults; \textit{etaiḥ} — all these; \textit{kula-ghnānām} — of the destroyer of a family; \textit{varṇa-saṅkara} — unwanted children; \textit{kārakaiḥ} — by the doers; \textit{utsādyante} — causes devastation; \textit{jāti-dharmāḥ} — community project; \textit{kula-dharmāḥ} — family tradition; \textit{ca} — also; \textit{śāśvatāḥ} — eternal.\par
+
+\sectitle{TRANSLATION}
+\noindent \textbf{\textbf{Due to the evil deeds of the destroyers of family tradition, all kinds of community projects and family welfare activities are devastated}.}\par
+
+\sectitle{PURPORT}
+\noindent The four orders of human society, combined with family welfare activities as they are set forth by the institution of the \textit{sanātana-dharma} or \textit{varṇāśrama-dharma}, are designed to enable the human being to attain his ultimate salvation. Therefore, the breaking of the \textit{sanātana-dharma} tradition by irresponsible leaders of society brings about chaos in that society, and consequently people forget the aim of life — Viṣṇu. Such leaders are called blind, and persons who follow such leaders are sure to be led into chaos.\par
+
+\texttitle{TEXT 43}
+\markright{[TEXT 43]}
+{\centering\devanagari\setstretch{0.85} \textbf{उत्सन्नकुलधर्माणां मनुष्याणां जनार्दन ।} \\* \textbf{नरके नियतं वासो भवतीत्यनुश‍ुश्रुम ॥ ४३ ॥} \par}
+\vspace{0.8em}
+
+{\centering \textit{utsanna-kula-dharmāṇāṁ} \\* \textit{manuṣyāṇāṁ janārdana} \\ \textit{narake niyataṁ vāso} \\* \textit{bhavatīty anuśuśruma} \par}
+
+\sectitle{SYNONYMS}
+\noindent \textit{utsanna} — spoiled; \textit{kula-dharmāṇām} — of those who have the family traditions; \textit{manuṣyāṇām} — of such men; \textit{janārdana} — O Kṛṣṇa; \textit{narake} — in hell; \textit{niyatam} — always; \textit{vāsaḥ} — residence; \textit{bhavati} — it so becomes; \textit{iti} — thus; \textit{anuśuśruma} — I have heard by disciplic succession.\par
+
+\sectitle{TRANSLATION}
+\noindent \textbf{\textbf{O Kṛṣṇa, maintainer of the people, I have heard by disciplic succession that those who destroy family traditions dwell always in hell}.}\par
+
+\sectitle{PURPORT}
+\noindent Arjuna bases his argument not on his own personal experience, but on what he has heard from the authorities. That is the way of receiving real knowledge. One cannot reach the real point of factual knowledge without being helped by the right person who is already established in that knowledge. There is a system in the \textit{varṇāśrama} institution by which one has to undergo the process of ablution before death for his sinful activities. One who is always engaged in sinful activities must utilize the process of ablution called the \textit{prāyaścitta}. Without doing so, one surely will be transferred to hellish planets to undergo miserable lives as the result of sinful activities.\par
+
+\texttitle{TEXT 44}
+\markright{[TEXT 44]}
+{\centering\devanagari\setstretch{0.85} \textbf{अहो बत महत्पापं कर्तुं व्यवसिता वयम् ।} \\* \textbf{यद्राज्यसुखलोभेन हन्तुं स्वजनमुद्यताः ॥ ४४ ॥} \par}
+\vspace{0.8em}
+
+{\centering \textit{aho bata mahat pāpaṁ} \\* \textit{kartuṁ vyavasitā vayam} \\ \textit{yad rājya-sukha-lobhena} \\* \textit{hantuṁ svajanam udyatāḥ} \par}
+
+\sectitle{SYNONYMS}
+\noindent \textit{ahaḥ} — alas; \textit{bata} — how strange it is; \textit{mahat} — great; \textit{pāpam} — sins; \textit{kartum} — to perform; \textit{vyavasitāḥ} — decided; \textit{vayam} — we; \textit{yat} — so that; \textit{rājya} — kingdom; \textit{sukha-lobhena} — driven by greed for royal happiness; \textit{hantum} — to kill; \textit{svajanam} — kinsmen; \textit{udyatāḥ} — trying for.\par
+
+\sectitle{TRANSLATION}
+\noindent \textbf{\textbf{Alas, how strange it is that we are preparing to commit greatly sinful acts, driven by the desire to enjoy royal happiness}.}\par
+
+\sectitle{PURPORT}
+\noindent Driven by selfish motives, one may be inclined to such sinful acts as the killing of one’s own brother, father, or mother. There are many such instances in the history of the world. But Arjuna, being a saintly devotee of the Lord, is always conscious of moral principles and therefore takes care to avoid such activities.\par
+
+\texttitle{TEXT 45}
+\markright{[TEXT 45]}
+{\centering\devanagari\setstretch{0.85} \textbf{यदि मामप्रतीकारमशस्त्रं शस्त्रपाणयः ।} \\* \textbf{धार्तराष्ट्रा रणे हन्युस्तन्मे क्षेमतरं भवेत् ॥ ४५ ॥} \par}
+\vspace{0.8em}
+
+{\centering \textit{yadi mām apratīkāram} \\* \textit{aśastraṁ śastra-pāṇayaḥ} \\ \textit{dhārtarāṣṭrā raṇe hanyus} \\* \textit{tan me kṣemataraṁ bhavet} \par}
+
+\sectitle{SYNONYMS}
+\noindent \textit{yadi} — even if; \textit{mām} — unto me; \textit{apratīkāram} — without being resistant; \textit{aśastram} — without being fully equipped; \textit{śastra-pāṇayaḥ} — those with weapons in hand; \textit{dhārtarāṣṭrāḥ} — the sons of Dhṛtarāṣṭra; \textit{raṇe} — in the battlefield; \textit{hanyuḥ} — may kill; \textit{tat} — that; \textit{me} — mine; \textit{kṣemataram} — better; \textit{bhavet} — become.\par
+
+\sectitle{TRANSLATION}
+\noindent \textbf{\textbf{I would consider it better for the sons of Dhṛtarāṣṭra to kill me unarmed and unresisting, rather than fight with them}.}\par
+
+\sectitle{PURPORT}
+\noindent It is the custom — according to \textit{kṣatriya} fighting principles — that an unarmed and unwilling foe should not be attacked. Arjuna, however, in such an enigmatic position, decided he would not fight if he were attacked by the enemy. He did not consider how much the other party was bent upon fighting. All these symptoms are due to softheartedness resulting from his being a great devotee of the Lord.\par
+
+\texttitle{TEXT 46}
+\markright{[TEXT 46]}
+{\centering\devanagari\setstretch{0.85} \textbf{सञ्जय उवाच} \\* \textbf{एवमुक्त्वार्जुनः संख्ये रथोपस्थ उपाविशत् ।} \\* \textbf{विसृज्य सशरं चापं शोकसंविग्न‍मानसः ॥ ४६ ॥} \par}
+\vspace{0.8em}
+
+{\centering \textit{sañjaya uvāca} \\* \textit{evam uktvārjunaḥ saṅkhye} \\* \textit{rathopastha upāviśat} \\ \textit{visṛjya sa-śaraṁ cāpaṁ} \\* \textit{śoka-saṁvigna-mānasaḥ} \par}
+
+\sectitle{SYNONYMS}
+\noindent \textit{sañjayaḥ} — Sañjaya; \textit{uvāca} — said; \textit{evam} — thus; \textit{uktvā} — saying; \textit{arjunaḥ} — Arjuna; \textit{saṅkhye} — in the battlefield; \textit{ratha} — chariot; \textit{upasthaḥ} — situated on; \textit{upāviśat} — sat down again; \textit{visṛjya} — keeping aside; \textit{sa-śaram} — along with arrows; \textit{cāpam} — the bow; \textit{śoka} — lamentation; \textit{saṁvigna} — distressed; \textit{mānasaḥ} — within the mind.\par
+
+\sectitle{TRANSLATION}
+\noindent \textbf{\textbf{Sañjaya said: Arjuna, having thus spoken on the battlefield, cast aside his bow and arrows and sat down on the chariot, his mind overwhelmed with grief}.}\par
+
+\sectitle{PURPORT}
+\noindent While observing the situation of his enemy, Arjuna stood up on the chariot, but he was so afflicted with lamentation that he sat down again, setting aside his bow and arrows. Such a kind and softhearted person, in the devotional service of the Lord, is fit to receive self-knowledge.\par
+
+\vspace{2em}
+
+\noindent \textit{Thus end the Bhaktivedanta Purports to the First Chapter of the Śrīmad-Bhagavad-gītā in the matter of Observing the Armies on the Battlefield of Kurukṣetra.}\par
+
+\end{document}

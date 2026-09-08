@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Sanctum - Vāṇīsāgara</title>
+    
+    <!-- PREVENTS THEME & HUE FLASHING ON PAGE LOAD -->
+    <script>
+        const savedTheme = localStorage.getItem('vanisagara_theme');
+        if (savedTheme) { document.documentElement.setAttribute('data-theme', savedTheme); }
+        const savedColor = localStorage.getItem('vanisagara_hero_glow');
+        if (savedColor) { document.documentElement.style.setProperty('--hero-glow', savedColor); }
+    </script>
+
+    <style>
+        @property --hero-glow { syntax: '<color>'; inherits: true; initial-value: #5c4000; }
+
+        :root {
+            --bg-main: #141414; --bg-nav: rgba(20, 20, 20, 0.7); --hero-glow: #5c4000; 
+            --text-primary: #f5f5f7; --text-secondary: #86868b; --accent: #ffffff; 
+            --card-bg: #1e1e1e; --border: rgba(255, 255, 255, 0.1);
+        }
+
+        [data-theme="light"] {
+            --bg-main: #ffffff; --bg-nav: rgba(255, 255, 255, 0.7); 
+            --text-primary: #000000; --text-secondary: #5e5e60; --accent: #1d1d1f; 
+            --card-bg: #ffffff; --border: rgba(0, 0, 0, 0.1);
+        }
+
+        html { scroll-behavior: smooth; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+
+        body {
+            background-color: var(--bg-main); color: var(--text-primary);
+            transition: background-color 0.4s ease, color 0.4s ease;
+            overflow-y: scroll; overflow-x: hidden; display: flex; flex-direction: column; min-height: 100vh;
+            -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* --- THE ANTI-BLUR ENGINE & HARDWARE ACCELERATION --- */
+        #main-content, .chapter-card { backface-visibility: hidden; -webkit-backface-visibility: hidden; transform-style: preserve-3d; perspective: 1000px; will-change: transform, opacity; }
+        .theme-toggle, .color-toggle, .hamburger { backface-visibility: hidden; -webkit-backface-visibility: hidden; transform: translateZ(0); -webkit-font-smoothing: subpixel-antialiased; }
+
+        .vanisagara-text { font-family: 'Times New Roman', Times, serif !important; font-weight: 400 !important; letter-spacing: 0.02em !important; -webkit-font-smoothing: auto !important; -moz-osx-font-smoothing: auto !important; }
+
+        #main-content { animation: appEnter 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.4s ease; width: 100%; overflow-x: hidden; }
+        #main-content.page-exit { transform: translateY(-15px); opacity: 0; }
+        @keyframes appEnter { 0% { transform: translateY(20px); opacity: 0; } 100% { transform: translateY(0); opacity: 1; } }
+
+        /* --- NAVIGATION --- */
+        nav { position: fixed; top: 0; width: 100%; height: 60px; background: var(--bg-nav); backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px); display: flex; align-items: center; justify-content: space-between; padding: 0 5%; z-index: 100; border-bottom: 1px solid var(--border); transition: background 0.4s ease; }
+        .nav-brand { display: inline-block; font-size: 22px; text-decoration: none; color: var(--text-primary); white-space: nowrap; }
+        .brand-icon { width: 24px; height: 24px; object-fit: contain; vertical-align: middle; margin-right: 8px; position: relative; top: -1px; }
+        .nav-controls { display: flex; align-items: center; gap: 20px; }
+        .nav-links { display: flex; list-style: none; gap: 24px; }
+        .nav-links a { text-decoration: none; color: var(--text-primary); font-size: 15px; font-weight: 500; transition: opacity 0.2s; }
+        .nav-links a:hover { opacity: 0.7; }
+        .nav-divider { width: 1px; height: 28px; background-color: var(--text-secondary); opacity: 0.4; }
+        .nav-icons { display: flex; align-items: center; gap: 12px; }
+        .theme-toggle, .color-toggle { background: none; border: none; color: var(--text-primary); cursor: pointer; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease, visibility 0.3s ease; }
+        .hue-icon { width: 20px; height: 20px; object-fit: contain; }
+        .theme-toggle:active, .color-toggle:active { transform: scale(0.85) translateZ(0); }
+        .theme-toggle:hover, .color-toggle:hover { opacity: 0.7; }
+        [data-theme="dark"] .logo-light, [data-theme="dark"] .hue-light { display: none; }
+        [data-theme="light"] .logo-dark, [data-theme="light"] .hue-dark { display: none; }
+        [data-theme="light"] .color-toggle { opacity: 0; visibility: hidden; pointer-events: none; }
+
+        /* --- SANCTUM LOBBY UI --- */
+        .sanctum-wrapper { position: relative; flex: 1; display: flex; flex-direction: column; align-items: center; padding: 140px 5% 100px 5%; overflow: hidden; z-index: 2; }
+        .sanctum-glow { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: var(--hero-glow); -webkit-mask-image: radial-gradient(circle at 50% 15%, black 0%, transparent 60%); mask-image: radial-gradient(circle at 50% 15%, black 0%, transparent 60%); transition: --hero-glow 0.75s ease-in-out, background-color 0.75s ease-in-out, opacity 0.4s ease; pointer-events: none; z-index: 1; }
+        [data-theme="light"] .sanctum-glow { opacity: 0; }
+        
+        .sanctum-header { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 50px; width: 100%; }
+        .sanctum-title { font-size: clamp(32px, 5vw, 56px); font-weight: 600; line-height: 1.1; margin-bottom: 20px; color: var(--text-primary); letter-spacing: -0.5px; }
+        .divider { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
+        .divider-line { height: 1px; width: 40px; background-color: var(--text-secondary); }
+        .divider-circle { width: 6px; height: 6px; border-radius: 50%; border: 1px solid var(--text-secondary); }
+        .book-subtitle { font-size: clamp(24px, 4vw, 36px); margin-bottom: 10px; color: var(--text-primary); }
+
+        .chapter-grid { position: relative; z-index: 2; display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; width: 100%; max-width: 1200px; margin: 0 auto; }
+        .chapter-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; padding: 28px 20px; text-decoration: none; color: var(--text-primary); transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; height: 100%; }
+        
+        @media (hover: hover) { .chapter-card:hover:not(.chapter-locked) { transform: translateY(-4px) translateZ(0); box-shadow: 0 12px 30px rgba(0,0,0,0.4); border-color: var(--text-secondary); } }
+        .chapter-card:active:not(.chapter-locked) { transform: scale(0.98) translateZ(0); opacity: 0.8; transition: opacity 0.1s ease, transform 0.1s ease; }
+        
+        .chapter-number { font-size: 13px; font-weight: 700; color: var(--text-secondary); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1.5px; }
+        .chapter-name { font-size: 22px; line-height: 1.3; }
+        
+        /* The Locked State for Chapters 3-18 */
+        .chapter-locked { opacity: 0.3; pointer-events: none; filter: grayscale(100%); cursor: default; }
+
+        /* --- MOBILE FIREWALL --- */
+        .hamburger, .mobile-menu-overlay { display: none; }
+        @media (max-width: 900px) {
+            html { scroll-behavior: auto !important; }
+            * { -webkit-tap-highlight-color: transparent; }
+            body { margin: 0; }
+            #main-content { animation: mobileFadeIn 0.5s ease forwards !important; transform: none !important; width: 100%; }
+            @keyframes mobileFadeIn { 0% { opacity: 0; } 100% { opacity: 1; } }
+            html.no-scroll, body.no-scroll { overflow: hidden !important; scroll-snap-type: none !important; }
+            
+            nav { justify-content: space-between; padding: 0 5%; position: fixed; top: 0; width: 100%; height: 60px; z-index: 9999 !important; display: flex; align-items: center; }
+            .nav-brand { position: absolute; left: 50%; top: 55%; transform: translate(-50%, -50%); display: flex; align-items: center; justify-content: center; }
+            nav .vanisagara-text { display: none !important; } 
+            .brand-icon { width: 44px; height: 44px; margin-right: 0; }
+            .nav-controls { width: 100%; height: 100%; display: flex; justify-content: space-between; align-items: center; }
+            .nav-icons { order: 1; display: flex; align-items: center; gap: 15px; } 
+            .theme-toggle:active, .color-toggle:active { transform: scale(0.85) translateZ(0); }
+            
+            .hamburger { order: 2; background: none; border: none; cursor: pointer; z-index: 10000; transition: transform 0.2s ease; display: flex !important; align-items: center; justify-content: center; padding: 0 !important; margin: 0 !important; transform: translateY(1.5px) !important; }
+            .hamburger:active { transform: translateY(1.5px) scale(0.85) translateZ(0) !important; }
+            .hamburger svg, .theme-toggle svg, .color-toggle img { display: block; }
+            [data-theme="dark"] .theme-toggle, [data-theme="dark"] .color-toggle, [data-theme="dark"] .hamburger { color: #ffffff !important; }
+            .nav-links, .nav-divider { display: none; }
+
+            .mobile-menu-overlay { display: flex; position: fixed; top: 0; left: 0; width: 100%; height: 100dvh; background-color: var(--bg-main); z-index: 9998; flex-direction: column; justify-content: center; align-items: center; padding-top: 0; padding-bottom: 12vh; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; }
+            .mobile-menu-overlay.active { opacity: 1; visibility: visible; }
+            .mobile-menu-content { display: flex; flex-direction: column; align-items: center; gap: 14px; }
+            .mobile-menu-content > * { opacity: 0; transform: translateY(-15px); transition: opacity 0.2s ease, transform 0.2s ease; }
+            .mobile-menu-overlay.active .mobile-menu-content > *:nth-child(1) { transition: opacity 0.4s ease 0.1s, transform 0.4s cubic-bezier(0.16,1,0.3,1) 0.1s; opacity: 1; transform: translateY(0); }
+            .mobile-menu-overlay.active .mobile-menu-content > *:nth-child(2) { transition: opacity 0.4s ease 0.2s, transform 0.4s cubic-bezier(0.16,1,0.3,1) 0.2s; opacity: 1; transform: translateY(0); }
+            .mobile-menu-overlay.active .mobile-menu-content > *:nth-child(3) { transition: opacity 0.4s ease 0.3s, transform 0.4s cubic-bezier(0.16,1,0.3,1) 0.3s; opacity: 1; transform: translateY(0); }
+            .mobile-menu-overlay.active .mobile-menu-content > *:nth-child(4) { transition: opacity 0.4s ease 0.4s, transform 0.4s cubic-bezier(0.16,1,0.3,1) 0.4s; opacity: 1; transform: translateY(0); }
+            .mobile-menu-content a { color: var(--text-primary); font-size: 22px; text-decoration: none; font-weight: 400; font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+            .mobile-menu-divider { width: 180px; height: 1px; background: linear-gradient(90deg, transparent, var(--text-primary), transparent); opacity: 0.4; }
+            .mobile-menu-footer { position: absolute; bottom: 8vh; }
+            .menu-logo { width: 140px; height: auto; opacity: 0.95; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3)); }
+
+            .sanctum-wrapper { padding-top: 120px; padding-bottom: 80px; }
+            .chapter-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="/" class="nav-brand" style="text-decoration: none; color: inherit;">
+            <img src="images/logos/website/transparent/vanisagara-white.webp" alt="Vāṇīsāgara Logo" class="brand-icon logo-dark"><img src="images/logos/website/transparent/vanisagara-black.webp" alt="Vāṇīsāgara Logo" class="brand-icon logo-light"><span class="vanisagara-text">Vāṇīsāgara</span>
+        </a>
+        <div class="nav-controls">
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/sanctum">Sanctum</a></li>
+                <li><a href="/about-us">About Us</a></li>
+            </ul>
+            <div class="nav-divider"></div>
+            
+            <div class="nav-icons">
+                <button class="theme-toggle" id="themeBtn" aria-label="Toggle Theme">
+                    <svg id="theme-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <!-- Theme icon injected via JS -->
+                    </svg>
+                </button>
+                <button class="color-toggle" id="colorBtn" aria-label="Cycle Glow Color" title="Change Background Hue">
+                    <img src="images/logos/nav-bar/hue-white.webp" alt="Hue Palette" class="hue-icon hue-dark">
+                    <img src="images/logos/nav-bar/hue-black.webp" alt="Hue Palette" class="hue-icon hue-light">
+                </button>
+            </div>
+
+            <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            </button>
+        </div>
+    </nav>
+
+    <div class="mobile-menu-overlay" id="mobileMenu">
+        <div class="mobile-menu-content">
+            <a href="/">Home</a>
+            <a href="/sanctum">Sanctum</a>
+            <div class="mobile-menu-divider"></div>
+            <a href="/about-us">About Us</a>
+        </div>
+        <div class="mobile-menu-footer">
+            <img src="images/logos/website/transparent/vanisagara-white.webp" alt="Logo" class="menu-logo logo-dark">
+            <img src="images/logos/website/transparent/vanisagara-black.webp" alt="Logo" class="menu-logo logo-light">
+        </div>
+    </div>
+
+    <!-- MAIN SANCTUM CONTENT -->
+    <main class="sanctum-wrapper" id="main-content">
+        <div class="sanctum-glow"></div>
+        
+        <section class="sanctum-header">
+            <h1 class="sanctum-title">The Sanctum</h1>
+            <div class="divider">
+                <div class="divider-line"></div>
+                <div class="divider-circle"></div>
+                <div class="divider-line"></div>
+            </div>
+            <h2 class="book-subtitle vanisagara-text">Bhagavad-gītā As It Is</h2>
+        </section>
+
+        <section class="chapter-grid" id="bg-chapters">
+            <!-- Active Test Chapters -->
+            <a href="#" class="chapter-card">
+                <div class="chapter-number">Chapter 1</div>
+                <div class="chapter-name vanisagara-text">Observing the Armies on the Battlefield of Kurukṣetra</div>
+            </a>
+            
+            <a href="#" class="chapter-card">
+                <div class="chapter-number">Chapter 2</div>
+                <div class="chapter-name vanisagara-text">Contents of the Gītā Summarized</div>
+            </a>
+
+            <!-- Locked Chapters (Visual placeholders for now) -->
+            <div class="chapter-card chapter-locked">
+                <div class="chapter-number">Chapter 3</div>
+                <div class="chapter-name vanisagara-text">Karma-yoga</div>
+            </div>
+            
+            <div class="chapter-card chapter-locked">
+                <div class="chapter-number">Chapter 4</div>
+                <div class="chapter-name vanisagara-text">Transcendental Knowledge</div>
+            </div>
+            
+            <div class="chapter-card chapter-locked">
+                <div class="chapter-number">Chapter 5</div>
+                <div class="chapter-name vanisagara-text">Karma-yoga—Action in Kṛṣṇa Consciousness</div>
+            </div>
+
+            <div class="chapter-card chapter-locked">
+                <div class="chapter-number">Chapter 6</div>
+                <div class="chapter-name vanisagara-text">Dhyāna-yoga</div>
+            </div>
+            
+            <div class="chapter-card chapter-locked">
+                <div class="chapter-number">Chapter 7</div>
+                <div class="chapter-name vanisagara-text">Knowledge of the Absolute</div>
+            </div>
+            
+            <div class="chapter-card chapter-locked">
+                <div class="chapter-number">Chapter 8</div>
+                <div class="chapter-name vanisagara-text">Attaining the Supreme</div>
+            </div>
+
+            <div class="chapter-card chapter-locked">
+                <div class="chapter-number">Chapter 9</div>
+                <div class="chapter-name vanisagara-text">The Most Confidential Knowledge</div>
+            </div>
+
+            <div class="chapter-card chapter-locked">
+                <div class="chapter-number">Chapter 10</div>
+                <div class="chapter-name vanisagara-text">The Opulence of the Absolute</div>
+            </div>
+
+            <div class="chapter-card chapter-locked">
+                <div class="chapter-number">Chapter 11</div>
+                <div class="chapter-name vanisagara-text">The Universal Form</div>
+            </div>
+
+            <div class="chapter-card chapter-locked">
+                <div class="chapter-number">Chapter 12</div>
+                <div class="chapter-name vanisagara-text">Devotional Service</div>
+            </div>
+
+            <div class="chapter-card chapter-locked">
+                <div class="chapter-number">Chapter 13</div>
+                <div class="chapter-name vanisagara-text">Nature, the Enjoyer, and Consciousness</div>
+            </div>
+
+            <div class="chapter-card chapter-locked">
+                <div class="chapter-number">Chapter 14</div>
+                <div class="chapter-name vanisagara-text">The Three Modes of Material Nature</div>
+            </div>
+
+            <div class="chapter-card chapter-locked">
+                <div class="chapter-number">Chapter 15</div>
+                <div class="chapter-name vanisagara-text">The Yoga of the Supreme Person</div>
+            </div>
+
+            <div class="chapter-card chapter-locked">
+                <div class="chapter-number">Chapter 16</div>
+                <div class="chapter-name vanisagara-text">The Divine and Demoniac Natures</div>
+            </div>
+
+            <div class="chapter-card chapter-locked">
+                <div class="chapter-number">Chapter 17</div>
+                <div class="chapter-name vanisagara-text">The Divisions of Faith</div>
+            </div>
+
+            <div class="chapter-card chapter-locked">
+                <div class="chapter-number">Chapter 18</div>
+                <div class="chapter-name vanisagara-text">Conclusion—The Perfection of Renunciation</div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            
+            // --- 0.5 THE TITANIUM PIXEL LOCK ---
+            function setMobileHeight() { document.documentElement.style.setProperty('--app-height', `${window.innerHeight}px`); }
+            window.addEventListener('resize', setMobileHeight);
+            window.addEventListener('orientationchange', setMobileHeight);
+            setMobileHeight();
+            
+            // --- 1. NETFLIX PAGE TRANSITION LOGIC ---
+            const mainContent = document.getElementById('main-content');
+            document.querySelectorAll('a').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const target = this.getAttribute('href');
+                    if (target === '#') { e.preventDefault(); return; } // Prevent jump on empty chapter links
+                    
+                    if (target && !target.startsWith('http') && this.getAttribute('target') !== '_blank') {
+                        e.preventDefault();
+                        let currentPath = window.location.pathname.replace(/^\/|\.html$/g, '');
+                        if (currentPath === 'index' || currentPath === '') currentPath = '/';
+                        let targetPath = target.replace(/^\/|\.html$/g, '');
+                        if (targetPath === 'index' || targetPath === '') targetPath = '/';
+
+                        if (targetPath === currentPath) { window.scrollTo({ top: 0, behavior: 'smooth' }); return; }
+
+                        mainContent.classList.add('page-exit');
+                        setTimeout(() => { window.location.href = target; }, 400); 
+                    }
+                });
+            });
+
+            // --- 3. LOCAL STORAGE THEME TOGGLE LOGIC ---
+            const themeBtn = document.getElementById('themeBtn');
+            const root = document.documentElement;
+            const icon = document.getElementById('theme-icon');
+            const moonSvg = `<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>`;
+            const sunSvg = `<circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>`;
+
+            if (root.getAttribute('data-theme') === 'light') { icon.innerHTML = moonSvg; } else { icon.innerHTML = sunSvg; }
+
+            themeBtn.addEventListener('click', () => {
+                const currentTheme = root.getAttribute('data-theme');
+                if (currentTheme === 'dark') {
+                    root.setAttribute('data-theme', 'light');
+                    localStorage.setItem('vanisagara_theme', 'light');
+                    icon.innerHTML = moonSvg;
+                } else {
+                    root.setAttribute('data-theme', 'dark');
+                    localStorage.setItem('vanisagara_theme', 'dark');
+                    icon.innerHTML = sunSvg;
+                }
+            });
+
+            // --- 7. COLOR CYCLING LOGIC ---
+            const colorBtn = document.getElementById('colorBtn');
+            const royalColors = ['#5c4000', '#800020', '#002147', '#3b1459', '#0a3a2a'];
+            let currentColorIndex = 0;
+            const savedColor = localStorage.getItem('vanisagara_hero_glow');
+            if (savedColor) {
+                const foundIndex = royalColors.indexOf(savedColor);
+                if (foundIndex !== -1) {
+                    currentColorIndex = foundIndex;
+                    document.documentElement.style.setProperty('--hero-glow', royalColors[currentColorIndex]);
+                }
+            }
+
+            colorBtn.addEventListener('click', () => {
+                currentColorIndex = (currentColorIndex + 1) % royalColors.length;
+                const newColor = royalColors[currentColorIndex];
+                document.documentElement.style.setProperty('--hero-glow', newColor);
+                localStorage.setItem('vanisagara_hero_glow', newColor);
+            });
+			
+            // --- 8. MOBILE HAMBURGER MENU LOGIC ---
+            const hamburgerBtn = document.getElementById('hamburgerBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+            
+            if (hamburgerBtn && mobileMenu) {
+                hamburgerBtn.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('active');
+                    document.body.classList.toggle('no-scroll');
+                    if (mobileMenu.classList.contains('active')) {
+                        hamburgerBtn.innerHTML = `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>`;
+                    } else {
+                        hamburgerBtn.innerHTML = `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>`;
+                    }
+                });
+
+                const menuLinks = mobileMenu.querySelectorAll('a');
+                menuLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenu.classList.remove('active');
+                        document.body.classList.remove('no-scroll');
+                        hamburgerBtn.innerHTML = `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>`;
+                    });
+                });
+            }
+
+            // --- 9. UNIVERSAL SCROLL MEMORY ---
+            if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
+            let currentPath = window.location.pathname;
+            if (currentPath.endsWith('/')) { currentPath += 'index.html'; }
+            const scrollKey = 'vanisagara_scroll_' + currentPath;
+            const navType = performance.getEntriesByType("navigation")[0]?.type;
+            const previousPath = sessionStorage.getItem('vanisagara_current_page');
+            const isRefreshEquivalent = (navType === 'reload') || (navType === 'back_forward') || (navType === 'navigate' && previousPath === currentPath);
+            
+            if (isRefreshEquivalent) {
+                const savedScrollPosition = sessionStorage.getItem(scrollKey);
+                if (savedScrollPosition !== null) {
+                    document.documentElement.style.scrollBehavior = 'auto';
+                    window.scrollTo({ top: parseInt(savedScrollPosition, 10), behavior: 'instant' });
+                    setTimeout(() => { document.documentElement.style.scrollBehavior = 'smooth'; }, 50);
+                }
+            } else {
+                sessionStorage.removeItem(scrollKey);
+                window.scrollTo({ top: 0, behavior: 'instant' });
+            }
+            sessionStorage.setItem('vanisagara_current_page', currentPath);
+
+            let scrollTimeout;
+            window.addEventListener('scroll', () => {
+                clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(() => { sessionStorage.setItem(scrollKey, window.scrollY); }, 150);
+            });
+        });
+    </script>
+</body>
+</html>
