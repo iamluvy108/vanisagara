@@ -72,6 +72,15 @@
             -webkit-font-smoothing: antialiased; /* Keep sans-serif UI elements crisp */
             -moz-osx-font-smoothing: grayscale;
         }
+		
+		/* --- THE ANTI-BLUR ENGINE --- */
+        #main-content, .book-item, .book-cover-wrapper, .modal-box, .netflix-modal-box {
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+            will-change: transform, opacity;
+        }
 
         /* --- BULLETPROOF TITLE FONT CLASS --- */
         /* This guarantees both Vāṇīsāgara texts are mathematically identical */
@@ -83,25 +92,21 @@
             -moz-osx-font-smoothing: auto !important;
         }
 
-        /* --- NETFLIX PAGE TRANSITION ANIMATIONS --- */
         #main-content {
-            animation: netflixEnter 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.4s ease;
-            transform-origin: top center;
-            
-            /* THE HOWITZER: Protects against horizontal scrolling without confusing Chrome */
+            animation: appEnter 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+            transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.4s ease;
             width: 100%;
-            overflow-x: hidden; 
+            overflow-x: hidden;
         }
 
         #main-content.page-exit {
-            transform: scale(0.98);
+            transform: translateY(-15px);
             opacity: 0;
         }
 
-        @keyframes netflixEnter {
-            0% { transform: scale(1.03); opacity: 0; }
-            100% { transform: scale(1); opacity: 1; }
+        @keyframes appEnter {
+            0% { transform: translateY(20px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
         }
 
         /* --- NAVIGATION --- */
