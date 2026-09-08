@@ -71,6 +71,8 @@
         .theme-toggle { background: none; border: none; color: var(--text-primary); cursor: pointer; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease, visibility 0.3s ease; }
         .theme-toggle:active { transform: scale(0.85) translateZ(0); }
         .theme-toggle:hover { opacity: 0.7; }
+        [data-theme="dark"] .logo-light { display: none; }
+        [data-theme="light"] .logo-dark { display: none; }
 
         /* --- SANCTUM LOBBY & VIEWS --- */
         .sanctum-wrapper { position: relative; flex: 1; display: flex; flex-direction: column; align-items: center; padding: 140px 5% 100px 5%; overflow: hidden; z-index: 2; }
@@ -79,7 +81,6 @@
         .view-section.active { display: flex; }
 
         .sanctum-header { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 60px; width: 100%; }
-        /* Title matching "About Us" page style */
         .sanctum-title { font-size: clamp(40px, 6vw, 72px); font-weight: 400; line-height: 1.1; margin-bottom: 24px; font-family: 'Noto Serif', serif; color: var(--text-primary); }
 
         .toc-container { position: relative; z-index: 2; display: flex; flex-direction: column; gap: 22px; width: 100%; max-width: 900px; margin: 0 auto; text-align: left; }
@@ -91,7 +92,7 @@
 
         /* --- ADVANCED VIEW CONTROLS --- */
         .advanced-controls-bar { width: 100%; max-width: 900px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; flex-wrap: wrap; gap: 15px; border-bottom: 1px solid var(--border); padding-bottom: 20px; }
-        .control-btn { background: var(--border); border: none; color: var(--text-primary); padding: 8px 16px; border-radius: 4px; cursor: pointer; font-size: 14px; font-weight: 600; transition: background 0.2s; }
+        .control-btn { background: var(--border); border: none; color: var(--text-primary); padding: 8px 16px; border-radius: 4px; cursor: pointer; font-size: 14px; font-weight: 600; transition: background 0.2s; font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif; }
         .control-btn.active { background: var(--reader-red); color: white; }
         .filters-group { display: flex; gap: 10px; flex-wrap: wrap; }
 
@@ -103,12 +104,15 @@
 
         .reader-chapter-title { font-size: clamp(32px, 5vw, 44px); font-weight: 700; margin-bottom: 60px; text-align: center; line-height: 1.3; color: var(--text-primary); }
         
-        .verse-block { margin-bottom: 100px; border-bottom: 1px solid var(--border); padding-bottom: 60px; }
-        .verse-block:last-child { border-bottom: none; }
+        .verse-block { margin-bottom: 100px; padding-bottom: 60px; }
         
-        .verse-number { color: var(--reader-red); font-size: 36px; font-weight: 700; text-align: center; margin-bottom: 40px; letter-spacing: 0.05em; cursor: pointer; display: inline-block; width: 100%; }
-        .verse-number:hover { opacity: 0.8; text-decoration: underline; }
+        /* New Summary List Layout */
+        .verse-summary-item { font-size: 22px; line-height: 1.7; text-align: justify; text-justify: inter-word; padding-bottom: 30px; margin-bottom: 30px; border-bottom: 1px solid var(--border); }
+        .verse-summary-item:last-child { border-bottom: none; }
+        .verse-summary-link { color: var(--reader-red); font-weight: 700; text-decoration: none; cursor: pointer; transition: opacity 0.2s; letter-spacing: 0.05em; }
+        .verse-summary-link:hover { opacity: 0.8; text-decoration: underline; }
 
+        .verse-number { color: var(--reader-red); font-size: 36px; font-weight: 700; text-align: center; margin-bottom: 40px; letter-spacing: 0.05em; }
         .section-label { font-size: 30px; font-weight: 700; text-align: center; margin-bottom: 12px; letter-spacing: 0.05em; margin-top: 55px; text-transform: uppercase; }
         
         .devanagari-text { text-align: center; font-size: 35.4px; line-height: 1.8; margin-bottom: 32px; font-weight: 600; }
@@ -128,7 +132,7 @@
 
         /* --- NAVIGATION FOOTER BUTTONS --- */
         .verse-nav-footer { display: flex; justify-content: space-between; margin-top: 80px; padding-top: 30px; border-top: 1px solid var(--border); }
-        .nav-verse-btn { background: var(--border); border: none; color: var(--text-primary); padding: 12px 24px; border-radius: 4px; font-size: 16px; font-weight: 600; cursor: pointer; text-decoration: none; transition: background 0.2s; }
+        .nav-verse-btn { background: var(--border); border: none; color: var(--text-primary); padding: 12px 24px; border-radius: 4px; font-size: 16px; font-weight: 600; cursor: pointer; text-decoration: none; transition: background 0.2s; font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif; }
         .nav-verse-btn:hover { background: var(--text-secondary); color: white; }
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
@@ -145,6 +149,7 @@
             
             nav { justify-content: space-between; padding: 0 5%; position: fixed; top: 0; width: 100%; height: 60px; z-index: 9999 !important; display: flex; align-items: center; }
             .nav-brand { position: absolute; left: 50%; top: 55%; transform: translate(-50%, -50%); display: flex; align-items: center; justify-content: center; }
+            nav .vanisagara-text { display: none !important; } 
             .brand-icon { width: 44px; height: 44px; margin-right: 0; }
             .nav-controls { width: 100%; height: 100%; display: flex; justify-content: space-between; align-items: center; }
             .nav-icons { order: 1; display: flex; align-items: center; gap: 15px; } 
@@ -175,6 +180,7 @@
             .reader-chapter-title { font-size: 32px; margin-bottom: 50px; }
             .verse-block { margin-bottom: 60px; padding-bottom: 40px; }
             
+            .verse-summary-item { font-size: 20px; }
             .verse-number { font-size: 28px; margin-bottom: 30px; }
             .section-label { font-size: 24px; margin-bottom: 10px; margin-top: 40px; }
             .devanagari-text { font-size: 29.4px; }
@@ -225,7 +231,7 @@
     <!-- MAIN SANCTUM ROUTER WRAPPER -->
     <main class="sanctum-wrapper" id="main-content">
         
-        <!-- VIEW 1: THE BOOK DIRECTORY (/sanctum) -->
+        <!-- LEVEL 1: THE BOOK DIRECTORY (/sanctum) -->
         <div id="view-books" class="view-section">
             <section class="sanctum-header">
                 <h1 class="sanctum-title">The Sanctum</h1>
@@ -235,7 +241,7 @@
             </section>
         </div>
 
-        <!-- VIEW 2: THE CHAPTER DIRECTORY (/sanctum/bg/) -->
+        <!-- LEVEL 2: THE CHAPTER DIRECTORY (/sanctum/bg/) -->
         <div id="view-chapters" class="view-section">
             <div class="reader-container">
                 <button class="back-btn" onclick="router('/sanctum')">
@@ -245,6 +251,18 @@
                 <section class="sanctum-header" style="margin-bottom: 40px;">
                     <h1 class="sanctum-title">Bhagavad-gītā As It Is</h1>
                 </section>
+                <section class="toc-container" id="chapter-list-container"></section>
+            </div>
+        </div>
+
+        <!-- LEVEL 3: CHAPTER CONTENT & ADVANCED VIEW (/sanctum/bg/#/) -->
+        <div id="view-chapter-content" class="view-section">
+            <div class="reader-container">
+                <button class="back-btn" onclick="router('/sanctum/bg/')">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                    Return to Chapters
+                </button>
+                <h2 id="content-chapter-title" class="reader-chapter-title"></h2>
 
                 <!-- Advanced View Toggle Bar -->
                 <div class="advanced-controls-bar">
@@ -258,16 +276,16 @@
                     </div>
                 </div>
 
-                <section class="toc-container" id="chapter-list-container"></section>
+                <div id="chapter-content-container"></div>
             </div>
         </div>
 
-        <!-- VIEW 3: THE SINGLE VERSE READER (/sanctum/bg/#/#) -->
+        <!-- LEVEL 4: THE SINGLE VERSE READER (/sanctum/bg/#/#) -->
         <div id="view-verse" class="view-section">
             <div class="reader-container">
                 <button class="back-btn" id="verse-back-btn" onclick="router('/sanctum/bg/')">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
-                    Return to Chapters
+                    Return to Chapter
                 </button>
                 <h2 id="single-verse-chapter-title" class="reader-chapter-title"></h2>
                 <div id="single-verse-container"></div>
@@ -289,22 +307,15 @@
             setMobileHeight();
             
             let booksData = [];
+            let currentChapterObj = null;
             let isAdvancedView = false;
             let activeFilters = { devanagari: true, roman: true, synonyms: true, translation: true, purport: true };
 
-            // Fetch JSON data and initialize router
-            fetch('/chapters.json')
+            fetch('chapters.json')
                 .then(res => res.json())
-                .then(data => {
-                    booksData = data;
-                    handleRoute();
-                })
-                .catch(err => {
-                    // Fallback relative path check if hosted in subfolder
-                    fetch('chapters.json').then(res => res.json()).then(data => { booksData = data; handleRoute(); }).catch(e => console.error("Failed to load chapters.json", e));
-                });
+                .then(data => { booksData = data; handleRoute(); })
+                .catch(err => console.error("Failed to load chapters.json", err));
 
-            // Intercept internal link clicks for SPA routing
             window.router = function(path) {
                 history.pushState({}, "", path);
                 handleRoute();
@@ -313,30 +324,42 @@
             window.addEventListener('popstate', () => { handleRoute(); });
 
             function handleRoute() {
-                const path = window.location.pathname.replace(/\/$/, ""); // Strip trailing slash
+                let path = window.location.pathname.replace(/\/$/, ""); 
+                if (path === "/index" || path === "/index.html" || path === "/sanctum.html") path = "/sanctum";
                 
-                // Views
                 const viewBooks = document.getElementById('view-books');
                 const viewChapters = document.getElementById('view-chapters');
+                const viewChapterContent = document.getElementById('view-chapter-content');
                 const viewVerse = document.getElementById('view-verse');
 
                 viewBooks.classList.remove('active');
                 viewChapters.classList.remove('active');
+                viewChapterContent.classList.remove('active');
                 viewVerse.classList.remove('active');
 
-                if (path === "" || path === "/sanctum" || path.endsWith("sanctum.html")) {
+                if (path === "" || path === "/sanctum") {
                     viewBooks.classList.add('active');
                 } 
-                else if (path.endsWith("/sanctum/bg")) {
+                else if (path === "/sanctum/bg") {
                     viewChapters.classList.add('active');
                     renderChapterDirectory();
                 } 
-                else if (path.includes("/sanctum/bg/")) {
+                else {
                     const parts = path.split('/');
-                    const chapNum = parts[parts.length - 2];
-                    const textNum = parts[parts.length - 1];
-                    viewVerse.classList.add('active');
-                    renderSingleVerse(chapNum, textNum);
+                    const bgIndex = parts.indexOf('bg');
+                    
+                    if (bgIndex !== -1 && parts.length > bgIndex + 1) {
+                        const chapNum = parts[bgIndex + 1];
+                        
+                        if (parts.length === bgIndex + 2) {
+                            viewChapterContent.classList.add('active');
+                            renderChapterContent(chapNum);
+                        } else if (parts.length === bgIndex + 3) {
+                            const textNum = parts[bgIndex + 2];
+                            viewVerse.classList.add('active');
+                            renderSingleVerse(chapNum, textNum);
+                        }
+                    }
                 }
                 window.scrollTo({ top: 0, behavior: 'instant' });
             }
@@ -346,14 +369,46 @@
                 container.innerHTML = '';
                 if (booksData.length === 0) return;
                 
-                const book = booksData[0]; // Bhagavad Gita
+                const book = booksData[0];
+                
+                // Front matter placeholders
+                ['Setting the Scene', 'Dedication', 'Preface', 'Introduction'].forEach(title => {
+                    const a = document.createElement('a');
+                    a.className = 'toc-link locked';
+                    a.textContent = title;
+                    container.appendChild(a);
+                });
+
+                // Dynamically injected chapters from JSON
                 book.chapters.forEach(chap => {
                     const link = document.createElement('a');
                     link.className = 'toc-link';
                     link.innerHTML = `Chapter ${chap.chapter_number}: ${chap.chapter_title}`;
-                    link.onclick = () => { router(`/sanctum/bg/${chap.chapter_number}/1`); };
+                    link.onclick = () => { router(`/sanctum/bg/${chap.chapter_number}/`); };
                     container.appendChild(link);
                 });
+
+                // The rest of the locked chapters
+                const lockedChapters = [
+                    'Chapter Three: Karma-yoga', 'Chapter Four: Transcendental Knowledge', 'Chapter Five: Karma-yoga – Action in Kṛṣṇa Consciousness', 'Chapter Six: Dhyāna-yoga', 'Chapter Seven: Knowledge of the Absolute', 'Chapter Eight: Attaining the Supreme', 'Chapter Nine: The Most Confidential Knowledge', 'Chapter Ten: The Opulence of the Absolute', 'Chapter Eleven: The Universal Form', 'Chapter Twelve: Devotional Service', 'Chapter Thirteen: Nature, the Enjoyer, and Consciousness', 'Chapter Fourteen: The Three Modes of Material Nature', 'Chapter Fifteen: The Yoga of the Supreme Person', 'Chapter Sixteen: The Divine and Demoniac Natures', 'Chapter Seventeen: The Divisions of Faith', 'Chapter Eighteen: Conclusion – The Perfection of Renunciation'
+                ];
+                lockedChapters.forEach(title => {
+                    const a = document.createElement('a');
+                    a.className = 'toc-link locked';
+                    a.textContent = title;
+                    container.appendChild(a);
+                });
+            }
+
+            function renderChapterContent(chapNum) {
+                if (booksData.length === 0) return;
+                const book = booksData[0];
+                currentChapterObj = book.chapters.find(c => c.chapter_number == chapNum);
+                if (!currentChapterObj) return;
+
+                document.getElementById('content-chapter-title').innerHTML = `CHAPTER ${currentChapterObj.chapter_number}<br><span style="font-size: 0.65em; font-weight: 400; margin-top: 15px; display: block;">${currentChapterObj.chapter_title}</span>`;
+                
+                reRenderChapterContent();
             }
 
             window.toggleAdvancedView = function() {
@@ -363,12 +418,57 @@
                 btn.textContent = `Advanced View: ${isAdvancedView ? 'On' : 'Off'}`;
                 btn.classList.toggle('active', isAdvancedView);
                 filtersGroup.style.display = isAdvancedView ? 'flex' : 'none';
+                reRenderChapterContent(); 
             };
 
             window.toggleFilter = function(filterName) {
                 activeFilters[filterName] = !activeFilters[filterName];
                 event.target.classList.toggle('active', activeFilters[filterName]);
+                reRenderChapterContent(); 
             };
+
+            function reRenderChapterContent() {
+                if (!currentChapterObj) return;
+                const container = document.getElementById('chapter-content-container');
+                container.innerHTML = '';
+
+                if (!isAdvancedView) {
+                    // Default List View
+                    let html = `<div style="display: flex; flex-direction: column; width: 100%;">`;
+                    currentChapterObj.verses.forEach(verse => {
+                        let numStr = verse.text_number.toUpperCase();
+                        let textLabel = numStr.includes('-') ? `TEXTS ${numStr}` : `TEXT ${numStr}`;
+                        
+                        // Strip <p> tags for inline rendering
+                        let cleanTranslation = verse.translation ? verse.translation.replace(/<\/?p[^>]*>/g, '') : '';
+
+                        html += `<div class="verse-summary-item vanisagara-text">
+                            <a onclick="router('/sanctum/bg/${currentChapterObj.chapter_number}/${verse.text_number}')" class="verse-summary-link">${textLabel}</a>: 
+                            <span style="font-weight: 400;">${cleanTranslation}</span>
+                        </div>`;
+                    });
+                    html += `</div>`;
+                    container.innerHTML = html;
+                } else {
+                    // Advanced Full View
+                    currentChapterObj.verses.forEach(verse => {
+                        let html = `<div class="verse-block">`;
+                        let numStr = verse.text_number.toUpperCase();
+                        let textLabel = numStr.includes('-') ? `TEXTS ${numStr}` : `TEXT ${numStr}`;
+                        
+                        html += `<a onclick="router('/sanctum/bg/${currentChapterObj.chapter_number}/${verse.text_number}')" style="text-decoration: none;"><div class="verse-number">${textLabel}</div></a>`;
+                        
+                        if (verse.devanagari && activeFilters.devanagari) html += `<div class="devanagari-text">${verse.devanagari}</div>`;
+                        if (verse.roman && activeFilters.roman) html += `<div class="roman-text">${verse.roman}</div>`;
+                        if (verse.synonyms && activeFilters.synonyms) html += `<div class="section-label">SYNONYMS</div><div class="synonyms-text">${verse.synonyms}</div>`;
+                        if (verse.translation && activeFilters.translation) html += `<div class="section-label">TRANSLATION</div><div class="translation-text">${verse.translation}</div>`;
+                        if (verse.purport && activeFilters.purport) html += `<div class="section-label">PURPORT</div><div class="purport-text">${verse.purport}</div>`;
+                        
+                        html += `</div>`;
+                        container.innerHTML += html;
+                    });
+                }
+            }
 
             function renderSingleVerse(chapNum, textNum) {
                 if (booksData.length === 0) return;
@@ -381,28 +481,27 @@
                 if (!verse) return;
 
                 document.getElementById('single-verse-chapter-title').innerHTML = `CHAPTER ${chapter.chapter_number}<br><span style="font-size: 0.65em; font-weight: 400; margin-top: 15px; display: block;">${chapter.chapter_title}</span>`;
-                document.getElementById('verse-back-btn').setAttribute('onclick', `router('/sanctum/bg/')`);
+                document.getElementById('verse-back-btn').setAttribute('onclick', `router('/sanctum/bg/${chapter.chapter_number}/')`);
 
                 const container = document.getElementById('single-verse-container');
                 container.innerHTML = '';
 
-                let html = `<div class="verse-block">`;
+                let html = `<div class="verse-block" style="border: none;">`;
                 let numStr = verse.text_number.toUpperCase();
                 let textLabel = numStr.includes('-') ? `TEXTS ${numStr}` : `TEXT ${numStr}`;
                 
-                // Clicking text number takes back to chapter directory or toggles view
-                html += `<div class="verse-number" onclick="router('/sanctum/bg/')">${textLabel}</div>`;
+                html += `<div class="verse-number" onclick="router('/sanctum/bg/${chapter.chapter_number}/')">${textLabel}</div>`;
                 
-                if (verse.devanagari && activeFilters.devanagari) html += `<div class="devanagari-text">${verse.devanagari}</div>`;
-                if (verse.roman && activeFilters.roman) html += `<div class="roman-text">${verse.roman}</div>`;
-                if (verse.synonyms && activeFilters.synonyms) html += `<div class="section-label">SYNONYMS</div><div class="synonyms-text">${verse.synonyms}</div>`;
-                if (verse.translation && activeFilters.translation) html += `<div class="section-label">TRANSLATION</div><div class="translation-text">${verse.translation}</div>`;
-                if (verse.purport && activeFilters.purport) html += `<div class="section-label">PURPORT</div><div class="purport-text">${verse.purport}</div>`;
+                if (verse.devanagari) html += `<div class="devanagari-text">${verse.devanagari}</div>`;
+                if (verse.roman) html += `<div class="roman-text">${verse.roman}</div>`;
+                if (verse.synonyms) html += `<div class="section-label">SYNONYMS</div><div class="synonyms-text">${verse.synonyms}</div>`;
+                if (verse.translation) html += `<div class="section-label">TRANSLATION</div><div class="translation-text">${verse.translation}</div>`;
+                if (verse.purport) html += `<div class="section-label">PURPORT</div><div class="purport-text">${verse.purport}</div>`;
                 
                 html += `</div>`;
                 container.innerHTML = html;
 
-                // Previous / Next Verse Buttons
+                // Previous / Next Navigation
                 const prevBtn = document.getElementById('prev-verse-btn');
                 const nextBtn = document.getElementById('next-verse-btn');
 
