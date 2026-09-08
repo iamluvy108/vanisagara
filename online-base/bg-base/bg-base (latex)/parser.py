@@ -3,60 +3,40 @@ import re
 import json
 import glob
 
-# Configuration
 INPUT_DIR = "."
 OUTPUT_FILE = "chapters.json"
 
 def clean_latex_formatting(text):
-    """Surgically cleans text, handles nested bold/italics, and strips raw LaTeX."""
     if not text: return ""
-    
-    # 1. Strip raw layout commands and the document end tag
     text = text.replace('\\noindent', '').replace('\\devanagari\\setstretch{0.85}', '').replace('\\centering', '')
     text = text.replace('\\end{document}', '')
     
-    # 2. Recursively un-nest bold and italics safely to prevent HTML bleeding
     while True:
         new_text = re.sub(r'\\textbf\{([^{}]+)\}', r'<strong>\1</strong>', text)
-        new_text = re.sub(r'\\textit\{([^{}]+)\}', r'<em>\1</em>', new_text)
+        new_text = re.sub(r'\\textit\{([^{}]+)\}', r'<em>\1</em>', text)
         if new_text == text: break
         text = new_text
         
-    # 3. THE KILL SWITCH: Strip any remaining raw tags and braces
     text = text.replace('\\textbf', '').replace('\\textit', '')
     text = text.replace('{', '').replace('}', '')
     return text.strip()
 
 def process_inline(text):
-    """Processes simple text blocks (Synonyms, Translation, Devanagari)."""
     if not text: return ""
-    # Destroy any \vspace or \hspace, with or without braces
     text = re.sub(r'\\[vh]space\*?(?:\{[^}]*\}|\s*[0-9.]+[a-zA-Z]+)', '', text)
-    
-    # Catch LaTeX line-breaks with spacing modifiers (like \\[0.8em]) BEFORE stripping
     text = re.sub(r'\\\\(?:\*)?\[.*?\]\s*', '<br><br>', text)
     text = re.sub(r'\\\\(?:\*)?\s*', '<br>', text)
-    
     text = clean_latex_formatting(text)
     text = text.replace('\\par', '<br>').replace('\n\n', '<br>')
     text = re.sub(r'(<br>\s*)+$', '', text)
     return text.strip()
 
 def process_purport(text):
-    """Processes complex purports, creating quote blocks and paragraph tags."""
     if not text: return ""
-    
-    # Destroy spacing commands (catches \vspace{...} and rogue \vspace0.5em)
     text = re.sub(r'\\[vh]space\*?(?:\{[^}]*\}|\s*[0-9.]+[a-zA-Z]+)', '', text)
-    
-    # Extract centered quotes and turn them into HTML blockquotes
     text = re.sub(r'\{\s*\\centering(.*?)\\par\}', r'\n\n<blockquote class="quote-block">\1</blockquote>\n\n', text, flags=re.DOTALL)
     text = re.sub(r'\{\s*\\centering(.*?)\}', r'\n\n<blockquote class="quote-block">\1</blockquote>\n\n', text, flags=re.DOTALL)
-    
-    # Clean the rest of the text (also strips \end{document})
     text = clean_latex_formatting(text)
-    
-    # Split the text into actual paragraphs
     text = text.replace('\\par', '\n\n').replace('<br>', '\n\n')
     paragraphs = re.split(r'\n\s*\n', text)
     
@@ -64,26 +44,22 @@ def process_purport(text):
     for p in paragraphs:
         p = p.strip()
         if not p: continue
-        
         if p.startswith('<blockquote'):
-            # Convert internal linebreaks within the quote block (Handles \\[0.8em])
             p = re.sub(r'\\\\(?:\*)?\[.*?\]\s*', '<br><br>', p)
             p = re.sub(r'\\\\(?:\*)?\s*', '<br>', p)
             html_blocks.append(p)
         elif "Thus end the Bhaktivedanta" in p:
-            # Apply the special sign-off class for the chapter ending
             p = re.sub(r'\\\\(?:\*)?\[.*?\]\s*', ' ', p)
             p = re.sub(r'\\\\(?:\*)?\s*', ' ', p)
             html_blocks.append(f'<p class="sign-off">{p}</p>')
         else:
-            # Wrap standard text in paragraph tags for perfect CSS indentation
             p = re.sub(r'\\\\(?:\*)?\[.*?\]\s*', ' ', p)
             p = re.sub(r'\\\\(?:\*)?\s*', ' ', p)
             html_blocks.append(f'<p>{p}</p>')
             
     return '\n'.join(html_blocks)
 
-def parse_chapter(filepath):
+def parse_chapter(filepath, index):
     with open(filepath, 'r', encoding='utf-8') as f:
         content = f.read()
 
@@ -91,7 +67,8 @@ def parse_chapter(filepath):
     chapter_title_match = re.search(r'\\fontsize\{19pt\}\{21pt\}\\selectfont\\textbf\{(.*?)\}', content, re.DOTALL)
     
     chapter_data = {
-        "chapter_number": chapter_num_match.group(1) if chapter_num_match else "UNKNOWN",
+        "id": index + 1,
+        "chapter_number": chapter_num_match.group(1) if chapter_num_match else str(index + 1),
         "chapter_title": clean_latex_formatting(chapter_title_match.group(1)) if chapter_title_match else "UNKNOWN",
         "verses": []
     }
@@ -138,17 +115,23 @@ def parse_chapter(filepath):
     return chapter_data
 
 def main():
-    all_chapters = []
-    files = sorted(glob.glob(os.path.join(INPUT_DIR, "*.txt")))
+    book_data = {
+        "slug": "bg",
+        "title": "Bhagavad-gītā As It Is",
+        "subtitle": "1972 Edition",
+        "chapters": []
+    }
     
+    files = sorted(glob.glob(os.path.join(INPUT_DIR, "*.txt")))
     print(f"Found {len(files)} chapter files. Parsing...")
-    for f in files:
+    
+    for idx, f in enumerate(files):
         print(f" -> Processing {os.path.basename(f)}...")
-        chapter_json = parse_chapter(f)
-        all_chapters.append(chapter_json)
+        chapter_json = parse_chapter(f, idx)
+        book_data["chapters"].append(chapter_json)
         
     with open(OUTPUT_FILE, 'w', encoding='utf-8') as f:
-        json.dump(all_chapters, f, ensure_ascii=False, indent=4)
+        json.dump([book_data], f, ensure_ascii=False, indent=4)
         
     print(f"Success! Data exported to {OUTPUT_FILE}")
 
