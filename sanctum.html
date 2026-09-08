@@ -92,7 +92,7 @@
         .toc-link:active:not(.locked) { opacity: 0.5; transition: opacity 0.1s ease; }
         .toc-link.locked { opacity: 0.35; pointer-events: none; cursor: default; }
 
-        /* --- THE WEB READER INTERFACE (UPSCALED TEXT) --- */
+        /* --- THE WEB READER INTERFACE --- */
         #reader-view { display: none; width: 100%; max-width: 900px; margin: 0 auto; z-index: 2; padding-top: 10px; animation: fadeIn 0.5s ease forwards; }
         
         .back-btn { background: none; border: none; color: var(--text-secondary); font-size: 16px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; margin-bottom: 50px; font-weight: 500; transition: opacity 0.2s; font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif; }
@@ -102,18 +102,27 @@
         .reader-chapter-title { font-size: clamp(32px, 5vw, 44px); font-weight: 700; margin-bottom: 80px; text-align: center; line-height: 1.3; color: var(--text-primary); }
         
         .verse-block { margin-bottom: 100px; }
-        .verse-number { color: var(--reader-red); font-size: 20px; font-weight: 700; text-align: center; margin-bottom: 24px; letter-spacing: 0.05em; }
+        
+        /* Enlarged TEXT Header */
+        .verse-number { color: var(--reader-red); font-size: 28px; font-weight: 700; text-align: center; margin-bottom: 30px; letter-spacing: 0.05em; }
         
         .devanagari-text { text-align: center; font-size: 32px; line-height: 1.8; margin-bottom: 32px; font-weight: 600; }
         .roman-text { text-align: center; font-size: 24px; line-height: 1.6; margin-bottom: 40px; font-style: italic; }
         
-        .section-label { font-size: 18px; font-weight: 700; text-align: center; margin-bottom: 16px; letter-spacing: 0.05em; margin-top: 40px; }
+        /* Enlarged SYNONYMS, TRANSLATION, PURPORT Headers */
+        .section-label { font-size: 26px; font-weight: 700; text-align: center; margin-bottom: 24px; letter-spacing: 0.05em; margin-top: 50px; text-transform: uppercase; }
         
         .synonyms-text { font-size: 22px; line-height: 1.8; margin-bottom: 36px; text-align: justify; text-justify: inter-word; }
         .translation-text { font-size: 26px; font-weight: 700; line-height: 1.7; margin-bottom: 40px; text-align: justify; text-justify: inter-word; }
         
         .purport-text { font-size: 22px; line-height: 1.75; text-align: justify; text-justify: inter-word; hyphens: none; -webkit-hyphens: none; opacity: 0.95; }
-        .purport-text p { margin-bottom: 22px; text-indent: 14px; } /* Slightly lesser indent */
+        
+        /* Perfect LaTeX Paragraph Indentation */
+        .purport-text p { margin-bottom: 22px; text-indent: 26px; }
+        .purport-text p:first-of-type { text-indent: 0; } 
+        
+        /* The Centered Sanskrit Quote Blocks in the Purport */
+        .quote-block { text-align: center; margin: 40px 0; font-size: 24px; line-height: 1.8; font-style: italic; }
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
@@ -158,12 +167,16 @@
             
             .reader-chapter-title { font-size: 32px; margin-bottom: 50px; }
             .verse-block { margin-bottom: 60px; }
-            .verse-number { font-size: 18px; }
+            
+            /* Upscaled Mobile Reader Typography */
+            .verse-number { font-size: 24px; }
+            .section-label { font-size: 22px; }
             .devanagari-text { font-size: 26px; }
             .roman-text { font-size: 20px; }
             .synonyms-text { font-size: 19px; }
             .translation-text { font-size: 22px; }
             .purport-text { font-size: 19px; }
+            .quote-block { font-size: 20px; margin: 30px 0; }
         }
     </style>
 </head>
@@ -219,17 +232,14 @@
             </section>
 
             <section class="toc-container" id="bg-chapters">
-                <!-- Front Matter (Locked placeholders) -->
                 <a class="toc-link locked">Setting the Scene</a>
                 <a class="toc-link locked">Dedication</a>
                 <a class="toc-link locked">Preface</a>
                 <a class="toc-link locked">Introduction</a>
                 
-                <!-- Active Chapters -->
                 <a onclick="openChapter(0)" class="toc-link">Chapter One: Observing the Armies on the Battlefield of Kurukṣetra</a>
                 <a onclick="openChapter(1)" class="toc-link">Chapter Two: Contents of the Gītā Summarized</a>
 
-                <!-- Remaining Locked Chapters -->
                 <a class="toc-link locked">Chapter Three: Karma-yoga</a>
                 <a class="toc-link locked">Chapter Four: Transcendental Knowledge</a>
                 <a class="toc-link locked">Chapter Five: Karma-yoga – Action in Kṛṣṇa Consciousness</a>
@@ -301,7 +311,7 @@
             // --- 2. VEDABASE DATA FETCH & READER LOGIC ---
             let chaptersData = [];
 
-            // Remember to move chapters.json into your main directory before pushing!
+            // Remember to keep chapters.json in the same folder as this HTML file!
             fetch('chapters.json')
                 .then(response => response.json())
                 .then(data => {
@@ -318,14 +328,14 @@
                 const chapter = chaptersData[index];
                 if (!chapter) return;
 
-                // 1. Swap Views
+                // Swap Views
                 document.getElementById('toc-view').style.display = 'none';
                 document.getElementById('reader-view').style.display = 'block';
                 
-                // 2. Set the Title
+                // Set the Title
                 document.getElementById('reader-title').innerHTML = `CHAPTER ${chapter.chapter_number}<br><span style="font-size: 0.65em; font-weight: 400; margin-top: 15px; display: block;">${chapter.chapter_title}</span>`;
                 
-                // 3. Build the Verses
+                // Build the Verses
                 const container = document.getElementById('verse-container');
                 container.innerHTML = ''; 
                 
@@ -343,9 +353,8 @@
                     if (verse.synonyms) html += `<div class="section-label">SYNONYMS</div><div class="synonyms-text">${verse.synonyms}</div>`;
                     if (verse.translation) html += `<div class="section-label">TRANSLATION</div><div class="translation-text">${verse.translation}</div>`;
                     
-                    // Formatting the Purport to mimic LaTeX paragraphs
                     if (verse.purport) {
-                        let formattedPurport = verse.purport.split('<br>').filter(p => p.trim() !== '').map(p => `<p>${p}</p>`).join('');
+                        let formattedPurport = verse.purport.split('<br>').filter(p => p.trim() !== '').map(p => `<p>${p.trim()}</p>`).join('');
                         html += `<div class="section-label">PURPORT</div><div class="purport-text">${formattedPurport}</div>`;
                     }
                     
@@ -358,7 +367,6 @@
             };
 
             window.closeReader = function() {
-                // Swap views back to the Lobby
                 document.getElementById('reader-view').style.display = 'none';
                 document.getElementById('toc-view').style.display = 'flex';
                 window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -385,7 +393,7 @@
                     icon.innerHTML = sunSvg;
                 }
             });
-			
+
             // --- 8. MOBILE HAMBURGER MENU LOGIC ---
             const hamburgerBtn = document.getElementById('hamburgerBtn');
             const mobileMenu = document.getElementById('mobileMenu');

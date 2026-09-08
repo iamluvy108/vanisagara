@@ -3,42 +3,41 @@ import re
 import json
 import glob
 
-# Configuration (Keep the dot so it reads from the current folder)
+# Configuration
 INPUT_DIR = "."
 OUTPUT_FILE = "chapters.json"
 
 def latex_to_html(text):
-    """Converts LaTeX formatting to clean HTML and destroys rogue syntax."""
+    """Surgically converts specific LaTeX macros to clean HTML."""
     if not text: return ""
     
-    # 1. Strip basic spacing and paragraph commands
-    text = text.replace('\\noindent', '')
-    text = text.replace('\\par', '')
+    # 1. Strip structural spacing commands (We will use CSS for this instead)
+    text = re.sub(r'\\vspace\{.*?\}', '', text)
+    text = re.sub(r'\\hspace\*?\{.*?\}', '', text)
+    text = text.replace('\\noindent', '').replace('\\devanagari\\setstretch{0.85}', '')
     
-    # 2. Convert specific LaTeX structures to HTML equivalents
-    text = re.sub(r'\\hspace\*\{.*?\}', '&nbsp;&nbsp;&nbsp;&nbsp;', text)
-    text = re.sub(r'\\\\(?:\*)?', '<br>', text) # Matches \\ and \\*
+    # 2. Handle the Centered Sanskrit Quotes in the Purports
+    # Converts {\centering ... \par} into a styled HTML div
+    text = re.sub(r'\{\\centering(.*?)\\par\}', r'<div class="quote-block">\1</div>', text, flags=re.DOTALL)
+    text = re.sub(r'\{\\centering(.*?)\}', r'<div class="quote-block">\1</div>', text, flags=re.DOTALL)
     
-    # 3. Strip layout commands
-    text = text.replace('\\centering', '')
-    text = re.sub(r'\\devanagari\\setstretch\{.*?\}', '', text)
+    # 3. Handle the double-nested bolding in Translations
+    text = text.replace('\\textbf{\\textbf{', '<strong>').replace('}}', '</strong>')
     
-    # 4. Fix double-nested formatting (e.g., \textbf{\textbf{...}})
-    text = text.replace('\\textbf{\\textbf{', '\\textbf{')
-    text = text.replace('\\textit{\\textit{', '\\textit{')
-    
-    # 5. Convert bold and italics safely (loops twice to catch inner nesting)
-    for _ in range(2):
+    # 4. Standard Bold and Italics (Loops to catch any remaining basic nesting)
+    for _ in range(3):
         text = re.sub(r'\\textbf\{([^{}]+)\}', r'<strong>\1</strong>', text)
         text = re.sub(r'\\textit\{([^{}]+)\}', r'<em>\1</em>', text)
         
-    # 6. Fallback replacement for any complex unmatched tags
-    text = text.replace('\\textbf{', '<strong>')
-    text = text.replace('\\textit{', '<em>')
+    # 5. Convert line breaks and paragraphs
+    text = re.sub(r'\\\\(?:\*)?\s*', '<br>', text)
+    text = text.replace('\\par', '<br>')
+    text = text.replace('\n\n', '<br>')
     
-    # 7. THE KILL SWITCH: Strip ALL remaining '{' and '}'
-    # In the Gita, braces are strictly LaTeX syntax, never grammatical punctuation.
-    text = text.replace('{', '').replace('}', '')
+    # 6. Clean up trailing/leading breaks and empty tags
+    text = re.sub(r'(<br>\s*)+$', '', text)
+    text = re.sub(r'^(<br>\s*)+', '', text)
+    text = text.replace('<strong></strong>', '').replace('<em></em>', '')
     
     return text.strip()
 
