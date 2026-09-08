@@ -81,6 +81,14 @@
             perspective: 1000px;
             will-change: transform, opacity;
         }
+		
+		/* --- BUTTON HARDWARE ACCELERATION (Anti-Blur) --- */
+        .btn-primary, .theme-toggle, .color-toggle, .hamburger, .modal-info-badge {
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            transform: translateZ(0);
+            -webkit-font-smoothing: subpixel-antialiased;
+        }
 
         /* --- BULLETPROOF TITLE FONT CLASS --- */
         /* This guarantees both Vāṇīsāgara texts are mathematically identical */
@@ -343,7 +351,7 @@
             cursor: pointer;
             transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .btn-primary:hover { transform: scale(1.03); }
+        .btn-primary:hover { transform: scale(1.03) translateZ(0); }
 
         /* The Menu Handbrake */
         body.no-scroll { overflow: hidden; }
@@ -421,20 +429,10 @@
             /* Align the left-side wrapper */
             .nav-icons { order: 1; display: flex; align-items: center; gap: 15px; } 
             
-            .theme-toggle, .color-toggle, .hamburger { 
-                display: flex !important;
-                align-items: center;
-                justify-content: center;
-                padding: 0 !important;
-                margin: 0 !important;
-                line-height: 0 !important; 
-                
-                /* The 1.5px optical micro-nudge */
-                transform: translateY(1.5px) !important; 
-            }
+            .theme-toggle:active, .color-toggle:active { transform: scale(0.85) translateZ(0); }
             
             .hamburger { order: 2; background: none; border: none; cursor: pointer; z-index: 10000; transition: transform 0.2s ease; }
-            .hamburger:active { transform: translateY(1.5px) scale(0.85) !important; }
+            .hamburger:active { transform: translateY(1.5px) scale(0.85) translateZ(0) !important; }
             
             /* Forces the SVGs and images to stop acting like text elements */
             .hamburger svg, .theme-toggle svg, .color-toggle img { display: block; }

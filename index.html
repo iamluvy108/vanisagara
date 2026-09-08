@@ -81,6 +81,14 @@
             perspective: 1000px;
             will-change: transform, opacity;
         }
+		
+		/* --- BUTTON HARDWARE ACCELERATION (Anti-Blur) --- */
+        .btn-primary, .theme-toggle, .color-toggle, .hamburger, .modal-info-badge {
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            transform: translateZ(0);
+            -webkit-font-smoothing: subpixel-antialiased;
+        }
 
         .vanisagara-text {
             font-family: 'Times New Roman', Times, serif !important;
@@ -117,7 +125,7 @@
         .nav-links a:hover { opacity: 0.7; }
         .nav-divider { width: 1px; height: 28px; background-color: var(--text-secondary); opacity: 0.4; }
         .nav-icons { display: flex; align-items: center; gap: 12px; }
-        .theme-toggle, .color-toggle { background: none; border: none; color: var(--text-primary); cursor: pointer; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease, visibility 0.3s ease; }
+        .theme-toggle:active, .color-toggle:active { transform: scale(0.85) translateZ(0); }
         .hue-icon { width: 20px; height: 20px; object-fit: contain; }
         .theme-toggle:active, .color-toggle:active { transform: scale(0.85); }
         .theme-toggle:hover, .color-toggle:hover { opacity: 0.7; }
@@ -142,7 +150,7 @@
         .divider-circle { width: 8px; height: 8px; border-radius: 50%; border: 1px solid var(--text-secondary); }
         .hero p { font-size: 18px; color: var(--text-primary); opacity: 0.9; margin-bottom: 40px; line-height: 1.5; max-width: 500px; }
         .btn-primary { background: var(--btn-bg); color: var(--btn-text); padding: 12px 20px; width: max-content; border: none; border-radius: 4px; font-size: 16px; font-weight: 600; cursor: pointer; transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
-        .btn-primary:hover { transform: scale(1.03); }
+        .btn-primary:hover { transform: scale(1.03) translateZ(0); }
         .hero-image { position: absolute; bottom: 0; right: 5%; height: 85vh; max-height: 100%; width: auto; max-width: 45%; object-fit: contain; object-position: bottom right; display: block; z-index: 2; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.4)); pointer-events: none; transition: opacity 0.5s ease; }
         .rare-overlay { z-index: 3; opacity: 0; transition: opacity 1.5s ease-in-out; }
 
@@ -227,7 +235,7 @@
             .nav-icons { order: 1; display: flex; align-items: center; gap: 15px; }
             .theme-toggle, .color-toggle, .hamburger { display: flex !important; align-items: center; justify-content: center; padding: 0 !important; margin: 0 !important; line-height: 0 !important; transform: translateY(1.5px) !important; }
             .hamburger { order: 2; background: none; border: none; cursor: pointer; z-index: 10000; transition: transform 0.2s ease; }
-            .hamburger:active { transform: translateY(1.5px) scale(0.85) !important; }
+            .hamburger:active { transform: translateY(1.5px) scale(0.85) translateZ(0) !important; }
             .hamburger svg, .theme-toggle svg, .color-toggle img { display: block; }
             [data-theme="dark"] .theme-toggle, [data-theme="dark"] .color-toggle, [data-theme="dark"] .hamburger { color: #ffffff !important; }
             .nav-links, .nav-divider { display: none; }
@@ -302,7 +310,8 @@
             .netflix-desc::-webkit-scrollbar-thumb { background: rgba(128, 128, 128, 0.4); border-radius: 10px; }
             .netflix-content > div:last-child { margin: 0 !important; padding: 0 !important; flex-shrink: 0; }
             .netflix-btn { width: 100%; justify-content: center; }
-            .modal-info-badge { flex-shrink: 0; }
+            .modal-info-badge:hover { transform: scale(1.15) translateZ(0); }
+			.modal-info-badge:active { transform: scale(0.95) translateZ(0); }
         }
     </style>
 </head>
