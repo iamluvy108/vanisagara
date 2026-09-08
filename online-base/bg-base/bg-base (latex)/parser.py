@@ -32,8 +32,11 @@ def process_inline(text):
     # Destroy any \vspace or \hspace, with or without braces
     text = re.sub(r'\\[vh]space\*?(?:\{[^}]*\}|\s*[0-9.]+[a-zA-Z]+)', '', text)
     
-    text = clean_latex_formatting(text)
+    # NEW: Catch LaTeX line-breaks with spacing modifiers (like \\[0.8em]) BEFORE stripping
+    text = re.sub(r'\\\\(?:\*)?\[.*?\]\s*', '<br><br>', text)
     text = re.sub(r'\\\\(?:\*)?\s*', '<br>', text)
+    
+    text = clean_latex_formatting(text)
     text = text.replace('\\par', '<br>').replace('\n\n', '<br>')
     text = re.sub(r'(<br>\s*)+$', '', text)
     return text.strip()
@@ -45,7 +48,7 @@ def process_purport(text):
     # Remove the "Thus end the..." sign-off at the end of chapters
     text = re.sub(r'\\vspace\*?(?:\{[^}]*\}|\s*[0-9.]+[a-zA-Z]+)?\s*\\textit\{Thus end the Bhaktivedanta.*', '', text, flags=re.DOTALL)
     
-    # Destroy spacing commands
+    # Destroy spacing commands (catches \vspace{...} and rogue \vspace0.5em)
     text = re.sub(r'\\[vh]space\*?(?:\{[^}]*\}|\s*[0-9.]+[a-zA-Z]+)', '', text)
     
     # Extract centered quotes and turn them into HTML blockquotes
@@ -63,12 +66,15 @@ def process_purport(text):
     for p in paragraphs:
         p = p.strip()
         if not p: continue
+        
         if p.startswith('<blockquote'):
-            # Convert internal linebreaks within the quote block to <br>
+            # Convert internal linebreaks within the quote block (Handles \\[0.8em])
+            p = re.sub(r'\\\\(?:\*)?\[.*?\]\s*', '<br><br>', p)
             p = re.sub(r'\\\\(?:\*)?\s*', '<br>', p)
             html_blocks.append(p)
         else:
             # Wrap standard text in paragraph tags for perfect CSS indentation
+            p = re.sub(r'\\\\(?:\*)?\[.*?\]\s*', ' ', p)
             p = re.sub(r'\\\\(?:\*)?\s*', ' ', p)
             html_blocks.append(f'<p>{p}</p>')
             

@@ -103,27 +103,24 @@
         
         .verse-block { margin-bottom: 120px; }
         
-        /* Enlarged Headers */
-        .verse-number { color: var(--reader-red); font-size: 38px; font-weight: 700; text-align: center; margin-bottom: 40px; letter-spacing: 0.05em; }
+        /* Adjusted Headers (Reduced by ~1.5pt) */
+        .verse-number { color: var(--reader-red); font-size: 36px; font-weight: 700; text-align: center; margin-bottom: 40px; letter-spacing: 0.05em; }
+        .section-label { font-size: 30px; font-weight: 700; text-align: center; margin-bottom: 12px; letter-spacing: 0.05em; margin-top: 55px; text-transform: uppercase; }
         
-        /* Adjusted Section Labels (Reduced 1.5pt from previous, tighter bottom margin) */
-        .section-label { font-size: 32px; font-weight: 700; text-align: center; margin-bottom: 12px; letter-spacing: 0.05em; margin-top: 55px; text-transform: uppercase; }
-        
-        .devanagari-text { text-align: center; font-size: 34px; line-height: 1.8; margin-bottom: 32px; font-weight: 600; }
-        .roman-text { text-align: center; font-size: 24px; line-height: 1.6; margin-bottom: 40px; font-style: italic; }
+        /* Unified 22px Body Text */
+        .devanagari-text { text-align: center; font-size: 22px; line-height: 1.8; margin-bottom: 32px; font-weight: 600; }
+        .roman-text { text-align: center; font-size: 22px; line-height: 1.6; margin-bottom: 40px; font-style: italic; }
         
         .synonyms-text { font-size: 22px; line-height: 1.8; margin-bottom: 36px; text-align: justify; text-justify: inter-word; }
-        .translation-text { font-size: 26px; font-weight: 700; line-height: 1.7; margin-bottom: 40px; text-align: justify; text-justify: inter-word; }
+        .translation-text { font-size: 22px; font-weight: 700; line-height: 1.7; margin-bottom: 40px; text-align: justify; text-justify: inter-word; }
         
-        /* Purport Styling with Perfect Indentation */
+        /* Purport Styling */
         .purport-text { font-size: 22px; line-height: 1.75; text-align: justify; text-justify: inter-word; hyphens: none; -webkit-hyphens: none; opacity: 0.95; }
         .purport-text p { margin-bottom: 22px; text-indent: 36px; }
-        
-        /* The Un-Indent Rule for the First Paragraph */
         .purport-text p:first-of-type { text-indent: 0; } 
         
-        /* Centered Sanskrit Verse Block within the Purport */
-        .quote-block { display: block; text-align: center; margin: 40px auto; font-size: 24px; line-height: 1.8; font-style: italic; width: 100%; }
+        /* Centered Sanskrit Verse Block (Margin reduced by 25%) */
+        .quote-block { display: block; text-align: center; margin: 30px auto; font-size: 22px; line-height: 1.8; font-style: italic; width: 100%; }
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
@@ -169,15 +166,19 @@
             .reader-chapter-title { font-size: 32px; margin-bottom: 50px; }
             .verse-block { margin-bottom: 80px; }
             
-            /* Upscaled Mobile Reader Typography */
-            .verse-number { font-size: 30px; margin-bottom: 30px; }
-            .section-label { font-size: 26px; margin-bottom: 10px; margin-top: 40px; }
-            .devanagari-text { font-size: 28px; }
-            .roman-text { font-size: 22px; }
+            /* Adjusted Mobile Headers (-1.5pt) */
+            .verse-number { font-size: 28px; margin-bottom: 30px; }
+            .section-label { font-size: 24px; margin-bottom: 10px; margin-top: 40px; }
+            
+            /* Unified 20px Mobile Body Text */
+            .devanagari-text { font-size: 20px; }
+            .roman-text { font-size: 20px; }
             .synonyms-text { font-size: 20px; }
-            .translation-text { font-size: 24px; }
+            .translation-text { font-size: 20px; }
             .purport-text { font-size: 20px; }
-            .quote-block { font-size: 22px; margin: 30px 0; }
+            
+            /* Quote block margin reduced by 25% */
+            .quote-block { font-size: 20px; margin: 22px 0; }
         }
     </style>
 </head>
@@ -357,7 +358,6 @@
                     if (verse.translation) html += `<div class="section-label">TRANSLATION</div><div class="translation-text">${verse.translation}</div>`;
                     
                     if (verse.purport) {
-                        // The Python script now injects perfect <p> and <blockquote> tags!
                         html += `<div class="section-label">PURPORT</div><div class="purport-text">${verse.purport}</div>`;
                     }
                     
