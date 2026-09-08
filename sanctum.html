@@ -20,12 +20,19 @@
             --bg-main: #141414; --bg-nav: rgba(20, 20, 20, 0.7); --hero-glow: #5c4000; 
             --text-primary: #f5f5f7; --text-secondary: #86868b; --accent: #ffffff; 
             --card-bg: #1e1e1e; --border: rgba(255, 255, 255, 0.1);
+            --toc-link-color: #d1bfae; 
+            --toc-hover-color: #ffffff;
+            --reader-red: #ff6b6b; /* Bright red for dark mode text headers */
         }
 
         [data-theme="light"] {
-            --bg-main: #ffffff; --bg-nav: rgba(255, 255, 255, 0.7); 
+            --bg-main: #e8dcc4; 
+            --bg-nav: rgba(232, 220, 196, 0.7); 
             --text-primary: #000000; --text-secondary: #5e5e60; --accent: #1d1d1f; 
             --card-bg: #ffffff; --border: rgba(0, 0, 0, 0.1);
+            --toc-link-color: #8c2318; 
+            --toc-hover-color: #000000;
+            --reader-red: #7A1111; /* Deep maroon matching your LaTeX PDF */
         }
 
         html { scroll-behavior: smooth; }
@@ -39,8 +46,8 @@
         }
 
         /* --- THE ANTI-BLUR ENGINE & HARDWARE ACCELERATION --- */
-        #main-content, .chapter-card { backface-visibility: hidden; -webkit-backface-visibility: hidden; transform-style: preserve-3d; perspective: 1000px; will-change: transform, opacity; }
-        .theme-toggle, .color-toggle, .hamburger { backface-visibility: hidden; -webkit-backface-visibility: hidden; transform: translateZ(0); -webkit-font-smoothing: subpixel-antialiased; }
+        #main-content { backface-visibility: hidden; -webkit-backface-visibility: hidden; transform-style: preserve-3d; perspective: 1000px; will-change: transform, opacity; }
+        .theme-toggle, .color-toggle, .hamburger, .back-btn { backface-visibility: hidden; -webkit-backface-visibility: hidden; transform: translateZ(0); -webkit-font-smoothing: subpixel-antialiased; }
 
         .vanisagara-text { font-family: 'Times New Roman', Times, serif !important; font-weight: 400 !important; letter-spacing: 0.02em !important; -webkit-font-smoothing: auto !important; -moz-osx-font-smoothing: auto !important; }
 
@@ -71,24 +78,43 @@
         .sanctum-glow { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: var(--hero-glow); -webkit-mask-image: radial-gradient(circle at 50% 15%, black 0%, transparent 60%); mask-image: radial-gradient(circle at 50% 15%, black 0%, transparent 60%); transition: --hero-glow 0.75s ease-in-out, background-color 0.75s ease-in-out, opacity 0.4s ease; pointer-events: none; z-index: 1; }
         [data-theme="light"] .sanctum-glow { opacity: 0; }
         
-        .sanctum-header { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 50px; width: 100%; }
-        .sanctum-title { font-size: clamp(32px, 5vw, 56px); font-weight: 600; line-height: 1.1; margin-bottom: 20px; color: var(--text-primary); letter-spacing: -0.5px; }
-        .divider { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
-        .divider-line { height: 1px; width: 40px; background-color: var(--text-secondary); }
-        .divider-circle { width: 6px; height: 6px; border-radius: 50%; border: 1px solid var(--text-secondary); }
-        .book-subtitle { font-size: clamp(24px, 4vw, 36px); margin-bottom: 10px; color: var(--text-primary); }
+        #toc-view { width: 100%; display: flex; flex-direction: column; align-items: center; animation: fadeIn 0.4s ease forwards; }
 
-        .chapter-grid { position: relative; z-index: 2; display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; width: 100%; max-width: 1200px; margin: 0 auto; }
-        .chapter-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; padding: 28px 20px; text-decoration: none; color: var(--text-primary); transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; height: 100%; }
+        .sanctum-header { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 60px; width: 100%; }
+        .sanctum-title { font-size: clamp(38px, 6vw, 64px); font-weight: 700; line-height: 1.1; color: var(--text-primary); letter-spacing: -0.5px; }
+
+        /* The Table of Contents List */
+        .toc-container { position: relative; z-index: 2; display: flex; flex-direction: column; gap: 22px; width: 100%; max-width: 900px; margin: 0 auto; text-align: left; }
+        .toc-link { font-size: clamp(18px, 2.5vw, 24px); color: var(--toc-link-color); text-decoration: none; transition: opacity 0.2s ease, color 0.2s ease; display: block; line-height: 1.4; font-family: 'Times New Roman', Times, serif; letter-spacing: 0.01em; cursor: pointer; }
         
-        @media (hover: hover) { .chapter-card:hover:not(.chapter-locked) { transform: translateY(-4px) translateZ(0); box-shadow: 0 12px 30px rgba(0,0,0,0.4); border-color: var(--text-secondary); } }
-        .chapter-card:active:not(.chapter-locked) { transform: scale(0.98) translateZ(0); opacity: 0.8; transition: opacity 0.1s ease, transform 0.1s ease; }
+        @media (hover: hover) { .toc-link:hover:not(.locked) { color: var(--toc-hover-color); opacity: 0.8; } }
+        .toc-link:active:not(.locked) { opacity: 0.5; transition: opacity 0.1s ease; }
+        .toc-link.locked { opacity: 0.35; pointer-events: none; cursor: default; }
+
+        /* --- THE WEB READER INTERFACE --- */
+        #reader-view { display: none; width: 100%; max-width: 860px; margin: 0 auto; z-index: 2; padding-top: 10px; animation: fadeIn 0.5s ease forwards; }
         
-        .chapter-number { font-size: 13px; font-weight: 700; color: var(--text-secondary); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1.5px; }
-        .chapter-name { font-size: 22px; line-height: 1.3; }
+        .back-btn { background: none; border: none; color: var(--text-secondary); font-size: 16px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; margin-bottom: 50px; font-weight: 500; transition: opacity 0.2s; }
+        @media (hover: hover) { .back-btn:hover { opacity: 0.7; } }
+        .back-btn:active { opacity: 0.5; }
+
+        .reader-chapter-title { font-size: clamp(26px, 4vw, 36px); font-weight: 700; margin-bottom: 80px; text-align: center; line-height: 1.3; color: var(--text-primary); }
         
-        /* The Locked State for Chapters 3-18 */
-        .chapter-locked { opacity: 0.3; pointer-events: none; filter: grayscale(100%); cursor: default; }
+        .verse-block { margin-bottom: 90px; }
+        .verse-number { color: var(--reader-red); font-size: 17px; font-weight: 700; text-align: center; margin-bottom: 24px; letter-spacing: 0.05em; }
+        
+        .devanagari-text { text-align: center; font-size: 26px; line-height: 1.8; margin-bottom: 28px; font-weight: 600; }
+        .roman-text { text-align: center; font-size: 19px; line-height: 1.6; margin-bottom: 36px; font-style: italic; }
+        
+        .section-label { font-size: 16px; font-weight: 700; text-align: center; margin-bottom: 16px; letter-spacing: 0.05em; margin-top: 36px; }
+        
+        .synonyms-text { font-size: 18px; line-height: 1.7; margin-bottom: 32px; text-align: justify; text-justify: inter-word; }
+        .translation-text { font-size: 20px; font-weight: 700; line-height: 1.6; margin-bottom: 36px; text-align: justify; text-justify: inter-word; }
+        
+        .purport-text { font-size: 19px; line-height: 1.65; text-align: justify; text-justify: inter-word; hyphens: none; -webkit-hyphens: none; opacity: 0.95; }
+        .purport-text p { margin-bottom: 20px; text-indent: 20px; } /* Mimics the LaTeX paragraph indent */
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
         /* --- MOBILE FIREWALL --- */
         .hamburger, .mobile-menu-overlay { display: none; }
@@ -127,8 +153,16 @@
             .mobile-menu-footer { position: absolute; bottom: 8vh; }
             .menu-logo { width: 140px; height: auto; opacity: 0.95; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3)); }
 
-            .sanctum-wrapper { padding-top: 120px; padding-bottom: 80px; }
-            .chapter-grid { grid-template-columns: 1fr; }
+            .sanctum-wrapper { padding-top: 110px; padding-bottom: 60px; }
+            .toc-container { gap: 24px; padding: 0 10px; }
+            
+            .reader-chapter-title { margin-bottom: 50px; }
+            .verse-block { margin-bottom: 60px; }
+            .devanagari-text { font-size: 22px; }
+            .roman-text { font-size: 17px; }
+            .synonyms-text { font-size: 16px; }
+            .translation-text { font-size: 18px; }
+            .purport-text { font-size: 17px; }
         }
     </style>
 </head>
@@ -177,113 +211,61 @@
         </div>
     </div>
 
-    <!-- MAIN SANCTUM CONTENT -->
+    <!-- MAIN SANCTUM WRAPPER -->
     <main class="sanctum-wrapper" id="main-content">
         <div class="sanctum-glow"></div>
         
-        <section class="sanctum-header">
-            <h1 class="sanctum-title">The Sanctum</h1>
-            <div class="divider">
-                <div class="divider-line"></div>
-                <div class="divider-circle"></div>
-                <div class="divider-line"></div>
-            </div>
-            <h2 class="book-subtitle vanisagara-text">Bhagavad-gītā As It Is</h2>
-        </section>
+        <!-- STATE 1: THE LOBBY -->
+        <div id="toc-view">
+            <section class="sanctum-header">
+                <h1 class="sanctum-title vanisagara-text">Bhagavad-gītā As It Is</h1>
+            </section>
 
-        <section class="chapter-grid" id="bg-chapters">
-            <!-- Active Test Chapters -->
-            <a href="#" class="chapter-card">
-                <div class="chapter-number">Chapter 1</div>
-                <div class="chapter-name vanisagara-text">Observing the Armies on the Battlefield of Kurukṣetra</div>
-            </a>
+            <section class="toc-container" id="bg-chapters">
+                <a class="toc-link locked">Setting the Scene</a>
+                <a class="toc-link locked">Dedication</a>
+                <a class="toc-link locked">Preface</a>
+                <a class="toc-link locked">Introduction</a>
+                
+                <!-- Active Chapters (Calling the JavaScript Data) -->
+                <a onclick="openChapter(0)" class="toc-link">Chapter One: Observing the Armies on the Battlefield of Kurukṣetra</a>
+                <a onclick="openChapter(1)" class="toc-link">Chapter Two: Contents of the Gītā Summarized</a>
+
+                <a class="toc-link locked">Chapter Three: Karma-yoga</a>
+                <a class="toc-link locked">Chapter Four: Transcendental Knowledge</a>
+                <a class="toc-link locked">Chapter Five: Karma-yoga – Action in Kṛṣṇa Consciousness</a>
+                <a class="toc-link locked">Chapter Six: Dhyāna-yoga</a>
+                <a class="toc-link locked">Chapter Seven: Knowledge of the Absolute</a>
+                <a class="toc-link locked">Chapter Eight: Attaining the Supreme</a>
+                <a class="toc-link locked">Chapter Nine: The Most Confidential Knowledge</a>
+                <a class="toc-link locked">Chapter Ten: The Opulence of the Absolute</a>
+                <a class="toc-link locked">Chapter Eleven: The Universal Form</a>
+                <a class="toc-link locked">Chapter Twelve: Devotional Service</a>
+                <a class="toc-link locked">Chapter Thirteen: Nature, the Enjoyer, and Consciousness</a>
+                <a class="toc-link locked">Chapter Fourteen: The Three Modes of Material Nature</a>
+                <a class="toc-link locked">Chapter Fifteen: The Yoga of the Supreme Person</a>
+                <a class="toc-link locked">Chapter Sixteen: The Divine and Demoniac Natures</a>
+                <a class="toc-link locked">Chapter Seventeen: The Divisions of Faith</a>
+                <a class="toc-link locked">Chapter Eighteen: Conclusion – The Perfection of Renunciation</a>
+            </section>
+        </div>
+
+        <!-- STATE 2: THE READER -->
+        <div id="reader-view">
+            <button class="back-btn" onclick="closeReader()">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+                Return to Directory
+            </button>
             
-            <a href="#" class="chapter-card">
-                <div class="chapter-number">Chapter 2</div>
-                <div class="chapter-name vanisagara-text">Contents of the Gītā Summarized</div>
-            </a>
-
-            <!-- Locked Chapters (Visual placeholders for now) -->
-            <div class="chapter-card chapter-locked">
-                <div class="chapter-number">Chapter 3</div>
-                <div class="chapter-name vanisagara-text">Karma-yoga</div>
-            </div>
+            <h2 id="reader-title" class="reader-chapter-title vanisagara-text"></h2>
             
-            <div class="chapter-card chapter-locked">
-                <div class="chapter-number">Chapter 4</div>
-                <div class="chapter-name vanisagara-text">Transcendental Knowledge</div>
-            </div>
-            
-            <div class="chapter-card chapter-locked">
-                <div class="chapter-number">Chapter 5</div>
-                <div class="chapter-name vanisagara-text">Karma-yoga—Action in Kṛṣṇa Consciousness</div>
-            </div>
+            <!-- JavaScript injects verses here -->
+            <div id="verse-container"></div> 
+        </div>
 
-            <div class="chapter-card chapter-locked">
-                <div class="chapter-number">Chapter 6</div>
-                <div class="chapter-name vanisagara-text">Dhyāna-yoga</div>
-            </div>
-            
-            <div class="chapter-card chapter-locked">
-                <div class="chapter-number">Chapter 7</div>
-                <div class="chapter-name vanisagara-text">Knowledge of the Absolute</div>
-            </div>
-            
-            <div class="chapter-card chapter-locked">
-                <div class="chapter-number">Chapter 8</div>
-                <div class="chapter-name vanisagara-text">Attaining the Supreme</div>
-            </div>
-
-            <div class="chapter-card chapter-locked">
-                <div class="chapter-number">Chapter 9</div>
-                <div class="chapter-name vanisagara-text">The Most Confidential Knowledge</div>
-            </div>
-
-            <div class="chapter-card chapter-locked">
-                <div class="chapter-number">Chapter 10</div>
-                <div class="chapter-name vanisagara-text">The Opulence of the Absolute</div>
-            </div>
-
-            <div class="chapter-card chapter-locked">
-                <div class="chapter-number">Chapter 11</div>
-                <div class="chapter-name vanisagara-text">The Universal Form</div>
-            </div>
-
-            <div class="chapter-card chapter-locked">
-                <div class="chapter-number">Chapter 12</div>
-                <div class="chapter-name vanisagara-text">Devotional Service</div>
-            </div>
-
-            <div class="chapter-card chapter-locked">
-                <div class="chapter-number">Chapter 13</div>
-                <div class="chapter-name vanisagara-text">Nature, the Enjoyer, and Consciousness</div>
-            </div>
-
-            <div class="chapter-card chapter-locked">
-                <div class="chapter-number">Chapter 14</div>
-                <div class="chapter-name vanisagara-text">The Three Modes of Material Nature</div>
-            </div>
-
-            <div class="chapter-card chapter-locked">
-                <div class="chapter-number">Chapter 15</div>
-                <div class="chapter-name vanisagara-text">The Yoga of the Supreme Person</div>
-            </div>
-
-            <div class="chapter-card chapter-locked">
-                <div class="chapter-number">Chapter 16</div>
-                <div class="chapter-name vanisagara-text">The Divine and Demoniac Natures</div>
-            </div>
-
-            <div class="chapter-card chapter-locked">
-                <div class="chapter-number">Chapter 17</div>
-                <div class="chapter-name vanisagara-text">The Divisions of Faith</div>
-            </div>
-
-            <div class="chapter-card chapter-locked">
-                <div class="chapter-number">Chapter 18</div>
-                <div class="chapter-name vanisagara-text">Conclusion—The Perfection of Renunciation</div>
-            </div>
-        </section>
     </main>
 
     <script>
@@ -300,9 +282,9 @@
             document.querySelectorAll('a').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
                     const target = this.getAttribute('href');
-                    if (target === '#') { e.preventDefault(); return; } // Prevent jump on empty chapter links
+                    if (!target || target === '#') return; 
                     
-                    if (target && !target.startsWith('http') && this.getAttribute('target') !== '_blank') {
+                    if (!target.startsWith('http') && this.getAttribute('target') !== '_blank' && !target.startsWith('javascript')) {
                         e.preventDefault();
                         let currentPath = window.location.pathname.replace(/^\/|\.html$/g, '');
                         if (currentPath === 'index' || currentPath === '') currentPath = '/';
@@ -316,6 +298,70 @@
                     }
                 });
             });
+
+            // --- 2. VEDABASE DATA FETCH & READER LOGIC ---
+            let chaptersData = [];
+
+            // Quietly fetch the JSON data in the background
+            fetch('bg-base (latex)/chapters.json')
+                .then(response => response.json())
+                .then(data => {
+                    chaptersData = data;
+                    console.log("Vedabase initialized with", chaptersData.length, "chapters.");
+                })
+                .catch(err => console.error("Error loading JSON. Ensure chapters.json is in bg-base (latex)/", err));
+
+            window.openChapter = function(index) {
+                if (chaptersData.length === 0) {
+                    alert("The Archive is still loading. Please try again in a few seconds.");
+                    return;
+                }
+
+                const chapter = chaptersData[index];
+                if (!chapter) return;
+
+                // 1. Swap Views
+                document.getElementById('toc-view').style.display = 'none';
+                document.getElementById('reader-view').style.display = 'block';
+                
+                // 2. Set the Title
+                document.getElementById('reader-title').innerHTML = `CHAPTER ${chapter.chapter_number}<br><span style="font-size: 0.65em; font-weight: 400; margin-top: 15px; display: block;">${chapter.chapter_title}</span>`;
+                
+                // 3. Build the Verses
+                const container = document.getElementById('verse-container');
+                container.innerHTML = ''; 
+                
+                chapter.verses.forEach(verse => {
+                    let html = `<div class="verse-block vanisagara-text">`;
+                    html += `<div class="verse-number">${verse.text_number.toUpperCase()}</div>`;
+                    
+                    if (verse.devanagari) html += `<div class="devanagari-text">${verse.devanagari}</div>`;
+                    if (verse.roman) html += `<div class="roman-text">${verse.roman}</div>`;
+                    
+                    if (verse.synonyms) html += `<div class="section-label">SYNONYMS</div><div class="synonyms-text">${verse.synonyms}</div>`;
+                    if (verse.translation) html += `<div class="section-label">TRANSLATION</div><div class="translation-text">${verse.translation}</div>`;
+                    
+                    // Formatting the Purport to mimic LaTeX paragraphs
+                    if (verse.purport) {
+                        // The Python script replaces \par with <br>. We convert that into HTML paragraphs for perfect justification.
+                        let formattedPurport = verse.purport.split('<br>').filter(p => p.trim() !== '').map(p => `<p>${p}</p>`).join('');
+                        html += `<div class="section-label">PURPORT</div><div class="purport-text">${formattedPurport}</div>`;
+                    }
+                    
+                    html += `</div>`;
+                    container.innerHTML += html;
+                });
+
+                // Jump to top of reading pane instantly
+                window.scrollTo({ top: 0, behavior: 'instant' });
+            };
+
+            window.closeReader = function() {
+                // Swap views back to the Lobby
+                document.getElementById('reader-view').style.display = 'none';
+                document.getElementById('toc-view').style.display = 'flex';
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            };
 
             // --- 3. LOCAL STORAGE THEME TOGGLE LOGIC ---
             const themeBtn = document.getElementById('themeBtn');
