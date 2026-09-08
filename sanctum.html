@@ -5,38 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Sanctum - Vāṇīsāgara</title>
     
-    <!-- PREVENTS THEME & HUE FLASHING ON PAGE LOAD -->
+    <!-- IMPORT NOTO SERIF -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap" rel="stylesheet">
+    
+    <!-- PREVENTS THEME FLASHING ON PAGE LOAD -->
     <script>
         const savedTheme = localStorage.getItem('vanisagara_theme');
         if (savedTheme) { document.documentElement.setAttribute('data-theme', savedTheme); }
-        const savedColor = localStorage.getItem('vanisagara_hero_glow');
-        if (savedColor) { document.documentElement.style.setProperty('--hero-glow', savedColor); }
     </script>
 
     <style>
-        @property --hero-glow { syntax: '<color>'; inherits: true; initial-value: #5c4000; }
-
         :root {
-            --bg-main: #141414; --bg-nav: rgba(20, 20, 20, 0.7); --hero-glow: #5c4000; 
-            --text-primary: #f5f5f7; --text-secondary: #86868b; --accent: #ffffff; 
-            --card-bg: #1e1e1e; --border: rgba(255, 255, 255, 0.1);
+            /* DARK MODE (No Hue) */
+            --bg-main: #141414; 
+            --bg-nav: rgba(20, 20, 20, 0.7); 
+            --text-primary: #f5f5f7; 
+            --text-secondary: #86868b; 
+            --accent: #ffffff; 
+            --border: rgba(255, 255, 255, 0.1);
             --toc-link-color: #d1bfae; 
             --toc-hover-color: #ffffff;
-            --reader-red: #ff6b6b; /* Bright red for dark mode text headers */
+            --reader-red: #ff6b6b; 
         }
 
         [data-theme="light"] {
-            --bg-main: #e8dcc4; 
-            --bg-nav: rgba(232, 220, 196, 0.7); 
-            --text-primary: #000000; --text-secondary: #5e5e60; --accent: #1d1d1f; 
-            --card-bg: #ffffff; --border: rgba(0, 0, 0, 0.1);
+            /* LIGHT MODE (Pure White, No Hue) */
+            --bg-main: #ffffff; 
+            --bg-nav: rgba(255, 255, 255, 0.7); 
+            --text-primary: #000000; 
+            --text-secondary: #5e5e60; 
+            --accent: #1d1d1f; 
+            --border: rgba(0, 0, 0, 0.1);
             --toc-link-color: #8c2318; 
             --toc-hover-color: #000000;
-            --reader-red: #7A1111; /* Deep maroon matching your LaTeX PDF */
+            --reader-red: #7A1111; 
         }
 
         html { scroll-behavior: smooth; }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+        
+        /* GLOBAL NOTO SERIF ENFORCEMENT */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Noto Serif', serif; }
 
         body {
             background-color: var(--bg-main); color: var(--text-primary);
@@ -45,11 +55,9 @@
             -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
         }
 
-        /* --- THE ANTI-BLUR ENGINE & HARDWARE ACCELERATION --- */
+        /* --- HARDWARE ACCELERATION --- */
         #main-content { backface-visibility: hidden; -webkit-backface-visibility: hidden; transform-style: preserve-3d; perspective: 1000px; will-change: transform, opacity; }
-        .theme-toggle, .color-toggle, .hamburger, .back-btn { backface-visibility: hidden; -webkit-backface-visibility: hidden; transform: translateZ(0); -webkit-font-smoothing: subpixel-antialiased; }
-
-        .vanisagara-text { font-family: 'Times New Roman', Times, serif !important; font-weight: 400 !important; letter-spacing: 0.02em !important; -webkit-font-smoothing: auto !important; -moz-osx-font-smoothing: auto !important; }
+        .theme-toggle, .hamburger, .back-btn { backface-visibility: hidden; -webkit-backface-visibility: hidden; transform: translateZ(0); -webkit-font-smoothing: subpixel-antialiased; }
 
         #main-content { animation: appEnter 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.4s ease; width: 100%; overflow-x: hidden; }
         #main-content.page-exit { transform: translateY(-15px); opacity: 0; }
@@ -61,58 +69,51 @@
         .brand-icon { width: 24px; height: 24px; object-fit: contain; vertical-align: middle; margin-right: 8px; position: relative; top: -1px; }
         .nav-controls { display: flex; align-items: center; gap: 20px; }
         .nav-links { display: flex; list-style: none; gap: 24px; }
-        .nav-links a { text-decoration: none; color: var(--text-primary); font-size: 15px; font-weight: 500; transition: opacity 0.2s; }
+        .nav-links a { text-decoration: none; color: var(--text-primary); font-size: 15px; font-weight: 500; transition: opacity 0.2s; font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif; }
         .nav-links a:hover { opacity: 0.7; }
         .nav-divider { width: 1px; height: 28px; background-color: var(--text-secondary); opacity: 0.4; }
         .nav-icons { display: flex; align-items: center; gap: 12px; }
-        .theme-toggle, .color-toggle { background: none; border: none; color: var(--text-primary); cursor: pointer; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease, visibility 0.3s ease; }
-        .hue-icon { width: 20px; height: 20px; object-fit: contain; }
-        .theme-toggle:active, .color-toggle:active { transform: scale(0.85) translateZ(0); }
-        .theme-toggle:hover, .color-toggle:hover { opacity: 0.7; }
-        [data-theme="dark"] .logo-light, [data-theme="dark"] .hue-light { display: none; }
-        [data-theme="light"] .logo-dark, [data-theme="light"] .hue-dark { display: none; }
-        [data-theme="light"] .color-toggle { opacity: 0; visibility: hidden; pointer-events: none; }
+        .theme-toggle { background: none; border: none; color: var(--text-primary); cursor: pointer; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease, visibility 0.3s ease; }
+        .theme-toggle:active { transform: scale(0.85) translateZ(0); }
+        .theme-toggle:hover { opacity: 0.7; }
 
         /* --- SANCTUM LOBBY UI --- */
         .sanctum-wrapper { position: relative; flex: 1; display: flex; flex-direction: column; align-items: center; padding: 140px 5% 100px 5%; overflow: hidden; z-index: 2; }
-        .sanctum-glow { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: var(--hero-glow); -webkit-mask-image: radial-gradient(circle at 50% 15%, black 0%, transparent 60%); mask-image: radial-gradient(circle at 50% 15%, black 0%, transparent 60%); transition: --hero-glow 0.75s ease-in-out, background-color 0.75s ease-in-out, opacity 0.4s ease; pointer-events: none; z-index: 1; }
-        [data-theme="light"] .sanctum-glow { opacity: 0; }
         
         #toc-view { width: 100%; display: flex; flex-direction: column; align-items: center; animation: fadeIn 0.4s ease forwards; }
 
         .sanctum-header { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 60px; width: 100%; }
         .sanctum-title { font-size: clamp(38px, 6vw, 64px); font-weight: 700; line-height: 1.1; color: var(--text-primary); letter-spacing: -0.5px; }
 
-        /* The Table of Contents List */
         .toc-container { position: relative; z-index: 2; display: flex; flex-direction: column; gap: 22px; width: 100%; max-width: 900px; margin: 0 auto; text-align: left; }
-        .toc-link { font-size: clamp(18px, 2.5vw, 24px); color: var(--toc-link-color); text-decoration: none; transition: opacity 0.2s ease, color 0.2s ease; display: block; line-height: 1.4; font-family: 'Times New Roman', Times, serif; letter-spacing: 0.01em; cursor: pointer; }
+        .toc-link { font-size: clamp(18px, 2.5vw, 24px); color: var(--toc-link-color); text-decoration: none; transition: opacity 0.2s ease, color 0.2s ease; display: block; line-height: 1.4; letter-spacing: 0.01em; cursor: pointer; }
         
         @media (hover: hover) { .toc-link:hover:not(.locked) { color: var(--toc-hover-color); opacity: 0.8; } }
         .toc-link:active:not(.locked) { opacity: 0.5; transition: opacity 0.1s ease; }
         .toc-link.locked { opacity: 0.35; pointer-events: none; cursor: default; }
 
-        /* --- THE WEB READER INTERFACE --- */
-        #reader-view { display: none; width: 100%; max-width: 860px; margin: 0 auto; z-index: 2; padding-top: 10px; animation: fadeIn 0.5s ease forwards; }
+        /* --- THE WEB READER INTERFACE (UPSCALED TEXT) --- */
+        #reader-view { display: none; width: 100%; max-width: 900px; margin: 0 auto; z-index: 2; padding-top: 10px; animation: fadeIn 0.5s ease forwards; }
         
-        .back-btn { background: none; border: none; color: var(--text-secondary); font-size: 16px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; margin-bottom: 50px; font-weight: 500; transition: opacity 0.2s; }
+        .back-btn { background: none; border: none; color: var(--text-secondary); font-size: 16px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; margin-bottom: 50px; font-weight: 500; transition: opacity 0.2s; font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif; }
         @media (hover: hover) { .back-btn:hover { opacity: 0.7; } }
         .back-btn:active { opacity: 0.5; }
 
-        .reader-chapter-title { font-size: clamp(26px, 4vw, 36px); font-weight: 700; margin-bottom: 80px; text-align: center; line-height: 1.3; color: var(--text-primary); }
+        .reader-chapter-title { font-size: clamp(32px, 5vw, 44px); font-weight: 700; margin-bottom: 80px; text-align: center; line-height: 1.3; color: var(--text-primary); }
         
-        .verse-block { margin-bottom: 90px; }
-        .verse-number { color: var(--reader-red); font-size: 17px; font-weight: 700; text-align: center; margin-bottom: 24px; letter-spacing: 0.05em; }
+        .verse-block { margin-bottom: 100px; }
+        .verse-number { color: var(--reader-red); font-size: 20px; font-weight: 700; text-align: center; margin-bottom: 24px; letter-spacing: 0.05em; }
         
-        .devanagari-text { text-align: center; font-size: 26px; line-height: 1.8; margin-bottom: 28px; font-weight: 600; }
-        .roman-text { text-align: center; font-size: 19px; line-height: 1.6; margin-bottom: 36px; font-style: italic; }
+        .devanagari-text { text-align: center; font-size: 32px; line-height: 1.8; margin-bottom: 32px; font-weight: 600; }
+        .roman-text { text-align: center; font-size: 24px; line-height: 1.6; margin-bottom: 40px; font-style: italic; }
         
-        .section-label { font-size: 16px; font-weight: 700; text-align: center; margin-bottom: 16px; letter-spacing: 0.05em; margin-top: 36px; }
+        .section-label { font-size: 18px; font-weight: 700; text-align: center; margin-bottom: 16px; letter-spacing: 0.05em; margin-top: 40px; }
         
-        .synonyms-text { font-size: 18px; line-height: 1.7; margin-bottom: 32px; text-align: justify; text-justify: inter-word; }
-        .translation-text { font-size: 20px; font-weight: 700; line-height: 1.6; margin-bottom: 36px; text-align: justify; text-justify: inter-word; }
+        .synonyms-text { font-size: 22px; line-height: 1.8; margin-bottom: 36px; text-align: justify; text-justify: inter-word; }
+        .translation-text { font-size: 26px; font-weight: 700; line-height: 1.7; margin-bottom: 40px; text-align: justify; text-justify: inter-word; }
         
-        .purport-text { font-size: 19px; line-height: 1.65; text-align: justify; text-justify: inter-word; hyphens: none; -webkit-hyphens: none; opacity: 0.95; }
-        .purport-text p { margin-bottom: 20px; text-indent: 20px; } /* Mimics the LaTeX paragraph indent */
+        .purport-text { font-size: 22px; line-height: 1.75; text-align: justify; text-justify: inter-word; hyphens: none; -webkit-hyphens: none; opacity: 0.95; }
+        .purport-text p { margin-bottom: 22px; text-indent: 14px; } /* Slightly lesser indent */
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
@@ -128,27 +129,26 @@
             
             nav { justify-content: space-between; padding: 0 5%; position: fixed; top: 0; width: 100%; height: 60px; z-index: 9999 !important; display: flex; align-items: center; }
             .nav-brand { position: absolute; left: 50%; top: 55%; transform: translate(-50%, -50%); display: flex; align-items: center; justify-content: center; }
-            nav .vanisagara-text { display: none !important; } 
             .brand-icon { width: 44px; height: 44px; margin-right: 0; }
             .nav-controls { width: 100%; height: 100%; display: flex; justify-content: space-between; align-items: center; }
             .nav-icons { order: 1; display: flex; align-items: center; gap: 15px; } 
-            .theme-toggle:active, .color-toggle:active { transform: scale(0.85) translateZ(0); }
+            .theme-toggle:active { transform: scale(0.85) translateZ(0); }
             
             .hamburger { order: 2; background: none; border: none; cursor: pointer; z-index: 10000; transition: transform 0.2s ease; display: flex !important; align-items: center; justify-content: center; padding: 0 !important; margin: 0 !important; transform: translateY(1.5px) !important; }
             .hamburger:active { transform: translateY(1.5px) scale(0.85) translateZ(0) !important; }
-            .hamburger svg, .theme-toggle svg, .color-toggle img { display: block; }
-            [data-theme="dark"] .theme-toggle, [data-theme="dark"] .color-toggle, [data-theme="dark"] .hamburger { color: #ffffff !important; }
+            .hamburger svg, .theme-toggle svg { display: block; }
+            [data-theme="dark"] .theme-toggle, [data-theme="dark"] .hamburger { color: #ffffff !important; }
             .nav-links, .nav-divider { display: none; }
 
             .mobile-menu-overlay { display: flex; position: fixed; top: 0; left: 0; width: 100%; height: 100dvh; background-color: var(--bg-main); z-index: 9998; flex-direction: column; justify-content: center; align-items: center; padding-top: 0; padding-bottom: 12vh; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; }
             .mobile-menu-overlay.active { opacity: 1; visibility: visible; }
             .mobile-menu-content { display: flex; flex-direction: column; align-items: center; gap: 14px; }
-            .mobile-menu-content > * { opacity: 0; transform: translateY(-15px); transition: opacity 0.2s ease, transform 0.2s ease; }
+            .mobile-menu-content > * { opacity: 0; transform: translateY(-15px); transition: opacity 0.2s ease, transform 0.2s ease; font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif; }
             .mobile-menu-overlay.active .mobile-menu-content > *:nth-child(1) { transition: opacity 0.4s ease 0.1s, transform 0.4s cubic-bezier(0.16,1,0.3,1) 0.1s; opacity: 1; transform: translateY(0); }
             .mobile-menu-overlay.active .mobile-menu-content > *:nth-child(2) { transition: opacity 0.4s ease 0.2s, transform 0.4s cubic-bezier(0.16,1,0.3,1) 0.2s; opacity: 1; transform: translateY(0); }
             .mobile-menu-overlay.active .mobile-menu-content > *:nth-child(3) { transition: opacity 0.4s ease 0.3s, transform 0.4s cubic-bezier(0.16,1,0.3,1) 0.3s; opacity: 1; transform: translateY(0); }
             .mobile-menu-overlay.active .mobile-menu-content > *:nth-child(4) { transition: opacity 0.4s ease 0.4s, transform 0.4s cubic-bezier(0.16,1,0.3,1) 0.4s; opacity: 1; transform: translateY(0); }
-            .mobile-menu-content a { color: var(--text-primary); font-size: 22px; text-decoration: none; font-weight: 400; font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+            .mobile-menu-content a { color: var(--text-primary); font-size: 22px; text-decoration: none; font-weight: 400; }
             .mobile-menu-divider { width: 180px; height: 1px; background: linear-gradient(90deg, transparent, var(--text-primary), transparent); opacity: 0.4; }
             .mobile-menu-footer { position: absolute; bottom: 8vh; }
             .menu-logo { width: 140px; height: auto; opacity: 0.95; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3)); }
@@ -156,21 +156,22 @@
             .sanctum-wrapper { padding-top: 110px; padding-bottom: 60px; }
             .toc-container { gap: 24px; padding: 0 10px; }
             
-            .reader-chapter-title { margin-bottom: 50px; }
+            .reader-chapter-title { font-size: 32px; margin-bottom: 50px; }
             .verse-block { margin-bottom: 60px; }
-            .devanagari-text { font-size: 22px; }
-            .roman-text { font-size: 17px; }
-            .synonyms-text { font-size: 16px; }
-            .translation-text { font-size: 18px; }
-            .purport-text { font-size: 17px; }
+            .verse-number { font-size: 18px; }
+            .devanagari-text { font-size: 26px; }
+            .roman-text { font-size: 20px; }
+            .synonyms-text { font-size: 19px; }
+            .translation-text { font-size: 22px; }
+            .purport-text { font-size: 19px; }
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <a href="/" class="nav-brand" style="text-decoration: none; color: inherit;">
-            <img src="images/logos/website/transparent/vanisagara-white.webp" alt="Vāṇīsāgara Logo" class="brand-icon logo-dark"><img src="images/logos/website/transparent/vanisagara-black.webp" alt="Vāṇīsāgara Logo" class="brand-icon logo-light"><span class="vanisagara-text">Vāṇīsāgara</span>
+        <a href="/" class="nav-brand" style="text-decoration: none; color: inherit; font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif;">
+            <img src="images/logos/website/transparent/vanisagara-white.webp" alt="Vāṇīsāgara Logo" class="brand-icon logo-dark"><img src="images/logos/website/transparent/vanisagara-black.webp" alt="Vāṇīsāgara Logo" class="brand-icon logo-light"><span class="vanisagara-text" style="font-family: 'Noto Serif', serif !important;">Vāṇīsāgara</span>
         </a>
         <div class="nav-controls">
             <ul class="nav-links">
@@ -186,10 +187,7 @@
                         <!-- Theme icon injected via JS -->
                     </svg>
                 </button>
-                <button class="color-toggle" id="colorBtn" aria-label="Cycle Glow Color" title="Change Background Hue">
-                    <img src="images/logos/nav-bar/hue-white.webp" alt="Hue Palette" class="hue-icon hue-dark">
-                    <img src="images/logos/nav-bar/hue-black.webp" alt="Hue Palette" class="hue-icon hue-light">
-                </button>
+                <div style="width: 32px; height: 32px;" class="ghost-spacer"></div>
             </div>
 
             <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
@@ -213,24 +211,25 @@
 
     <!-- MAIN SANCTUM WRAPPER -->
     <main class="sanctum-wrapper" id="main-content">
-        <div class="sanctum-glow"></div>
         
         <!-- STATE 1: THE LOBBY -->
         <div id="toc-view">
             <section class="sanctum-header">
-                <h1 class="sanctum-title vanisagara-text">Bhagavad-gītā As It Is</h1>
+                <h1 class="sanctum-title">Bhagavad-gītā As It Is</h1>
             </section>
 
             <section class="toc-container" id="bg-chapters">
+                <!-- Front Matter (Locked placeholders) -->
                 <a class="toc-link locked">Setting the Scene</a>
                 <a class="toc-link locked">Dedication</a>
                 <a class="toc-link locked">Preface</a>
                 <a class="toc-link locked">Introduction</a>
                 
-                <!-- Active Chapters (Calling the JavaScript Data) -->
+                <!-- Active Chapters -->
                 <a onclick="openChapter(0)" class="toc-link">Chapter One: Observing the Armies on the Battlefield of Kurukṣetra</a>
                 <a onclick="openChapter(1)" class="toc-link">Chapter Two: Contents of the Gītā Summarized</a>
 
+                <!-- Remaining Locked Chapters -->
                 <a class="toc-link locked">Chapter Three: Karma-yoga</a>
                 <a class="toc-link locked">Chapter Four: Transcendental Knowledge</a>
                 <a class="toc-link locked">Chapter Five: Karma-yoga – Action in Kṛṣṇa Consciousness</a>
@@ -260,7 +259,7 @@
                 Return to Directory
             </button>
             
-            <h2 id="reader-title" class="reader-chapter-title vanisagara-text"></h2>
+            <h2 id="reader-title" class="reader-chapter-title"></h2>
             
             <!-- JavaScript injects verses here -->
             <div id="verse-container"></div> 
@@ -302,14 +301,13 @@
             // --- 2. VEDABASE DATA FETCH & READER LOGIC ---
             let chaptersData = [];
 
-            // Quietly fetch the JSON data in the background
+            // Remember to move chapters.json into your main directory before pushing!
             fetch('chapters.json')
                 .then(response => response.json())
                 .then(data => {
                     chaptersData = data;
-                    console.log("Vedabase initialized with", chaptersData.length, "chapters.");
                 })
-                .catch(err => console.error("Error loading JSON. Ensure chapters.json is in bg-base (latex)/", err));
+                .catch(err => console.error("Error loading JSON.", err));
 
             window.openChapter = function(index) {
                 if (chaptersData.length === 0) {
@@ -332,8 +330,12 @@
                 container.innerHTML = ''; 
                 
                 chapter.verses.forEach(verse => {
-                    let html = `<div class="verse-block vanisagara-text">`;
-                    html += `<div class="verse-number">${verse.text_number.toUpperCase()}</div>`;
+                    let html = `<div class="verse-block">`;
+                    
+                    // Logic to handle "TEXT X" or "TEXTS X-Y"
+                    let numStr = verse.text_number.toUpperCase();
+                    let textLabel = numStr.includes('-') ? `TEXTS ${numStr}` : `TEXT ${numStr}`;
+                    html += `<div class="verse-number">${textLabel}</div>`;
                     
                     if (verse.devanagari) html += `<div class="devanagari-text">${verse.devanagari}</div>`;
                     if (verse.roman) html += `<div class="roman-text">${verse.roman}</div>`;
@@ -343,7 +345,6 @@
                     
                     // Formatting the Purport to mimic LaTeX paragraphs
                     if (verse.purport) {
-                        // The Python script replaces \par with <br>. We convert that into HTML paragraphs for perfect justification.
                         let formattedPurport = verse.purport.split('<br>').filter(p => p.trim() !== '').map(p => `<p>${p}</p>`).join('');
                         html += `<div class="section-label">PURPORT</div><div class="purport-text">${formattedPurport}</div>`;
                     }
@@ -383,26 +384,6 @@
                     localStorage.setItem('vanisagara_theme', 'dark');
                     icon.innerHTML = sunSvg;
                 }
-            });
-
-            // --- 7. COLOR CYCLING LOGIC ---
-            const colorBtn = document.getElementById('colorBtn');
-            const royalColors = ['#5c4000', '#800020', '#002147', '#3b1459', '#0a3a2a'];
-            let currentColorIndex = 0;
-            const savedColor = localStorage.getItem('vanisagara_hero_glow');
-            if (savedColor) {
-                const foundIndex = royalColors.indexOf(savedColor);
-                if (foundIndex !== -1) {
-                    currentColorIndex = foundIndex;
-                    document.documentElement.style.setProperty('--hero-glow', royalColors[currentColorIndex]);
-                }
-            }
-
-            colorBtn.addEventListener('click', () => {
-                currentColorIndex = (currentColorIndex + 1) % royalColors.length;
-                const newColor = royalColors[currentColorIndex];
-                document.documentElement.style.setProperty('--hero-glow', newColor);
-                localStorage.setItem('vanisagara_hero_glow', newColor);
             });
 			
             // --- 8. MOBILE HAMBURGER MENU LOGIC ---
