@@ -11,17 +11,18 @@ def clean_latex_formatting(text):
     """Surgically cleans text, handles nested bold/italics, and strips raw LaTeX."""
     if not text: return ""
     
-    # Strip raw layout commands
+    # 1. Strip raw layout commands and the document end tag
     text = text.replace('\\noindent', '').replace('\\devanagari\\setstretch{0.85}', '').replace('\\centering', '')
+    text = text.replace('\\end{document}', '')
     
-    # Recursively un-nest bold and italics safely to prevent HTML bleeding
+    # 2. Recursively un-nest bold and italics safely to prevent HTML bleeding
     while True:
         new_text = re.sub(r'\\textbf\{([^{}]+)\}', r'<strong>\1</strong>', text)
         new_text = re.sub(r'\\textit\{([^{}]+)\}', r'<em>\1</em>', new_text)
         if new_text == text: break
         text = new_text
         
-    # THE KILL SWITCH: Strip any remaining raw tags and braces
+    # 3. THE KILL SWITCH: Strip any remaining raw tags and braces
     text = text.replace('\\textbf', '').replace('\\textit', '')
     text = text.replace('{', '').replace('}', '')
     return text.strip()
@@ -32,7 +33,7 @@ def process_inline(text):
     # Destroy any \vspace or \hspace, with or without braces
     text = re.sub(r'\\[vh]space\*?(?:\{[^}]*\}|\s*[0-9.]+[a-zA-Z]+)', '', text)
     
-    # NEW: Catch LaTeX line-breaks with spacing modifiers (like \\[0.8em]) BEFORE stripping
+    # Catch LaTeX line-breaks with spacing modifiers (like \\[0.8em]) BEFORE stripping
     text = re.sub(r'\\\\(?:\*)?\[.*?\]\s*', '<br><br>', text)
     text = re.sub(r'\\\\(?:\*)?\s*', '<br>', text)
     
@@ -45,9 +46,6 @@ def process_purport(text):
     """Processes complex purports, creating quote blocks and paragraph tags."""
     if not text: return ""
     
-    # Remove the "Thus end the..." sign-off at the end of chapters
-    text = re.sub(r'\\vspace\*?(?:\{[^}]*\}|\s*[0-9.]+[a-zA-Z]+)?\s*\\textit\{Thus end the Bhaktivedanta.*', '', text, flags=re.DOTALL)
-    
     # Destroy spacing commands (catches \vspace{...} and rogue \vspace0.5em)
     text = re.sub(r'\\[vh]space\*?(?:\{[^}]*\}|\s*[0-9.]+[a-zA-Z]+)', '', text)
     
@@ -55,7 +53,7 @@ def process_purport(text):
     text = re.sub(r'\{\s*\\centering(.*?)\\par\}', r'\n\n<blockquote class="quote-block">\1</blockquote>\n\n', text, flags=re.DOTALL)
     text = re.sub(r'\{\s*\\centering(.*?)\}', r'\n\n<blockquote class="quote-block">\1</blockquote>\n\n', text, flags=re.DOTALL)
     
-    # Clean the rest of the text
+    # Clean the rest of the text (also strips \end{document})
     text = clean_latex_formatting(text)
     
     # Split the text into actual paragraphs
@@ -72,6 +70,11 @@ def process_purport(text):
             p = re.sub(r'\\\\(?:\*)?\[.*?\]\s*', '<br><br>', p)
             p = re.sub(r'\\\\(?:\*)?\s*', '<br>', p)
             html_blocks.append(p)
+        elif "Thus end the Bhaktivedanta" in p:
+            # Apply the special sign-off class for the chapter ending
+            p = re.sub(r'\\\\(?:\*)?\[.*?\]\s*', ' ', p)
+            p = re.sub(r'\\\\(?:\*)?\s*', ' ', p)
+            html_blocks.append(f'<p class="sign-off">{p}</p>')
         else:
             # Wrap standard text in paragraph tags for perfect CSS indentation
             p = re.sub(r'\\\\(?:\*)?\[.*?\]\s*', ' ', p)

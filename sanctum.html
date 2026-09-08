@@ -103,15 +103,19 @@
         
         .verse-block { margin-bottom: 120px; }
         
-        /* Adjusted Headers (Reduced by ~1.5pt) */
         .verse-number { color: var(--reader-red); font-size: 36px; font-weight: 700; text-align: center; margin-bottom: 40px; letter-spacing: 0.05em; }
         .section-label { font-size: 30px; font-weight: 700; text-align: center; margin-bottom: 12px; letter-spacing: 0.05em; margin-top: 55px; text-transform: uppercase; }
         
-        /* Unified 22px Body Text */
-        .devanagari-text { text-align: center; font-size: 22px; line-height: 1.8; margin-bottom: 32px; font-weight: 600; }
+        /* Devanagari scaled up by 3pt */
+        .devanagari-text { text-align: center; font-size: 37px; line-height: 1.8; margin-bottom: 32px; font-weight: 600; }
         .roman-text { text-align: center; font-size: 22px; line-height: 1.6; margin-bottom: 40px; font-style: italic; }
         
+        /* Unified 22px Body Text */
         .synonyms-text { font-size: 22px; line-height: 1.8; margin-bottom: 36px; text-align: justify; text-justify: inter-word; }
+        
+        /* Roman Transliterations within Synonyms */
+        .synonyms-text em { color: var(--reader-red); font-weight: 600; font-style: italic; }
+        
         .translation-text { font-size: 22px; font-weight: 700; line-height: 1.7; margin-bottom: 40px; text-align: justify; text-justify: inter-word; }
         
         /* Purport Styling */
@@ -119,7 +123,10 @@
         .purport-text p { margin-bottom: 22px; text-indent: 36px; }
         .purport-text p:first-of-type { text-indent: 0; } 
         
-        /* Centered Sanskrit Verse Block (Margin reduced by 25%) */
+        /* The Chapter End Sign-off */
+        .purport-text p.sign-off { margin-top: 50px; text-indent: 0 !important; }
+        
+        /* Centered Sanskrit Verse Block */
         .quote-block { display: block; text-align: center; margin: 30px auto; font-size: 22px; line-height: 1.8; font-style: italic; width: 100%; }
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
@@ -166,18 +173,18 @@
             .reader-chapter-title { font-size: 32px; margin-bottom: 50px; }
             .verse-block { margin-bottom: 80px; }
             
-            /* Adjusted Mobile Headers (-1.5pt) */
             .verse-number { font-size: 28px; margin-bottom: 30px; }
             .section-label { font-size: 24px; margin-bottom: 10px; margin-top: 40px; }
             
+            /* Mobile Devanagari scaled up by 3pt */
+            .devanagari-text { font-size: 31px; }
+            
             /* Unified 20px Mobile Body Text */
-            .devanagari-text { font-size: 20px; }
             .roman-text { font-size: 20px; }
             .synonyms-text { font-size: 20px; }
             .translation-text { font-size: 20px; }
             .purport-text { font-size: 20px; }
             
-            /* Quote block margin reduced by 25% */
             .quote-block { font-size: 20px; margin: 22px 0; }
         }
     </style>
