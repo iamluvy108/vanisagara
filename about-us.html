@@ -613,29 +613,32 @@
             window.addEventListener('orientationchange', setMobileHeight);
             setMobileHeight();
             
-            // --- NETFLIX PAGE TRANSITION LOGIC ---
+            // --- 1. NETFLIX PAGE TRANSITION LOGIC ---
             const mainContent = document.getElementById('main-content');
-            
             document.querySelectorAll('a').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
                     const target = this.getAttribute('href');
                     
-                    // Proceed only if it's an internal page link (ending in .html)
-                    if (target && target.endsWith('.html') && this.getAttribute('target') !== '_blank') {
+                    // Proceed if the link is internal (doesn't start with http) and not opening in a new tab
+                    if (target && !target.startsWith('http') && this.getAttribute('target') !== '_blank') {
+                        e.preventDefault();
                         
-                        // If they click a link to the page they are already on, just smoothly scroll to top
-                        const currentPage = window.location.pathname.split('/').pop() || 'About.html';
-                        if (target === currentPage) {
-                            e.preventDefault();
+                        // Normalize the current path (strip leading slashes and .html)
+                        let currentPath = window.location.pathname.replace(/^\/|\.html$/g, '');
+                        if (currentPath === 'index' || currentPath === '') currentPath = '/';
+                        
+                        // Normalize the target path (strip leading slashes and .html)
+                        let targetPath = target.replace(/^\/|\.html$/g, '');
+                        if (targetPath === 'index' || targetPath === '') targetPath = '/';
+
+                        // If clicking the link of the page we are already on, just scroll to top
+                        if (targetPath === currentPath) {
                             window.scrollTo({ top: 0, behavior: 'smooth' });
                             return;
                         }
 
                         // Otherwise, trigger the Netflix exit animation
-                        e.preventDefault();
                         mainContent.classList.add('page-exit');
-                        
-                        // Wait for the animation to complete before changing the page
                         setTimeout(() => {
                             window.location.href = target;
                         }, 400); 

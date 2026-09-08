@@ -523,14 +523,26 @@
             document.querySelectorAll('a').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
                     const target = this.getAttribute('href');
-                    if (target && target.endsWith('.html') && this.getAttribute('target') !== '_blank') {
-                        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-                        if (target === currentPage) {
-                            e.preventDefault();
+                    
+                    // Proceed if the link is internal (doesn't start with http) and not opening in a new tab
+                    if (target && !target.startsWith('http') && this.getAttribute('target') !== '_blank') {
+                        e.preventDefault();
+                        
+                        // Normalize the current path (strip leading slashes and .html)
+                        let currentPath = window.location.pathname.replace(/^\/|\.html$/g, '');
+                        if (currentPath === 'index' || currentPath === '') currentPath = '/';
+                        
+                        // Normalize the target path (strip leading slashes and .html)
+                        let targetPath = target.replace(/^\/|\.html$/g, '');
+                        if (targetPath === 'index' || targetPath === '') targetPath = '/';
+
+                        // If clicking the link of the page we are already on, just scroll to top
+                        if (targetPath === currentPath) {
                             window.scrollTo({ top: 0, behavior: 'smooth' });
                             return;
                         }
-                        e.preventDefault();
+
+                        // Otherwise, trigger the Netflix exit animation
                         mainContent.classList.add('page-exit');
                         setTimeout(() => {
                             window.location.href = target;
