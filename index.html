@@ -39,8 +39,8 @@
             --btn-text: #202124; 
             --btn-hover: #aecbfa; 
             --card-bg: #303134;
+            --modal-bg: #202124; /* Material Surface */
             --border: #5f6368;
-            --netflix-modal-bg: #202124;
             --sys-yellow: #fbbc04; /* Google Yellow */
             --google-shadow: 0 1px 2px 0 rgba(0,0,0,0.3), 0 1px 3px 1px rgba(0,0,0,0.15);
             --google-shadow-hover: 0 1px 3px 0 rgba(0,0,0,0.3), 0 4px 8px 3px rgba(0,0,0,0.15);
@@ -63,8 +63,8 @@
             --btn-text: #ffffff; 
             --btn-hover: #1558d6; 
             --card-bg: #ffffff;
+            --modal-bg: #ffffff; /* Material Surface */
             --border: #dadce0;
-            --netflix-modal-bg: #ffffff;
             --sys-yellow: #fbbc04;
             --google-shadow: 0 1px 2px 0 rgba(60,64,67,0.3), 0 1px 3px 1px rgba(60,64,67,0.15);
             --google-shadow-hover: 0 1px 3px 0 rgba(60,64,67,0.3), 0 4px 8px 3px rgba(60,64,67,0.15);
@@ -96,7 +96,7 @@
         }
 		
 		/* --- THE ANTI-BLUR ENGINE --- */
-        #main-content, .book-item, .book-cover-wrapper, .modal-box, .netflix-modal-box {
+        #main-content, .book-item, .book-cover-wrapper, .modal-box, .google-modal-box {
             backface-visibility: hidden;
             -webkit-backface-visibility: hidden;
             transform-style: preserve-3d;
@@ -191,7 +191,7 @@
         .btn-primary:active { transform: scale(0.98); opacity: 0.9; transition: transform 0.1s; }
         .hero-image { position: absolute; bottom: 0; right: 8%; height: 85vh; max-height: 100%; width: auto; max-width: 45%; object-fit: contain; object-position: bottom right; display: block; z-index: 2; filter: drop-shadow(0 10px 30px rgba(0,0,0,0.2)); pointer-events: none; transition: opacity 0.5s ease; }
 
-        /* --- NETFLIX-STYLE LIBRARY SECTION (MATERIAL CARDS) --- */
+        /* --- LIBRARY SECTION (MATERIAL CARDS) --- */
         .library { position: relative; width: 100%; padding: 120px 0 120px; z-index: 11; background-color: var(--bg-main); transition: background-color 0.4s ease; min-height: 100vh; }
         .library-title { font-size: 36px; font-weight: 400; margin-bottom: 40px; letter-spacing: 0; padding: 0 12%; text-align: left; }
         .netflix-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 24px; padding: 0 12% 60px 12%; width: 100%; }
@@ -199,7 +199,6 @@
         .book-item:nth-child(1) { animation-delay: 0.1s; } .book-item:nth-child(2) { animation-delay: 0.15s; } .book-item:nth-child(3) { animation-delay: 0.2s; } .book-item:nth-child(4) { animation-delay: 0.25s; } .book-item:nth-child(5) { animation-delay: 0.3s; }
         .book-cover-wrapper { position: relative; display: block; width: 100%; height: 100%; transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1); }
         
-        /* GOOGLE MATERIAL CARD */
         .book-cover { width: 100%; height: 100%; aspect-ratio: 2 / 3; object-fit: cover; border-radius: 8px; background-color: var(--card-bg); box-shadow: var(--google-shadow); transition: box-shadow 0.2s cubic-bezier(0.2, 0, 0, 1); border: 1px solid var(--border); display: block; }
         .coming-soon-placeholder { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; color: var(--text-secondary); font-weight: 500; font-size: 18px; cursor: default; text-align: center; background-color: var(--card-bg); }
         .placeholder-logo { width: 80px; height: 80px; object-fit: contain; opacity: 0.3; }
@@ -209,15 +208,15 @@
         .book-item.downloadable-book:hover .book-cover, .book-item.locked-hover .book-cover { box-shadow: var(--google-shadow-hover); }
 
         /* --- DYNAMIC MODAL INFO BADGE --- */
-        .modal-info-badge { width: 36px; height: 36px; background-color: transparent; border: 1px solid var(--border); color: var(--sys-yellow); border-radius: 50%; display: none; align-items: center; justify-content: center; font-size: 16px; font-weight: 500; cursor: pointer; transition: background-color 0.2s ease; }
+        .modal-info-badge { width: 40px; height: 40px; background-color: transparent; border: 1px solid var(--border); color: var(--sys-yellow); border-radius: 50%; display: none; align-items: center; justify-content: center; font-size: 16px; font-weight: 500; cursor: pointer; transition: background-color 0.2s ease; flex-shrink: 0; }
         .modal-info-badge:hover { background-color: rgba(251, 188, 4, 0.1); }
-		.modal-info-badge:active { transform: scale(0.95) translateZ(0); }
+		.modal-info-badge:active { transform: scale(0.9) translateZ(0); }
 
-        /* --- MATERIAL NOTIFICATION (Info Modal) --- */
+        /* --- MATERIAL 3 NOTIFICATION (Info Modal) --- */
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6); display: flex; align-items: center; justify-content: center; z-index: 99999 !important; opacity: 0; pointer-events: none; transition: opacity 0.2s ease; }
         #infoModal { z-index: 1001; }
         .modal-overlay.active { opacity: 1; pointer-events: auto; }
-        .modal-box { background-color: var(--card-bg); border-radius: 8px; width: 440px; max-width: 90vw; text-align: left; transform: scale(0.95); opacity: 0; transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1), opacity 0.2s ease; display: flex; flex-direction: column; box-shadow: var(--google-shadow-hover); }
+        .modal-box { background-color: var(--modal-bg); border-radius: 28px; width: 440px; max-width: 90vw; text-align: left; transform: scale(0.95); opacity: 0; transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1), opacity 0.2s ease; display: flex; flex-direction: column; box-shadow: var(--google-shadow-hover); }
         .modal-overlay.active .modal-box { transform: scale(1); opacity: 1; }
         .modal-text-container { padding: 24px 24px 20px; }
         .modal-title { font-size: 22px; font-weight: 400; color: var(--text-primary); margin-bottom: 16px; }
@@ -228,34 +227,34 @@
         .modal-btn.confirm { background: transparent; color: var(--accent); padding: 8px 16px; font-size: 14px; font-weight: 500; letter-spacing: 0.25px; border: none; border-radius: 4px; cursor: pointer; transition: background-color 0.2s ease; }
         .modal-btn.confirm:hover { background-color: var(--icon-hover); }
 
-        /* --- MATERIAL ITEM MODAL --- */
-        .netflix-modal-box { background-color: var(--netflix-modal-bg); border-radius: 12px; width: 720px; max-width: 90vw; text-align: left; transform: scale(0.95); opacity: 0; transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1), opacity 0.2s ease; display: flex; flex-direction: column; box-shadow: var(--google-shadow-hover); position: relative; overflow: hidden !important; height: auto !important; max-height: 90vh; }
-        .modal-overlay.active .netflix-modal-box { transform: scale(1); opacity: 1; }
+        /* --- MATERIAL 3 ITEM DIALOG (M3 Specs) --- */
+        .google-modal-box { background-color: var(--modal-bg); border-radius: 28px; width: 720px; max-width: 90vw; text-align: left; transform: scale(0.95); opacity: 0; transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1), opacity 0.2s ease; display: flex; flex-direction: column; box-shadow: var(--google-shadow-hover); position: relative; overflow: hidden !important; height: auto !important; max-height: 90vh; }
+        .modal-overlay.active .google-modal-box { transform: scale(1); opacity: 1; }
         
         /* Material Icon Close Button */
-        .netflix-close { position: absolute; top: 16px; right: 16px; width: 40px; height: 40px; border-radius: 50%; background: var(--close-bg); border: none; color: var(--close-color); display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 20; transition: background-color 0.2s, color 0.2s; }
-        .netflix-close:hover { background-color: var(--close-hover-bg); color: var(--close-hover-color); }
+        .google-close { position: absolute; top: 16px; right: 16px; width: 40px; height: 40px; border-radius: 50%; background: rgba(0, 0, 0, 0.4); border: none; color: white; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 20; transition: background-color 0.2s; backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
+        .google-close:hover { background-color: rgba(0,0,0,0.6); }
         
-        .netflix-banner { position: relative; width: 100%; height: 320px; background-size: cover; background-position: top center; background-repeat: no-repeat; flex-shrink: 0; border-bottom: 1px solid var(--border); }
-        .netflix-banner-fade { display: none; } /* Removed cinematic gradient */
+        .google-banner { position: relative; width: 100%; height: 320px; background-size: cover; background-position: top center; background-repeat: no-repeat; flex-shrink: 0; }
         
-        .netflix-content { padding: 32px 40px 40px 40px !important; position: relative; z-index: 2; display: flex; flex-direction: column; flex: 1 1 auto !important; min-height: 0; }
-        .netflix-title { font-size: 32px; font-weight: 400; color: var(--text-primary); margin-bottom: 16px; line-height: 1.2; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; flex-shrink: 0; }
+        .google-content { padding: 32px 40px 40px 40px !important; display: flex; flex-direction: column; flex: 1 1 auto !important; min-height: 0; }
+        .google-title { font-size: 32px; font-weight: 400; color: var(--text-primary); margin-bottom: 16px; line-height: 1.2; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; flex-shrink: 0; letter-spacing: -0.5px; }
         
         /* Google Search Chips */
-        .netflix-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; flex-shrink: 0; }
-        .netflix-tag { background-color: transparent; color: var(--text-primary); border: 1px solid var(--border); padding: 6px 12px; border-radius: 16px; font-size: 13px; font-weight: 500; }
+        .google-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; flex-shrink: 0; }
+        .google-tag { background-color: transparent; color: var(--text-secondary); border: 1px solid var(--border); padding: 4px 12px; border-radius: 16px; font-size: 13px; font-weight: 500; }
         
-        .netflix-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.5; margin-bottom: 32px; width: 100%; hyphens: none; -webkit-hyphens: none; overflow-y: auto; min-height: 0; padding-right: 12px; letter-spacing: 0.2px; }
-        .netflix-desc::-webkit-scrollbar { width: 6px; }
-        .netflix-desc::-webkit-scrollbar-track { background: transparent; }
-        .netflix-desc::-webkit-scrollbar-thumb { background: rgba(128, 128, 128, 0.3); border-radius: 10px; }
-        .netflix-content > div:last-child { margin: 0 !important; padding: 0 !important; flex-shrink: 0; }
+        .google-desc { font-size: 15px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 32px; width: 100%; hyphens: none; -webkit-hyphens: none; overflow-y: auto; min-height: 0; padding-right: 12px; letter-spacing: 0.2px; }
+        .google-desc::-webkit-scrollbar { width: 6px; }
+        .google-desc::-webkit-scrollbar-track { background: transparent; }
+        .google-desc::-webkit-scrollbar-thumb { background: rgba(128, 128, 128, 0.3); border-radius: 10px; }
+        
+        .google-actions { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
         
         /* Material Primary Action */
-        .netflix-btn { background-color: var(--btn-bg); color: var(--btn-text); border: 1px solid transparent; padding: 10px 24px; font-size: 14px; font-weight: 500; letter-spacing: 0.25px; border-radius: 24px; display: inline-flex; align-items: center; gap: 8px; cursor: pointer; transition: background-color 0.2s ease, box-shadow 0.2s ease; }
-        .netflix-btn:hover { background-color: var(--btn-hover); box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3), 0 1px 3px 1px rgba(60,64,67,0.15); }
-        .netflix-btn svg { width: 18px; height: 18px; }
+        .google-btn { background-color: var(--btn-bg); color: var(--btn-text); border: 1px solid transparent; padding: 10px 24px; font-size: 14px; font-weight: 500; letter-spacing: 0.25px; border-radius: 24px; display: inline-flex; align-items: center; gap: 8px; cursor: pointer; transition: background-color 0.2s ease, box-shadow 0.2s ease; }
+        .google-btn:hover { background-color: var(--btn-hover); box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3), 0 1px 3px 1px rgba(60,64,67,0.15); }
+        .google-btn svg { width: 18px; height: 18px; }
 
         @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
 
@@ -327,21 +326,18 @@
             .book-item.downloadable-book:hover .book-cover-wrapper, .book-item.locked-hover .book-cover-wrapper { transform: none !important; }
             
             .modal-overlay { align-items: center !important; justify-content: center !important; }
-            .modal-box, .netflix-modal-box { position: absolute !important; top: 50% !important; left: 50% !important; width: 90vw !important; margin: 0 !important; border-radius: 12px; height: auto !important; max-height: 85vh; transform: translate(-50%, -50%) scale(0.95) !important; display: flex; flex-direction: column; overflow: hidden !important; }
-            .modal-overlay.active .modal-box, .modal-overlay.active .netflix-modal-box { transform: translate(-50%, -50%) scale(1) !important; }
-            .netflix-banner { height: 160px; flex-shrink: 0; border-bottom: 1px solid var(--border); }
-            .netflix-content { padding: 24px !important; margin-top: 0; display: flex; flex-direction: column; flex: 1 1 auto !important; min-height: 0; }
-            .netflix-title { font-size: 22px; font-weight: 500; margin-bottom: 12px; line-height: 1.2; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; flex-shrink: 0; }
-            .netflix-tags { gap: 6px; margin-bottom: 16px; flex-shrink: 0; }
-            .netflix-tag { font-size: 11px; padding: 4px 8px; border-radius: 12px; }
-            .netflix-desc { font-size: 14px; margin-bottom: 24px !important; line-height: 1.5; overflow-y: auto; min-height: 0; display: block !important; max-height: 12em; padding-right: 8px; letter-spacing: 0.1px; text-align: left; text-justify: none; }
-            .netflix-desc::-webkit-scrollbar { width: 4px; }
-            .netflix-desc::-webkit-scrollbar-track { background: transparent; }
-            .netflix-desc::-webkit-scrollbar-thumb { background: rgba(128, 128, 128, 0.4); border-radius: 10px; }
-            .netflix-content > div:last-child { margin: 0 !important; padding: 0 !important; flex-shrink: 0; }
-            .netflix-btn { width: 100%; justify-content: center; }
             
-            .netflix-close { top: 12px; right: 12px; width: 36px; height: 36px; background: rgba(0, 0, 0, 0.4); color: white; border-radius: 50%; }
+            /* Mobile Specific M3 Dialog */
+            .google-modal-box { border-radius: 28px; width: 92vw !important; max-height: 85vh; transform: scale(0.95) !important; position: absolute !important; top: 50% !important; left: 50% !important; transform: translate(-50%, -50%) scale(0.95) !important; }
+            .modal-overlay.active .google-modal-box { transform: translate(-50%, -50%) scale(1) !important; }
+            .google-banner { height: 180px; }
+            .google-content { padding: 24px !important; margin-top: 0; }
+            .google-title { font-size: 24px; margin-bottom: 12px; }
+            .google-tags { margin-bottom: 16px; }
+            .google-actions { width: 100%; display: grid; grid-template-columns: 1fr auto; gap: 12px; }
+            .google-btn { width: 100%; justify-content: center; }
+            .google-desc { font-size: 14px; margin-bottom: 24px !important; }
+            .google-close { top: 12px; right: 12px; width: 36px; height: 36px; }
         }
     </style>
 </head>
@@ -473,23 +469,21 @@
 
     <!-- MATERIAL STYLE ITEM MENU -->
     <div id="netflixModal" class="modal-overlay">
-        <div class="netflix-modal-box">
-            <button class="netflix-close" onclick="closeAllModals()" aria-label="Close">
+        <div class="google-modal-box">
+            <button class="google-close" onclick="closeAllModals()" aria-label="Close">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
             </button>
             
-            <div class="netflix-banner" id="netflixBanner">
-                <div class="netflix-banner-fade"></div>
-            </div>
+            <div class="google-banner" id="googleBanner"></div>
             
-            <div class="netflix-content">
-                <h2 class="netflix-title" id="netflixTitle">Title</h2>
+            <div class="google-content">
+                <h2 class="google-title" id="netflixTitle">Title</h2>
                 
-                <div class="netflix-tags" id="netflixTags"></div>
-                <div class="netflix-desc" id="netflixDesc">Description goes here.</div>
+                <div class="google-tags" id="netflixTags"></div>
+                <div class="google-desc" id="netflixDesc">Description goes here.</div>
                 
-                <div style="display: flex; align-items: center; gap: 12px;">
-                    <button class="netflix-btn" id="btnNetflixDownload">
+                <div class="google-actions">
+                    <button class="google-btn" id="btnNetflixDownload">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                             <polyline points="7 10 12 15 17 10"></polyline>
@@ -734,7 +728,7 @@
                 const hasInfo = bookNode.getAttribute('data-info');
                 
                 document.getElementById('netflixTitle').textContent = title;
-                document.getElementById('netflixBanner').style.backgroundImage = `url('${banner}')`;
+                document.getElementById('googleBanner').style.backgroundImage = `url('${banner}')`;
                 document.getElementById('netflixDesc').innerHTML = desc;
                 
                 const btnInfo = document.getElementById('btnNetflixInfo');
@@ -750,7 +744,7 @@
                     const tags = JSON.parse(tagsRaw);
                     tags.forEach(tag => {
                         const span = document.createElement('span');
-                        span.className = 'netflix-tag';
+                        span.className = 'google-tag';
                         span.textContent = tag;
                         tagsContainer.appendChild(span);
                     });
