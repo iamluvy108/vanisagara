@@ -266,20 +266,17 @@
 
         .about-title {
             font-size: clamp(48px, 7vw, 84px); 
-            font-weight: 500; 
+            font-weight: 400; 
             line-height: 1.1;
             margin-bottom: 24px;
-            letter-spacing: -1px;
+            font-family: 'Times New Roman', Times, serif;
             color: var(--text-primary);
         }
 
-        /* --- GOOGLE 4-COLOR BRANDING BAR --- */
-        .divider { display: flex; height: 4px; width: 80px; border-radius: 2px; overflow: hidden; margin-bottom: 40px; gap: 0; }
-        .divider-line { height: 100%; width: 25%; }
-        .divider-line:nth-child(1) { background-color: #4285F4; } /* Google Blue */
-        .divider-line:nth-child(3) { background-color: #FBBC05; } /* Google Yellow */
-        .divider-circle { height: 100%; width: 25%; border-radius: 0; border: none; background-color: #EA4335; } /* Google Red */
-        .divider::after { content: ''; width: 25%; height: 100%; background-color: #34A853; } /* Google Green */
+        /* --- BRANDING DIVIDER --- */
+        .divider { display: flex; align-items: center; gap: 10px; margin-bottom: 40px; }
+        .divider-line { height: 1px; width: 40px; background-color: var(--text-secondary); }
+        .divider-circle { height: 8px; width: 8px; border-radius: 50%; border: 1px solid var(--text-secondary); background-color: transparent; }
 
         /* Prose / Text Block */
         .prose {
@@ -426,8 +423,8 @@
 
             /* ABOUT PAGE TEXT & SPACING */
             .about-wrapper { padding-top: 12vh; padding-bottom: 80px; padding-left: 5%; padding-right: 5%; }
-            .about-title { font-size: clamp(38px, 11vw, 60px); margin-bottom: 24px; letter-spacing: -1px; }
-            .divider { justify-content: center; margin-bottom: 32px; width: 60px; }
+            .about-title { font-size: clamp(38px, 11vw, 60px); margin-bottom: 24px; letter-spacing: 0; }
+            .divider { justify-content: center; margin-bottom: 32px; }
             .prose { font-size: 16px; line-height: 1.6; }
             .prose p { margin-bottom: 24px; padding: 0 5px; color: var(--text-secondary); text-align: justify; text-justify: inter-word; hyphens: none; -webkit-hyphens: none; }
             .btn-primary { width: 100%; text-align: center; padding: 12px 20px; }
@@ -481,7 +478,7 @@
         <section class="about-content">
             <h1 class="about-title">Our Story</h1>
             
-            <!-- GOOGLE MATERIAL 4-COLOR BAR -->
+            <!-- BRANDING DIVIDER -->
             <div class="divider">
                 <div class="divider-line"></div>
                 <div class="divider-circle"></div>
@@ -489,7 +486,7 @@
             </div>
 
             <div class="prose">
-                <p><b>Vāṇīsāgara</b> was established to solve a persistent issue in the digital distribution of Śrīla Prabhupāda’s literature: the widespread reliance on degraded photoscans and haphazardly compiled PDFs. Readers should no longer have to navigate crooked alignments, faded text, or compromised digital formatting. What began as a focused, year-long solo initiative to rigorously typeset the <em>Bhagavad-gītā As It Is (1972 Edition)</em> has scaled into a comprehensive archival project.</p>
+                <p><b>Vāṇīsāgara</b> was established to solve a persistent issue in the digital distribution of Śrīla Prabhupāda’s literature: the widespread reliance on degraded photoscans and haphazardly compiled PDFs. Readers should no longer have to navigate crooked alignments, faded text, or compromised digital formatting. What began as a focused, year-long solo initiative to rigorously typeset the <em>Bhagavad-gītā As It Is</em> (1972 Edition) has scaled into a comprehensive archival project.</p>
                 
                 <p>Operating entirely as an independent, single-developer infrastructure, <b>Vāṇīsāgara</b> brings uncompromising technical standards to these original books. By utilizing the advanced typesetting capabilities of XeLaTeX alongside Noto Serif typography, the geometry of every page is scientifically calculated. This systematic approach guarantees that every character, diacritic, and margin renders natively and flawlessly in 4K resolution.</p>
 
