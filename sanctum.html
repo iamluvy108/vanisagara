@@ -25,9 +25,13 @@
             --accent: #ffffff; 
             --card-bg: #141414; 
             --border: rgba(255, 255, 255, 0.1);
-            --toc-link-color: #d1bfae; 
+            
+            /* Unified iOS Blue for Dark Mode */
+            --toc-link-color: #0a84ff; 
             --toc-hover-color: #ffffff;
-            --reader-red: #ff6b6b; 
+            --reader-red: #0a84ff; 
+            --filter-btn-active: #0a84ff;
+            
             --btn-bg: #2c2c2e;
             --btn-text: #ffffff;
         }
@@ -41,9 +45,13 @@
             --accent: #1d1d1f; 
             --card-bg: #ffffff; 
             --border: rgba(0, 0, 0, 0.08);
+            
+            /* Separated Colors for Light Mode */
             --toc-link-color: #8c2318; 
             --toc-hover-color: #000000;
             --reader-red: #7A1111; 
+            --filter-btn-active: #0061FE; /* iOS Blue for toggle buttons */
+            
             --btn-bg: #e5e5ea;
             --btn-text: #000000;
         }
@@ -65,6 +73,15 @@
         #main-content.page-exit { transform: translateY(-15px); opacity: 0; }
         @keyframes appEnter { 0% { transform: translateY(20px); opacity: 0; } 100% { transform: translateY(0); opacity: 1; } }
 
+        /* --- DYNAMIC ZIP ANIMATIONS --- */
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeOutDown { from { opacity: 1; transform: translateY(0); } to { opacity: 0; transform: translateY(15px); } }
+        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-15px); } to { opacity: 1; transform: translateY(0); } }
+
+        .fade-in-up { animation: fadeInUp 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        .fade-out-down { animation: fadeOutDown 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        .fade-in-down { animation: fadeInDown 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+
         /* --- NAVIGATION --- */
         nav { position: fixed; top: 0; width: 100%; height: 60px; background: var(--bg-nav); backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px); display: flex; align-items: center; justify-content: space-between; padding: 0 5%; z-index: 100; border-bottom: 1px solid var(--border); transition: background 0.4s ease; }
         .nav-brand { display: inline-block; font-size: 22px; text-decoration: none; color: var(--text-primary); white-space: nowrap; }
@@ -84,10 +101,9 @@
         /* --- SANCTUM LOBBY & VIEWS --- */
         .sanctum-wrapper { position: relative; flex: 1; display: flex; flex-direction: column; align-items: center; padding: 120px 5% 100px 5%; overflow: hidden; z-index: 2; }
         
-        .view-section { width: 100%; display: none; flex-direction: column; align-items: center; animation: fadeIn 0.4s ease forwards; }
+        .view-section { width: 100%; display: none; flex-direction: column; align-items: center; animation: fadeInUp 0.4s ease forwards; }
         .view-section.active { display: flex; }
 
-        /* --- THE iOS CARD WRAPPER --- */
         .ios-card {
             background-color: var(--card-bg);
             border: 1px solid var(--border);
@@ -100,7 +116,7 @@
             display: flex;
             flex-direction: column;
             transition: background-color 0.4s ease, box-shadow 0.4s ease;
-            font-family: 'Noto Serif', serif; /* Enforce global Noto Serif inside card */
+            font-family: 'Noto Serif', serif;
         }
         [data-theme="light"] .ios-card { box-shadow: 0 10px 40px rgba(0,0,0,0.06); }
         .ios-card * { font-family: 'Noto Serif', serif; }
@@ -121,8 +137,8 @@
 
         /* --- ADVANCED VIEW CONTROLS --- */
         .advanced-controls-bar { width: 100%; display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; flex-wrap: wrap; gap: 15px; border-bottom: 1px solid var(--border); padding-bottom: 20px; }
-        .control-btn { background: var(--btn-bg); border: 1px solid var(--border); color: var(--btn-text); padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 14px; font-weight: 600; transition: background 0.2s; font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif !important; }
-        .control-btn.active { background: var(--reader-red); color: white; border-color: var(--reader-red); }
+        .control-btn { background: var(--btn-bg); border: 1px solid var(--border); color: var(--btn-text); padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 14px; font-weight: 600; transition: background 0.2s, border-color 0.2s; font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif !important; }
+        .control-btn.active { background: var(--filter-btn-active); color: white; border-color: var(--filter-btn-active); }
         .filters-group { display: flex; gap: 10px; flex-wrap: wrap; }
 
         /* --- CHAPTER & VERSE READER VIEWS --- */
@@ -136,7 +152,6 @@
         .verse-block { margin-bottom: 100px; border-bottom: 1px solid var(--border); padding-bottom: 60px; }
         .verse-block:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
         
-        /* Summary List Layout */
         .verse-summary-item { font-size: 22px; line-height: 1.7; text-align: justify; text-justify: inter-word; padding-bottom: 30px; margin-bottom: 30px; border-bottom: 1px solid var(--border); }
         .verse-summary-item:last-child { border-bottom: none; }
         .verse-summary-link { color: var(--reader-red); font-weight: 700; text-decoration: none; cursor: pointer; transition: opacity 0.2s; letter-spacing: 0.05em; }
@@ -144,14 +159,11 @@
 
         .verse-number { color: var(--reader-red); font-size: 36px; font-weight: 700; text-align: center; margin-bottom: 40px; letter-spacing: 0.05em; cursor: pointer; display: inline-block; width: 100%; }
         .verse-number:hover { opacity: 0.8; text-decoration: underline; }
-        
-        /* Non-clickable Title for Single Verse View */
         .verse-number-static { color: var(--reader-red); font-size: 36px; font-weight: 700; text-align: center; margin-bottom: 40px; letter-spacing: 0.05em; display: inline-block; width: 100%; }
 
         .section-label { font-size: 30px; font-weight: 700; text-align: center; margin-bottom: 12px; letter-spacing: 0.05em; margin-top: 55px; text-transform: uppercase; }
         
-        /* Explicit Devanagari Font Enforcement */
-        .devanagari-text { text-align: center; font-size: 35.4px; line-height: 1.8; margin-bottom: 32px; font-weight: 600; font-family: 'Noto Serif Devanagari', 'Noto Serif', serif !important; }
+        .devanagari-text { text-align: center; font-size: 37px; line-height: 1.8; margin-bottom: 32px; font-weight: 600; font-family: 'Noto Serif Devanagari', 'Noto Serif', serif !important; }
         .roman-text { text-align: center; font-size: 22px; line-height: 1.6; margin-bottom: 40px; font-style: italic; }
         
         .synonyms-text { font-size: 22px; line-height: 1.8; margin-bottom: 36px; text-align: justify; text-justify: inter-word; }
@@ -166,16 +178,13 @@
         
         .quote-block { display: block; text-align: center; margin: 30px auto; font-size: 22px; line-height: 1.8; font-style: italic; width: 100%; }
 
-        /* --- PREMIUM NAVIGATION FOOTER BUTTONS --- */
-        .verse-nav-footer { display: flex; justify-content: space-between; margin-top: 80px; padding-top: 40px; border-top: 1px solid var(--border); width: 100%; }
+        /* --- PREMIUM NAVIGATION FOOTER BUTTONS (Tightened Gap) --- */
+        .verse-nav-footer { display: flex; justify-content: space-between; margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border); width: 100%; }
         .nav-verse-btn { background: var(--btn-bg); color: var(--btn-text); border: none; padding: 14px 28px; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; text-decoration: none; transition: transform 0.2s ease, opacity 0.2s ease; font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif !important; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
         @media (hover: hover) { .nav-verse-btn:hover:not(.locked-btn) { opacity: 0.85; transform: translateZ(0) scale(1.02); } }
         .nav-verse-btn:active:not(.locked-btn) { transform: scale(0.98); opacity: 0.6; }
         
-        /* Locked Navigation Button State */
         .locked-btn { opacity: 0.3 !important; pointer-events: none; cursor: default; box-shadow: none; }
-
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
         /* --- MOBILE FIREWALL --- */
         .hamburger, .mobile-menu-overlay { display: none; }
@@ -189,6 +198,7 @@
             
             nav { justify-content: space-between; padding: 0 5%; position: fixed; top: 0; width: 100%; height: 60px; z-index: 9999 !important; display: flex; align-items: center; }
             .nav-brand { position: absolute; left: 50%; top: 55%; transform: translate(-50%, -50%); display: flex; align-items: center; justify-content: center; }
+            nav .vanisagara-text { display: none !important; } 
             .brand-icon { width: 44px; height: 44px; margin-right: 0; }
             .nav-controls { width: 100%; height: 100%; display: flex; justify-content: space-between; align-items: center; }
             .nav-icons { order: 1; display: flex; align-items: center; gap: 15px; } 
@@ -218,14 +228,13 @@
             .ios-card { padding: 40px 20px; border-radius: 16px; }
             .toc-container { gap: 24px; padding: 0 10px; }
             
-            .reader-chapter-title { margin-bottom: 40px; }
+            .reader-chapter-title { font-size: 32px; margin-bottom: 40px; }
             .verse-block { margin-bottom: 60px; padding-bottom: 40px; }
             
             .verse-summary-item { font-size: 20px; }
             .verse-number, .verse-number-static { font-size: 28px; margin-bottom: 30px; }
             .section-label { font-size: 24px; margin-bottom: 10px; margin-top: 40px; }
-            
-            .devanagari-text { font-size: 29.4px; }
+            .devanagari-text { font-size: 31px; }
             .roman-text, .synonyms-text, .translation-text, .purport-text { font-size: 20px; }
             .quote-block { font-size: 20px; margin: 22px 0; }
         }
@@ -342,7 +351,6 @@
                     </button>
                     
                     <div id="single-verse-chapter-title" class="reader-chapter-title"></div>
-                    
                     <div id="single-verse-container" style="margin-top: 80px; width: 100%;"></div>
                     
                     <div class="verse-nav-footer">
@@ -400,12 +408,16 @@
                     viewBooks.classList.add('active');
                 } 
                 else if (path === "/sanctum/bg") {
-                    // Turn off advanced view automatically when returning to chapters
                     isAdvancedView = false;
                     const advBtn = document.getElementById('adv-toggle-btn');
                     if (advBtn) { advBtn.textContent = 'Advanced View: Off'; advBtn.classList.remove('active'); }
                     const filtersGroup = document.getElementById('filters-group');
-                    if (filtersGroup) filtersGroup.style.display = 'none';
+                    if (filtersGroup) {
+                        filtersGroup.style.display = 'none';
+                        filtersGroup.classList.remove('fade-in-up', 'fade-out-down');
+                    }
+                    const container = document.getElementById('chapter-content-container');
+                    if (container) container.classList.remove('fade-in-up', 'fade-out-down', 'fade-in-down');
 
                     viewChapters.classList.add('active');
                     renderChapterDirectory();
@@ -447,10 +459,8 @@
                 book.chapters.forEach(chap => {
                     const link = document.createElement('a');
                     link.className = 'toc-link';
-                    // Strip the <br> for the list view layout
                     const cleanTitle = chap.chapter_title.replace(/<br>/g, ' ');
                     link.innerHTML = `Chapter ${chap.chapter_number}: ${cleanTitle}`;
-                    // Route via the safe chapter_id (e.g. 1, 2)
                     link.onclick = () => { router(`/sanctum/bg/${chap.chapter_id}/`); };
                     container.appendChild(link);
                 });
@@ -481,13 +491,47 @@
             }
 
             window.toggleAdvancedView = function() {
-                isAdvancedView = !isAdvancedView;
                 const btn = document.getElementById('adv-toggle-btn');
                 const filtersGroup = document.getElementById('filters-group');
-                btn.textContent = `Advanced View: ${isAdvancedView ? 'On' : 'Off'}`;
-                btn.classList.toggle('active', isAdvancedView);
-                filtersGroup.style.display = isAdvancedView ? 'flex' : 'none';
-                reRenderChapterContent(); 
+                const container = document.getElementById('chapter-content-container');
+
+                if (isAdvancedView) {
+                    // Turn OFF
+                    isAdvancedView = false;
+                    btn.textContent = `Advanced View: Off`;
+                    btn.classList.remove('active');
+                    
+                    filtersGroup.classList.remove('fade-in-up');
+                    filtersGroup.classList.add('fade-out-down');
+                    
+                    container.classList.remove('fade-in-up');
+                    container.classList.add('fade-out-down');
+                    
+                    setTimeout(() => {
+                        filtersGroup.style.display = 'none';
+                        reRenderChapterContent(); 
+                        container.classList.remove('fade-out-down');
+                        container.classList.add('fade-in-down');
+                    }, 250); 
+                } else {
+                    // Turn ON
+                    isAdvancedView = true;
+                    btn.textContent = `Advanced View: On`;
+                    btn.classList.add('active');
+                    
+                    filtersGroup.style.display = 'flex';
+                    filtersGroup.classList.remove('fade-out-down');
+                    filtersGroup.classList.add('fade-in-up');
+                    
+                    container.classList.remove('fade-in-down', 'fade-out-down');
+                    reRenderChapterContent(); 
+                    
+                    // Force reflow and animate
+                    container.style.animation = 'none';
+                    container.offsetHeight; 
+                    container.style.animation = ''; 
+                    container.classList.add('fade-in-up');
+                }
             };
 
             window.toggleFilter = function(filterName) {
@@ -555,11 +599,10 @@
                 const container = document.getElementById('single-verse-container');
                 container.innerHTML = '';
 
-                let html = `<div class="verse-block" style="border: none;">`;
+                let html = `<div class="verse-block" style="border: none; padding-bottom: 0; margin-bottom: 0;">`;
                 let numStr = verse.text_number.toUpperCase();
                 let textLabel = numStr.includes('-') ? `TEXTS ${numStr}` : `TEXT ${numStr}`;
                 
-                // Uses the unclickable class for the single verse view
                 html += `<div class="verse-number-static">${textLabel}</div>`;
                 
                 if (verse.devanagari) html += `<div class="devanagari-text">${verse.devanagari}</div>`;
@@ -570,6 +613,10 @@
                 
                 html += `</div>`;
                 container.innerHTML = html;
+                
+                container.style.animation = 'none';
+                container.offsetHeight; 
+                container.style.animation = 'fadeInUp 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards';
 
                 const prevBtn = document.getElementById('prev-verse-btn');
                 const nextBtn = document.getElementById('next-verse-btn');
