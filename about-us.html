@@ -5,16 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vāṇīsāgara (About Us)</title>
     
-    <!-- PREVENTS THEME & HUE FLASHING ON PAGE LOAD -->
+    <!-- PREVENTS THEME FLASHING ON PAGE LOAD -->
     <script>
         const savedTheme = localStorage.getItem('vanisagara_theme');
         if (savedTheme) {
             document.documentElement.setAttribute('data-theme', savedTheme);
-        }
-        
-        const savedColor = localStorage.getItem('vanisagara_hero_glow');
-        if (savedColor) {
-            document.documentElement.style.setProperty('--hero-glow', savedColor);
         }
     </script>
 
@@ -23,47 +18,60 @@
         @property --hero-glow {
             syntax: '<color>';
             inherits: true;
-            initial-value: #5c4000; 
+            initial-value: #0288D1; 
         }
 
-        /* --- THEME VARIABLES --- */
+        /* --- STRICT GOOGLE MATERIAL THEME VARIABLES --- */
         :root {
-            /* Dark Theme */
-            --bg-main: #141414;
-            --bg-nav: rgba(20, 20, 20, 0.7);
-            --hero-glow: #5c4000; 
-            --text-primary: #f5f5f7;
-            --text-secondary: #86868b;
-            --accent: #ffffff;
-            --btn-bg: #f5f5f7;
-            --btn-text: #000000;
-            --border: rgba(255, 255, 255, 0.1);
-            --link-color: #0a84ff;
+            --bg-main: #202124;
+            --bg-nav: rgba(32, 33, 36, 0.98);
+            --hero-glow: #0288D1; /* Ocean Blue */
+            --text-primary: #e8eaed;
+            --text-secondary: #9aa0a6;
+            --accent: #8ab4f8;
+            --btn-bg: #8ab4f8; /* Google Workspace Dark Mode CTA */
+            --btn-text: #202124; 
+            --btn-hover: #aecbfa; 
+            --card-bg: #303134;
+            --border: #5f6368;
+            --link-color: #8ab4f8;
+            --icon-hover: rgba(255, 255, 255, 0.1);
+            --nav-link-hover: rgba(255, 255, 255, 0.08);
         }
 
         [data-theme="light"] {
-            /* Light Theme */
             --bg-main: #ffffff;
-            --bg-nav: rgba(255, 255, 255, 0.7);
-            --text-primary: #000000;
-            --text-secondary: #5e5e60; 
-            --accent: #1d1d1f;
-            --btn-bg: #1d1d1f;
-            --btn-text: #ffffff;
-            --border: rgba(0, 0, 0, 0.1);
-            --link-color: #0061FE;
+            --bg-nav: rgba(255, 255, 255, 0.98);
+            --text-primary: #202124;
+            --text-secondary: #5f6368;
+            --accent: #1a73e8;
+            --btn-bg: #1a73e8; /* Google Workspace Light Mode CTA */
+            --btn-text: #ffffff; 
+            --btn-hover: #1558d6; 
+            --card-bg: #ffffff;
+            --border: #dadce0;
+            --link-color: #1a73e8;
+            --icon-hover: rgba(0, 0, 0, 0.05);
+            --nav-link-hover: rgba(0, 0, 0, 0.04);
         }
 
         html {
             scroll-behavior: smooth; 
+            scrollbar-gutter: stable; /* Keeps PC scrollbar visible & prevents layout jump */
         }
 
-        /* Removed global font smoothing here to prevent artificial thinning of serif fonts */
+        /* --- GLOBAL SCROLL LOCK --- */
+        html.no-scroll, body.no-scroll { 
+            overflow: hidden !important; 
+            touch-action: none !important; /* Force locks background touch scrolling on mobile */
+        }
+
+        /* --- GOOGLE TYPOGRAPHY --- */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-family: 'Google Sans', 'Product Sans', Roboto, -apple-system, Arial, sans-serif;
         }
 
         body {
@@ -74,12 +82,12 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-            -webkit-font-smoothing: antialiased; /* Keep sans-serif UI elements crisp */
+            -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
 		
 		/* --- THE ANTI-BLUR ENGINE --- */
-        #main-content, .book-item, .book-cover-wrapper, .modal-box, .netflix-modal-box {
+        #main-content {
             backface-visibility: hidden;
             -webkit-backface-visibility: hidden;
             transform-style: preserve-3d;
@@ -88,15 +96,14 @@
         }
 		
 		/* --- BUTTON HARDWARE ACCELERATION (Anti-Blur) --- */
-        .btn-primary, .theme-toggle, .color-toggle, .hamburger, .modal-info-badge {
+        .btn-primary, .theme-toggle, .hamburger {
             backface-visibility: hidden;
             -webkit-backface-visibility: hidden;
             transform: translateZ(0);
             -webkit-font-smoothing: subpixel-antialiased;
         }
 
-        /* --- BULLETPROOF TITLE FONT CLASS --- */
-        /* This guarantees both Vāṇīsāgara texts are mathematically identical */
+        /* Vāṇīsāgara Specific Title Font Overlay */
         .vanisagara-text {
             font-family: 'Times New Roman', Times, serif !important;
             font-weight: 400 !important;
@@ -122,114 +129,101 @@
             100% { transform: translateY(0); opacity: 1; }
         }
 
-        /* --- NAVIGATION --- */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            height: 60px;
-            background: var(--bg-nav);
-            backdrop-filter: saturate(180%) blur(20px);
-            -webkit-backdrop-filter: saturate(180%) blur(20px);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 5%;
-            z-index: 100;
-            border-bottom: 1px solid var(--border);
-            transition: background 0.4s ease;
+        /* --- GOOGLE WORKSPACE NAVIGATION --- */
+        nav { 
+            position: fixed; 
+            top: 0; 
+            width: 100%; 
+            height: 64px; 
+            background: var(--bg-nav); 
+            backdrop-filter: blur(8px); 
+            -webkit-backdrop-filter: blur(8px); 
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between; 
+            padding: 0 12%; 
+            z-index: 100; 
+            border-bottom: 1px solid var(--border); 
+            transition: background 0.4s ease; 
         }
 
-        .nav-brand {
-            display: inline-block;
-            font-size: 22px; 
-            text-decoration: none;
-            color: var(--text-primary);
-            white-space: nowrap;
-        }
-
-        .brand-icon {
-            width: 24px;
-            height: 24px;
-            object-fit: contain;
-            vertical-align: middle;
-            margin-right: 8px; /* Tighter gap */
-            position: relative;
-            top: -1px; 
-        }
-
-        .nav-controls {
-            display: flex;
-            align-items: center;
-            gap: 20px; 
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 24px;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-primary);
-            font-size: 15px;
-            font-weight: 500;
-            transition: opacity 0.2s;
-        }
-
-        .nav-links a:hover { opacity: 0.7; }
-
-        .nav-divider {
-            width: 1px;
-            height: 28px; 
-            background-color: var(--text-secondary);
-            opacity: 0.4;
-        }
-
-        .nav-icons {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .theme-toggle, .color-toggle {
-            background: none;
-            border: none;
-            color: var(--text-primary);
-            cursor: pointer;
-            width: 32px;
-            height: 32px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease, visibility 0.3s ease;
+        .nav-brand { 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            height: 100%; 
+            text-decoration: none; 
         }
         
-        .hue-icon {
-            width: 20px;
-            height: 20px;
-            object-fit: contain;
-        }
-        
-        .theme-toggle:active, .color-toggle:active { transform: scale(0.85) translateZ(0); }
-		.theme-toggle:hover, .color-toggle:hover { opacity: 0.7; }
-
-        [data-theme="dark"] .logo-light,
-        [data-theme="dark"] .hue-light {
-            display: none;
-        }
-        
-        [data-theme="light"] .logo-dark,
-        [data-theme="light"] .hue-dark {
-            display: none;
+        /* PERFECTLY CENTERED DESKTOP LOGO */
+        .brand-icon { 
+            width: 48px; 
+            height: 48px; 
+            object-fit: contain; 
+            margin-right: 6px; 
+            display: block; 
         }
 
-        [data-theme="light"] .color-toggle {
-            opacity: 0;
-            visibility: hidden;
-            pointer-events: none;
+        .nav-controls { 
+            display: flex; 
+            align-items: center; 
+            gap: 8px; 
         }
+        
+        .nav-links { 
+            display: flex; 
+            list-style: none; 
+            gap: 4px; 
+            margin-right: 12px; 
+        }
+        
+        /* Material Nav Tabs */
+        .nav-links a { 
+            text-decoration: none; 
+            color: var(--text-primary); 
+            font-size: 14px; 
+            font-weight: 500; 
+            padding: 8px 16px; 
+            border-radius: 4px; 
+            transition: background-color 0.2s, color 0.2s; 
+        }
+        
+        .nav-links a:hover { 
+            background-color: var(--nav-link-hover); 
+        }
+
+        .nav-divider { 
+            width: 1px; 
+            height: 32px; 
+            background-color: var(--border); 
+            margin: 0 8px; 
+        }
+        
+        .nav-icons { 
+            display: flex; 
+            align-items: center; 
+            gap: 4px; 
+        }
+
+        /* Material Icon Buttons */
+        .theme-toggle { 
+            background: transparent; 
+            border: none; 
+            color: var(--text-secondary); 
+            cursor: pointer; 
+            width: 40px; 
+            height: 40px; 
+            border-radius: 50%; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            transition: background-color 0.2s ease, transform 0.2s cubic-bezier(0.16, 1, 0.3, 1); 
+        }
+        .theme-toggle:active { transform: scale(0.9) translateZ(0); }
+        .theme-toggle:hover { background-color: var(--icon-hover); color: var(--text-primary); }
+
+        [data-theme="dark"] .logo-light { display: none; }
+        [data-theme="light"] .logo-dark { display: none; }
 
         /* --- ABOUT US CONTENT --- */
         .about-wrapper {
@@ -238,7 +232,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 140px 5% 100px 5%;
+            padding: 140px 12% 100px 12%;
             overflow: hidden;
         }
 
@@ -249,12 +243,12 @@
             width: 100%;
             height: 100%;
             background-color: var(--hero-glow);
-            /* Center top radial glow to illuminate the text gracefully */
             -webkit-mask-image: radial-gradient(circle at 50% 20%, black 0%, transparent 60%);
             mask-image: radial-gradient(circle at 50% 20%, black 0%, transparent 60%);
-            transition: --hero-glow 0.75s ease-in-out, background-color 0.75s ease-in-out, opacity 0.4s ease;
+            transition: background-color 0.75s ease-in-out, opacity 0.4s ease;
             pointer-events: none; 
             z-index: 1;
+            opacity: 0.15;
         }
 
         [data-theme="light"] .about-glow { opacity: 0; }
@@ -271,39 +265,28 @@
         }
 
         .about-title {
-            font-size: clamp(40px, 6vw, 72px); 
-            font-weight: 400; 
+            font-size: clamp(48px, 7vw, 84px); 
+            font-weight: 500; 
             line-height: 1.1;
             margin-bottom: 24px;
-            font-family: 'Times New Roman', Times, serif;
+            letter-spacing: -1px;
             color: var(--text-primary);
         }
 
-        .divider {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 40px;
-        }
-        .divider-line {
-            height: 1px;
-            width: 60px;
-            background-color: var(--text-secondary);
-        }
-        .divider-circle {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            border: 1px solid var(--text-secondary);
-        }
+        /* --- GOOGLE 4-COLOR BRANDING BAR --- */
+        .divider { display: flex; height: 4px; width: 80px; border-radius: 2px; overflow: hidden; margin-bottom: 40px; gap: 0; }
+        .divider-line { height: 100%; width: 25%; }
+        .divider-line:nth-child(1) { background-color: #4285F4; } /* Google Blue */
+        .divider-line:nth-child(3) { background-color: #FBBC05; } /* Google Yellow */
+        .divider-circle { height: 100%; width: 25%; border-radius: 0; border: none; background-color: #EA4335; } /* Google Red */
+        .divider::after { content: ''; width: 25%; height: 100%; background-color: #34A853; } /* Google Green */
 
         /* Prose / Text Block */
         .prose {
-            font-size: 24px; 
+            font-size: 20px; 
             color: var(--text-primary);
-            opacity: 0.9;
+            opacity: 0.95;
             line-height: 1.7; 
-            text-align: left;
             width: 100%;
         }
 
@@ -311,8 +294,6 @@
             margin-bottom: 32px;
             text-align: justify;
             text-justify: inter-word;
-            
-            /* FORCES WORDS TO NOT BREAK OR HYPHENATE ON NEW LINES */
             hyphens: none;
             -webkit-hyphens: none;
         }
@@ -343,20 +324,26 @@
             gap: 20px;
         }
 
-        .btn-primary { background: var(--btn-bg); color: var(--btn-text); padding: 14px 32px; width: max-content; border: none; border-radius: 4px; font-size: 16px; font-weight: 600; text-decoration: none; cursor: pointer; transition: opacity 0.2s ease; }
-        /* Only apply the hover fade if the device has a physical mouse */
-        @media (hover: hover) {
-            .btn-primary:hover { transform: translateZ(0); opacity: 0.75; }
+        .btn-primary { 
+            background-color: var(--btn-bg); 
+            color: var(--btn-text); 
+            padding: 12px 32px; 
+            width: max-content; 
+            border: 1px solid transparent; 
+            border-radius: 24px; 
+            font-size: 16px; 
+            font-weight: 500; 
+            letter-spacing: 0.25px; 
+            text-decoration: none;
+            cursor: pointer; 
+            transition: background-color 0.2s ease, box-shadow 0.2s ease; 
         }
         
-        /* The physical tap effect (snaps back instantly when released) */
-        .btn-primary:active { transform: translateZ(0); opacity: 0.5; transition: opacity 0.1s ease; }
-
-        /* The Menu Handbrake */
-        body.no-scroll { overflow: hidden; }
-
-        /* --- DESKTOP PROTECTION FIREWALL --- */
-        .hamburger, .mobile-menu-overlay { display: none; }
+        @media (hover: hover) {
+            .btn-primary:hover { background-color: var(--btn-hover); box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3), 0 1px 3px 1px rgba(60,64,67,0.15); }
+        }
+        
+        .btn-primary:active { transform: scale(0.98); opacity: 0.9; transition: transform 0.1s; }
 
         /* --- DESKTOP PROTECTION FIREWALL --- */
         .hamburger, .mobile-menu-overlay { display: none; }
@@ -364,16 +351,10 @@
         /* --- PREMIUM MOBILE APP MAKEOVER --- */
         @media (max-width: 900px) {
             
-            /* THE SILVER BULLET: Kills the invisible load animation that eats the first swipe */
             html { scroll-behavior: auto !important; }
-            
-            /* Handing scroll control back to the native browser engine */
             * { -webkit-tap-highlight-color: transparent; }
             body { margin: 0; }
             
-            /* ... keep the rest of your mobile CSS exactly as it is ... */
-			
-			/* Removed overflow-x entirely so Chrome's engine is 100% unrestricted */
             #main-content {
                 animation: mobileFadeIn 0.5s ease forwards !important;
                 transform: none !important; 
@@ -385,37 +366,31 @@
                 100% { opacity: 1; }
             }
             
-            /* The Universal Double-Lock Handbrake */
-            html.no-scroll, body.no-scroll { 
-                overflow: hidden !important; 
-                scroll-snap-type: none !important; 
-            }
-
-            /* Header Layout - STRICT 60PX GEOMETRY */
+            /* Header Layout - STRICT 56PX GEOMETRY */
             nav { 
                 justify-content: space-between; 
                 padding: 0 5%; 
                 position: fixed; 
                 top: 0; 
                 width: 100%; 
-                height: 60px; /* The rigid boundary */
+                height: 56px; 
                 z-index: 9999 !important; 
                 display: flex;
                 align-items: center;
+                border-bottom: 1px solid var(--border);
             }
             
             .nav-brand { 
                 position: absolute; 
                 left: 50%; 
-                top: 55%; /* The optical sweet spot */
+                top: 50%; 
                 transform: translate(-50%, -50%); 
                 display: flex; 
                 align-items: center; 
                 justify-content: center; 
             }
             
-            nav .vanisagara-text { display: none !important; } 
-            .brand-icon { width: 44px; height: 44px; margin-right: 0; }
+            .brand-icon { width: 36px; height: 36px; margin-right: 0; }
             
             .nav-controls { 
                 width: 100%; 
@@ -425,107 +400,37 @@
                 align-items: center; 
             }
             
-            /* Align the left-side wrapper */
-            .nav-icons { order: 1; display: flex; align-items: center; gap: 15px; } 
+            .nav-icons { order: 1; display: flex; align-items: center; gap: 4px; } 
             
-            .theme-toggle:active, .color-toggle:active { transform: scale(0.85) translateZ(0); }
-            
-            .hamburger { order: 2; background: none; border: none; cursor: pointer; z-index: 10000; transition: transform 0.2s ease; }
-            .hamburger:active { transform: translateY(1.5px) scale(0.85) translateZ(0) !important; }
-            
-            /* Forces the SVGs and images to stop acting like text elements */
-            .hamburger svg, .theme-toggle svg, .color-toggle img { display: block; }
-
-            [data-theme="dark"] .theme-toggle,
-            [data-theme="dark"] .color-toggle,
-            [data-theme="dark"] .hamburger { color: #ffffff !important; }
-
+            .theme-toggle, .hamburger { display: flex !important; align-items: center; justify-content: center; padding: 0 !important; margin: 0 !important; line-height: 0 !important; transform: none !important; }
+            .hamburger { order: 2; background: none; border: none; cursor: pointer; z-index: 10000; transition: background-color 0.2s ease; width: 40px; height: 40px; border-radius: 50%; color: var(--text-secondary); }
+            .hamburger:active { transform: scale(0.9) translateZ(0) !important; }
+            .hamburger:hover { background-color: var(--icon-hover); color: var(--text-primary); }
+            .hamburger svg, .theme-toggle svg { display: block; }
             .nav-links, .nav-divider { display: none; }
 
-            .hero-glow { -webkit-mask-image: radial-gradient(circle at 50% 40%, black 0%, transparent 65%); mask-image: radial-gradient(circle at 50% 40%, black 0%, transparent 65%); }
+            .about-glow { -webkit-mask-image: radial-gradient(circle at 50% 30%, black 0%, transparent 65%); mask-image: radial-gradient(circle at 50% 30%, black 0%, transparent 65%); opacity: 0.15; }
 
             /* Full-Screen Mobile Menu Overlay */
-            .mobile-menu-overlay { display: flex; position: fixed; top: 0; left: 0; width: 100%; height: 100dvh; background-color: var(--bg-main); z-index: 9998; flex-direction: column; justify-content: center; align-items: center; padding-top: 0; padding-bottom: 12vh; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; }
+            .mobile-menu-overlay { display: flex; position: fixed; top: 0; left: 0; width: 100%; height: 100dvh; background-color: var(--bg-main); z-index: 9998; flex-direction: column; justify-content: center; align-items: flex-start; padding: 0 8%; opacity: 0; visibility: hidden; transition: opacity 0.2s ease, visibility 0.2s ease; }
             .mobile-menu-overlay.active { opacity: 1; visibility: visible; }
-            .mobile-menu-content { display: flex; flex-direction: column; align-items: center; gap: 14px; }
+            .mobile-menu-content { display: flex; flex-direction: column; align-items: flex-start; gap: 24px; width: 100%; }
             .mobile-menu-content > * { opacity: 0; transform: translateY(-15px); transition: opacity 0.2s ease, transform 0.2s ease; }
-            .mobile-menu-overlay.active .mobile-menu-content > *:nth-child(1) { transition: opacity 0.4s ease 0.1s, transform 0.4s cubic-bezier(0.16,1,0.3,1) 0.1s; opacity: 1; transform: translateY(0); }
-            .mobile-menu-overlay.active .mobile-menu-content > *:nth-child(2) { transition: opacity 0.4s ease 0.2s, transform 0.4s cubic-bezier(0.16,1,0.3,1) 0.2s; opacity: 1; transform: translateY(0); }
-            .mobile-menu-overlay.active .mobile-menu-content > *:nth-child(3) { transition: opacity 0.4s ease 0.3s, transform 0.4s cubic-bezier(0.16,1,0.3,1) 0.3s; opacity: 1; transform: translateY(0); }
+            .mobile-menu-overlay.active .mobile-menu-content > *:nth-child(1) { transition: opacity 0.3s ease 0.1s, transform 0.3s cubic-bezier(0.16,1,0.3,1) 0.1s; opacity: 1; transform: translateY(0); }
+            .mobile-menu-overlay.active .mobile-menu-content > *:nth-child(2) { transition: opacity 0.3s ease 0.15s, transform 0.3s cubic-bezier(0.16,1,0.3,1) 0.15s; opacity: 1; transform: translateY(0); }
+            .mobile-menu-overlay.active .mobile-menu-content > *:nth-child(3) { transition: opacity 0.3s ease 0.2s, transform 0.3s cubic-bezier(0.16,1,0.3,1) 0.2s; opacity: 1; transform: translateY(0); }
             
-            .mobile-menu-content a { color: var(--text-primary); font-size: 22px; text-decoration: none; font-weight: 400; font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif; }
-            .mobile-menu-divider { width: 180px; height: 1px; background: linear-gradient(90deg, transparent, var(--text-primary), transparent); opacity: 0.4; }
-            .mobile-menu-footer { position: absolute; bottom: 8vh; }
-            .menu-logo { width: 140px; height: auto; opacity: 0.95; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3)); }
-
-            /* Hero Section (Titanium Pixel Lock Edition) */
-            .hero { 
-                /* Binds directly to the JS measurement. It will NEVER stretch mid-scroll again. */
-                height: var(--app-height, 100vh) !important; 
-                min-height: var(--app-height, 100vh) !important; 
-                max-height: var(--app-height, 100vh) !important; 
-            }
-            
-            .hero-container { flex-direction: column; text-align: center; align-items: center; justify-content: flex-start; padding-top: 13vh; }
-            .hero-content { align-items: center; max-width: 100%; z-index: 15; padding-bottom: 43vh; }
-            .hero-title-logo { display: none !important; }
-            .hero h1 { font-size: clamp(38px, 11vw, 60px); margin-bottom: 20px; } 
-            .hero p { display: block; font-size: 15px; margin-bottom: 30px; padding: 0 10px; line-height: 1.4; } 
-            .divider { justify-content: center; margin-bottom: 20px; }
-            
-            .hero-image { position: absolute; height: auto; max-height: 40vh; max-width: 80%; bottom: 0 !important; left: 50%; transform: translateX(-50%); z-index: 2; -webkit-mask-image: none !important; mask-image: none !important; }
-            .hero::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 25vh; background: linear-gradient(to bottom, transparent 0%, var(--bg-main) 85%, var(--bg-main) 100%); z-index: 10; pointer-events: none; }
-
-            /* Library Section (Fluid Scroll Edition) */
-            .library {
-                position: relative;
-                z-index: 20; 
-                background-color: var(--bg-main);
-                
-                /* Locked paddings to kill the desktop bleed */
-                padding-top: 110px !important; 
-                padding-bottom: 20px !important; 
-                
-                /* NEW: Mathematically protects the title from the 60px navbar during scroll */
-                scroll-margin-top: 60px !important; 
-                
-                height: auto !important; 
-            }
-            
-            .library-title { text-align: center; font-size: 26px; padding: 0; margin-bottom: 45px; }
-            .netflix-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 6vw; padding: 0 5% 60px 5%; justify-items: center; }
-            .book-item[style*="visibility: hidden"] { display: none !important; }
-            .book-cover-wrapper { width: 100%; max-width: 160px; } 
-            .coming-soon-placeholder { font-size: 15px; gap: 10px; }
-            .placeholder-logo { width: 60px; height: 60px; }
-
-            /* Feedback 2: Perfectly Centered & Sized Modals */
-            .modal-overlay { 
-                align-items: center !important; 
-                justify-content: center !important; 
-            }
-            .modal-box, .netflix-modal-box { 
-                width: 90vw !important; /* Mathematically matches the 5% grid padding */
-                margin: auto !important; 
-                border-radius: 12px; 
-                max-height: 85vh; /* Prevents touching the top/bottom of screen */
-            }
-            
-            .netflix-banner { height: 200px; }
-            .netflix-content { padding: 0 24px 30px 24px; margin-top: -40px; }
-            .netflix-title { font-size: 24px; margin-bottom: 12px; line-height: 1.2; }
-            .netflix-tags { gap: 6px; margin-bottom: 16px; }
-            .netflix-tag { font-size: 12px; padding: 4px 8px; }
-            .netflix-desc { font-size: 14px; margin-bottom: 24px; line-height: 1.5; }
-            .netflix-btn { width: 100%; justify-content: center; }
-            .modal-info-badge { flex-shrink: 0; }
+            .mobile-menu-content a { color: var(--text-primary); font-size: 24px; text-decoration: none; font-weight: 400; }
+            .mobile-menu-divider { width: 100%; height: 1px; background: var(--border); margin: 8px 0; }
+            .mobile-menu-footer { display: none; }
 
             /* ABOUT PAGE TEXT & SPACING */
-            .about-wrapper { padding-top: 14vh; padding-bottom: 80px; padding-left: 8vw; padding-right: 8vw; }
-            .about-title { font-size: 36px; margin-bottom: 20px; }
+            .about-wrapper { padding-top: 12vh; padding-bottom: 80px; padding-left: 5%; padding-right: 5%; }
+            .about-title { font-size: clamp(38px, 11vw, 60px); margin-bottom: 24px; letter-spacing: -1px; }
+            .divider { justify-content: center; margin-bottom: 32px; width: 60px; }
             .prose { font-size: 16px; line-height: 1.6; }
-            .prose p { margin-bottom: 24px; }
-            .btn-primary { width: 100%; text-align: center; padding: 16px 20px; }
+            .prose p { margin-bottom: 24px; padding: 0 5px; color: var(--text-secondary); text-align: justify; text-justify: inter-word; hyphens: none; -webkit-hyphens: none; }
+            .btn-primary { width: 100%; text-align: center; padding: 12px 20px; }
         }
     </style>
 </head>
@@ -533,12 +438,11 @@
 
     <nav>
         <a href="/" class="nav-brand" style="text-decoration: none; color: inherit;">
-            <img src="images/logos/website/transparent/vanisagara-white.webp" alt="Vāṇīsāgara Logo" class="brand-icon logo-dark"><img src="images/logos/website/transparent/vanisagara-black.webp" alt="Vāṇīsāgara Logo" class="brand-icon logo-light"><span class="vanisagara-text">Vāṇīsāgara</span>
+            <img src="images/logos/website/transparent/vanisagara-white.webp" alt="Vāṇīsāgara Logo" class="brand-icon logo-dark"><img src="images/logos/website/transparent/vanisagara-black.webp" alt="Vāṇīsāgara Logo" class="brand-icon logo-light">
         </a>
         <div class="nav-controls">
             <ul class="nav-links">
                 <li><a href="/">Home</a></li>
-				<!-- <li><a href="/sanctum">Sanctum</a></li> -->
                 <li><a href="/about-us">About Us</a></li>
             </ul>
             <div class="nav-divider"></div>
@@ -546,17 +450,14 @@
             <div class="nav-icons">
                 <button class="theme-toggle" id="themeBtn" aria-label="Toggle Theme">
                     <svg id="theme-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <!-- SVGs omitted for brevity -->
+                        <!-- SVGs handled by JS -->
                     </svg>
                 </button>
-                
-                <!-- THE GHOST SPACER: Locks alignment to perfectly match the homepage -->
-                <div style="width: 32px; height: 32px;"></div>
             </div>
 
             <!-- THE HAMBURGER BUTTON -->
             <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
             </button>
         </div>
     </nav>
@@ -565,7 +466,6 @@
     <div class="mobile-menu-overlay" id="mobileMenu">
         <div class="mobile-menu-content">
             <a href="/">Home</a>
-            <!-- <a href="/sanctum">Sanctum</a> -->
             <div class="mobile-menu-divider"></div>
             <a href="/about-us">About Us</a>
         </div>
@@ -575,11 +475,13 @@
         </div>
     </div>
 
-    <!-- WRAPPER FOR NETFLIX PAGE TRANSITIONS -->
+    <!-- WRAPPER FOR PAGE TRANSITIONS -->
     <main class="about-wrapper" id="main-content">
+        <div class="about-glow"></div>
         <section class="about-content">
             <h1 class="about-title">Our Story</h1>
             
+            <!-- GOOGLE MATERIAL 4-COLOR BAR -->
             <div class="divider">
                 <div class="divider-line"></div>
                 <div class="divider-circle"></div>
@@ -606,7 +508,6 @@
         document.addEventListener("DOMContentLoaded", () => {
 
             // --- 0.5 THE TITANIUM PIXEL LOCK ---
-            // Measures the exact physical pixel height of the screen and locks it in
             function setMobileHeight() {
                 document.documentElement.style.setProperty('--app-height', `${window.innerHeight}px`);
             }
@@ -614,31 +515,26 @@
             window.addEventListener('orientationchange', setMobileHeight);
             setMobileHeight();
             
-            // --- 1. NETFLIX PAGE TRANSITION LOGIC ---
+            // --- 1. PAGE TRANSITION LOGIC ---
             const mainContent = document.getElementById('main-content');
             document.querySelectorAll('a').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
                     const target = this.getAttribute('href');
                     
-                    // Proceed if the link is internal (doesn't start with http) and not opening in a new tab
                     if (target && !target.startsWith('http') && this.getAttribute('target') !== '_blank') {
                         e.preventDefault();
                         
-                        // Normalize the current path (strip leading slashes and .html)
                         let currentPath = window.location.pathname.replace(/^\/|\.html$/g, '');
                         if (currentPath === 'index' || currentPath === '') currentPath = '/';
                         
-                        // Normalize the target path (strip leading slashes and .html)
                         let targetPath = target.replace(/^\/|\.html$/g, '');
                         if (targetPath === 'index' || targetPath === '') targetPath = '/';
 
-                        // If clicking the link of the page we are already on, just scroll to top
                         if (targetPath === currentPath) {
                             window.scrollTo({ top: 0, behavior: 'smooth' });
                             return;
                         }
 
-                        // Otherwise, trigger the Netflix exit animation
                         mainContent.classList.add('page-exit');
                         setTimeout(() => {
                             window.location.href = target;
@@ -647,7 +543,7 @@
                 });
             });
 
-            // --- LOCAL STORAGE THEME TOGGLE LOGIC ---
+            // --- 2. LOCAL STORAGE THEME TOGGLE LOGIC ---
             const themeBtn = document.getElementById('themeBtn');
             const root = document.documentElement;
             const icon = document.getElementById('theme-icon');
@@ -655,7 +551,6 @@
             const moonSvg = `<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>`;
             const sunSvg = `<circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>`;
 
-            // Set correct icon on load based on saved theme
             if (root.getAttribute('data-theme') === 'light') {
                 icon.innerHTML = moonSvg;
             } else {
@@ -676,7 +571,7 @@
                 }
             });
 			
-		// --- MOBILE HAMBURGER MENU LOGIC ---
+		// --- 3. MOBILE HAMBURGER MENU LOGIC ---
             const hamburgerBtn = document.getElementById('hamburgerBtn');
             const mobileMenu = document.getElementById('mobileMenu');
             
@@ -684,36 +579,30 @@
                 hamburgerBtn.addEventListener('click', () => {
                     mobileMenu.classList.toggle('active');
                     
-                    // Toggle the scroll handbrake on the body
                     document.body.classList.toggle('no-scroll');
                     
-                    // Morph hamburger icon to 'X' when open
                     if (mobileMenu.classList.contains('active')) {
-                        hamburgerBtn.innerHTML = `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>`;
+                        hamburgerBtn.innerHTML = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>`;
                     } else {
-                        hamburgerBtn.innerHTML = `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>`;
+                        hamburgerBtn.innerHTML = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>`;
                     }
                 });
 
-                // Close menu if a link inside it is clicked
                 const menuLinks = mobileMenu.querySelectorAll('a');
                 menuLinks.forEach(link => {
                     link.addEventListener('click', () => {
                         mobileMenu.classList.remove('active');
                         document.body.classList.remove('no-scroll');
-                        hamburgerBtn.innerHTML = `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>`;
+                        hamburgerBtn.innerHTML = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>`;
                     });
                 });
             }
 			
-			// --- 9. UNIVERSAL SCROLL MEMORY (The Perfected App Mode) ---
-            
-            // 1. Shut down the browser's native scroll engine so it stops fighting our code
+			// --- 4. UNIVERSAL SCROLL MEMORY ---
             if ('scrollRestoration' in history) {
                 history.scrollRestoration = 'manual';
             }
 
-            // Normalize the URL path so "/" and "/index.html" share the exact same memory
             let currentPath = window.location.pathname;
             if (currentPath.endsWith('/')) {
                 currentPath += 'index.html';
@@ -721,7 +610,6 @@
             
             const scrollKey = 'vanisagara_scroll_' + currentPath;
             
-            // 2. Check the browser's flight recorder to see exactly HOW the user got here
             const navType = performance.getEntriesByType("navigation")[0]?.type;
             const previousPath = sessionStorage.getItem('vanisagara_current_page');
             
@@ -730,34 +618,27 @@
                                         (navType === 'navigate' && previousPath === currentPath);
             
             if (isRefreshEquivalent) {
-                // It's a refresh or back-button return: restore the scroll position
                 const savedScrollPosition = sessionStorage.getItem(scrollKey);
                 if (savedScrollPosition !== null) {
                     
-                    // Temporarily kill the CSS smooth scrolling so it doesn't fight the instant jump
                     document.documentElement.style.scrollBehavior = 'auto';
                     
-                    // Jump IMMEDIATELY before the browser paints the first frame (no setTimeout!)
                     window.scrollTo({
                         top: parseInt(savedScrollPosition, 10),
                         behavior: 'instant' 
                     });
                     
-                    // Turn CSS smooth scrolling back on a split-second later for normal navigation
                     setTimeout(() => {
                         document.documentElement.style.scrollBehavior = 'smooth';
                     }, 50);
                 }
             } else {
-                // Fresh visit from a link: wipe memory AND mathematically guarantee we start at the top
                 sessionStorage.removeItem(scrollKey);
                 window.scrollTo({ top: 0, behavior: 'instant' });
             }
 
-            // Update the "current page" tracker for the next navigation action
             sessionStorage.setItem('vanisagara_current_page', currentPath);
 
-            // 3. Quietly save the scroll position as the user scrolls
             let scrollTimeout;
             window.addEventListener('scroll', () => {
                 clearTimeout(scrollTimeout);
