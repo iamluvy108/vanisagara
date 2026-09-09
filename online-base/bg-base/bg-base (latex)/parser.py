@@ -23,12 +23,19 @@ def clean_latex_formatting(text):
     text = text.replace('{', '').replace('}', '')
     return text.strip()
 
-def process_inline(text):
+def process_inline(text, is_devanagari=False):
     if not text: return ""
     text = re.sub(r'\\[vh]space\*?(?:\{[^}]*\}|\s*[0-9.]+[a-zA-Z]+)', '', text)
     text = re.sub(r'\\\\(?:\*)?\[.*?\]\s*', '<br><br>', text)
     text = re.sub(r'\\\\(?:\*)?\s*', '<br>', text)
+    
     text = clean_latex_formatting(text)
+    
+    # NEW: Eradicate stray bold/italic tags inside Devanagari to fix the first-line sizing bug
+    if is_devanagari:
+        text = text.replace('<strong>', '').replace('</strong>', '')
+        text = text.replace('<em>', '').replace('</em>', '')
+        
     text = text.replace('\\par', '<br>').replace('\n\n', '<br>')
     text = re.sub(r'(<br>\s*)+$', '', text)
     return text.strip()
@@ -68,7 +75,6 @@ def parse_chapter(filepath, index):
     with open(filepath, 'r', encoding='utf-8') as f:
         content = f.read()
 
-    # Automatically assign the correct word based on the file sequence
     words = ["ONE", "TWO", "THREE", "FOUR", "FIVE", "SIX", "SEVEN", "EIGHT", "NINE", "TEN", "ELEVEN", "TWELVE", "THIRTEEN", "FOURTEEN", "FIFTEEN", "SIXTEEN", "SEVENTEEN", "EIGHTEEN"]
     chapter_word = words[index] if index < len(words) else str(index + 1)
     
@@ -103,7 +109,8 @@ def parse_chapter(filepath, index):
         
         devanagari_match = re.search(r'\\devanagari.*?\\textbf\{(.*?)\\par\}', pre_sections, re.DOTALL)
         if devanagari_match:
-            verse_data["devanagari"] = process_inline(devanagari_match.group(1))
+            # Pass True to activate the Devanagari strict-cleaning protocol
+            verse_data["devanagari"] = process_inline(devanagari_match.group(1), is_devanagari=True)
             
         roman_match = re.search(r'\{\\centering\s*\\textit\{(.*?)\\par\}', pre_sections, re.DOTALL)
         if roman_match:

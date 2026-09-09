@@ -26,10 +26,13 @@
             --card-bg: #141414; 
             --border: rgba(255, 255, 255, 0.1);
             
+            /* Custom Root Colors */
+            --book-text-color: #0a84ff; 
+            
             --toc-link-color: #0a84ff; 
             --toc-hover-color: #ffffff;
             --reader-red: #0a84ff; 
-            --filter-btn-active: #0a84ff;
+            --filter-btn-active: #0a84ff; /* Apple System Blue (Dark) */
             
             --btn-bg: #2c2c2e;
             --btn-text: #ffffff;
@@ -45,10 +48,13 @@
             --card-bg: #ffffff; 
             --border: rgba(0, 0, 0, 0.08);
             
+            /* Custom Root Colors */
+            --book-text-color: #000000;
+            
             --toc-link-color: #8c2318; 
             --toc-hover-color: #000000;
             --reader-red: #7A1111; 
-            --filter-btn-active: #0061FE; 
+            --filter-btn-active: #007aff; /* Apple System Blue (Light) */
             
             --btn-bg: #e5e5ea;
             --btn-text: #000000;
@@ -131,6 +137,13 @@
         .sanctum-header { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 50px; width: 100%; }
         .sanctum-title { font-size: clamp(40px, 6vw, 72px); font-weight: 400; line-height: 1.1; margin-bottom: 16px; color: var(--text-primary); }
 
+        /* Dynamic Book Colors for View 1 */
+        #view-books .sanctum-title { color: var(--book-text-color); }
+        #view-books .toc-link { color: var(--book-text-color); }
+        
+        /* Reduced Chapter Title Size */
+        #view-chapters .sanctum-title { font-size: clamp(28px, 4vw, 48px); margin-bottom: 20px; }
+
         .divider { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; justify-content: center; width: 100%; }
         .divider-line { height: 1px; width: 60px; background-color: var(--text-secondary); opacity: 0.5; }
         .divider-circle { width: 6px; height: 6px; border-radius: 50%; border: 1px solid var(--text-secondary); opacity: 0.5; }
@@ -150,9 +163,11 @@
 
         /* --- CHAPTER & VERSE READER VIEWS --- */
         .reader-container { width: 100%; z-index: 2; }
-        .back-btn { background: none; border: none; color: var(--text-secondary); font-size: 16px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; margin-bottom: 40px; font-weight: 500; transition: opacity 0.2s; font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif !important; padding: 0; }
-        @media (hover: hover) { .back-btn:hover { opacity: 0.7; } }
-        .back-btn:active { opacity: 0.5; }
+        
+        /* Updated Premium Back Buttons */
+        .back-btn { background: var(--btn-bg); color: var(--btn-text); border: none; padding: 12px 24px; border-radius: 8px; font-size: 15px; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; margin-bottom: 40px; transition: transform 0.2s ease, opacity 0.2s ease; font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif !important; box-shadow: 0 4px 12px rgba(0,0,0,0.1); width: fit-content; }
+        @media (hover: hover) { .back-btn:hover { opacity: 0.85; transform: translateZ(0) scale(1.02); } }
+        .back-btn:active { transform: scale(0.98); opacity: 0.6; }
 
         .reader-chapter-title { text-align: center; margin-bottom: 60px; }
         
@@ -162,18 +177,19 @@
         .verse-summary-item { font-size: 22px; line-height: 1.7; text-align: justify; text-justify: inter-word; padding-bottom: 30px; margin-bottom: 30px; border-bottom: 1px solid var(--border); }
         .verse-summary-item:last-child { border-bottom: none; }
         .verse-summary-link { color: var(--reader-red); font-weight: 700; text-decoration: none; cursor: pointer; transition: opacity 0.2s; letter-spacing: 0.05em; }
-        @media (hover: hover) { .verse-summary-link:hover { opacity: 0.8; } }
+        @media (hover: hover) { .verse-summary-link:hover { opacity: 0.8; text-decoration: underline; } }
 
-        /* Replaced width 100% with inline-block so only the text is clickable */
         .verse-number { color: var(--reader-red); font-size: 36px; font-weight: 700; margin-bottom: 40px; letter-spacing: 0.05em; cursor: pointer; display: inline-block; }
         @media (hover: hover) { .verse-number:hover { opacity: 0.8; } }
         
-        /* Non-clickable Title for Single Verse View */
         .verse-number-static { color: var(--reader-red); font-size: 36px; font-weight: 700; margin-bottom: 40px; letter-spacing: 0.05em; display: inline-block; }
 
         .section-label { font-size: 30px; font-weight: 700; text-align: center; margin-bottom: 12px; letter-spacing: 0.05em; margin-top: 55px; text-transform: uppercase; }
         
-        .devanagari-text { text-align: center; font-size: 37px; line-height: 1.8; margin-bottom: 32px; font-weight: 600; font-family: 'Noto Serif Devanagari', 'Noto Serif', serif !important; }
+        /* Forced overriding inheritance to guarantee first-line matching */
+        .devanagari-text { text-align: center; font-size: 35.4px; line-height: 1.8; margin-bottom: 32px; font-weight: 600; font-family: 'Noto Serif Devanagari', 'Noto Serif', serif !important; }
+        .devanagari-text * { font-size: inherit !important; font-weight: inherit !important; line-height: inherit !important; }
+        
         .roman-text { text-align: center; font-size: 22px; line-height: 1.6; margin-bottom: 40px; font-style: italic; }
         
         .synonyms-text { font-size: 22px; line-height: 1.8; margin-bottom: 36px; text-align: justify; text-justify: inter-word; }
@@ -195,8 +211,6 @@
         .nav-verse-btn:active:not(.locked-btn) { transform: scale(0.98); opacity: 0.6; }
         
         .locked-btn { opacity: 0.3 !important; pointer-events: none; cursor: default; box-shadow: none; }
-
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
         /* --- MOBILE FIREWALL --- */
         .hamburger, .mobile-menu-overlay { display: none; }
@@ -240,14 +254,16 @@
             .ios-card { padding: 40px 20px; border-radius: 16px; }
             .toc-container { gap: 24px; padding: 0 10px; }
             
-            .reader-chapter-title { margin-bottom: 40px; }
+            .reader-chapter-title { font-size: 32px; margin-bottom: 40px; }
+            #view-chapters .sanctum-title { font-size: 28px; }
+            
             .verse-block { margin-bottom: 60px; padding-bottom: 40px; }
             
             .verse-summary-item { font-size: 20px; }
             .verse-number, .verse-number-static { font-size: 28px; margin-bottom: 30px; }
             .section-label { font-size: 24px; margin-bottom: 10px; margin-top: 40px; }
             
-            .devanagari-text { font-size: 31px; }
+            .devanagari-text { font-size: 29.4px; }
             .roman-text, .synonyms-text, .translation-text, .purport-text { font-size: 20px; }
             .quote-block { font-size: 20px; margin: 22px 0; }
         }
@@ -318,7 +334,7 @@
                 <div class="reader-container">
                     <button class="back-btn" onclick="router('/sanctum')">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
-                        Return to Books
+                        Return to Encyclopedia
                     </button>
                     <section class="sanctum-header" style="margin-bottom: 40px;">
                         <h1 class="sanctum-title">Bhagavad-gītā As It Is</h1>
@@ -334,7 +350,7 @@
                 <div class="reader-container">
                     <button class="back-btn" onclick="router('/sanctum/bg/')">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
-                        Return to Chapters
+                        Return to Main Chapter
                     </button>
                     <h2 id="content-chapter-title" class="reader-chapter-title"></h2>
 
@@ -360,7 +376,7 @@
                 <div class="reader-container">
                     <button class="back-btn" id="verse-back-btn" onclick="router('/sanctum/bg/')">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
-                        Return to Chapter
+                        Return to Main Chapter
                     </button>
                     
                     <div id="single-verse-container" style="width: 100%;"></div>
@@ -597,7 +613,7 @@
                 const verseIndex = chapter.verses.findIndex(v => v.text_number == textNum);
                 const verse = chapter.verses[verseIndex];
                 if (!verse) return;
-
+                
                 document.getElementById('verse-back-btn').setAttribute('onclick', `router('/sanctum/bg/${chapter.chapter_id}/')`);
 
                 const container = document.getElementById('single-verse-container');

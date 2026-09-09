@@ -11,7 +11,7 @@
                 "verses": [
                     {
                         "text_number": "1",
-                        "devanagari": "धृतराष्ट्र उवाच <br><strong>धर्मक्षेत्रे कुरुक्षेत्रे समवेता युयुत्सव: ।</strong> <br><strong>मामका: पाण्डवाश्चैव किमकुर्वत सञ्जय ॥ १ ॥</strong>",
+                        "devanagari": "धृतराष्ट्र उवाच <br>धर्मक्षेत्रे कुरुक्षेत्रे समवेता युयुत्सव: । <br>मामका: पाण्डवाश्चैव किमकुर्वत सञ्जय ॥ १ ॥",
                         "roman": "dhṛtarāṣṭra uvāca <br><em>dharma-kṣetre kuru-kṣetre</em> <br><em>samavetā yuyutsavaḥ</em> <br><em>māmakāḥ pāṇḍavāś caiva</em> <br><em>kim akurvata sañjaya</em>",
                         "synonyms": "<em>dhṛtarāṣṭraḥ</em> — King Dhṛtarāṣṭra; <em>uvāca</em> — said; <em>dharma-kṣetre</em> — in the place of pilgrimage; <em>kuru-kṣetre</em> — in the place named Kurukṣetra; <em>samavetāḥ</em> — assembled; <em>yuyatsavaḥ</em> — desiring to fight; <em>māmakāḥ</em> — my party (sons); <em>pāṇḍavāḥ</em> — the sons of Pāṇḍu; <em>ca</em> — and; <em>eva</em> — certainly; <em>kim</em> — what; <em>akurvata</em> — did they do; <em>sañjaya</em> — O Sañjaya.",
                         "translation": "<strong><strong>Dhṛtarāṣṭra said: O Sañjaya, after assembling in the place of pilgrimage at Kurukṣetra, what did my sons and the sons of Pāṇḍu do, being desirous to fight?</strong></strong>",
@@ -19,7 +19,7 @@
                     },
                     {
                         "text_number": "2",
-                        "devanagari": "सञ्जय उवाच <br><strong>दृष्ट्वा तु पाण्डवानीकं व्यूढं दुर्योधनस्तदा ।</strong> <br><strong>आचार्यमुपसङ्गम्य राजा वचनमब्रवीत् ॥ २ ॥</strong>",
+                        "devanagari": "सञ्जय उवाच <br>दृष्ट्वा तु पाण्डवानीकं व्यूढं दुर्योधनस्तदा । <br>आचार्यमुपसङ्गम्य राजा वचनमब्रवीत् ॥ २ ॥",
                         "roman": "sañjaya uvāca <br><em>dṛṣṭvā tu pāṇḍavānīkaṁ</em> <br><em>vyūḍhaṁ duryodhanas tadā</em> <br><em>ācāryam upasaṅgamya</em> <br><em>rājā vacanam abravīt</em>",
                         "synonyms": "<em>sañjayaḥ</em> — Sañjaya; <em>uvāca</em> — said; <em>dṛṣṭvā</em> — after seeing; <em>tu</em> — but; <em>pāṇḍava-anīkam</em> — the soldiers of the Pāṇḍavas; <em>vyūḍham</em> — arranged in military phalanx; <em>duryodhanaḥ</em> — King Duryodhana; <em>tadā</em> — at that time; <em>ācāryam</em> — the teacher; <em>upasaṅgamya</em> — approaching nearby; <em>rājā</em> — the king; <em>vacanam</em> — words; <em>abravīt</em> — spoke.",
                         "translation": "<strong><strong>Sañjaya said: O King, after looking over the army gathered by the sons of Pāṇḍu, King Duryodhana went to his teacher and began to speak the following words:</strong></strong>",
@@ -27,7 +27,7 @@
                     },
                     {
                         "text_number": "3",
-                        "devanagari": "पश्यैतां पाण्डुपुत्राणामाचार्य महतीं चमूम् । <br><strong>व्यूढां द्रुपदपुत्रेण तव शिष्येण धीमता ॥ ३ ॥</strong>",
+                        "devanagari": "पश्यैतां पाण्डुपुत्राणामाचार्य महतीं चमूम् । <br>व्यूढां द्रुपदपुत्रेण तव शिष्येण धीमता ॥ ३ ॥",
                         "roman": "paśyaitāṁ pāṇḍu-putrāṇām <br><em>ācārya mahatīṁ camūm</em> <br><em>vyūḍhāṁ drupada-putreṇa</em> <br><em>tava śiṣyeṇa dhīmatā</em>",
                         "synonyms": "<em>paśya</em> — behold; <em>etām</em> — this; <em>pāṇḍu-putrāṇām</em> — of the sons of Pāṇḍu; <em>ācārya</em> — O teacher; <em>mahatīm</em> — great; <em>camūm</em> — military force; <em>vyuḍham</em> — arranged; <em>drupada-putreṇa</em> — by the son of Drupada; <em>tava</em> — your; <em>śiṣyeṇa</em> — disciple; <em>dhīmatā</em> — very intelligent.",
                         "translation": "<strong><strong>O my teacher, behold the great army of the sons of Pāṇḍu, so expertly arranged by your intelligent disciple, the son of Drupada</strong>.</strong>",
@@ -35,7 +35,7 @@
                     },
                     {
                         "text_number": "4",
-                        "devanagari": "अत्र श‍ूरा महेष्वासा भीमार्जुनसमा युधि । <br><strong>युयुधानो विराटश्च द्रुपदश्च महारथः ॥ ४ ॥</strong>",
+                        "devanagari": "अत्र श‍ूरा महेष्वासा भीमार्जुनसमा युधि । <br>युयुधानो विराटश्च द्रुपदश्च महारथः ॥ ४ ॥",
                         "roman": "atra śūrā maheṣv-āsā <br><em>bhīmārjuna-samā yudhi</em> <br><em>yuyudhāno virāṭaś ca</em> <br><em>drupadaś ca mahā-rathaḥ</em>",
                         "synonyms": "<em>atra</em> — here; <em>śūrāḥ</em> — heroes; <em>maheṣvāsāḥ</em> — mighty bowmen; <em>bhīma-arjuna</em> — Bhīma and Arjuna; <em>samāḥ</em> — equal; <em>yudhi</em> — in the fight; <em>yuyudhānaḥ</em> — Yuyudhāna; <em>virāṭaḥ</em> — Virāṭa; <em>ca</em> — also; <em>drupadaḥ</em> — Drupada; <em>ca</em> — also; <em>mahārathaḥ</em> — great fighter.",
                         "translation": "<strong><strong>Here in this army, there are many heroic bowmen equal in fighting to Bhīma and Arjuna; there are also great fighters like Yuyudhāna, Virāṭa and Drupada</strong>.</strong>",
@@ -43,7 +43,7 @@
                     },
                     {
                         "text_number": "5",
-                        "devanagari": "धृष्टकेतुश्चेकितानः काशिराजश्च वीर्यवान् । <br><strong>पुरुजित्कुन्तिभोजश्च शैब्यश्च नरपुङ्गवः ॥ ५ ॥</strong>",
+                        "devanagari": "धृष्टकेतुश्चेकितानः काशिराजश्च वीर्यवान् । <br>पुरुजित्कुन्तिभोजश्च शैब्यश्च नरपुङ्गवः ॥ ५ ॥",
                         "roman": "dhṛṣṭaketuś cekitānaḥ <br><em>kāśirājaś ca vīryavān</em> <br><em>purujit kuntibhojaś ca</em> <br><em>śaibyaś ca nara-puṅgavaḥ</em>",
                         "synonyms": "<em>dhṛṣṭaketuḥ</em> — Dhṛṣṭaketu; <em>cekitānaḥ</em> — Cekitāna; <em>kāśirājaḥ</em> — Kaśirāja; <em>ca</em> — also; <em>vīryavān</em> — very powerful; <em>purujit</em> — Purujit; <em>kuntibhojaḥ</em> — Kuntibhoja; <em>ca</em> — and; <em>śaibyaḥ</em> — Śaibya; <em>ca</em> — and; <em>nara-puṅgavaḥ</em> — heroes in human society.",
                         "translation": "<strong><strong>There are also great, heroic, powerful fighters like Dhṛṣṭaketu, Cekitāna, Kāśirāja, Purujit, Kuntibhoja and Śaibya</strong>.</strong>",
@@ -51,7 +51,7 @@
                     },
                     {
                         "text_number": "6",
-                        "devanagari": "युधामन्युश्च विक्रान्त उत्तमौजाश्च वीर्यवान् । <br><strong>सौभद्रो द्रौपदेयाश्च सर्व एव महारथाः ॥ ६ ॥</strong>",
+                        "devanagari": "युधामन्युश्च विक्रान्त उत्तमौजाश्च वीर्यवान् । <br>सौभद्रो द्रौपदेयाश्च सर्व एव महारथाः ॥ ६ ॥",
                         "roman": "yudhāmanyuś ca vikrānta <br><em>uttamaujāś ca vīryavān</em> <br><em>saubhadro draupadeyāś ca</em> <br><em>sarva eva mahā-rathāḥ</em>",
                         "synonyms": "<em>yudhāmanyuḥ</em> — Yudhāmanyu; <em>ca</em> — and; <em>vikrāntaḥ</em> — mighty; <em>uttamaujāḥ</em> — Uttamaujā; <em>ca</em> — and; <em>vīryavān</em> — very powerful; <em>saubhadraḥ</em> — the son of Subhadrā; <em>draupadeyāḥ</em> — the sons of Draupadī; <em>ca</em> — and; <em>sarve</em> — all; <em>eva</em> — certainly; <em>mahā-rathāḥ</em> — great chariot fighters.",
                         "translation": "<strong><strong>There are the mighty Yudhāmanyu, the very powerful Uttamaujā, the son of Subhadrā and the sons of Draupadī</strong>.<strong> All these warriors are great chariot fighters</strong>.</strong>",
@@ -59,7 +59,7 @@
                     },
                     {
                         "text_number": "7",
-                        "devanagari": "अस्माकं तु विशिष्टा ये तान्निबोध द्विजोत्तम । <br><strong>नायका मम सैन्यस्य संज्ञार्थ तान्ब्रवीमि ते ॥ ७ ॥</strong>",
+                        "devanagari": "अस्माकं तु विशिष्टा ये तान्निबोध द्विजोत्तम । <br>नायका मम सैन्यस्य संज्ञार्थ तान्ब्रवीमि ते ॥ ७ ॥",
                         "roman": "asmākaṁ tu viśiṣṭā ye <br><em>tān nibodha dvijottama</em> <br><em>nāyakā mama sainyasya</em> <br><em>saṁjñārthaṁ tān bravīmi te</em>",
                         "synonyms": "<em>asmākam</em> — our; <em>tu</em> — but; <em>viśiṣṭāḥ</em> — especially powerful; <em>ye</em> — those; <em>tān</em> — them; <em>nibodha</em> — just take note, be informed; <em>dvijottama</em> — the best of the <em>brāhmaṇas</em>; <em>nāyakāḥ</em> — captains; <em>mama</em> — my; <em>sainyasya</em> — of the soldiers; <em>saṁjñā-artham</em> — for information; <em>tān</em> — them; <em>bravīmi</em> — I am speaking; <em>te</em> — your.",
                         "translation": "<strong><strong>O best of the brāhmaṇas, for your information, let me tell you about the captains who are especially qualified to lead my military force</strong>.</strong>",
@@ -67,7 +67,7 @@
                     },
                     {
                         "text_number": "8",
-                        "devanagari": "भवान्भीष्मश्च कर्णश्च कृपश्च समितिंजयः । <br><strong>अश्वत्थामा विकर्णश्च सौमदत्तिस्तथैव च ॥ ८ ॥</strong>",
+                        "devanagari": "भवान्भीष्मश्च कर्णश्च कृपश्च समितिंजयः । <br>अश्वत्थामा विकर्णश्च सौमदत्तिस्तथैव च ॥ ८ ॥",
                         "roman": "bhavān bhīṣmaś ca karṇaś ca <br><em>kṛpaś ca samitiṁ-jayaḥ</em> <br><em>aśvatthāmā vikarṇaś ca</em> <br><em>saumadattis tathaiva ca</em>",
                         "synonyms": "<em>bhavān</em> — yourself; <em>bhīṣmaḥ</em> — Grandfather Bhīṣma; <em>ca</em> — also; <em>karṇaḥ</em> — Karṇa; <em>ca</em> — and; <em>kṛpaḥ</em> — Kṛpa; <em>ca</em> — and; <em>samitiñjayaḥ</em> — always victorious in battle; <em>aśvatthāmā</em> — Aśvatthāmā; <em>vikarṇaḥ</em> — Vikarṇa; <em>ca</em> — as well as; <em>saumadattiḥ</em> — the son of Somadatta; <em>tathā</em> — and as; <em>eva</em> — certainly; <em>ca</em> — and.",
                         "translation": "<strong><strong>There are personalities like yourself, Bhīṣma, Karṇa, Kṛpa, Aśvatthāmā, Vikarṇa and the son of Somadatta called Bhūriśravā, who are always victorious in battle</strong>.</strong>",
@@ -75,7 +75,7 @@
                     },
                     {
                         "text_number": "9",
-                        "devanagari": "अन्ये च बहवः श‍ूरा मदर्थे त्यक्तजीविताः । <br><strong>नानाशस्त्रप्रहरणाः सर्वे युद्धविशारदाः ॥ ९ ॥</strong>",
+                        "devanagari": "अन्ये च बहवः श‍ूरा मदर्थे त्यक्तजीविताः । <br>नानाशस्त्रप्रहरणाः सर्वे युद्धविशारदाः ॥ ९ ॥",
                         "roman": "anye ca bahavaḥ śūrā <br><em>mad-arthe tyakta-jīvitāḥ</em> <br><em>nānā-śastra-praharaṇāḥ</em> <br><em>sarve yuddha-viśāradāḥ</em>",
                         "synonyms": "<em>anye</em> — many others; <em>ca</em> — also; <em>bahavaḥ</em> — in great numbers; <em>śūrāḥ</em> — heroes; <em>mad-arthe</em> — for my sake; <em>tyakta-jīvitāḥ</em> — prepared to risk life; <em>nānā</em> — many; <em>śastra</em> — weapons; <em>praharaṇāḥ</em> — equipped with; <em>sarve</em> — all of them; <em>yuddha</em> — battle; <em>viśāradāḥ</em> — experienced in military science.",
                         "translation": "<strong><strong>There are many other heroes who are prepared to lay down their lives for my sake</strong>.<strong> All of them are well equipped with different kinds of weapons, and all are experienced in military science</strong>.</strong>",
@@ -83,7 +83,7 @@
                     },
                     {
                         "text_number": "10",
-                        "devanagari": "अपर्याप्त‍ं तदस्माकं बलं भीष्माभिरक्षितम् । <br><strong>पर्याप्त‍ं त्विदमेतेषां बलं भीमाभिरक्षितम् ॥ १० ॥</strong>",
+                        "devanagari": "अपर्याप्त‍ं तदस्माकं बलं भीष्माभिरक्षितम् । <br>पर्याप्त‍ं त्विदमेतेषां बलं भीमाभिरक्षितम् ॥ १० ॥",
                         "roman": "aparyāptaṁ tad asmākaṁ <br><em>balaṁ bhīṣmābhirakṣitam</em> <br><em>paryāptaṁ tv idam eteṣāṁ</em> <br><em>balaṁ bhīmābhirakṣitam</em>",
                         "synonyms": "<em>aparyāptam</em> — immeasurable; <em>tat</em> — that; <em>asmākam</em> — of ours; <em>balam</em> — strength; <em>bhīṣma</em> — by Grandfather Bhīṣma; <em>abhirakṣitam</em> — perfectly protected; <em>paryāptam</em> — limited; <em>tu</em> — but; <em>idam</em> — all these; <em>eteṣām</em> — of the Pāṇḍavas; <em>balam</em> — strength; <em>bhīma</em> — by Bhīma; <em>abhirakṣitam</em> — carefully protected.",
                         "translation": "<strong><strong>Our strength is immeasurable, and we are perfectly protected by Grandfather Bhīṣma, whereas the strength of the Pāṇḍavas, carefully protected by Bhīma, is limited</strong>.</strong>",
@@ -91,7 +91,7 @@
                     },
                     {
                         "text_number": "11",
-                        "devanagari": "अयनेषु च सर्वेषु यथाभागवमस्थिताः । <br><strong>भीष्ममेवाभिरक्षन्तु भवन्तः सर्व एव हि ॥ ११ ॥</strong>",
+                        "devanagari": "अयनेषु च सर्वेषु यथाभागवमस्थिताः । <br>भीष्ममेवाभिरक्षन्तु भवन्तः सर्व एव हि ॥ ११ ॥",
                         "roman": "ayaneṣu ca sarveṣu <br><em>yathā-bhāgam avasthitāḥ</em> <br><em>bhīṣmam evābhirakṣantu</em> <br><em>bhavantaḥ sarva eva hi</em>",
                         "synonyms": "<em>ayaneṣu</em> — in the strategic points; <em>ca</em> — also; <em>sarveṣu</em> — everywhere; <em>yathābhāgam</em> — as they are differently arranged; <em>avasthitāḥ</em> — situated; <em>bhīṣmam</em> — unto Grandfather Bhīṣma; <em>eva</em> — certainly; <em>abhirakṣantu</em> — support may be given; <em>bhavantaḥ</em> — all of you; <em>sarve</em> — respectively; <em>eva</em> — certainly; <em>hi</em> — and exactly.",
                         "translation": "<strong><strong>Now all of you must give full support to Grandfather Bhīṣma, standing at your respective strategic points in the phalanx of the army</strong>.</strong>",
@@ -99,7 +99,7 @@
                     },
                     {
                         "text_number": "12",
-                        "devanagari": "तस्य सञ्जनयन्हर्षं कुरुवृद्धः पितामहः । <br><strong>सिंहनादं विनद्योच्च‍ैः शङ्खं दध्मौ प्रतापवान् ॥ १२ ॥</strong>",
+                        "devanagari": "तस्य सञ्जनयन्हर्षं कुरुवृद्धः पितामहः । <br>सिंहनादं विनद्योच्च‍ैः शङ्खं दध्मौ प्रतापवान् ॥ १२ ॥",
                         "roman": "tasya sañjanayan harṣaṁ <br><em>kuru-vṛddhaḥ pitāmahaḥ</em> <br><em>siṁha-nādaṁ vinadyoccaiḥ</em> <br><em>śaṅkhaṁ dadhmau pratāpavān</em>",
                         "synonyms": "<em>tasya</em> — his; <em>sañjanayan</em> — increasing; <em>harṣam</em> — cheerfulness; <em>kuru-vṛddhaḥ</em> — the grandsire of the Kuru dynasty (Bhīṣma); <em>pitāmahaḥ</em> — the grandfather; <em>siṁha-nādam</em> — roaring sound, like a lion; <em>vinadya</em> — vibrating; <em>uccaiḥ</em> — very loudly; <em>śaṅkham</em> — conchshell; <em>dadhmau</em> — blew; <em>pratāpavān</em> — the valiant.",
                         "translation": "<strong><strong>Then Bhīṣma, the great valiant grandsire of the Kuru dynasty, the grandfather of the fighters, blew his conchshell very loudly like the sound of a lion, giving Duryodhana joy</strong>.</strong>",
@@ -107,7 +107,7 @@
                     },
                     {
                         "text_number": "13",
-                        "devanagari": "ततः शङ्खाश्च भेर्यश्च पणवानकगोमुखाः । <br><strong>सहसैवाभ्यहन्यन्त स शब्दस्तुमुलोऽभवत् ॥ १३ ॥</strong>",
+                        "devanagari": "ततः शङ्खाश्च भेर्यश्च पणवानकगोमुखाः । <br>सहसैवाभ्यहन्यन्त स शब्दस्तुमुलोऽभवत् ॥ १३ ॥",
                         "roman": "tataḥ śaṅkhāś ca bheryaś ca <br><em>paṇavānaka-gomukhāḥ</em> <br><em>sahasaivābhyahanyanta</em> <br><em>sa śabdas tumulo ’bhavat</em>",
                         "synonyms": "<em>tataḥ</em> — thereafter; <em>śaṅkhāḥ</em> — conchshells; <em>ca</em> — also; <em>bheryaḥ</em> — bugles; <em>ca</em> — and; <em>paṇava-ānaka</em> — trumpets and drums; <em>go-mukhāḥ</em> — horns; <em>sahasā</em> — all of a sudden; <em>eva</em> — certainly; <em>abhyahanyanta</em> — being simultaneously sounded; <em>saḥ</em> — that; <em>śabdaḥ</em> — combined sound; <em>tumulaḥ</em> — tumultuous; <em>abhavat</em> — became.",
                         "translation": "<strong><strong>After that, the conchshells, bugles, trumpets, drums and horns were all suddenly sounded, and the combined sound was tumultuous</strong>.</strong>",
@@ -115,7 +115,7 @@
                     },
                     {
                         "text_number": "14",
-                        "devanagari": "ततः श्वेतैर्हयैर्युक्ते महति स्यन्दने स्थितौ । <br><strong>माधवः पाण्डवश्चैव दिव्यौ शङ्खौ प्रदध्मतुः ॥ १४ ॥</strong>",
+                        "devanagari": "ततः श्वेतैर्हयैर्युक्ते महति स्यन्दने स्थितौ । <br>माधवः पाण्डवश्चैव दिव्यौ शङ्खौ प्रदध्मतुः ॥ १४ ॥",
                         "roman": "tataḥ śvetair hayair yukte <br><em>mahati syandane sthitau</em> <br><em>mādhavaḥ pāṇḍavaś caiva</em> <br><em>divyau śaṅkhau pradadhmatuḥ</em>",
                         "synonyms": "<em>tataḥ</em> — thereafter; <em>śvetaiḥ</em> — by white; <em>hayaiḥ</em> — horses; <em>yukte</em> — being yoked with; <em>mahati</em> — in the great; <em>syandane</em> — chariot; <em>sthitau</em> — so situated; <em>mādhavaḥ</em> — Kṛṣṇa (the husband of the goddess of fortune); <em>pāṇḍavaḥ</em> — Arjuna (the son of Pāṇḍu); <em>ca</em> — also; <em>eva</em> — certainly; <em>divyau</em> — transcendental; <em>śaṅkhau</em> — conchshells; <em>pradadhmatuḥ</em> — sounded.",
                         "translation": "<strong><strong>On the other side, both Lord Kṛṣṇa and Arjuna, stationed on a great chariot drawn by white horses, sounded their transcendental conchshells</strong>.</strong>",
@@ -123,7 +123,7 @@
                     },
                     {
                         "text_number": "15",
-                        "devanagari": "पाञ्चजन्यं हृषीकेशो देवदत्तं धनञ्जयः । <br><strong>पौण्ड्रं दध्मौ महाशङ्खं भीमकर्मा वृकोदरः ॥ १५ ॥</strong>",
+                        "devanagari": "पाञ्चजन्यं हृषीकेशो देवदत्तं धनञ्जयः । <br>पौण्ड्रं दध्मौ महाशङ्खं भीमकर्मा वृकोदरः ॥ १५ ॥",
                         "roman": "pāñcajanyaṁ hṛṣīkeśo <br><em>devadattaṁ dhanañjayaḥ</em> <br><em>pauṇḍraṁ dadhmau mahā-śaṅkhaṁ</em> <br><em>bhīma-karmā vṛkodaraḥ</em>",
                         "synonyms": "<em>pāñcajanyam</em> — the conchshell named Pāñcajanya; <em>hṛṣīkeśaḥ</em> — Hṛṣīkeśa (Kṛṣṇa, the Lord who directs the senses of the devotees); <em>devadattam</em> — the conchshell named Devadatta; <em>dhanañjayaḥ</em> — Dhanañjaya (Arjuna, the winner of wealth); <em>pauṇḍram</em> — the conch named Pauṇḍram; <em>dadhmau</em> — blew; <em>mahā-śaṅkham</em> — the terrific conchshell; <em>bhīma-karmā</em> — one who performs Herculean tasks; <em>vṛkodaraḥ</em> — the voracious eater (Bhīma).",
                         "translation": "<strong><strong>Then, Lord Kṛṣṇa blew His conchshell, called Pāñcajanya; Arjuna blew his, the Devadatta; and Bhīma, the voracious eater and performer of Herculean tasks, blew his terrific conchshell called Pauṇḍram</strong>.</strong>",
@@ -131,7 +131,7 @@
                     },
                     {
                         "text_number": "16-18",
-                        "devanagari": "अनन्तविजयं राजा कुन्तीपुत्रो युधिष्ठिरः । <br><strong>नकुलः सहदेवश्च सुघोषमणिपुष्पकौ ॥ १६ ॥</strong> <br><strong>काश्यश्च परमेष्वास: शिखण्डी च महारथ: ।</strong> <br><strong>धृष्टद्युम्न‍ो विराटश्च सात्यकिश्‍चापराजित: ॥ १७ ॥</strong> <br><strong>द्रुपदो द्रौपदेयाश्च सर्वश: पृथिवीपते ।</strong> <br><strong>सौभद्रश्च महाबाहु: शङ्खान्दध्मु: पृथक्पृथक् ॥ १८ ॥</strong>",
+                        "devanagari": "अनन्तविजयं राजा कुन्तीपुत्रो युधिष्ठिरः । <br>नकुलः सहदेवश्च सुघोषमणिपुष्पकौ ॥ १६ ॥ <br>काश्यश्च परमेष्वास: शिखण्डी च महारथ: । <br>धृष्टद्युम्न‍ो विराटश्च सात्यकिश्‍चापराजित: ॥ १७ ॥ <br>द्रुपदो द्रौपदेयाश्च सर्वश: पृथिवीपते । <br>सौभद्रश्च महाबाहु: शङ्खान्दध्मु: पृथक्पृथक् ॥ १८ ॥",
                         "roman": "anantavijayaṁ rājā <br><em>kuntī-putro yudhiṣṭhiraḥ</em> <br><em>nakulaḥ sahadevaś ca</em> <br><em>sughoṣa-maṇipuṣpakau</em> <br><br><em>kāśyaś ca parameṣv-āsaḥ</em> <br><em>śikhaṇḍī ca mahā-rathaḥ</em> <br><em>dhṛṣṭadyumno virāṭaś ca</em> <br><em>sātyakiś cāparājitaḥ</em> <br><br><em>drupado draupadeyāś ca</em> <br><em>sarvaśaḥ pṛthivī-pate</em> <br><em>saubhadraś ca mahā-bāhuḥ</em> <br><em>śaṅkhān dadhmuḥ pṛthak pṛthak</em>",
                         "synonyms": "<em>ananta-vijayam</em> — the conch named Anantavijaya; <em>rājā</em> — the king; <em>kuntī-putraḥ</em> — the son of Kuntī; <em>yudhiṣṭhiraḥ</em> — Yudhiṣṭhira; <em>nakulaḥ</em> — Nakula; <em>sahadevaḥ</em> — Sahadeva; <em>ca</em> — and; <em>sughoṣa-maṇipuṣpakau</em> — the conches named Sughoṣa and Maṇipuṣpaka; <em>kāśyaḥ</em> — the King of Kāśī (Vārāṇasī); <em>ca</em> — and; <em>parama-iṣu-āsaḥ</em> — the great archer; <em>śikhaṇḍī</em> — Śikhaṇḍī; <em>ca</em> — also; <em>mahā-rathaḥ</em> — one who can fight alone against thousands; <em>dhṛṣṭadyumnaḥ</em> — Dhṛṣṭadyumna (the son of King Drupada); <em>virāṭaḥ</em> — Virāṭa (the prince who gave shelter to the Pāṇḍavas while they were in disguise); <em>ca</em> — also; <em>sātyakiḥ</em> — Sātyaki (the same as Yuyudhāna, the charioteer of Lord Kṛṣṇa); <em>ca</em> — and; <em>aparājitaḥ</em> — who had never been vanquished; <em>drupadaḥ</em> — Drupada, the King of Pāñcāla; <em>draupadeyāḥ</em> — the sons of Draupadī; <em>ca</em> — also; <em>sarvaśaḥ</em> — all; <em>pṛthivī-pate</em> — O King; <em>saubhadraḥ</em> — Abhimanyu, the son of Subhadrā; <em>ca</em> — also; <em>mahā-bāhuḥ</em> — mighty-armed; <em>śaṅkhān</em> — conchshells; <em>dadhmuḥ</em> — blew; <em>pṛthak pṛthak</em> — each separately.",
                         "translation": "<strong><strong>King Yudhiṣṭhira, the son of Kuntī, blew his conchshell, the Anantavijaya, and Nakula and Sahadeva blew the Sughoṣa and Maṇipuṣpaka</strong>.<strong> That great archer the King of Kāśī, the great fighter Śikhaṇḍī, Dhṛṣṭadyumna, Virāṭa </strong><strong>and the unconquerable Sātyaki, Drupada, the sons of Draupadī, and the others, O King, such as the son of Subhadrā, greatly armed, all blew their respective conchshells</strong>.</strong>",
@@ -139,7 +139,7 @@
                     },
                     {
                         "text_number": "19",
-                        "devanagari": "स घोषो धार्तराष्ट्राणां हृदयानि व्यदारयत् । <br><strong>नभश्च पृथिवीं चैव तुमुलोऽभ्यनुनादयन् ॥ १९ ॥</strong>",
+                        "devanagari": "स घोषो धार्तराष्ट्राणां हृदयानि व्यदारयत् । <br>नभश्च पृथिवीं चैव तुमुलोऽभ्यनुनादयन् ॥ १९ ॥",
                         "roman": "sa ghoṣo dhārtarāṣṭrāṇāṁ <br><em>hṛdayāni vyadārayat</em> <br><em>nabhaś ca pṛthivīṁ caiva</em> <br><em>tumulo ’bhyanunādayan</em>",
                         "synonyms": "<em>saḥ</em> — that; <em>ghoṣaḥ</em> — vibration; <em>dhārtarāṣṭrāṇām</em> — of the sons of Dhṛtarāṣṭra; <em>hṛdayāni</em> — hearts; <em>vyadārayat</em> — shattered; <em>nabhaḥ</em> — the sky; <em>ca</em> — also; <em>pṛthivīm</em> — the surface of the earth; <em>ca</em> — also; <em>eva</em> — certainly; <em>tumulaḥ</em> — uproarious; <em>abhyanunādayan</em> — by resounding.",
                         "translation": "<strong><strong>The blowing of these different conchshells became uproarious, and thus, vibrating both in the sky and on the earth, it shattered the hearts of the sons of Dhṛtarāṣṭra</strong>.</strong>",
@@ -147,7 +147,7 @@
                     },
                     {
                         "text_number": "20",
-                        "devanagari": "अथ व्यवस्थितान्दृष्ट्वा धार्तराष्ट्रान्कपिध्वजः । <br><strong>प्रवृत्ते शस्त्रसम्पाते धनुरुद्यम्य पाण्डवः ।</strong> <br><strong>हृषीकेशं तदा वाक्यमिदमाह महीपते ॥ २० ॥</strong>",
+                        "devanagari": "अथ व्यवस्थितान्दृष्ट्वा धार्तराष्ट्रान्कपिध्वजः । <br>प्रवृत्ते शस्त्रसम्पाते धनुरुद्यम्य पाण्डवः । <br>हृषीकेशं तदा वाक्यमिदमाह महीपते ॥ २० ॥",
                         "roman": "atha vyavasthitān dṛṣṭvā <br><em>dhārtarāṣṭrān kapi-dhvajaḥ</em> <br><em>pravṛtte śastra-sampāte</em> <br><em>dhanur udyamya pāṇḍavaḥ</em> <br><br><em>hṛṣīkeśaṁ tadā vākyam</em> <br><em>idam āha mahī-pate</em>",
                         "synonyms": "<em>atha</em> — thereupon; <em>vyavasthitān</em> — situated; <em>dṛṣṭvā</em> — looking on; <em>dhārtarāṣṭrān</em> — the sons of Dhṛtarāṣṭra; <em>kapi-dhvajaḥ</em> — one whose flag is marked with Hanumān; <em>pravṛtte</em> — while about to be engaged; <em>śastra-sampāte</em> — the arrows released; <em>dhanuḥ</em> — bow; <em>udyamya</em> — after taking up; <em>pāṇḍavaḥ</em> — the son of Pāṇḍu (Arjuna); <em>hṛṣīkeśam</em> — unto Lord Kṛṣṇa; <em>tadā</em> — at that time; <em>vākyam</em> — words; <em>idam</em> — these; <em>āha</em> — said; <em>mahī-pate</em> — O King.",
                         "translation": "<strong><strong>O King, at that time Arjuna, the son of Pāṇḍu, who was seated in his chariot, his flag marked with Hanumān, </strong><strong>took up his bow and prepared to shoot his arrows, looking at the sons of Dhṛtarāṣṭra</strong>.<strong> O King, Arjuna then spoke to Hṛṣīkeśa [Kṛṣṇa] these word</strong><strong>s:</strong></strong>",
@@ -155,7 +155,7 @@
                     },
                     {
                         "text_number": "21-22",
-                        "devanagari": "अर्जुन उवाच <br><strong>सेनयोरुभयोर्मध्ये रथं स्थापय मेऽच्युत ।</strong> <br><strong>यावदेतान्निरीक्षेऽहं योद्‍धुकामानवस्थितान् ॥ २१ ॥</strong> <br><strong>कैर्मया सह योद्धव्यमस्मिन्‍रणसमुद्यमे ॥ २२ ॥</strong>",
+                        "devanagari": "अर्जुन उवाच <br>सेनयोरुभयोर्मध्ये रथं स्थापय मेऽच्युत । <br>यावदेतान्निरीक्षेऽहं योद्‍धुकामानवस्थितान् ॥ २१ ॥ <br>कैर्मया सह योद्धव्यमस्मिन्‍रणसमुद्यमे ॥ २२ ॥",
                         "roman": "arjuna uvāca <br><em>senayor ubhayor madhye</em> <br><em>rathaṁ sthāpaya me ’cyuta</em> <br><em>yāvad etān nirīkṣe ’haṁ</em> <br><em>yoddhu-kāmān avasthitān</em> <br><br><em>kair mayā saha yoddhavyam</em> <br><em>asmin raṇa-samudyame</em>",
                         "synonyms": "<em>arjunaḥ</em> — Arjuna; <em>uvāca</em> — said; <em>senayoḥ</em> — of the armies; <em>ubhayoḥ</em> — of both the parties; <em>madhye</em> — in between them; <em>ratham</em> — the chariot; <em>sthāpaya</em> — please keep; <em>me</em> — my; <em>acyuta</em> — O infallible one; <em>yāvat</em> — as long as; <em>etān</em> — all these; <em>nirīkṣe</em> — may look; <em>aham</em> — I; <em>yoddhu-kāmān</em> — desiring to fight; <em>avasthitān</em> — arrayed on the battlefield; <em>kaiḥ</em> — with whom; <em>mayā</em> — by me; <em>saha</em> — with; <em>yoddhavyam</em> — to fight with; <em>asmin</em> — in this; <em>raṇa</em> — strife; <em>samudyame</em> — in the attempt.",
                         "translation": "<strong><strong>Arjuna said: O infallible one, please draw my chariot between the two armies so that I may see who is present here, who is desirous of fighting, and with whom I must contend in this great battle attempt</strong>.</strong>",
@@ -163,7 +163,7 @@
                     },
                     {
                         "text_number": "23",
-                        "devanagari": "योत्स्यमानानवेक्षेऽहं य एतेऽत्र समागताः । <br><strong>धार्तराष्ट्रस्य दुर्बुद्धेर्युद्धे प्रियचिकीर्षवः ॥ २३ ॥</strong>",
+                        "devanagari": "योत्स्यमानानवेक्षेऽहं य एतेऽत्र समागताः । <br>धार्तराष्ट्रस्य दुर्बुद्धेर्युद्धे प्रियचिकीर्षवः ॥ २३ ॥",
                         "roman": "yotsyamānān avekṣe ’haṁ <br><em>ya ete ’tra samāgatāḥ</em> <br><em>dhārtarāṣṭrasya durbuddher</em> <br><em>yuddhe priya-cikīrṣavaḥ</em>",
                         "synonyms": "<em>yotsyamānān</em> — those who will be fighting; <em>avekṣe</em> — let me see; <em>aham</em> — I; <em>ye</em> — who; <em>ete</em> — those; <em>atra</em> — here; <em>samāgatāḥ</em> — assembled; <em>dhārtarāṣṭrasya</em> — the son of Dhṛtarāṣṭra; <em>durbuddheḥ</em> — evil-minded; <em>yuddhe</em> — in the fight; <em>priya</em> — well; <em>cikīrṣavaḥ</em> — wishing.",
                         "translation": "<strong><strong>Let me see those who have come here to fight, wishing to please the evil-minded son of Dhṛtarāṣṭra</strong>.</strong>",
@@ -171,7 +171,7 @@
                     },
                     {
                         "text_number": "24",
-                        "devanagari": "सञ्जय उवाच <br><strong>एवमुक्तो हृषीकेशो गुडाकेशेन भारत ।</strong> <br><strong>सेनयोरुभयोर्मध्ये स्थापयित्वा रथोत्तमम् ॥ २४ ॥</strong>",
+                        "devanagari": "सञ्जय उवाच <br>एवमुक्तो हृषीकेशो गुडाकेशेन भारत । <br>सेनयोरुभयोर्मध्ये स्थापयित्वा रथोत्तमम् ॥ २४ ॥",
                         "roman": "sañjaya uvāca <br><em>evam ukto hṛṣīkeśo</em> <br><em>guḍākeśena bhārata</em> <br><em>senayor ubhayor madhye</em> <br><em>sthāpayitvā rathottamam</em>",
                         "synonyms": "<em>sañjayaḥ</em> — Sañjaya; <em>uvāca</em> — said; <em>evam</em> — thus; <em>uktaḥ</em> — addressed; <em>hṛṣīkeśaḥ</em> — Lord Kṛṣṇa; <em>guḍākeśena</em> — by Arjuna; <em>bhārata</em> — O descendant of Bharata; <em>senayoḥ</em> — of armies; <em>ubhayoḥ</em> — of both; <em>madhye</em> — in the midst of; <em>sthāpayitvā</em> — by placing; <em>rathottamam</em> — the finest chariot.",
                         "translation": "<strong><strong>Sañjaya said: O descendant of Bharata, being thus addressed by Arjuna, Lord Kṛṣṇa drew up the fine chariot in the midst of the armies of both parties</strong>.</strong>",
@@ -179,7 +179,7 @@
                     },
                     {
                         "text_number": "25",
-                        "devanagari": "भीष्मद्रोणप्रमुखतः सर्वेषां च महीक्षिताम् । <br><strong>उवाच पार्थ पश्यैतान्समवेतान्कुरुनिति ॥ २५ ॥</strong>",
+                        "devanagari": "भीष्मद्रोणप्रमुखतः सर्वेषां च महीक्षिताम् । <br>उवाच पार्थ पश्यैतान्समवेतान्कुरुनिति ॥ २५ ॥",
                         "roman": "bhīṣma-droṇa-pramukhataḥ <br><em>sarveṣāṁ ca mahī-kṣitām</em> <br><em>uvāca pārtha paśyaitān</em> <br><em>samavetān kurūn iti</em>",
                         "synonyms": "<em>bhīṣma</em> — Grandfather Bhīṣma; <em>droṇa</em> — the teacher Droṇa; <em>pramukhataḥ</em> — in the front of; <em>sarveṣām</em> — all; <em>ca</em> — also; <em>mahīkṣitām</em> — chiefs of the world; <em>uvāca</em> — said; <em>pārtha</em> — O Pārtha (son of Pṛthā); <em>paśya</em> — just behold; <em>etān</em> — all of them; <em>samavetān</em> — assembled; <em>kurūn</em> — all the members of the Kuru dynasty; <em>iti</em> — thus.",
                         "translation": "<strong><strong>In the presence of Bhīṣma, Droṇa and all other chieftains of the world, Hṛṣīkeśa, the Lord, said, “Just behold, Pārtha, all the Kurus who are assembled here</strong>.”</strong>",
@@ -187,7 +187,7 @@
                     },
                     {
                         "text_number": "26",
-                        "devanagari": "तत्रापश्यत्स्थितान्पार्थः पितॄनथ पितामहान्। <br><strong>आचार्यान्मातुलान्भ्रातॄन्पुत्रान्पौत्रान्सखींस्तथा।</strong> <br><strong>श्वश‍ुरान्सुहृदश्चैव सेनयोरुभयोरपि ॥ २६ ॥</strong>",
+                        "devanagari": "तत्रापश्यत्स्थितान्पार्थः पितॄनथ पितामहान्। <br>आचार्यान्मातुलान्भ्रातॄन्पुत्रान्पौत्रान्सखींस्तथा। <br>श्वश‍ुरान्सुहृदश्चैव सेनयोरुभयोरपि ॥ २६ ॥",
                         "roman": "tatrāpaśyat sthitān pārthaḥ <br><em>pitṝn atha pitāmahān</em> <br><em>ācāryān mātulān bhrātṝn</em> <br><em>putrān pautrān sakhīṁs tathā</em> <br><br><em>śvaśurān suhṛdaś caiva</em> <br><em>senayor ubhayor api</em>",
                         "synonyms": "<em>tatra</em> — there; <em>apaśyat</em> — he could see; <em>sthitān</em> — standing; <em>pārthaḥ</em> — Arjuna; <em>pitṝn</em> — fathers; <em>atha</em> — also; <em>pitāmahān</em> — grandfathers; <em>ācāryān</em> — teachers; <em>mātulān</em> — maternal uncles; <em>bhrātṝn</em> — brothers; <em>putrān</em> — sons; <em>pautrān</em> — grandsons; <em>sakhīn</em> — friends; <em>tathā</em> — too; <em>śvaśurān</em> — fathers-in-law; <em>suhṛdaḥ</em> — well-wishers; <em>ca</em> — also; <em>eva</em> — certainly; <em>senayoḥ</em> — of the armies; <em>ubhayoḥ</em> — of both parties; <em>api</em> — including.",
                         "translation": "<strong><strong>There Arjuna could see, within the midst of the armies of both parties, his fathers, grandfathers, teachers, maternal uncles, brothers, sons, grandsons, friends, and also his father-in-law and well-wishers — all present there</strong>.</strong>",
@@ -195,7 +195,7 @@
                     },
                     {
                         "text_number": "27",
-                        "devanagari": "तान्समीक्ष्य स कौन्तेयः सर्वान्बन्धूनवस्थितान् । <br><strong>कृपया परयाविष्टो विषीदन्निदमब्रवीत् ॥ २७ ॥</strong>",
+                        "devanagari": "तान्समीक्ष्य स कौन्तेयः सर्वान्बन्धूनवस्थितान् । <br>कृपया परयाविष्टो विषीदन्निदमब्रवीत् ॥ २७ ॥",
                         "roman": "tān samīkṣya sa kaunteyaḥ <br><em>sarvān bandhūn avasthitān</em> <br><em>kṛpayā parayāviṣṭo</em> <br><em>viṣīdann idam abravīt</em>",
                         "synonyms": "<em>tān</em> — all of them; <em>samīkṣya</em> — after seeing; <em>saḥ</em> — he; <em>kaunteyaḥ</em> — the son of Kuntī; <em>sarvān</em> — all kinds of; <em>bandhūn</em> — relatives; <em>avasthitān</em> — situated; <em>kṛpayā</em> — by compassion; <em>parayā</em> — of a high grade; <em>āviṣṭaḥ</em> — overwhelmed by; <em>viṣīdan</em> — while lamenting; <em>idam</em> — thus; <em>abravīt</em> — spoke.",
                         "translation": "<strong><strong>When the son of Kuntī, Arjuna, saw all these different grades of friends and relatives, he became overwhelmed with compassion and spoke thus:</strong></strong>",
@@ -203,7 +203,7 @@
                     },
                     {
                         "text_number": "28",
-                        "devanagari": "अर्जुन उवाच <br><strong>दृष्ट्वेमं स्वजनं कृष्ण युयुत्सुं समुपस्थितम् ।</strong> <br><strong>सीदन्ति मम गात्राणि मुखं च परिश‍ुष्यति ॥ २८ ॥</strong>",
+                        "devanagari": "अर्जुन उवाच <br>दृष्ट्वेमं स्वजनं कृष्ण युयुत्सुं समुपस्थितम् । <br>सीदन्ति मम गात्राणि मुखं च परिश‍ुष्यति ॥ २८ ॥",
                         "roman": "arjuna uvāca <br><em>dṛṣṭvemaṁ sva-janaṁ kṛṣṇa</em> <br><em>yuyutsuṁ samupasthitam</em> <br><em>sīdanti mama gātrāṇi</em> <br><em>mukhaṁ ca pariśuṣyati</em>",
                         "synonyms": "<em>arjunaḥ</em> — Arjuna; <em>uvāca</em> — said; <em>dṛṣṭvā</em> — after seeing; <em>imam</em> — all these; <em>svajanam</em> — kinsmen; <em>kṛṣṇa</em> — O Kṛṣṇa; <em>yuyutsum</em> — all in fighting spirit; <em>samupasthitam</em> — all present; <em>sīdanti</em> — quivering; <em>mama</em> — my; <em>gātrāṇi</em> — limbs of the body; <em>mukham</em> — mouth; <em>ca</em> — also; <em>pariśuṣyati</em> — drying up.",
                         "translation": "<strong><strong>Arjuna said: My dear Kṛṣṇa, seeing my friends and relatives present before me in such a fighting spirit, I feel the limbs of my body quivering and my mouth drying up</strong>.</strong>",
@@ -211,7 +211,7 @@
                     },
                     {
                         "text_number": "29",
-                        "devanagari": "वेपथुश्च शरीरे मे रोमहर्षश्च जायते । <br><strong>गाण्डीवं स्रंसते हस्तात्त्वक्च‍ैव परिदह्यते ॥ २९ ॥</strong>",
+                        "devanagari": "वेपथुश्च शरीरे मे रोमहर्षश्च जायते । <br>गाण्डीवं स्रंसते हस्तात्त्वक्च‍ैव परिदह्यते ॥ २९ ॥",
                         "roman": "vepathuś ca śarīre me <br><em>roma-harṣaś ca jāyate</em> <br><em>gāṇḍīvaṁ sraṁsate hastāt</em> <br><em>tvak caiva paridahyate</em>",
                         "synonyms": "<em>vepathuḥ</em> — trembling of the body; <em>ca</em> — also; <em>śarīre</em> — on the body; <em>me</em> — my; <em>roma-harṣaḥ</em> — standing of hair on end; <em>ca</em> — also; <em>jāyate</em> — is taking place; <em>gāṇḍīvam</em> — the bow of Arjuna; <em>sraṁsate</em> — is slipping; <em>hastāt</em> — from the hands; <em>tvak</em> — skin; <em>ca</em> — also; <em>eva</em> — certainly; <em>paridahyate</em> — burning.",
                         "translation": "<strong><strong>My whole body is trembling, and my hair is standing on end</strong>.<strong> My bow Gāṇḍīva is slipping from my hand, and my skin is burning</strong>.</strong>",
@@ -219,7 +219,7 @@
                     },
                     {
                         "text_number": "30",
-                        "devanagari": "न च शक्न‍ोम्यवस्थातुं भ्रमतीव च मे मनः । <br><strong>निमित्तानि च पश्यामि विपरीतानि केशव ॥ ३० ॥</strong>",
+                        "devanagari": "न च शक्न‍ोम्यवस्थातुं भ्रमतीव च मे मनः । <br>निमित्तानि च पश्यामि विपरीतानि केशव ॥ ३० ॥",
                         "roman": "na ca śaknomy avasthātuṁ <br><em>bhramatīva ca me manaḥ</em> <br><em>nimittāni ca paśyāmi</em> <br><em>viparītāni keśava</em>",
                         "synonyms": "<em>na</em> — nor; <em>ca</em> — also; <em>śaknomi</em> — am I able; <em>avasthātum</em> — to stay; <em>bhramati</em> — forgetting; <em>iva</em> — as; <em>ca</em> — and; <em>me</em> — my; <em>manaḥ</em> — mind; <em>nimittāni</em> — causes; <em>ca</em> — also; <em>paśyāmi</em> — I foresee; <em>viparītāni</em> — just the opposite; <em>keśava</em> — O killer of the demon Keśī (Kṛṣṇa).",
                         "translation": "<strong><strong>I am now unable to stand here any longer</strong>.<strong> I am forgetting myself, and my mind is reeling</strong>.<strong> I foresee only evil, O killer of the Keśī demon</strong>.</strong>",
@@ -227,7 +227,7 @@
                     },
                     {
                         "text_number": "31",
-                        "devanagari": "न च श्रेयोऽनुपश्यामि हत्वा स्वजनमाहवे । <br><strong>न काङ्क्षे विजयं कृष्ण न च राज्यं सुखानि च ॥ ३१ ॥</strong>",
+                        "devanagari": "न च श्रेयोऽनुपश्यामि हत्वा स्वजनमाहवे । <br>न काङ्क्षे विजयं कृष्ण न च राज्यं सुखानि च ॥ ३१ ॥",
                         "roman": "na ca śreyo ’nupaśyāmi <br><em>hatvā svajanam āhave</em> <br><em>na kāṅkṣe vijayaṁ kṛṣṇa</em> <br><em>na ca rājyaṁ sukhāni ca</em>",
                         "synonyms": "<em>na</em> — nor; <em>ca</em> — also; <em>śreyaḥ</em> — good; <em>anupaśyāmi</em> — do I foresee; <em>hatvā</em> — by killing; <em>svajanam</em> — own kinsmen; <em>āhave</em> — in the fight; <em>na</em> — nor; <em>kānkṣe</em> — do I desire; <em>vijayam</em> — victory; <em>kṛṣṇa</em> — O Kṛṣṇa; <em>na</em> — nor; <em>ca</em> — also; <em>rājyam</em> — kingdom; <em>sukhāni</em> — happiness thereof; <em>ca</em> — also.",
                         "translation": "<strong><strong>I do not see how any good can come from killing my own kinsmen in this battle, nor can I, my dear Kṛṣṇa, desire any subsequent victory, kingdom, or happiness</strong>.</strong>",
@@ -235,7 +235,7 @@
                     },
                     {
                         "text_number": "32-35",
-                        "devanagari": "किं नो राज्येन गोविन्द किं भोगैर्जीवितेन वा । <br><strong>येषामर्थे काङ्‍‍क्षितं नो राज्यं भोगाः सुखानि च ॥ ३२ ॥</strong> <br><strong>त इमेऽवस्थिता युद्धे प्राणांस्त्यक्त्वा धनानि च ।</strong> <br><strong>आचार्याः पितरः पुत्रास्तथैव च पितामहाः ॥ ३३ ॥</strong> <br><strong>मातुलाः श्वश‍ुराः पौत्राः श्यालाः सम्बन्धिनस्तथा ।</strong> <br><strong>एतान्न हन्तुमिच्छामि घ्न‍तोऽपि मधुसूदन ॥ ३४ ॥</strong> <br><strong>अपि त्रैलोक्यराज्यस्य हेतोः किं नु महीकृते ।</strong> <br><strong>निहत्य धार्तराष्ट्रान्नः का प्रीतिः स्याज्ज‍नार्दन ॥ ३५ ॥</strong>",
+                        "devanagari": "किं नो राज्येन गोविन्द किं भोगैर्जीवितेन वा । <br>येषामर्थे काङ्‍‍क्षितं नो राज्यं भोगाः सुखानि च ॥ ३२ ॥ <br>त इमेऽवस्थिता युद्धे प्राणांस्त्यक्त्वा धनानि च । <br>आचार्याः पितरः पुत्रास्तथैव च पितामहाः ॥ ३३ ॥ <br>मातुलाः श्वश‍ुराः पौत्राः श्यालाः सम्बन्धिनस्तथा । <br>एतान्न हन्तुमिच्छामि घ्न‍तोऽपि मधुसूदन ॥ ३४ ॥ <br>अपि त्रैलोक्यराज्यस्य हेतोः किं नु महीकृते । <br>निहत्य धार्तराष्ट्रान्नः का प्रीतिः स्याज्ज‍नार्दन ॥ ३५ ॥",
                         "roman": "kiṁ no rājyena govinda <br><em>kiṁ bhogair jīvitena vā</em> <br><em>yeṣām arthe kāṅkṣitaṁ no</em> <br><em>rājyaṁ bhogāḥ sukhāni ca</em> <br><br><em>ta ime ’vasthitā yuddhe</em> <br><em>prāṇāṁs tyaktvā dhanāni ca</em> <br><em>ācāryāḥ pitaraḥ putrās</em> <br><em>tathaiva ca pitāmahāḥ</em> <br><br><em>mātulāḥ śvaśurāḥ pautrāḥ</em> <br><em>śyālāḥ sambandhinas tathā</em> <br><em>etān na hantum icchāmi</em> <br><em>ghnato ’pi madhusūdana</em> <br><br><em>api trailokya-rājyasya</em> <br><em>hetoḥ kiṁ nu mahī-kṛte</em> <br><em>nihatya dhārtarāṣṭrān naḥ</em> <br><em>kā prītiḥ syāj janārdana</em>",
                         "synonyms": "<em>kim</em> — what use; <em>naḥ</em> — to us; <em>rājyena</em> — is the kingdom; <em>govinda</em> — O Kṛṣṇa; <em>kim</em> — what; <em>bhogaiḥ</em> — enjoyment; <em>jīvitena</em> — by living; <em>vā</em> — either; <em>yeṣām</em> — for whom; <em>arthe</em> — for the matter of; <em>kāṅkṣitam</em> — desired; <em>naḥ</em> — our; <em>rājyam</em> — kingdom; <em>bhogāḥ</em> — material enjoyment; <em>sukhāni</em> — all happiness; <em>ca</em> — also; <em>te</em> — all of them; <em>ime</em> — these; <em>avasthitāḥ</em> — situated; <em>yuddhe</em> — in this battlefield; <em>prāṇān</em> — lives; <em>tyaktvā</em> — giving up; <em>dhanāni</em> — riches; <em>ca</em> — also; <em>ācāryāḥ</em> — teachers; <em>pitaraḥ</em> — fathers; <em>putrāḥ</em> — sons; <em>tathā</em> — as well as; <em>eva</em> — certainly; <em>ca</em> — also; <em>pitāmahāḥ</em> — grandfathers; <em>mātulāḥ</em> — maternal uncles; <em>śvaśurāḥ</em> — fathers-in-law; <em>pautrāḥ</em> — grandsons; <em>śyālāḥ</em> — brothers-in-law; <em>sambandhinaḥ</em> — relatives; <em>tathā</em> — as well as; <em>etān</em> — all these; <em>na</em> — never; <em>hantum</em> — for killing; <em>icchāmi</em> — do I wish; <em>ghnataḥ</em> — being killed; <em>api</em> — even; <em>madhusūdana</em> — O killer of the demon Madhu (Kṛṣṇa); <em>api</em> — even if; <em>trailokya</em> — of the three worlds; <em>rājyasya</em> — of the kingdoms; <em>hetoḥ</em> — in exchange; <em>kim</em> — what to speak of; <em>nu</em> — only; <em>mahī-kṛte</em> — for the sake of earth; <em>nihatya</em> — by killing; <em>dhārtarāṣṭrān</em> — the sons of Dhṛtarāṣṭra; <em>naḥ</em> — our; <em>kā</em> — what; <em>prītiḥ</em> — pleasure; <em>syāt</em> — will there be; <em>janārdana</em> — O maintainer of all living entities.",
                         "translation": "<strong><strong>O Govinda, of what avail to us are kingdoms, happiness or even life itself when all those for whom we may desire them are now arrayed in this battlefield? O Madhusūdana, when teachers, fathers, sons, grandfathers, maternal uncles, fathers-in-law, grandsons, brothers-in-law and all relatives are ready to give up their lives and properties and are standing before me, then why should I wish to kill them, though I may survive? O maintainer of all creatures, I am not prepared to fight with them even in exchange for the three worlds, let alone this earth</strong>.</strong>",
@@ -243,7 +243,7 @@
                     },
                     {
                         "text_number": "36",
-                        "devanagari": "पापमेवाश्रयेदस्मान्हत्वैतानाततायिनः । <br><strong>तस्मान्नार्हा वयं हन्तुं धार्तराष्ट्रान्सबान्धवान् ।</strong> <br><strong>स्वजनं हि कथं हत्वा सुखिनः स्याम माधव ॥ ३६ ॥</strong>",
+                        "devanagari": "पापमेवाश्रयेदस्मान्हत्वैतानाततायिनः । <br>तस्मान्नार्हा वयं हन्तुं धार्तराष्ट्रान्सबान्धवान् । <br>स्वजनं हि कथं हत्वा सुखिनः स्याम माधव ॥ ३६ ॥",
                         "roman": "pāpam evāśrayed asmān <br><em>hatvaitān ātatāyinaḥ</em> <br><em>tasmān nārhā vayaṁ hantuṁ</em> <br><em>dhārtarāṣṭrān sa-bāndhavān</em> <br><br><em>svajanaṁ hi kathaṁ hatvā</em> <br><em>sukhinaḥ syāma mādhava</em>",
                         "synonyms": "<em>pāpam</em> — vices; <em>eva</em> — certainly; <em>āśrayet</em> — must take upon; <em>asmān</em> — us; <em>hatvā</em> — by killing; <em>etān</em> — all these; <em>ātatāyinaḥ</em> — aggressors; <em>tasmāt</em> — therefore; <em>na</em> — never; <em>arhāḥ</em> — deserving; <em>vayam</em> — us; <em>hantum</em> — to kill; <em>dhārtarāṣṭrān</em> — the sons of Dhṛtarāṣṭra; <em>svabāndhavān</em> — along with friends; <em>svajanam</em> — kinsmen; <em>hi</em> — certainly; <em>katham</em> — how; <em>hatvā</em> — by killing; <em>sukhinaḥ</em> — happy; <em>syāma</em> — become; <em>mādhava</em> — O Kṛṣṇa, husband of the goddess of fortune.",
                         "translation": "<strong><strong>Sin will overcome us if we slay such aggressors</strong>.<strong> Therefore</strong><strong>,</strong><strong> it is not proper for us to kill the sons of Dhṛtarāṣṭra and our friends</strong>.<strong> What should we gain, O Kṛṣṇa, husband of the goddess of fortune, and how could we be happy by killing our own kinsmen?</strong></strong>",
@@ -251,7 +251,7 @@
                     },
                     {
                         "text_number": "37-38",
-                        "devanagari": "यद्यप्येते न पश्यन्ति लोभोपहतचेतसः । <br><strong>कुलक्षयकृतं दोषं मित्रद्रोहे च पातकम् ॥ ३७ ॥</strong> <br><strong>कथं न ज्ञेयमस्माभिः पापादस्मन्निवर्तितुम् ।</strong> <br><strong>कुलक्षयकृतं दोषं प्रपश्यद्भ‍िर्जनार्दन ॥ ३८ ॥</strong>",
+                        "devanagari": "यद्यप्येते न पश्यन्ति लोभोपहतचेतसः । <br>कुलक्षयकृतं दोषं मित्रद्रोहे च पातकम् ॥ ३७ ॥ <br>कथं न ज्ञेयमस्माभिः पापादस्मन्निवर्तितुम् । <br>कुलक्षयकृतं दोषं प्रपश्यद्भ‍िर्जनार्दन ॥ ३८ ॥",
                         "roman": "yady apy ete na paśyanti <br><em>lobhopahata-cetasaḥ</em> <br><em>kula-kṣaya-kṛtaṁ doṣaṁ</em> <br><em>mitra-drohe ca pātakam</em> <br><br><em>kathaṁ na jñeyam asmābhiḥ</em> <br><em>pāpād asmān nivartitum</em> <br><em>kula-kṣaya-kṛtaṁ doṣaṁ</em> <br><em>prapaśyadbhir janārdana</em>",
                         "synonyms": "<em>yadi</em> — if; <em>api</em> — certainly; <em>ete</em> — they; <em>na</em> — do not; <em>paśyanti</em> — see; <em>lobha</em> — greed; <em>upahata</em> — overpowered; <em>cetasaḥ</em> — the hearts; <em>kula-kṣaya</em> — in killing the family; <em>kṛtam</em> — done; <em>doṣam</em> — fault; <em>mitra-drohe</em> — quarreling with friends; <em>ca</em> — also; <em>pātakam</em> — sinful reactions; <em>katham</em> — why; <em>na</em> — shall not; <em>jñeyam</em> — know this; <em>asmābhiḥ</em> — by us; <em>pāpāt</em> — from sins; <em>asmāt</em> — ourselves; <em>nivartitum</em> — to cease; <em>kula-kṣaya</em> — the destruction of a dynasty; <em>kṛtam</em> — by so doing; <em>doṣam</em> — crime; <em>prapaśyadbhiḥ</em> — by those who can see; <em>janārdana</em> — O Kṛṣṇa.",
                         "translation": "<strong><strong>O Janārdana, although these men, overtaken by greed, see no fault in killing one’s family or quarreling with friends, why should we, with knowledge of the sin, engage in these acts?</strong></strong>",
@@ -259,7 +259,7 @@
                     },
                     {
                         "text_number": "39",
-                        "devanagari": "कुलक्षये प्रणश्यन्ति कुलधर्माः सनातनाः । <br><strong>धर्मे नष्टे कुलं कृत्स्नमधर्मोऽभिभवत्युत ॥ ३९ ॥</strong>",
+                        "devanagari": "कुलक्षये प्रणश्यन्ति कुलधर्माः सनातनाः । <br>धर्मे नष्टे कुलं कृत्स्नमधर्मोऽभिभवत्युत ॥ ३९ ॥",
                         "roman": "kula-kṣaye praṇaśyanti <br><em>kula-dharmāḥ sanātanāḥ</em> <br><em>dharme naṣṭe kulaṁ kṛtsnam</em> <br><em>adharmo ’bhibhavaty uta</em>",
                         "synonyms": "<em>kula-kṣaye</em> — in destroying the family; <em>praṇaśyanti</em> — becomes vanquished; <em>kula-dharmāḥ</em> — the family traditions; <em>sanātanāḥ</em> — eternal; <em>dharme</em> — in religion; <em>naṣṭe</em> — being destroyed; <em>kulam</em> — family; <em>kṛtsnam</em> — wholesale; <em>adharmaḥ</em> — irreligious; <em>abhibhavati</em> — transforms; <em>uta</em> — it is said.",
                         "translation": "<strong><strong>With the destruction of dynasty, the eternal family tradition is vanquished, and thus the rest of the family becomes involved in irreligious practice</strong>.</strong>",
@@ -267,7 +267,7 @@
                     },
                     {
                         "text_number": "40",
-                        "devanagari": "अधर्माभिभवात्कृष्ण प्रदुष्यन्ति कुलस्त्रियः । <br><strong>स्त्रीषु दुष्टासु वार्ष्णेय जायते वर्णसङ्करः ॥ ४० ॥</strong>",
+                        "devanagari": "अधर्माभिभवात्कृष्ण प्रदुष्यन्ति कुलस्त्रियः । <br>स्त्रीषु दुष्टासु वार्ष्णेय जायते वर्णसङ्करः ॥ ४० ॥",
                         "roman": "adharmābhibhavāt kṛṣṇa <br><em>praduṣyanti kula-striyaḥ</em> <br><em>strīṣu duṣṭāsu vārṣṇeya</em> <br><em>jāyate varṇa-saṅkaraḥ</em>",
                         "synonyms": "<em>adharma</em> — irreligion; <em>abhibhavāt</em> — having been predominant; <em>kṛṣṇa</em> — O Kṛṣṇa; <em>praduṣyanti</em> — become polluted; <em>kula-striyaḥ</em> — family ladies; <em>strīṣu</em> — of the womanhood; <em>duṣṭāsu</em> — being so polluted; <em>vārṣṇeya</em> — O descendant of Vṛṣṇi; <em>jāyate</em> — it so becomes; <em>varṇa-saṅkaraḥ</em> — unwanted progeny.",
                         "translation": "<strong><strong>When irreligion is prominent in the family, O Kṛṣṇa, the women of the family become corrupt, and from the degradation of womanhood, O descendant of Vṛṣṇi, comes unwanted progeny</strong>.</strong>",
@@ -275,7 +275,7 @@
                     },
                     {
                         "text_number": "41",
-                        "devanagari": "सङ्करो नरकायैव कुलघ्न‍ानां कुलस्य च । <br><strong>पतन्ति पितरो ह्येषां लुप्तपिण्डोदकक्रियाः ॥ ४१ ॥</strong>",
+                        "devanagari": "सङ्करो नरकायैव कुलघ्न‍ानां कुलस्य च । <br>पतन्ति पितरो ह्येषां लुप्तपिण्डोदकक्रियाः ॥ ४१ ॥",
                         "roman": "saṅkaro narakāyaiva <br><em>kula-ghnānāṁ kulasya ca</em> <br><em>patanti pitaro hy eṣāṁ</em> <br><em>lupta-piṇḍodaka-kriyāḥ</em>",
                         "synonyms": "<em>saṅkaraḥ</em> — such unwanted children; <em>narakāya</em> — for hellish life; <em>eva</em> — certainly; <em>kula-ghnānām</em> — of those who are killers of the family; <em>kulasya</em> — of the family; <em>ca</em> — also; <em>patanti</em> — fall down; <em>pitaraḥ</em> — forefathers; <em>hi</em> — certainly; <em>eṣām</em> — of them; <em>lupta</em> — stopped; <em>piṇḍa</em> — offerings; <em>udaka</em> — water; <em>kriyāḥ</em> — performance.",
                         "translation": "<strong><strong>When there is increase of unwanted population, a hellish situation is created both for the family and for those who destroy the family tradition</strong>.<strong> In such corrupt </strong><strong>families, there is no offering of oblations of food and water to the ancestors</strong>.</strong>",
@@ -283,7 +283,7 @@
                     },
                     {
                         "text_number": "42",
-                        "devanagari": "दोषैरेतैः कुलघ्न‍ानां वर्णसङ्करकारकैः । <br><strong>उत्साद्यन्ते जातिधर्माः कुलधर्माश्च शाश्वताः ॥ ४२ ॥</strong>",
+                        "devanagari": "दोषैरेतैः कुलघ्न‍ानां वर्णसङ्करकारकैः । <br>उत्साद्यन्ते जातिधर्माः कुलधर्माश्च शाश्वताः ॥ ४२ ॥",
                         "roman": "doṣair etaiḥ kula-ghnānāṁ <br><em>varṇa-saṅkara-kārakaiḥ</em> <br><em>utsādyante jāti-dharmāḥ</em> <br><em>kula-dharmāś ca śāśvatāḥ</em>",
                         "synonyms": "<em>doṣaiḥ</em> — by such faults; <em>etaiḥ</em> — all these; <em>kula-ghnānām</em> — of the destroyer of a family; <em>varṇa-saṅkara</em> — unwanted children; <em>kārakaiḥ</em> — by the doers; <em>utsādyante</em> — causes devastation; <em>jāti-dharmāḥ</em> — community project; <em>kula-dharmāḥ</em> — family tradition; <em>ca</em> — also; <em>śāśvatāḥ</em> — eternal.",
                         "translation": "<strong><strong>Due to the evil deeds of the destroyers of family tradition, all kinds of community projects and family welfare activities are devastated</strong>.</strong>",
@@ -291,7 +291,7 @@
                     },
                     {
                         "text_number": "43",
-                        "devanagari": "उत्सन्नकुलधर्माणां मनुष्याणां जनार्दन । <br><strong>नरके नियतं वासो भवतीत्यनुश‍ुश्रुम ॥ ४३ ॥</strong>",
+                        "devanagari": "उत्सन्नकुलधर्माणां मनुष्याणां जनार्दन । <br>नरके नियतं वासो भवतीत्यनुश‍ुश्रुम ॥ ४३ ॥",
                         "roman": "utsanna-kula-dharmāṇāṁ <br><em>manuṣyāṇāṁ janārdana</em> <br><em>narake niyataṁ vāso</em> <br><em>bhavatīty anuśuśruma</em>",
                         "synonyms": "<em>utsanna</em> — spoiled; <em>kula-dharmāṇām</em> — of those who have the family traditions; <em>manuṣyāṇām</em> — of such men; <em>janārdana</em> — O Kṛṣṇa; <em>narake</em> — in hell; <em>niyatam</em> — always; <em>vāsaḥ</em> — residence; <em>bhavati</em> — it so becomes; <em>iti</em> — thus; <em>anuśuśruma</em> — I have heard by disciplic succession.",
                         "translation": "<strong><strong>O Kṛṣṇa, maintainer of the people, I have heard by disciplic succession that those who destroy family traditions dwell always in hell</strong>.</strong>",
@@ -299,7 +299,7 @@
                     },
                     {
                         "text_number": "44",
-                        "devanagari": "अहो बत महत्पापं कर्तुं व्यवसिता वयम् । <br><strong>यद्राज्यसुखलोभेन हन्तुं स्वजनमुद्यताः ॥ ४४ ॥</strong>",
+                        "devanagari": "अहो बत महत्पापं कर्तुं व्यवसिता वयम् । <br>यद्राज्यसुखलोभेन हन्तुं स्वजनमुद्यताः ॥ ४४ ॥",
                         "roman": "aho bata mahat pāpaṁ <br><em>kartuṁ vyavasitā vayam</em> <br><em>yad rājya-sukha-lobhena</em> <br><em>hantuṁ svajanam udyatāḥ</em>",
                         "synonyms": "<em>ahaḥ</em> — alas; <em>bata</em> — how strange it is; <em>mahat</em> — great; <em>pāpam</em> — sins; <em>kartum</em> — to perform; <em>vyavasitāḥ</em> — decided; <em>vayam</em> — we; <em>yat</em> — so that; <em>rājya</em> — kingdom; <em>sukha-lobhena</em> — driven by greed for royal happiness; <em>hantum</em> — to kill; <em>svajanam</em> — kinsmen; <em>udyatāḥ</em> — trying for.",
                         "translation": "<strong><strong>Alas, how strange it is that we are preparing to commit greatly sinful acts, driven by the desire to enjoy royal happiness</strong>.</strong>",
@@ -307,7 +307,7 @@
                     },
                     {
                         "text_number": "45",
-                        "devanagari": "यदि मामप्रतीकारमशस्त्रं शस्त्रपाणयः । <br><strong>धार्तराष्ट्रा रणे हन्युस्तन्मे क्षेमतरं भवेत् ॥ ४५ ॥</strong>",
+                        "devanagari": "यदि मामप्रतीकारमशस्त्रं शस्त्रपाणयः । <br>धार्तराष्ट्रा रणे हन्युस्तन्मे क्षेमतरं भवेत् ॥ ४५ ॥",
                         "roman": "yadi mām apratīkāram <br><em>aśastraṁ śastra-pāṇayaḥ</em> <br><em>dhārtarāṣṭrā raṇe hanyus</em> <br><em>tan me kṣemataraṁ bhavet</em>",
                         "synonyms": "<em>yadi</em> — even if; <em>mām</em> — unto me; <em>apratīkāram</em> — without being resistant; <em>aśastram</em> — without being fully equipped; <em>śastra-pāṇayaḥ</em> — those with weapons in hand; <em>dhārtarāṣṭrāḥ</em> — the sons of Dhṛtarāṣṭra; <em>raṇe</em> — in the battlefield; <em>hanyuḥ</em> — may kill; <em>tat</em> — that; <em>me</em> — mine; <em>kṣemataram</em> — better; <em>bhavet</em> — become.",
                         "translation": "<strong><strong>I would consider it better for the sons of Dhṛtarāṣṭra to kill me unarmed and unresisting, rather than fight with them</strong>.</strong>",
@@ -315,7 +315,7 @@
                     },
                     {
                         "text_number": "46",
-                        "devanagari": "सञ्जय उवाच <br><strong>एवमुक्त्वार्जुनः संख्ये रथोपस्थ उपाविशत् ।</strong> <br><strong>विसृज्य सशरं चापं शोकसंविग्न‍मानसः ॥ ४६ ॥</strong>",
+                        "devanagari": "सञ्जय उवाच <br>एवमुक्त्वार्जुनः संख्ये रथोपस्थ उपाविशत् । <br>विसृज्य सशरं चापं शोकसंविग्न‍मानसः ॥ ४६ ॥",
                         "roman": "sañjaya uvāca <br><em>evam uktvārjunaḥ saṅkhye</em> <br><em>rathopastha upāviśat</em> <br><em>visṛjya sa-śaraṁ cāpaṁ</em> <br><em>śoka-saṁvigna-mānasaḥ</em>",
                         "synonyms": "<em>sañjayaḥ</em> — Sañjaya; <em>uvāca</em> — said; <em>evam</em> — thus; <em>uktvā</em> — saying; <em>arjunaḥ</em> — Arjuna; <em>saṅkhye</em> — in the battlefield; <em>ratha</em> — chariot; <em>upasthaḥ</em> — situated on; <em>upāviśat</em> — sat down again; <em>visṛjya</em> — keeping aside; <em>sa-śaram</em> — along with arrows; <em>cāpam</em> — the bow; <em>śoka</em> — lamentation; <em>saṁvigna</em> — distressed; <em>mānasaḥ</em> — within the mind.",
                         "translation": "<strong><strong>Sañjaya said: Arjuna, having thus spoken on the battlefield, cast aside his bow and arrows and sat down on the chariot, his mind overwhelmed with grief</strong>.</strong>",
@@ -330,7 +330,7 @@
                 "verses": [
                     {
                         "text_number": "1",
-                        "devanagari": "सञ्जय उवाच <br><strong>तं तथा कृपयाविष्टमश्रुपूर्णाकुलेक्षणम् ।</strong> <br><strong>विषीदन्तमिदं वाक्यमुवाच मधुसूदनः ॥ १ ॥</strong>",
+                        "devanagari": "सञ्जय उवाच <br>तं तथा कृपयाविष्टमश्रुपूर्णाकुलेक्षणम् । <br>विषीदन्तमिदं वाक्यमुवाच मधुसूदनः ॥ १ ॥",
                         "roman": "sañjaya uvāca <br><em>taṁ tathā kṛpayāviṣṭam</em> <br><em>aśru-pūrṇākulekṣaṇam</em> <br><em>viṣīdantam idaṁ vākyam</em> <br><em>uvāca madhusūdanaḥ</em>",
                         "synonyms": "<em>sañjayaḥ uvāca</em> — Sañjaya said; <em>tam</em> — unto Arjuna; <em>tathā</em> — thus; <em>kṛpayā</em> — by compassion; <em>āviṣṭam</em> — overwhelmed; <em>aśru-pūrṇa</em> — full of tears; <em>ākula</em> — depressed; <em>īkṣaṇam</em> — eyes; <em>viṣīdantam</em> — lamenting; <em>idam</em> — this; <em>vākyam</em> — words; <em>uvāca</em> — said; <em>madhusūdanaḥ</em> — the killer of Madhu.",
                         "translation": "<strong><strong>Sañjaya said: Seeing Arjuna full of compassion and very sorrowful, his eyes brimming with tears, Madhusūdana, Kṛṣṇa, spoke the following words:</strong></strong>",
@@ -338,7 +338,7 @@
                     },
                     {
                         "text_number": "2",
-                        "devanagari": "श्री भगवानुवाच <br><strong>कुतस्त्वा कश्मलमिदं विषमे समुपस्थितम् ।</strong> <br><strong>अनार्यजुष्टमस्वर्ग्यकीर्तिकरमर्जुन ॥ २ ॥</strong>",
+                        "devanagari": "श्री भगवानुवाच <br>कुतस्त्वा कश्मलमिदं विषमे समुपस्थितम् । <br>अनार्यजुष्टमस्वर्ग्यकीर्तिकरमर्जुन ॥ २ ॥",
                         "roman": "śrī-bhagavān uvāca <br><em>kutas tvā kaśmalam idaṁ</em> <br><em>viṣame samupasthitam</em> <br><em>anārya-juṣṭam asvargyam</em> <br><em>akīrti-karam arjuna</em>",
                         "synonyms": "<em>śrī bhagavān uvāca</em> — the Supreme Personality of Godhead said; <em>kutaḥ</em> — wherefrom; <em>tvā</em> — unto you; <em>kaśmalam</em> — dirtiness; <em>idam</em> — this lamentation; <em>viṣame</em> — this hour of crisis; <em>samupasthitam</em> — arrived; <em>anārya</em> — persons who do not know the value of life; <em>juṣṭam</em> — practiced by; <em>asvargyam</em> — that which does not lead to higher planets; <em>akīrti</em> — infamy; <em>karam</em> — the cause of; <em>arjuna</em> — O Arjuna.",
                         "translation": "<strong><strong>The Supreme Person [Bhagavān] said: My dear Arjuna, how have these impurities come upon you? They are not at all befitting a man who knows the progressive values of life. They do not lead to higher planets, but to infamy.</strong></strong>",
@@ -346,7 +346,7 @@
                     },
                     {
                         "text_number": "3",
-                        "devanagari": "क्ल‍ैब्यं मा स्म गमः पार्थ नैतत्त्वय्युपपद्यते । <br><strong>क्षुद्रं हृदयदौर्बल्यं त्यक्त्वोत्तिष्ठ परन्तप ॥ ३ ॥</strong>",
+                        "devanagari": "क्ल‍ैब्यं मा स्म गमः पार्थ नैतत्त्वय्युपपद्यते । <br>क्षुद्रं हृदयदौर्बल्यं त्यक्त्वोत्तिष्ठ परन्तप ॥ ३ ॥",
                         "roman": "klaibyaṁ mā sma gamaḥ pārtha <br><em>naitat tvayy upapadyate</em> <br><em>kṣudraṁ hṛdaya-daurbalyaṁ</em> <br><em>tyaktvottiṣṭha parantapa</em>",
                         "synonyms": "<em>klaibyam</em> — impotence; <em>mā</em> — do not; <em>sma</em> — take it; <em>gamaḥ</em> — go in; <em>pārtha</em> — O son of Pṛthā; <em>na</em> — never; <em>etat</em> — like this; <em>tvayi</em> — unto you; <em>upapadyate</em> — is befitting; <em>kṣudram</em> — very little; <em>hṛdaya</em> — heart; <em>daurbalyam</em> — weakness; <em>tyaktvā</em> — giving up; <em>uttiṣṭha</em> — get up; <em>parantapa</em> — O chastiser of the enemies.",
                         "translation": "<strong><strong>O son of Pṛthā, do not yield to this degrading impotence. It does not become you. Give up such petty weakness of heart and arise, O chastiser of the enemy.</strong></strong>",
@@ -354,7 +354,7 @@
                     },
                     {
                         "text_number": "4",
-                        "devanagari": "अर्जुन उवाच <br><strong>कथं भीष्ममहं संख्ये द्रोणं च मधुसूदन ।</strong> <br><strong>इषुभिः प्रतियोत्स्यामि पूजार्हावरिसूदन ॥ ४ ॥</strong>",
+                        "devanagari": "अर्जुन उवाच <br>कथं भीष्ममहं संख्ये द्रोणं च मधुसूदन । <br>इषुभिः प्रतियोत्स्यामि पूजार्हावरिसूदन ॥ ४ ॥",
                         "roman": "arjuna uvāca <br><em>kathaṁ bhīṣmam ahaṁ saṅkhye</em> <br><em>droṇaṁ ca madhusūdana</em> <br><em>iṣubhiḥ pratiyotsyāmi</em> <br><em>pūjārhāv ari-sūdana</em>",
                         "synonyms": "<em>arjunaḥ uvāca</em> — Arjuna said; <em>katham</em> — how; <em>bhīṣmam</em> — unto Bhīṣma; <em>aham</em> — I; <em>saṅkhye</em> — in the fight; <em>droṇam</em> — unto Droṇa; <em>ca</em> — also; <em>madhusūdana</em> — O killer of Madhu; <em>iṣubhiḥ</em> — with arrows; <em>pratiyotsyāmi</em> — shall counterattack; <em>pūjā-arhau</em> — those who are worshipable; <em>arisūdana</em> — O killer of the enemies.",
                         "translation": "<strong><strong>Arjuna said: O killer of Madhu [Kṛṣṇa], how can I counterattack with arrows in battle men like Bhīṣma and Droṇa, who are worthy of my worship?</strong></strong>",
@@ -362,7 +362,7 @@
                     },
                     {
                         "text_number": "5",
-                        "devanagari": "गुरूनहत्वा हि महानुभावान् <br><strong>श्रेयो भोक्तुं भैक्ष्यमपीह लोके ।</strong> <br><strong>हत्वार्थकामांस्तु गुरूनिहैव</strong> <br><strong>भुज्ज‍ीय भोगान्‍रुधिरप्रदिग्धान् ॥ ५ ॥</strong>",
+                        "devanagari": "गुरूनहत्वा हि महानुभावान् <br>श्रेयो भोक्तुं भैक्ष्यमपीह लोके । <br>हत्वार्थकामांस्तु गुरूनिहैव <br>भुज्ज‍ीय भोगान्‍रुधिरप्रदिग्धान् ॥ ५ ॥",
                         "roman": "gurūn ahatvā hi mahānubhāvān <br><em>śreyo bhoktuṁ bhaikṣyam apīha loke</em> <br><em>hatvārtha-kāmāṁs tu gurūn ihaiva</em> <br><em>bhuñjīya bhogān rudhira-pradigdhān</em>",
                         "synonyms": "<em>gurūn</em> — the superiors; <em>ahatvā</em> — by killing; <em>hi</em> — certainly; <em>mahā-anubhāvān</em> — great souls; <em>śreyaḥ</em> — it is better; <em>bhoktum</em> — to enjoy life; <em>bhaikṣyam</em> — begging; <em>api</em> — even; <em>iha</em> — in this life; <em>loke</em> — in this world; <em>hatvā</em> — killing; <em>artha</em> — gain; <em>kāmān</em> — so desiring; <em>tu</em> — but; <em>gurūn</em> — superiors; <em>iha</em> — in this world; <em>eva</em> — certainly; <em>bhuñjīya</em> — has to enjoy; <em>bhogān</em> — enjoyable things; <em>rudhira</em> — blood; <em>pradigdhān</em> — tainted with.",
                         "translation": "<strong><strong>It is better to live in this world by begging than to live at the cost of the lives of great souls who are my teachers. Even though they are avaricious, they are nonetheless superiors. If they are killed, our spoils will be tainted with blood.</strong></strong>",
@@ -370,7 +370,7 @@
                     },
                     {
                         "text_number": "6",
-                        "devanagari": "न चैतद्विद्मः कतरन्नो गरीयो <br><strong>यद्वा जयेम यदि वा नो जयेयुः ।</strong> <br><strong>यानेव हत्वा न जिजीविषाम-</strong> <br><strong>स्तेऽवस्थिताः प्रमुखे धार्तराष्ट्राः ॥ ६ ॥</strong>",
+                        "devanagari": "न चैतद्विद्मः कतरन्नो गरीयो <br>यद्वा जयेम यदि वा नो जयेयुः । <br>यानेव हत्वा न जिजीविषाम- <br>स्तेऽवस्थिताः प्रमुखे धार्तराष्ट्राः ॥ ६ ॥",
                         "roman": "na caitad vidmaḥ kataran no garīyo <br><em>yad vā jayema yadi vā no jayeyuḥ</em> <br><em>yān eva hatvā na jijīviṣāmas</em> <br><em>te ’vasthitāḥ pramukhe dhārtarāṣṭrāḥ</em>",
                         "synonyms": "<em>na</em> — nor; <em>ca</em> — also; <em>etat</em> — this; <em>vidmaḥ</em> — do know; <em>katarat</em> — which; <em>naḥ</em> — us; <em>garīyaḥ</em> — better; <em>yat</em> — what; <em>vā</em> — either; <em>jayema</em> — conquer us; <em>yadi</em> — if; <em>vā</em> — or; <em>naḥ</em> — us; <em>jayeyuḥ</em> — conquer; <em>yān</em> — those; <em>eva</em> — certainly; <em>hatvā</em> — by killing; <em>na</em> — never; <em>jijīviṣāmaḥ</em> — want to live; <em>te</em> — all of them; <em>avasthitāḥ</em> — are situated; <em>pramukhe</em> — in the front; <em>dhārtarāṣṭrāḥ</em> — the sons of Dhṛtarāṣṭra.",
                         "translation": "<strong><strong>Nor do we know which is better — conquering them or being conquered by them. The sons of Dhṛtarāṣṭra, whom if we killed we should not care to live, are now standing before us on this battlefield.</strong></strong>",
@@ -378,7 +378,7 @@
                     },
                     {
                         "text_number": "7",
-                        "devanagari": "कार्पण्यदोषोपहतस्वभावः <br><strong>पृच्छामि त्वां धर्मसम्मूढचेताः ।</strong> <br><strong>यच्छ्रेयः स्यान्निश्‍चितं ब्रूहि तन्मे</strong> <br><strong>शिष्यस्तेऽहं शाधि मां त्वां प्रपन्नम् ॥ ७ ॥</strong>",
+                        "devanagari": "कार्पण्यदोषोपहतस्वभावः <br>पृच्छामि त्वां धर्मसम्मूढचेताः । <br>यच्छ्रेयः स्यान्निश्‍चितं ब्रूहि तन्मे <br>शिष्यस्तेऽहं शाधि मां त्वां प्रपन्नम् ॥ ७ ॥",
                         "roman": "kārpaṇya-doṣopahata-svabhāvaḥ <br><em>pṛcchāmi tvāṁ dharma-sammūḍha-cetāḥ</em> <br><em>yac chreyaḥ syān niścitaṁ brūhi tan me</em> <br><em>śiṣyas te ’haṁ śādhi māṁ tvāṁ prapannam</em>",
                         "synonyms": "<em>kārpaṇya</em> — miserly; <em>doṣa</em> — weakness; <em>upahata</em> — being inflicted by; <em>svabhāvaḥ</em> — characteristics; <em>pṛcchāmi</em> — I am asking; <em>tvām</em> — unto You; <em>dharma</em> — religion; <em>sammūḍha</em> — bewildered; <em>cetāḥ</em> — in heart; <em>yat</em> — what; <em>śreyaḥ</em> — all-good; <em>syāt</em> — may be; <em>niścitam</em> — confidently; <em>brūhi</em> — tell; <em>tat</em> — that; <em>me</em> — unto me; <em>śiṣyaḥ</em> — disciple; <em>te</em> — Your; <em>aham</em> — I am; <em>śādhi</em> — just instruct; <em>mām</em> — me; <em>tvām</em> — unto You; <em>prapannam</em> — surrendered.",
                         "translation": "<strong><strong>Now I am confused about my duty and have lost all composure because of weakness. In this condition</strong><strong>,</strong><strong> I am asking You to tell me clearly what is best for me. Now I am Your disciple, and a soul surrendered unto You. Please instruct me.</strong></strong>",
@@ -386,7 +386,7 @@
                     },
                     {
                         "text_number": "8",
-                        "devanagari": "न हि प्रपश्यामि ममापनुद्याद् - <br><strong>यच्छोकमुच्छोषणमिन्द्रियाणाम् ।</strong> <br><strong>अवाप्य भूभावसपत्‍नमृद्धं</strong> <br><strong>राज्यं सुराणामपि चाधिपत्यम् ॥ ८ ॥</strong>",
+                        "devanagari": "न हि प्रपश्यामि ममापनुद्याद् - <br>यच्छोकमुच्छोषणमिन्द्रियाणाम् । <br>अवाप्य भूभावसपत्‍नमृद्धं <br>राज्यं सुराणामपि चाधिपत्यम् ॥ ८ ॥",
                         "roman": "na hi prapaśyāmi mamāpanudyād <br><em>yac chokam ucchoṣaṇam indriyāṇām</em> <br><em>avāpya bhūmāv asapatnam ṛddhaṁ</em> <br><em>rājyaṁ surāṇām api cādhipatyam</em>",
                         "synonyms": "<em>na</em> — do not; <em>hi</em> — certainly; <em>prapaśyāmi</em> — I see; <em>mama</em> — my; <em>apanudyāt</em> — they can drive away; <em>yat</em> — that; <em>śokam</em> — lamentation; <em>ucchoṣaṇam</em> — drying up; <em>indriyāṇām</em> — of the senses; <em>avāpya</em> — achieving; <em>bhūmau</em> — on the earth; <em>asapatnam</em> — without rival; <em>ṛddham</em> — prosperous; <em>rājyam</em> — kingdom; <em>surāṇām</em> — of the demigods; <em>api</em> — even; <em>ca</em> — also; <em>ādhipatyam</em> — supremacy.",
                         "translation": "<strong><strong>I can find no means to drive away this grief which is drying up my senses. I will not be able to destroy it even if I win an unrivalled kingdom on the earth with sovereignty like that of the demigods in heaven.</strong></strong>",
@@ -394,7 +394,7 @@
                     },
                     {
                         "text_number": "9",
-                        "devanagari": "सञ्जय उवाच <br><strong>एवमुक्त्वा हृषीकेशं गुडाकेशः परन्तपः ।</strong> <br><strong>न योत्स्य इति गोविन्दामुक्त्वा तूष्णीं बभूव ह ॥ ९ ॥</strong>",
+                        "devanagari": "सञ्जय उवाच <br>एवमुक्त्वा हृषीकेशं गुडाकेशः परन्तपः । <br>न योत्स्य इति गोविन्दामुक्त्वा तूष्णीं बभूव ह ॥ ९ ॥",
                         "roman": "sañjaya uvāca <br><em>evam uktvā hṛṣīkeśaṁ</em> <br><em>guḍākeśaḥ parantapaḥ</em> <br><em>na yotsya iti govindam</em> <br><em>uktvā tūṣṇīṁ babhūva ha</em>",
                         "synonyms": "<em>sañjayaḥ uvāca</em> — Sañjaya said; <em>evam</em> — thus; <em>uktvā</em> — speaking; <em>hṛṣīkeśam</em> — unto Kṛṣṇa, the master of the senses; <em>guḍākeśaḥ</em> — Arjuna, the master at curbing ignorance; <em>parantapaḥ</em> — the chastiser of the enemies; <em>na yotsye</em> — I shall not fight; <em>iti</em> — thus; <em>govindam</em> — unto Kṛṣṇa, the giver of pleasure; <em>uktvā</em> — saying; <em>tūṣṇīm</em> — silent; <em>babhūva</em> — became; <em>ha</em> — certainly.",
                         "translation": "<strong><strong>Sañjaya said: Having spoken thus, Arjuna, chastiser of enemies, told Kṛṣṇa, “Govinda, I shall not fight,” and fell silent.</strong></strong>",
@@ -402,7 +402,7 @@
                     },
                     {
                         "text_number": "10",
-                        "devanagari": "तमुवाच हृषीकेशः प्रहसन्निव भारत । <br><strong>सेनयोरूभयोर्मध्ये विषीदन्तमिदं वचः ॥ १० ॥</strong>",
+                        "devanagari": "तमुवाच हृषीकेशः प्रहसन्निव भारत । <br>सेनयोरूभयोर्मध्ये विषीदन्तमिदं वचः ॥ १० ॥",
                         "roman": "tam uvāca hṛṣīkeśaḥ <br><em>prahasann iva bhārata</em> <br><em>senayor ubhayor madhye</em> <br><em>viṣīdantam idaṁ vacaḥ</em>",
                         "synonyms": "<em>tam</em> — unto him; <em>uvāca</em> — said; <em>hṛṣīkeśaḥ</em> — the master of the senses, Kṛṣṇa; <em>prahasan</em> — smiling; <em>iva</em> — like that; <em>bhārata</em> — O Dhṛtarāṣṭra, descendant of Bharata; <em>senayoḥ</em> — of the armies; <em>ubhayoḥ</em> — of both parties; <em>madhye</em> — between; <em>viṣīdantam</em> — unto the lamenting one; <em>idam</em> — the following; <em>vacaḥ</em> — words.",
                         "translation": "<strong><strong>O descendant of Bharata, at that time Kṛṣṇa, smiling, in the midst of both the armies, spoke the following words to the grief-stricken Arjuna:</strong></strong>",
@@ -410,7 +410,7 @@
                     },
                     {
                         "text_number": "11",
-                        "devanagari": "श्री भगवानुवाच <br><strong>अशोच्यनन्वशोचस्त्वं प्रज्ञावादांश्च भाषसे ।</strong> <br><strong>गतासूनगतासूंश्च नानुशोचन्ति पण्डिताः ॥ ११ ॥</strong>",
+                        "devanagari": "श्री भगवानुवाच <br>अशोच्यनन्वशोचस्त्वं प्रज्ञावादांश्च भाषसे । <br>गतासूनगतासूंश्च नानुशोचन्ति पण्डिताः ॥ ११ ॥",
                         "roman": "śrī-bhagavān uvāca <br><em>aśocyān anvaśocas tvaṁ</em> <br><em>prajñā-vādāṁś ca bhāṣase</em> <br><em>gatāsūn agatāsūṁś ca</em> <br><em>nānuśocanti paṇḍitāḥ</em>",
                         "synonyms": "<em>śrī bhagavān uvāca</em> — the Supreme Personality of Godhead said; <em>aśocyān</em> — that which is not worthy of lamentation; <em>anvaśocaḥ</em> — you are lamenting; <em>tvam</em> — you; <em>prajñā-vādāḥ</em> — learned talks; <em>ca</em> — also; <em>bhāṣase</em> — speaking; <em>gata</em> — lost; <em>asūn</em> — life; <em>agata</em> — not past; <em>asūn</em> — life; <em>ca</em> — also; <em>na</em> — never; <em>anuśocanti</em> — lament; <em>paṇḍitāḥ</em> — the learned.",
                         "translation": "<strong><strong>The Blessed Lord said: While speaking learned words, you are mourning for what is not worthy of grief. Those who are wise lament neither for the living nor the dead.</strong></strong>",
@@ -418,7 +418,7 @@
                     },
                     {
                         "text_number": "12",
-                        "devanagari": "न त्वेवाहं जातु नासं न त्वं नेमे जनाधिपाः । <br><strong>न चैव नभविष्यामः सर्वे वयमतः परम् ॥ १२ ॥</strong>",
+                        "devanagari": "न त्वेवाहं जातु नासं न त्वं नेमे जनाधिपाः । <br>न चैव नभविष्यामः सर्वे वयमतः परम् ॥ १२ ॥",
                         "roman": "na tv evāhaṁ jātu nāsaṁ <br><em>na tvaṁ neme janādhipāḥ</em> <br><em>na caiva na bhaviṣyāmaḥ</em> <br><em>sarve vayam ataḥ param</em>",
                         "synonyms": "<em>na</em> — never; <em>tu</em> — but; <em>eva</em> — certainly; <em>aham</em> — I; <em>jātu</em> — become; <em>na</em> — never; <em>āsam</em> — existed; <em>na</em> — it is not so; <em>tvam</em> — yourself; <em>na</em> — not; <em>ime</em> — all these; <em>janādhipāḥ</em> — kings; <em>na</em> — never; <em>ca</em> — also; <em>eva</em> — certainly; <em>na</em> — not like that; <em>bhaviṣyāmaḥ</em> — shall exist; <em>sarve</em> — all of us; <em>vayam</em> — we; <em>ataḥ param</em> — hereafter.",
                         "translation": "<strong><strong>Never was there a time when I did not exist, nor you, nor all these kings; nor in the future shall any of us cease to be.</strong></strong>",
@@ -426,7 +426,7 @@
                     },
                     {
                         "text_number": "13",
-                        "devanagari": "देहिनोऽस्मिन्यथा देहे कौमारं यौवनं जरा । <br><strong>तथा देहान्तरप्राप्तिर्धीरस्तत्र न मुह्यति ॥ १३ ॥</strong>",
+                        "devanagari": "देहिनोऽस्मिन्यथा देहे कौमारं यौवनं जरा । <br>तथा देहान्तरप्राप्तिर्धीरस्तत्र न मुह्यति ॥ १३ ॥",
                         "roman": "dehino ’smin yathā dehe <br><em>kaumāraṁ yauvanaṁ jarā</em> <br><em>tathā dehāntara-prāptir</em> <br><em>dhīras tatra na muhyati</em>",
                         "synonyms": "<em>dehinaḥ</em> — of the embodied; <em>asmin</em> — in this; <em>yathā</em> — as; <em>dehe</em> — in the body; <em>kaumāram</em> — boyhood; <em>yauvanam</em> — youth; <em>jarā</em> — old age; <em>tathā</em> — similarly; <em>dehāntara</em> — transference of the body; <em>prāptiḥ</em> — achievement; <em>dhīraḥ</em> — the sober; <em>tatra</em> — thereupon; <em>na</em> — never; <em>muhyati</em> — deluded.",
                         "translation": "<strong><strong>As the embodied soul continually passes, in this body, from boyhood to youth to old age, the soul similarly passes into another body at death. The self-realized soul is not bewildered by such a change.</strong></strong>",
@@ -434,7 +434,7 @@
                     },
                     {
                         "text_number": "14",
-                        "devanagari": "मात्रास्पर्शास्तु कौन्तेय शीतोष्णसुखदुःखदाः । <br><strong>आगमापायिनोऽनित्यास्तांस्तितिक्षस्व भारत ॥ १४ ॥</strong>",
+                        "devanagari": "मात्रास्पर्शास्तु कौन्तेय शीतोष्णसुखदुःखदाः । <br>आगमापायिनोऽनित्यास्तांस्तितिक्षस्व भारत ॥ १४ ॥",
                         "roman": "mātrā-sparśās tu kaunteya <br><em>śītoṣṇa-sukha-duḥkha-dāḥ</em> <br><em>āgamāpāyino ’nityās</em> <br><em>tāṁs titikṣasva bhārata</em>",
                         "synonyms": "<em>mātrā</em> — sensuous; <em>sparśāḥ</em> — perception; <em>tu</em> — only; <em>kaunteya</em> — O son of Kuntī; <em>śīta</em> — winter; <em>uṣṇa</em> — summer; <em>sukha</em> — happiness; <em>duḥkha-daḥ</em> — giving pain; <em>āgama</em> — appearing; <em>apāyinaḥ</em> — disappearing; <em>anityāḥ</em> — nonpermanent; <em>tān</em> — all of them; <em>titikṣasva</em> — just try to tolerate; <em>bhārata</em> — O descendant of the Bharata dynasty.",
                         "translation": "<strong><strong>O son of Kuntī, the nonpermanent appearance of happiness and distress, and their disappearance in due course, are like the appearance and disappearance of winter and summer seasons. They arise from sense perception, O scion of Bharata, and one must learn to tolerate them without being disturbed.</strong></strong>",
@@ -442,7 +442,7 @@
                     },
                     {
                         "text_number": "15",
-                        "devanagari": "यं हि न व्यथयन्त्येते पुरुषं पुरुषर्षभ । <br><strong>समदुःखसुखं धीरं सोऽमृतत्वाय कल्पते ॥ १५ ॥</strong>",
+                        "devanagari": "यं हि न व्यथयन्त्येते पुरुषं पुरुषर्षभ । <br>समदुःखसुखं धीरं सोऽमृतत्वाय कल्पते ॥ १५ ॥",
                         "roman": "yaṁ hi na vyathayanty ete <br><em>puruṣaṁ puruṣarṣabha</em> <br><em>sama-duḥkha-sukhaṁ dhīraṁ</em> <br><em>so ’mṛtatvāya kalpate</em>",
                         "synonyms": "<em>yam</em> — one who; <em>hi</em> — certainly; <em>na</em> — never; <em>vyathayanti</em> — are distressing; <em>ete</em> — all these; <em>puruṣam</em> — to a person; <em>puruṣarṣabha</em> — is best among men; <em>sama</em> — unaltered; <em>duḥkha</em> — distress; <em>sukham</em> — happiness; <em>dhīram</em> — patient; <em>saḥ</em> — he; <em>amṛtatvāya</em> — for liberation; <em>kalpate</em> — is considered eligible.",
                         "translation": "<strong><strong>O best among men [Arjuna], the person who is not disturbed by happiness and distress and is steady in both is certainly eligible for liberation.</strong></strong>",
@@ -450,7 +450,7 @@
                     },
                     {
                         "text_number": "16",
-                        "devanagari": "नासतो विद्यते भावो नाभावो विद्यते सतः । <br><strong>उभयोरपि दृष्टोऽन्तस्त्वनयोस्तत्त्वदर्शिभिः ॥ १६ ॥</strong>",
+                        "devanagari": "नासतो विद्यते भावो नाभावो विद्यते सतः । <br>उभयोरपि दृष्टोऽन्तस्त्वनयोस्तत्त्वदर्शिभिः ॥ १६ ॥",
                         "roman": "nāsato vidyate bhāvo <br><em>nābhāvo vidyate sataḥ</em> <br><em>ubhayor api dṛṣṭo ’ntas</em> <br><em>tv anayos tattva-darśibhiḥ</em>",
                         "synonyms": "<em>na</em> — never; <em>asataḥ</em> — of the nonexistent; <em>vidyate</em> — there is; <em>bhāvaḥ</em> — endurance; <em>na</em> — never; <em>abhāvaḥ</em> — changing quality; <em>vidyate</em> — there is; <em>sataḥ</em> — of the eternal; <em>ubhayoḥ</em> — of the two; <em>api</em> — verily; <em>dṛṣṭaḥ</em> — observed; <em>antaḥ</em> — conclusion; <em>tu</em> — but; <em>anayoḥ</em> — of them; <em>tattva</em> — truth; <em>darśibhiḥ</em> — by the seers.",
                         "translation": "<strong><strong>Those who are seers of the truth have concluded that of the nonexistent there is no endurance, and of the existent there is no cessation. This seers have concluded by studying the nature of both.</strong></strong>",
@@ -458,7 +458,7 @@
                     },
                     {
                         "text_number": "17",
-                        "devanagari": "अविनाशि तु तद्विद्धि येन सर्वमिदं ततम् । <br><strong>विनाशमव्ययस्यास्य न कश्चित्कर्तुमर्हति ॥ १७ ॥</strong>",
+                        "devanagari": "अविनाशि तु तद्विद्धि येन सर्वमिदं ततम् । <br>विनाशमव्ययस्यास्य न कश्चित्कर्तुमर्हति ॥ १७ ॥",
                         "roman": "avināśi tu tad viddhi <br><em>yena sarvam idaṁ tatam</em> <br><em>vināśam avyayasyāsya</em> <br><em>na kaścit kartum arhati</em>",
                         "synonyms": "<em>avināśi</em> — imperishable; <em>tu</em> — but; <em>tat</em> — that; <em>viddhi</em> — know it; <em>yena</em> — by whom; <em>sarvam</em> — all of the body; <em>idam</em> — this; <em>tatam</em> — widespread; <em>vināśam</em> — destruction; <em>avyayasya</em> — of the imperishable; <em>asya</em> — of it; <em>na kaścit</em> — no one; <em>kartum</em> — to do; <em>arhati</em> — able.",
                         "translation": "<strong><strong>Know that which pervades the entire body is indestructible. No one is able to destroy the imperishable soul.</strong></strong>",
@@ -466,7 +466,7 @@
                     },
                     {
                         "text_number": "18",
-                        "devanagari": "अन्तवन्त इमे देहा नित्यस्योक्ताः शरीरिणः । <br><strong>अनाशिनोऽप्रमेयस्य तस्माद्युध्यस्व भारत ॥ १८ ॥</strong>",
+                        "devanagari": "अन्तवन्त इमे देहा नित्यस्योक्ताः शरीरिणः । <br>अनाशिनोऽप्रमेयस्य तस्माद्युध्यस्व भारत ॥ १८ ॥",
                         "roman": "antavanta ime dehā <br><em>nityasyoktāḥ śarīriṇaḥ</em> <br><em>anāśino ’prameyasya</em> <br><em>tasmād yudhyasva bhārata</em>",
                         "synonyms": "<em>antavantaḥ</em> — perishable; <em>ime</em> — all these; <em>dehāḥ</em> — material bodies; <em>nityasya</em> — eternal in existence; <em>uktāḥ</em> — it is so said; <em>sarīriṇaḥ</em> — the embodied souls; <em>anāśinaḥ</em> — never to be destroyed; <em>aprameyasya</em> — immeasurable; <em>tasmāt</em> — therefore; <em>yudhyasva</em> — fight; <em>bhārata</em> — O descendant of Bharata.",
                         "translation": "<strong><strong>Only the material body of the indestructible, immeasurable and eternal living entity is subject to destruction</strong><strong>; therefore, </strong><strong> fight, O descendant of Bharata.</strong></strong>",
@@ -474,7 +474,7 @@
                     },
                     {
                         "text_number": "19",
-                        "devanagari": "य एनं वेत्ति हन्तारं यश्चैनं मन्यते हतम् । <br><strong>उभौ तौ न विजानीतो नायं हन्ति न हन्यते ॥ १९ ॥</strong>",
+                        "devanagari": "य एनं वेत्ति हन्तारं यश्चैनं मन्यते हतम् । <br>उभौ तौ न विजानीतो नायं हन्ति न हन्यते ॥ १९ ॥",
                         "roman": "ya enaṁ vetti hantāraṁ <br><em>yaś cainaṁ manyate hatam</em> <br><em>ubhau tau na vijānīto</em> <br><em>nāyaṁ hanti na hanyate</em>",
                         "synonyms": "<em>yaḥ</em> — anyone; <em>enam</em> — this; <em>vetti</em> — knows; <em>hantāram</em> — the killer; <em>yaḥ</em> — anyone; <em>ca</em> — also; <em>enam</em> — this; <em>manyate</em> — thinks; <em>hatam</em> — killed; <em>ubhau</em> — both of them; <em>tau</em> — they; <em>na</em> — never; <em>vijānītaḥ</em> — in knowledge; <em>na</em> — never; <em>ayam</em> — this; <em>hanti</em> — kills; <em>na</em> — nor; <em>hanyate</em> — be killed.",
                         "translation": "<strong><strong>He who thinks that the living entity is the slayer or that he is slain, does not understand. One who is in knowledge knows that the self slays not nor is slain.</strong></strong>",
@@ -482,7 +482,7 @@
                     },
                     {
                         "text_number": "20",
-                        "devanagari": "न जायते म्रियते वा कदाचि- <br><strong>न्नायं भूत्वा भविता वा न भूयः ।</strong> <br><strong>अजो नित्यः शाश्वतोऽयं पुराणो</strong> <br><strong>न हन्यते हन्यमाने शरीरे ॥ २० ॥</strong>",
+                        "devanagari": "न जायते म्रियते वा कदाचि- <br>न्नायं भूत्वा भविता वा न भूयः । <br>अजो नित्यः शाश्वतोऽयं पुराणो <br>न हन्यते हन्यमाने शरीरे ॥ २० ॥",
                         "roman": "na jāyate mriyate vā kadācin <br><em>nāyaṁ bhūtvā bhavitā vā na bhūyaḥ</em> <br><em>ajo nityaḥ śāśvato ’yaṁ purāṇo</em> <br><em>na hanyate hanyamāne śarīre</em>",
                         "synonyms": "<em>na</em> — never; <em>jāyate</em> — takes birth; <em>mriyate</em> — never dies; <em>vā</em> — either; <em>kadācit</em> — at any time (past, present or future); <em>na</em> — never; <em>ayam</em> — this; <em>bhūtvā</em> — came into being; <em>bhavitā</em> — will come to be; <em>vā</em> — or; <em>na</em> — not; <em>bhūyaḥ</em> — or has come to be; <em>ajaḥ</em> — unborn; <em>nityaḥ</em> — eternal; <em>śāśvataḥ</em> — permanent; <em>ayam</em> — this; <em>purāṇaḥ</em> — the oldest; <em>na</em> — never; <em>hanyate</em> — is killed; <em>hanyamāne</em> — being killed; <em>śarīre</em> — by the body.",
                         "translation": "<strong><strong>For the soul there is never birth nor death. Nor, having once been, does he ever cease to be. He is unborn, eternal, ever-existing, undying and primeval. He is not slain when the body is slain.</strong></strong>",
@@ -490,7 +490,7 @@
                     },
                     {
                         "text_number": "21",
-                        "devanagari": "वेदाविनाशिनं नित्यं य एनमजमव्ययम् । <br><strong>कथं स पुरुषः पार्थ कं घातयति हन्ति कम् ॥ २१ ॥</strong>",
+                        "devanagari": "वेदाविनाशिनं नित्यं य एनमजमव्ययम् । <br>कथं स पुरुषः पार्थ कं घातयति हन्ति कम् ॥ २१ ॥",
                         "roman": "vedāvināśinaṁ nityaṁ <br><em>ya enam ajam avyayam</em> <br><em>kathaṁ sa puruṣaḥ pārtha</em> <br><em>kaṁ ghātayati hanti kam</em>",
                         "synonyms": "<em>veda</em> — in knowledge; <em>avināśinam</em> — indestructible; <em>nityam</em> — always; <em>yaḥ</em> — one who; <em>enam</em> — this (soul); <em>ajam</em> — unborn; <em>avyayam</em> — immutable; <em>katham</em> — how; <em>saḥ</em> — he; <em>puruṣaḥ</em> — person; <em>pārtha</em> — O Pārtha (Arjuna); <em>kam</em> — whom; <em>ghātayati</em> — hurts; <em>hanti</em> — kills; <em>kam</em> — whom.",
                         "translation": "<strong><strong>O Pārtha, how can a person who knows that the soul is indestructible, unborn, eternal and immutable, kill anyone or cause anyone to kill?</strong></strong>",
@@ -498,7 +498,7 @@
                     },
                     {
                         "text_number": "22",
-                        "devanagari": "वासांसि जीर्णानि यथा विहाय <br><strong>नवानि गृह्णाति नरोऽपराणि ।</strong> <br><strong>तथा शरीराणि विहाय जीर्णा-</strong> <br><strong>न्यन्यानि संयाति नवानि देही ॥ २२ ॥</strong>",
+                        "devanagari": "वासांसि जीर्णानि यथा विहाय <br>नवानि गृह्णाति नरोऽपराणि । <br>तथा शरीराणि विहाय जीर्णा- <br>न्यन्यानि संयाति नवानि देही ॥ २२ ॥",
                         "roman": "vāsāṁsi jīrṇāni yathā vihāya <br><em>navāni gṛhṇāti naro ’parāṇi</em> <br><em>tathā śarīrāṇi vihāya jīrṇāny</em> <br><em>anyāni saṁyāti navāni dehī</em>",
                         "synonyms": "<em>vāsāṁsi</em> — garments; <em>jīrṇāni</em> — old and worn out; <em>yathā</em> — as it is; <em>vihāya</em> — giving up; <em>navāni</em> — new garments; <em>gṛhṇāti</em> — does accept; <em>naraḥ</em> — a man; <em>aparāṇi</em> — other; <em>tathā</em> — in the same way; <em>śarīrāṇi</em> — bodies; <em>vihāya</em> — giving up; <em>jīrṇāni</em> — old and useless; <em>anyāni</em> — different; <em>saṁyāti</em> — verily accepts; <em>navāni</em> — new sets; <em>dehī</em> — the embodied.",
                         "translation": "<strong><strong>As a person puts on new garments, giving up old ones, similarly, the soul accepts new material bodies, giving up the old and useless ones.</strong></strong>",
@@ -506,7 +506,7 @@
                     },
                     {
                         "text_number": "23",
-                        "devanagari": "नैनं छिन्दन्ति शस्त्राणि नैनं दहति पावकः । <br><strong>न चैनं क्ल‍ेदयन्त्यापो न शोषयति मारुतः ॥ २३ ॥</strong>",
+                        "devanagari": "नैनं छिन्दन्ति शस्त्राणि नैनं दहति पावकः । <br>न चैनं क्ल‍ेदयन्त्यापो न शोषयति मारुतः ॥ २३ ॥",
                         "roman": "nainaṁ chindanti śastrāṇi <br><em>nainaṁ dahati pāvakaḥ</em> <br><em>na cainaṁ kledayanty āpo</em> <br><em>na śoṣayati mārutaḥ</em>",
                         "synonyms": "<em>na</em> — never; <em>enam</em> — unto this soul; <em>chindanti</em> — can cut into pieces; <em>śastrāṇi</em> — all weapons; <em>na</em> — never; <em>enam</em> — unto this soul; <em>dahati</em> — burns; <em>pāvakaḥ</em> — fire; <em>na</em> — never; <em>ca</em> — also; <em>enam</em> — unto this soul; <em>kledayanti</em> — moistens; <em>āpaḥ</em> — water; <em>na</em> — never; <em>śoṣayati</em> — dries; <em>mārutaḥ</em> — wind.",
                         "translation": "<strong><strong>The soul can never be cut into pieces by any weapon, nor can he be burned by fire, nor moistened by water, nor withered by the wind.</strong></strong>",
@@ -514,7 +514,7 @@
                     },
                     {
                         "text_number": "24",
-                        "devanagari": "अच्छेद्योऽयमदाह्योऽयमक्ल‍ेद्योऽशोष्य एव च । <br><strong>नित्यः सर्वगतः स्थाणुरचलोऽयं सनातनः ॥ २४ ॥</strong>",
+                        "devanagari": "अच्छेद्योऽयमदाह्योऽयमक्ल‍ेद्योऽशोष्य एव च । <br>नित्यः सर्वगतः स्थाणुरचलोऽयं सनातनः ॥ २४ ॥",
                         "roman": "acchedyo ’yam adāhyo ’yam <br><em>akledyo ’śoṣya eva ca</em> <br><em>nityaḥ sarva-gataḥ sthāṇur</em> <br><em>acalo ’yaṁ sanātanaḥ</em>",
                         "synonyms": "<em>acchedyaḥ</em> — unbreakable; <em>ayam</em> — this soul; <em>adāhyaḥ</em> — cannot be burned; <em>ayam</em> — this soul; <em>akledyaḥ</em> — insoluble; <em>aśoṣyaḥ</em> — cannot be dried; <em>eva</em> — certainly; <em>ca</em> — and; <em>nityaḥ</em> — everlasting; <em>sarva-gataḥ</em> — all-pervading; <em>sthāṇuḥ</em> — unchangeable; <em>acalaḥ</em> — immovable; <em>ayam</em> — this soul; <em>sanātanaḥ</em> — eternally the same.",
                         "translation": "<strong><strong>This individual soul is unbreakable and insoluble, and can be neither burned nor dried. He is everlasting, all-pervading, unchangeable, immovable and eternally the same.</strong></strong>",
@@ -522,7 +522,7 @@
                     },
                     {
                         "text_number": "25",
-                        "devanagari": "अव्यक्तोऽयमचिन्त्योऽयमविकार्योऽयमुच्यते । <br><strong>तस्मादेवं विदित्वैनं नानुशोचितुमर्हसि ॥ २५ ॥</strong>",
+                        "devanagari": "अव्यक्तोऽयमचिन्त्योऽयमविकार्योऽयमुच्यते । <br>तस्मादेवं विदित्वैनं नानुशोचितुमर्हसि ॥ २५ ॥",
                         "roman": "avyakto ’yam acintyo ’yam <br><em>avikāryo ’yam ucyate</em> <br><em>tasmād evaṁ viditvainaṁ</em> <br><em>nānuśocitum arhasi</em>",
                         "synonyms": "<em>avyaktaḥ</em> — invisible; <em>ayam</em> — this soul; <em>acintyaḥ</em> — inconceivable; <em>ayam</em> — this soul; <em>avikāryaḥ</em> — unchangeable; <em>ayam</em> — this soul; <em>ucyate</em> — is said; <em>tasmāt</em> — therefore; <em>evam</em> — like this; <em>viditvā</em> — knowing it well; <em>enam</em> — this soul; <em>na</em> — do not; <em>anuśocitum</em> — may lament over; <em>arhasi</em> — you deserve.",
                         "translation": "<strong><strong>It is said that the soul is invisible, inconceivable, immutable, and unchangeable. Knowing this, you should not grieve for the body.</strong></strong>",
@@ -530,7 +530,7 @@
                     },
                     {
                         "text_number": "26",
-                        "devanagari": "अथ चैनं नित्यजातं नित्यं वा मन्यसे मृतम् । <br><strong>तथापि त्वं महाबाहो नैनं शोचितुमर्हसि ॥ २६ ॥</strong>",
+                        "devanagari": "अथ चैनं नित्यजातं नित्यं वा मन्यसे मृतम् । <br>तथापि त्वं महाबाहो नैनं शोचितुमर्हसि ॥ २६ ॥",
                         "roman": "atha cainaṁ nitya-jātaṁ <br><em>nityaṁ vā manyase mṛtam</em> <br><em>tathāpi tvaṁ mahā-bāho</em> <br><em>nainaṁ śocitum arhasi</em>",
                         "synonyms": "<em>atha</em> — if, however; <em>ca</em> — also; <em>enam</em> — this soul; <em>nitya-jātam</em> — always born; <em>nityam</em> — forever; <em>vā</em> — either; <em>manyase</em> — so think; <em>mṛtam</em> — dead; <em>tathāpi</em> — still; <em>tvam</em> — you; <em>mahā-bāho</em> — O mighty-armed one; <em>na</em> — never; <em>enam</em> — about the soul; <em>śocitum</em> — to lament; <em>arhasi</em> — deserve.",
                         "translation": "<strong><strong>If, however, you think that the soul is perpetually born and always dies, still you have no reason to lament, O mighty-armed.</strong></strong>",
@@ -538,7 +538,7 @@
                     },
                     {
                         "text_number": "27",
-                        "devanagari": "जातस्य हि ध्रुवो मृत्युर्ध्रुवं जन्म मृतस्य च । <br><strong>तस्मादपरिहार्येऽर्थे न त्वं शोचितुमर्हसि ॥ २७ ॥</strong>",
+                        "devanagari": "जातस्य हि ध्रुवो मृत्युर्ध्रुवं जन्म मृतस्य च । <br>तस्मादपरिहार्येऽर्थे न त्वं शोचितुमर्हसि ॥ २७ ॥",
                         "roman": "jātasya hi dhruvo mṛtyur <br><em>dhruvaṁ janma mṛtasya ca</em> <br><em>tasmād aparihārye ’rthe</em> <br><em>na tvaṁ śocitum arhasi</em>",
                         "synonyms": "<em>jātasya</em> — one who has taken his birth; <em>hi</em> — certainly; <em>dhruvaḥ</em> — a fact; <em>mṛtyuḥ</em> — death; <em>dhruvam</em> — it is also a fact; <em>janma</em> — birth; <em>mṛtasya</em> — of the dead; <em>ca</em> — also; <em>tasmāt</em> — therefore; <em>aparihārye</em> — for that which is unavoidable; <em>arthe</em> — in the matter of; <em>na</em> — do not; <em>tvam</em> — you; <em>śocitum</em> — to lament; <em>arhasi</em> — deserve.",
                         "translation": "<strong><strong>For one who has taken his birth, death is certain; and for one who is dead, birth is certain. Therefore, in the unavoidable discharge of your duty, you should not lament.</strong></strong>",
@@ -546,7 +546,7 @@
                     },
                     {
                         "text_number": "28",
-                        "devanagari": "अव्यक्तादीनि भूतानि व्यक्तमध्यानि भारत । <br><strong>अव्यक्तनिधनान्येव तत्र का परिदेवना ॥ २८ ॥</strong>",
+                        "devanagari": "अव्यक्तादीनि भूतानि व्यक्तमध्यानि भारत । <br>अव्यक्तनिधनान्येव तत्र का परिदेवना ॥ २८ ॥",
                         "roman": "avyaktādīni bhūtāni <br><em>vyakta-madhyāni bhārata</em> <br><em>avyakta-nidhanāny eva</em> <br><em>tatra kā paridevanā</em>",
                         "synonyms": "<em>avyaktādīni</em> — in the beginning unmanifested; <em>bhūtāni</em> — all that are created; <em>vyakta</em> — manifested; <em>madhyāni</em> — in the middle; <em>bhārata</em> — O descendant of Bharata; <em>avyakta</em> — nonmanifested; <em>nidhanāni</em> — all that are vanquished; <em>eva</em> — it is all like that; <em>tatra</em> — therefore; <em>kā</em> — what; <em>paridevanā</em> — lamentation.",
                         "translation": "<strong><strong>All created beings are unmanifest in their beginning, manifest in their interim state, and unmanifest again when they are annihilated</strong><strong>. So, </strong><strong>what need is there for lamentation?</strong></strong>",
@@ -554,7 +554,7 @@
                     },
                     {
                         "text_number": "29",
-                        "devanagari": "आश्चर्यवत्पश्यति कश्चिदेन - <br><strong>माश्चर्यवद्वदति तथैव चान्यः ।</strong> <br><strong>आश्चर्यवच्च‍ैनमन्यः श‍ृणोति</strong> <br><strong>श्रुत्वाप्येनं वेद न चैव कश्चित् ॥ २९ ॥</strong>",
+                        "devanagari": "आश्चर्यवत्पश्यति कश्चिदेन - <br>माश्चर्यवद्वदति तथैव चान्यः । <br>आश्चर्यवच्च‍ैनमन्यः श‍ृणोति <br>श्रुत्वाप्येनं वेद न चैव कश्चित् ॥ २९ ॥",
                         "roman": "āścarya-vat paśyati kaścid enam <br><em>āścarya-vad vadati tathaiva cānyaḥ</em> <br><em>āścarya-vac cainam anyaḥ śṛṇoti</em> <br><em>śrutvāpy enaṁ veda na caiva kaścit</em>",
                         "synonyms": "<em>āścaryavat</em> — amazing; <em>paśyati</em> — see; <em>kaścit</em> — some; <em>enam</em> — this soul; <em>āścaryavat</em> — amazing; <em>vadati</em> — speak; <em>tathā</em> — there; <em>eva</em> — certainly; <em>ca</em> — also; <em>anyaḥ</em> — others; <em>āścaryavat</em> — similarly amazing; <em>ca</em> — also; <em>enam</em> — this soul; <em>anyaḥ</em> — others; <em>śṛṇoti</em> — hear; <em>śrutvā</em> — having heard; <em>api</em> — even; <em>enam</em> — this soul; <em>veda</em> — do know; <em>na</em> — never; <em>ca</em> — and; <em>eva</em> — certainly; <em>kaścit</em> — anyone.",
                         "translation": "<strong><strong>Some look on the soul as amazing, some describe him as amazing, and some hear of him as amazing, while others, even after hearing about him, cannot understand him at all.</strong></strong>",
@@ -562,7 +562,7 @@
                     },
                     {
                         "text_number": "30",
-                        "devanagari": "देही नित्यमवध्योऽयं देहे सर्वस्य भारत । <br><strong>तस्मात्सर्वाणि भूतानि न त्वं शोचितुमर्हसि ॥ ३० ॥</strong>",
+                        "devanagari": "देही नित्यमवध्योऽयं देहे सर्वस्य भारत । <br>तस्मात्सर्वाणि भूतानि न त्वं शोचितुमर्हसि ॥ ३० ॥",
                         "roman": "dehī nityam avadhyo ’yaṁ <br><em>dehe sarvasya bhārata</em> <br><em>tasmāt sarvāṇi bhūtāni</em> <br><em>na tvaṁ śocitum arhasi</em>",
                         "synonyms": "<em>dehī</em> — the owner of the material body; <em>nityam</em> — eternally; <em>avadhyaḥ</em> — cannot be killed; <em>ayam</em> — this soul; <em>dehe</em> — in the body; <em>sarvasya</em> — of everyone; <em>bhārata</em> — O descendant of Bharata; <em>tasmāt</em> — therefore; <em>sarvāṇi</em> — all; <em>bhūtāni</em> — living entities (that are born); <em>na</em> — never; <em>tvam</em> — yourself; <em>śocitum</em> — to lament; <em>arhasi</em> — deserve.",
                         "translation": "<strong><strong>O descendant of Bharata, he who dwells in the body is eternal and can never be slain. Therefore, you need not grieve for any creature.</strong></strong>",
@@ -570,7 +570,7 @@
                     },
                     {
                         "text_number": "31",
-                        "devanagari": "स्वधर्ममपि चावेक्ष्य न विकम्पितुमर्हसि । <br><strong>धर्म्याद्धि युद्धाच्छ्रेयोऽन्यत्क्षत्रियस्य न विद्यते ॥ ३१ ॥</strong>",
+                        "devanagari": "स्वधर्ममपि चावेक्ष्य न विकम्पितुमर्हसि । <br>धर्म्याद्धि युद्धाच्छ्रेयोऽन्यत्क्षत्रियस्य न विद्यते ॥ ३१ ॥",
                         "roman": "svadharmam api cāvekṣya <br><em>na vikampitum arhasi</em> <br><em>dharmyād dhi yuddhāc chreyo ’nyat</em> <br><em>kṣatriyasya na vidyate</em>",
                         "synonyms": "<em>svadharmam</em> — one’s own religious principles; <em>api</em> — also; <em>ca</em> — indeed; <em>avekṣya</em> — considering; <em>na</em> — never; <em>vikampitum</em> — to hesitate; <em>arhasi</em> — you deserve; <em>dharmyāt</em> — from religious principles; <em>hi</em> — indeed; <em>yuddhāt</em> — of fighting; <em>śreyaḥ</em> — better engagements; <em>anyat</em> — anything else; <em>kṣatriyasya</em> — of the <em>kṣatriya</em>; <em>na</em> — does not; <em>vidyate</em> — exist.",
                         "translation": "<strong><strong>Considering your specific duty as a kṣatriya, you should know that there is no better engagement for you than fighting on religious principles; and so there is no need for hesitation.</strong></strong>",
@@ -578,7 +578,7 @@
                     },
                     {
                         "text_number": "32",
-                        "devanagari": "यदृच्छया चोपपन्नं स्वर्गद्वारमपावृतम् । <br><strong>सुखिनः क्षत्रियाः पार्थ लभन्ते युद्धमीदृशम् ॥ ३२ ॥</strong>",
+                        "devanagari": "यदृच्छया चोपपन्नं स्वर्गद्वारमपावृतम् । <br>सुखिनः क्षत्रियाः पार्थ लभन्ते युद्धमीदृशम् ॥ ३२ ॥",
                         "roman": "yadṛcchayā copapannaṁ <br><em>svarga-dvāram apāvṛtam</em> <br><em>sukhinaḥ kṣatriyāḥ pārtha</em> <br><em>labhante yuddham īdṛśam</em>",
                         "synonyms": "<em>yadṛcchayā</em> — by its own accord; <em>ca</em> — also; <em>upapannam</em> — arrived at; <em>svarga</em> — heavenly planet; <em>dvāram</em> — door; <em>apāvṛtam</em> — wide open; <em>sukhinaḥ</em> — very happy; <em>kṣatriyāḥ</em> — the members of the royal order; <em>pārtha</em> — O son of Pṛthā; <em>labhante</em> — do achieve; <em>yuddham</em> — war; <em>īdṛśam</em> — like this.",
                         "translation": "<strong><strong>O Pārtha, happy are the kṣatriyas to whom such fighting opportunities come unsought, opening for them the doors of the heavenly planets.</strong></strong>",
@@ -586,7 +586,7 @@
                     },
                     {
                         "text_number": "33",
-                        "devanagari": "अथ चेत्त्वमिमं धर्म्यं सङ्ग्रामं न करिष्यसि । <br><strong>ततः स्वधर्मं कीर्तिं च हित्वा पापमवाप्स्यसि ॥ ३३ ॥</strong>",
+                        "devanagari": "अथ चेत्त्वमिमं धर्म्यं सङ्ग्रामं न करिष्यसि । <br>ततः स्वधर्मं कीर्तिं च हित्वा पापमवाप्स्यसि ॥ ३३ ॥",
                         "roman": "atha cet tvam imaṁ dharmyaṁ <br><em>saṅgrāmaṁ na kariṣyasi</em> <br><em>tataḥ svadharmaṁ kīrtiṁ ca</em> <br><em>hitvā pāpam avāpsyasi</em>",
                         "synonyms": "<em>atha</em> — therefore; <em>cet</em> — if; <em>tvam</em> — you; <em>imam</em> — this; <em>dharmyam</em> — religious duty; <em>saṅgrāmam</em> — fighting; <em>na</em> — do not; <em>kariṣyasi</em> — perform; <em>tataḥ</em> — then; <em>svadharmam</em> — your religious duty; <em>kīrtim</em> — reputation; <em>ca</em> — also; <em>hitvā</em> — losing; <em>pāpam</em> — sinful reaction; <em>avāpsyasi</em> — do gain.",
                         "translation": "<strong><strong>If, however, you do not fight this religious war, then you will certainly incur sins for neglecting your duties and thus lose your reputation as a fighter.</strong></strong>",
@@ -594,7 +594,7 @@
                     },
                     {
                         "text_number": "34",
-                        "devanagari": "अकीर्तिं चापि भूतानि कथयिष्यन्ति तेऽव्ययाम् । <br><strong>सम्भावितस्य चाकीर्तिर्मरणादतिरिच्यते ॥ ३४ ॥</strong>",
+                        "devanagari": "अकीर्तिं चापि भूतानि कथयिष्यन्ति तेऽव्ययाम् । <br>सम्भावितस्य चाकीर्तिर्मरणादतिरिच्यते ॥ ३४ ॥",
                         "roman": "akīrtiṁ cāpi bhūtāni <br><em>kathayiṣyanti te ’vyayām</em> <br><em>sambhāvitasya cākīrtir</em> <br><em>maraṇād atiricyate</em>",
                         "synonyms": "<em>akīrtim</em> — infamy; <em>ca</em> — also; <em>api</em> — over and above; <em>bhūtāni</em> — all people; <em>kathayiṣyanti</em> — will speak; <em>te</em> — of you; <em>avyayām</em> — forever; <em>sambhāvitasya</em> — for a respectable man; <em>ca</em> — also; <em>akīrtiḥ</em> — ill fame; <em>maraṇāt</em> — than death; <em>atiricyate</em> — becomes more than.",
                         "translation": "<strong><strong>People will always speak of your infamy, and for one who has been honored, dishonor is worse than death.</strong></strong>",
@@ -602,7 +602,7 @@
                     },
                     {
                         "text_number": "35",
-                        "devanagari": "भयाद्रणादुपरतं मंस्यन्ते त्वां महारथाः । <br><strong>येषां च त्वं बहुमतो भूत्वा यास्यसि लाघवम् ॥ ३५ ॥</strong>",
+                        "devanagari": "भयाद्रणादुपरतं मंस्यन्ते त्वां महारथाः । <br>येषां च त्वं बहुमतो भूत्वा यास्यसि लाघवम् ॥ ३५ ॥",
                         "roman": "bhayād raṇād uparataṁ <br><em>maṁsyante tvāṁ mahā-rathāḥ</em> <br><em>yeṣāṁ ca tvaṁ bahu-mato</em> <br><em>bhūtvā yāsyasi lāghavam</em>",
                         "synonyms": "<em>bhayāt</em> — out of fear; <em>raṇāt</em> — from the battlefield; <em>uparatam</em> — ceased; <em>maṁsyante</em> — will consider; <em>tvām</em> — unto you; <em>mahā-rathāḥ</em> — the great generals; <em>yeṣām</em> — of those who; <em>ca</em> — also; <em>tvam</em> — you; <em>bahu-mataḥ</em> — in great estimation; <em>bhūtvā</em> — will become; <em>yāsyasi</em> — will go; <em>lāghavam</em> — decreased in value.",
                         "translation": "<strong><strong>The great generals who have highly esteemed your name and fame will think that you have left the </strong><strong>battlefield out of fear only, and thus they will consider you a coward.</strong></strong>",
@@ -610,7 +610,7 @@
                     },
                     {
                         "text_number": "36",
-                        "devanagari": "अवाच्यवादांश्च बहून्वदिष्यन्ति तवाहिताः । <br><strong>निन्दन्तस्तव सामर्थ्य ततो दुःखतरं नु किम् ॥ ३६ ॥</strong>",
+                        "devanagari": "अवाच्यवादांश्च बहून्वदिष्यन्ति तवाहिताः । <br>निन्दन्तस्तव सामर्थ्य ततो दुःखतरं नु किम् ॥ ३६ ॥",
                         "roman": "avācya-vādāṁś ca bahūn <br><em>vadiṣyanti tavāhitāḥ</em> <br><em>nindantas tava sāmarthyaṁ</em> <br><em>tato duḥkhataraṁ nu kim</em>",
                         "synonyms": "<em>avācya</em> — unkind; <em>vādān</em> — fabricated words; <em>ca</em> — also; <em>bahūn</em> — many; <em>vadiṣyanti</em> — will say; <em>tava</em> — your; <em>ahitāḥ</em> — enemies; <em>nindantaḥ</em> — while vilifying; <em>tava</em> — your; <em>sāmarthyam</em> — ability; <em>tataḥ</em> — thereafter; <em>duḥkhataram</em> — more painful; <em>nu</em> — of course; <em>kim</em> — what is there.",
                         "translation": "<strong><strong>Your enemies will describe you in many unkind words and scorn your ability. What could be more painful for you?</strong></strong>",
@@ -618,7 +618,7 @@
                     },
                     {
                         "text_number": "37",
-                        "devanagari": "हतो वा प्राप्स्यसि स्वर्ग जित्वा वा भोक्ष्यसे महीम् । <br><strong>तस्मादुत्तिष्ठ कौन्तेय युद्धाय कृतनिश्चयः ॥ ३७ ॥</strong>",
+                        "devanagari": "हतो वा प्राप्स्यसि स्वर्ग जित्वा वा भोक्ष्यसे महीम् । <br>तस्मादुत्तिष्ठ कौन्तेय युद्धाय कृतनिश्चयः ॥ ३७ ॥",
                         "roman": "hato vā prāpsyasi svargaṁ <br><em>jitvā vā bhokṣyase mahīm</em> <br><em>tasmād uttiṣṭha kaunteya</em> <br><em>yuddhāya kṛta-niścayaḥ</em>",
                         "synonyms": "<em>hataḥ</em> — being killed; <em>vā</em> — either; <em>prāpsyasi</em> — you gain; <em>svargam</em> — the heavenly kingdom; <em>jitvā</em> — by conquering; <em>vā</em> — or; <em>bhokṣyase</em> — you enjoy; <em>mahīm</em> — the world; <em>tasmāt</em> — therefore; <em>uttiṣṭha</em> — get up; <em>kaunteya</em> — O son of Kuntī; <em>yuddhāya</em> — to fight; <em>kṛta</em> — determination; <em>niścayaḥ</em> — uncertainty.",
                         "translation": "<strong><strong>O son of Kuntī, either you will be killed on the battlefield and attain the heavenly planets, or you will conquer and enjoy the earthly kingdom. Therefore, get up and fight with determination.</strong></strong>",
@@ -626,7 +626,7 @@
                     },
                     {
                         "text_number": "38",
-                        "devanagari": "सुखदुःखे समे कृत्वा लाभालाभौ जयाजयौ । <br><strong>ततो युद्धाय युज्यस्व नैवं पापमवाप्स्यसि ॥ ३८ ॥</strong>",
+                        "devanagari": "सुखदुःखे समे कृत्वा लाभालाभौ जयाजयौ । <br>ततो युद्धाय युज्यस्व नैवं पापमवाप्स्यसि ॥ ३८ ॥",
                         "roman": "sukha-duḥkhe same kṛtvā <br><em>lābhālābhau jayājayau</em> <br><em>tato yuddhāya yujyasva</em> <br><em>naivaṁ pāpam avāpsyasi</em>",
                         "synonyms": "<em>sukha</em> — happiness; <em>duḥkhe</em> — in distress; <em>same</em> — in equanimity; <em>kṛtvā</em> — doing so; <em>lābhālābhau</em> — both in loss and profit; <em>jayājayau</em> — both in defeat and victory; <em>tataḥ</em> — thereafter; <em>yuddhāya</em> — for the sake of fighting; <em>yujyasva</em> — do fight; <em>na</em> — never; <em>evam</em> — in this way; <em>pāpam</em> — sinful reaction; <em>avāpsyasi</em> — you will gain.",
                         "translation": "<strong><strong>Do thou fight for the sake of fighting, without considering happiness or distress, loss or gain, victory or defeat — and, by so doing, you shall never incur sin.</strong></strong>",
@@ -634,7 +634,7 @@
                     },
                     {
                         "text_number": "39",
-                        "devanagari": "एषा तेऽभिहिता सांख्ये बुद्धिर्योगे त्विमां श‍ृणु । <br><strong>बुद्ध्या युक्तो यया पार्थ कर्मबन्धं प्रहास्यसि ॥ ३९ ॥</strong>",
+                        "devanagari": "एषा तेऽभिहिता सांख्ये बुद्धिर्योगे त्विमां श‍ृणु । <br>बुद्ध्या युक्तो यया पार्थ कर्मबन्धं प्रहास्यसि ॥ ३९ ॥",
                         "roman": "eṣā te ’bhihitā sāṅkhye <br><em>buddhir yoge tv imāṁ śṛṇu</em> <br><em>buddhyā yukto yayā pārtha</em> <br><em>karma-bandhaṁ prahāsyasi</em>",
                         "synonyms": "<em>eṣā</em> — all these; <em>te</em> — unto you; <em>abhihitā</em> — described; <em>śāṅkhye</em> — by analytical study; <em>buddhiḥ</em> — intelligence; <em>yoge</em> — work without fruitive result; <em>tu</em> — but; <em>imām</em> — this; <em>śṛṇu</em> — just hear; <em>buddhyā</em> — by intelligence; <em>yuktaḥ</em> — dovetailed; <em>yayā</em> — by which; <em>pārtha</em> — O son of Pṛthā; <em>karma-bandham</em> — bondage of reaction; <em>prahāsyasi</em> — you can be released from.",
                         "translation": "<strong><strong>Thus far I have declared to you the analytical knowledge of sāṅkhya philosophy. Now listen to the knowledge of yoga whereby one works without fruitive result. O son of Pṛthā, when you act by such intelligence, you can free yourself from the bondage of works.</strong></strong>",
@@ -642,7 +642,7 @@
                     },
                     {
                         "text_number": "40",
-                        "devanagari": "नेहाभिक्रमनाशोऽस्ति प्रत्यवायो न विद्यते । <br><strong>स्वल्पमप्यस्य धर्मस्य त्रायते महतो भयात् ॥ ४० ॥</strong>",
+                        "devanagari": "नेहाभिक्रमनाशोऽस्ति प्रत्यवायो न विद्यते । <br>स्वल्पमप्यस्य धर्मस्य त्रायते महतो भयात् ॥ ४० ॥",
                         "roman": "nehābhikrama-nāśo ’sti <br><em>pratyavāyo na vidyate</em> <br><em>svalpam apy asya dharmasya</em> <br><em>trāyate mahato bhayāt</em>",
                         "synonyms": "<em>na</em> — there is not; <em>iha</em> — in this world; <em>abhikrama</em> — endeavoring; <em>nāśaḥ</em> — loss; <em>asti</em> — there is; <em>pratyavāyaḥ</em> — diminution; <em>na</em> — never; <em>vidyate</em> — there is; <em>svalpam</em> — little; <em>api</em> — although; <em>asya</em> — of this; <em>dharmasya</em> — of this occupation; <em>trāyate</em> — releases; <em>mahataḥ</em> — of very great; <em>bhayāt</em> — from danger.",
                         "translation": "<strong><strong>In this endeavor there is no loss or diminution, and a little advancement on this path can protect one from the most dangerous type of fear.</strong></strong>",
@@ -650,7 +650,7 @@
                     },
                     {
                         "text_number": "41",
-                        "devanagari": "व्यवसायात्मिका बुद्धिरेकेह कुरूनन्दन । <br><strong>बहुशाखा ह्यनन्ताश्च बुद्धयोऽव्यवसायिनाम् ॥ ४१ ॥</strong>",
+                        "devanagari": "व्यवसायात्मिका बुद्धिरेकेह कुरूनन्दन । <br>बहुशाखा ह्यनन्ताश्च बुद्धयोऽव्यवसायिनाम् ॥ ४१ ॥",
                         "roman": "vyavasāyātmikā buddhir <br><em>ekeha kuru-nandana</em> <br><em>bahu-śākhā hy anantāś ca</em> <br><em>buddhayo ’vyavasāyinām</em>",
                         "synonyms": "<em>vyavasāyātmikā</em> — resolute Kṛṣṇa consciousness; <em>buddhiḥ</em> — intelligence; <em>ekā</em> — only one; <em>iha</em> — in this world; <em>kuru-nandana</em> — O beloved child of the Kurus; <em>bahu-śākhāḥ</em> — various branches; <em>hi</em> — indeed; <em>anantāḥ</em> — unlimited; <em>ca</em> — also; <em>buddhayaḥ</em> — intelligence; <em>avyavasāyinām</em> — of those who are not in Kṛṣṇa consciousness.",
                         "translation": "<strong><strong>Those who are on this path are resolute in purpose, and their aim is one. O beloved child of the Kurus, the intelligence of those who are irresolute is many-branched.</strong></strong>",
@@ -658,7 +658,7 @@
                     },
                     {
                         "text_number": "42-43",
-                        "devanagari": "यामिमां पुष्पितां वाचं प्रवदन्त्यविपश्चितः । <br><strong>वेदवादरताः पार्थ नान्यदस्तीति वादिनः ॥ ४२ ॥</strong> <br><strong>कामात्मानः स्वर्गपरा जन्मकर्मफलप्रदाम् ।</strong> <br><strong>क्रियाविशेषबहुलां भोगैश्वर्यगतिं प्रति ॥ ४३ ॥</strong>",
+                        "devanagari": "यामिमां पुष्पितां वाचं प्रवदन्त्यविपश्चितः । <br>वेदवादरताः पार्थ नान्यदस्तीति वादिनः ॥ ४२ ॥ <br>कामात्मानः स्वर्गपरा जन्मकर्मफलप्रदाम् । <br>क्रियाविशेषबहुलां भोगैश्वर्यगतिं प्रति ॥ ४३ ॥",
                         "roman": "yām imāṁ puṣpitāṁ vācaṁ <br><em>pravadanty avipaścitaḥ</em> <br><em>veda-vāda-ratāḥ pārtha</em> <br><em>nānyad astīti vādinaḥ</em> <br><br><em>kāmātmānaḥ svarga-parā</em> <br><em>janma-karma-phala-pradām</em> <br><em>kriyā-viśeṣa-bahulāṁ</em> <br><em>bhogaiśvarya-gatiṁ prati</em>",
                         "synonyms": "<em>yām imām</em> — all these; <em>puṣpitām</em> — flowery; <em>vācam</em> — words; <em>pravadanti</em> — say; <em>avipaścitaḥ</em> — men with a poor fund of knowledge; <em>veda-vāda-ratāḥ</em> — supposed followers of the <em>Vedas</em>; <em>pārtha</em> — O son of Pṛthā; <em>na</em> — never; <em>anyat</em> — anything else; <em>asti</em> — there is; <em>iti</em> — this; <em>vādinaḥ</em> — advocates; <em>kāma-ātmānaḥ</em> — desirous of sense gratification; <em>svarga-parāḥ</em> — aiming to achieve heavenly planets; <em>janma-karma-phala-pradām</em> — resulting in fruitive action, good birth, etc.; <em>kriyā-viśeṣa</em> — pompous ceremonies; <em>bahulām</em> — various; <em>bhoga</em> — sense enjoyment; <em>aiśvarya</em> — opulence; <em>gatim</em> — progress; <em>prati</em> — towards.",
                         "translation": "<strong><strong>Men of small knowledge are very much attached to the flowery words of the Vedas, which recommend various fruitive activities for elevation to heavenly planets, resultant good birth, power, and so forth. Being desirous of sense gratification and opulent life, they say that there is nothing more than this.</strong></strong>",
@@ -666,7 +666,7 @@
                     },
                     {
                         "text_number": "44",
-                        "devanagari": "भोगैश्वर्यप्रसक्तानां तयापहृतचेतसाम् । <br><strong>व्यवसायात्मिका बुद्धिः समाधौ न विधीयते ॥ ४४ ॥</strong>",
+                        "devanagari": "भोगैश्वर्यप्रसक्तानां तयापहृतचेतसाम् । <br>व्यवसायात्मिका बुद्धिः समाधौ न विधीयते ॥ ४४ ॥",
                         "roman": "bhogaiśvarya-prasaktānāṁ <br><em>tayāpahṛta-cetasām</em> <br><em>vyavasāyātmikā buddhiḥ</em> <br><em>samādhau na vidhīyate</em>",
                         "synonyms": "<em>bhoga</em> — material enjoyment; <em>aiśvarya</em> — opulence; <em>prasaktānām</em> — those who are so attached; <em>tayā</em> — by such things; <em>apahṛta-cetasām</em> — bewildered in mind; <em>vyavasāyātmikā</em> — fixed determination; <em>buddhiḥ</em> — devotional service of the Lord; <em>samādhau</em> — in the controlled mind; <em>na</em> — never; <em>vidhīyate</em> — does take place.",
                         "translation": "<strong><strong>In the minds of those who are too attached to sense enjoyment and material opulence, and who are bewildered by such things, the resolute determination of devotional service to the Supreme Lord does not take place.</strong></strong>",
@@ -674,7 +674,7 @@
                     },
                     {
                         "text_number": "45",
-                        "devanagari": "त्रैगुण्यविषया वेदा निस्त्रैगुण्यो भवार्जुन । <br><strong>निर्द्वन्द्वो नित्यसत्त्वस्थो निर्योगक्षेम आत्मवान् ॥ ४५ ॥</strong>",
+                        "devanagari": "त्रैगुण्यविषया वेदा निस्त्रैगुण्यो भवार्जुन । <br>निर्द्वन्द्वो नित्यसत्त्वस्थो निर्योगक्षेम आत्मवान् ॥ ४५ ॥",
                         "roman": "trai-guṇya-viṣayā vedā <br><em>nistrai-guṇyo bhavārjuna</em> <br><em>nirdvandvo nitya-sattva-stho</em> <br><em>niryoga-kṣema ātmavān</em>",
                         "synonyms": "<em>traiguṇya</em> — pertaining to the three modes of material nature; <em>viṣayāḥ</em> — on the subject matter; <em>vedāḥ</em> — Vedic literatures; <em>nistraiguṇyaḥ</em> — in a pure state of spiritual existence; <em>bhava</em> — be; <em>arjuna</em> — O Arjuna; <em>nirdvandvaḥ</em> — free from the pains of opposites; <em>nitya-sattva-sthaḥ</em> — ever remaining in <em>sattva</em> (goodness); <em>niryoga-kṣemaḥ</em> — free from (the thought of) acquisition and preservation; <em>ātmavān</em> — established in the Self.",
                         "translation": "<strong><strong>The Vedas mainly deal with the subject of the three modes of material nature. Rise above these modes, O Arjuna. Be transcendental to all of them. Be free from all dualities and from all anxieties for gain and safety, and be established in the Self.</strong></strong>",
@@ -682,7 +682,7 @@
                     },
                     {
                         "text_number": "46",
-                        "devanagari": "यावानर्थ उदपाने सर्वतः सम्प्लुतोदके । <br><strong>तावान्सर्वेषु वेदेषु ब्राह्मणस्य विजानतः ॥ ४६ ॥</strong>",
+                        "devanagari": "यावानर्थ उदपाने सर्वतः सम्प्लुतोदके । <br>तावान्सर्वेषु वेदेषु ब्राह्मणस्य विजानतः ॥ ४६ ॥",
                         "roman": "yāvān artha udapāne <br><em>sarvataḥ samplutodake</em> <br><em>tāvān sarveṣu vedeṣu</em> <br><em>brāhmaṇasya vijānataḥ</em>",
                         "synonyms": "<em>yāvān</em> — all that; <em>arthaḥ</em> — is meant; <em>udapāne</em> — in a well of water; <em>sarvataḥ</em> — in all respects; <em>sampluta-udake</em> — in a great reservoir of water; <em>tāvān</em> — similarly; <em>sarveṣu</em> — in all; <em>vedeṣu</em> — Vedic literatures; <em>brāhmaṇasya</em> — of the man who knows the Supreme Brahman; <em>vijānataḥ</em> — of one who is in complete knowledge.",
                         "translation": "<strong><strong>All purposes that are served by the small pond can at once be served by the great reservoirs of water. Similarly, all the purposes of the Vedas can be served to one who knows the purpose behind them.</strong></strong>",
@@ -690,7 +690,7 @@
                     },
                     {
                         "text_number": "47",
-                        "devanagari": "कर्मण्येवाधिकारस्ते मा फलेषु कदाचन । <br><strong>मा कर्मफलहेतुर्भूर्मा ते सङ्गोऽस्त्वकर्मणि ॥ ४७ ॥</strong>",
+                        "devanagari": "कर्मण्येवाधिकारस्ते मा फलेषु कदाचन । <br>मा कर्मफलहेतुर्भूर्मा ते सङ्गोऽस्त्वकर्मणि ॥ ४७ ॥",
                         "roman": "karmaṇy evādhikāras te <br><em>mā phaleṣu kadācana</em> <br><em>mā karma-phala-hetur bhūr</em> <br><em>mā te saṅgo ’stv akarmaṇi</em>",
                         "synonyms": "<em>karmaṇi</em> — prescribed duties; <em>eva</em> — certainly; <em>adhikāraḥ</em> — right; <em>te</em> — of you; <em>mā</em> — never; <em>phaleṣu</em> — in the fruits; <em>kadācana</em> — at any time; <em>mā</em> — never; <em>karma-phala</em> — in the result of the work; <em>hetuḥ</em> — cause; <em>bhūḥ</em> — become; <em>mā</em> — never; <em>te</em> — of you; <em>saṅgaḥ</em> — attachment; <em>astu</em> — be there; <em>akarmaṇi</em> — in not doing.",
                         "translation": "<strong><strong>You have a right to perform your prescribed duty, but you are not entitled to the fruits of action. Never consider yourself to be the cause of the results of your activities, and never be attached to not doing your duty.</strong></strong>",
@@ -698,7 +698,7 @@
                     },
                     {
                         "text_number": "48",
-                        "devanagari": "योगस्थः कुरु कर्माणि सङ्गं त्यक्त्वा धनञ्जय । <br><strong>सिद्ध्यसिद्ध्योः समो भूत्वा समत्वं योग उच्यते ॥ ४८ ॥</strong>",
+                        "devanagari": "योगस्थः कुरु कर्माणि सङ्गं त्यक्त्वा धनञ्जय । <br>सिद्ध्यसिद्ध्योः समो भूत्वा समत्वं योग उच्यते ॥ ४८ ॥",
                         "roman": "yoga-sthaḥ kuru karmāṇi <br><em>saṅgaṁ tyaktvā dhanañjaya</em> <br><em>siddhy-asiddhyoḥ samo bhūtvā</em> <br><em>samatvaṁ yoga ucyate</em>",
                         "synonyms": "<em>yoga-sthaḥ</em> — steadfast in <em>yoga</em>; <em>kuru</em> — perform; <em>karmāṇi</em> — your duty; <em>saṅgam</em> — attachment; <em>tyaktvā</em> — having abandoned; <em>dhanañjaya</em> — O Dhanañjaya; <em>siddhi-asiddhyoḥ</em> — in success and failure; <em>samaḥ</em> — the same; <em>bhūtvā</em> — having become; <em>samatvam</em> — evenness of mind; <em>yogaḥ</em> — <em>yoga</em>; <em>ucyate</em> — is called.",
                         "translation": "<strong><strong>Be steadfast in yoga, O Arjuna. Perform your duty and abandon all attachment to success or failure. Such evenness of mind is called yoga.</strong></strong>",
@@ -706,7 +706,7 @@
                     },
                     {
                         "text_number": "49",
-                        "devanagari": "दूरेण ह्यवरं कर्म बुद्धियोगाद्धनञ्जय । <br><strong>बुद्धौ शरणमन्विच्छ कृपणाः फलहेतवः ॥ ४९ ॥</strong>",
+                        "devanagari": "दूरेण ह्यवरं कर्म बुद्धियोगाद्धनञ्जय । <br>बुद्धौ शरणमन्विच्छ कृपणाः फलहेतवः ॥ ४९ ॥",
                         "roman": "dūreṇa hy avaraṁ karma <br><em>buddhi-yogād dhanañjaya</em> <br><em>buddhau śaraṇam anviccha</em> <br><em>kṛpaṇāḥ phala-hetavaḥ</em>",
                         "synonyms": "<em>dūreṇa</em> — by discarding it at a long distance; <em>hi</em> — certainly; <em>avaram</em> — abominable; <em>karma</em> — activities; <em>buddhi-yogāt</em> — on the strength of Kṛṣṇa consciousness; <em>dhanañjaya</em> — O conqueror of wealth; <em>buddhau</em> — in such consciousness; <em>śaraṇam</em> — full surrender; <em>anviccha</em> — desire; <em>kṛpaṇāḥ</em> — the misers; <em>phala-hetavaḥ</em> — those desiring fruitive action.",
                         "translation": "<strong><strong>O Dhanañjaya, rid yourself of all fruitive activities by devotional service and surrender fully to that consciousness. Those who want to enjoy the fruits of their work are misers.</strong></strong>",
@@ -714,7 +714,7 @@
                     },
                     {
                         "text_number": "50",
-                        "devanagari": "बुद्धियुक्तो जहातीह उभे सुकृतदुष्कृते । <br><strong>तस्माद्योगाय युज्यस्व योगः कर्मसु कौशलम् ॥ ५० ॥</strong>",
+                        "devanagari": "बुद्धियुक्तो जहातीह उभे सुकृतदुष्कृते । <br>तस्माद्योगाय युज्यस्व योगः कर्मसु कौशलम् ॥ ५० ॥",
                         "roman": "buddhi-yukto jahātīha <br><em>ubhe sukṛta-duṣkṛte</em> <br><em>tasmād yogāya yujyasva</em> <br><em>yogaḥ karmasu kauśalam</em>",
                         "synonyms": "<em>buddhi-yuktaḥ</em> — one who is engaged in devotional service; <em>jahāti</em> — can get rid of; <em>iha</em> — in this life; <em>ubhe</em> — in both; <em>sukṛta-duṣkṛte</em> — in good and bad results; <em>tasmāt</em> — therefore; <em>yogāya</em> — for the sake of devotional service; <em>yujyasva</em> — be so engaged; <em>yogaḥ</em> — Kṛṣṇa consciousness; <em>karmasu</em> — in all activities; <em>kauśalam</em> — art.",
                         "translation": "<strong><strong>A man engaged in devotional service rids himself of both good and bad actions even in this life. Therefore, strive for yoga, O Arjuna, which is the art of all work.</strong></strong>",
@@ -722,7 +722,7 @@
                     },
                     {
                         "text_number": "51",
-                        "devanagari": "कर्मजं बुद्धियुक्ता हि फलं त्यक्त्वा मनीषिणः । <br><strong>जन्मबन्धविनिर्मुक्ताः पदं गच्छन्त्यनामयम् ॥ ५१ ॥</strong>",
+                        "devanagari": "कर्मजं बुद्धियुक्ता हि फलं त्यक्त्वा मनीषिणः । <br>जन्मबन्धविनिर्मुक्ताः पदं गच्छन्त्यनामयम् ॥ ५१ ॥",
                         "roman": "karma-jaṁ buddhi-yuktā hi <br><em>phalaṁ tyaktvā manīṣiṇaḥ</em> <br><em>janma-bandha-vinirmuktāḥ</em> <br><em>padaṁ gacchanty anāmayam</em>",
                         "synonyms": "<em>karma-jam</em> — because of fruitive activities; <em>buddhi-yuktāḥ</em> — being done in devotional service; <em>hi</em> — certainly; <em>phalam</em> — results; <em>tyaktvā</em> — giving up; <em>manīṣiṇaḥ</em> — devotees who are great sages; <em>janma-bandha</em> — the bondage of birth and death; <em>vinirmuktāḥ</em> — liberated souls; <em>padam</em> — position; <em>gacchanti</em> — reach; <em>anāmayam</em> — without miseries.",
                         "translation": "<strong><strong>The wise, engaged in devotional service, take refuge in the Lord, and free themselves from the cycle of birth and death by renouncing the fruits of action in the material world. In this way they can attain that state beyond all miseries.</strong></strong>",
@@ -730,7 +730,7 @@
                     },
                     {
                         "text_number": "52",
-                        "devanagari": "यदा ते मोहकलिलं बुद्धिर्व्यतितरिष्यति । <br><strong>तदा गन्तासि निर्वेदं श्रोतव्यस्य श्रुतस्य च ॥ ५२ ॥</strong>",
+                        "devanagari": "यदा ते मोहकलिलं बुद्धिर्व्यतितरिष्यति । <br>तदा गन्तासि निर्वेदं श्रोतव्यस्य श्रुतस्य च ॥ ५२ ॥",
                         "roman": "yadā te moha-kalilaṁ <br><em>buddhir vyatitariṣyati</em> <br><em>tadā gantāsi nirvedaṁ</em> <br><em>śrotavyasya śrutasya ca</em>",
                         "synonyms": "<em>yadā</em> — when; <em>te</em> — your; <em>moha</em> — illusory; <em>kalilam</em> — dense forest; <em>buddhiḥ</em> — transcendental service with intelligence; <em>vyatitariṣyati</em> — surpasses; <em>tadā</em> — at that time; <em>gantāsi</em> — you shall go; <em>nirvedam</em> — callousness; <em>śrotavyasya</em> — all that is to be heard; <em>śrutasya</em> — all that is already heard; <em>ca</em> — also.",
                         "translation": "<strong><strong>When your intelligence has passed out of the dense forest of delusion, you shall become indifferent to all that has been heard and all that is to be heard.</strong></strong>",
@@ -738,7 +738,7 @@
                     },
                     {
                         "text_number": "53",
-                        "devanagari": "श्रुतिविप्रतिपन्ना ते यदा स्थास्यति निश्चला । <br><strong>समाधावचला बुद्धिस्तदा योगमवाप्स्यसि ॥ ५३ ॥</strong>",
+                        "devanagari": "श्रुतिविप्रतिपन्ना ते यदा स्थास्यति निश्चला । <br>समाधावचला बुद्धिस्तदा योगमवाप्स्यसि ॥ ५३ ॥",
                         "roman": "śruti-vipratipannā te <br><em>yadā sthāsyati niścalā</em> <br><em>samādhāv acalā buddhis</em> <br><em>tadā yogam avāpsyasi</em>",
                         "synonyms": "<em>śruti</em> — Vedic revelation; <em>vipratipannā</em> — without being influenced by the fruitive results of the <em>Vedas</em>; <em>te</em> — your; <em>yadā</em> — when; <em>sthāsyati</em> — remains; <em>niścalā</em> — unmoved; <em>samādhau</em> — in transcendental consciousness, or Kṛṣṇa consciousness; <em>acalā</em> — unflinching; <em>buddhiḥ</em> — intelligence; <em>tadā</em> — at that time; <em>yogam</em> — self-realization; <em>avāpsyasi</em> — you will achieve.",
                         "translation": "<strong><strong>When your mind is no longer disturbed by the flowery language of the Vedas, and when it remains fixed in the trance of self-realization, then you will have attained the Divine consciousness.</strong></strong>",
@@ -746,7 +746,7 @@
                     },
                     {
                         "text_number": "54",
-                        "devanagari": "अर्जुन उवाच <br><strong>स्थितप्रज्ञस्य का भाषा समाधिस्थस्य केशव ।</strong> <br><strong>स्थितधीः किं प्रभाषेत किमासीत व्रजेत किम् ॥ ५४ ॥</strong>",
+                        "devanagari": "अर्जुन उवाच <br>स्थितप्रज्ञस्य का भाषा समाधिस्थस्य केशव । <br>स्थितधीः किं प्रभाषेत किमासीत व्रजेत किम् ॥ ५४ ॥",
                         "roman": "arjuna uvāca <br><em>sthita-prajñasya kā bhāṣā</em> <br><em>samādhi-sthasya keśava</em> <br><em>sthita-dhīḥ kiṁ prabhāṣeta</em> <br><em>kim āsīta vrajeta kim</em>",
                         "synonyms": "<em>arjuna uvāca</em> — Arjuna said; <em>sthita-prajñasya</em> — of one who is situated in fixed Kṛṣṇa consciousness; <em>kā</em> — what; <em>bhāṣā</em> — language; <em>samādhi-sthasya</em> — of one situated in trance; <em>keśava</em> — O Kṛṣṇa; <em>sthita-dhīḥ</em> — one fixed in Kṛṣṇa consciousness; <em>kim</em> — what; <em>prabhāṣeta</em> — speak; <em>kim</em> — how; <em>āsīta</em> — does remain; <em>vrajeta</em> — walk; <em>kim</em> — how.",
                         "translation": "<strong><strong>Arjuna said: What are the symptoms of one whose consciousness is thus merged in Transcendence? How does he speak, and what is his language? How does he sit, and how does he walk?</strong></strong>",
@@ -754,7 +754,7 @@
                     },
                     {
                         "text_number": "55",
-                        "devanagari": "श्रीभगवानुवाच <br><strong>प्रजहाति यदा कामान्सर्वान्पार्थ मनोगतान् ।</strong> <br><strong>आत्मन्येवात्मना तुष्टः स्थितप्रज्ञस्तदोच्यते ॥ ५५ ॥</strong>",
+                        "devanagari": "श्रीभगवानुवाच <br>प्रजहाति यदा कामान्सर्वान्पार्थ मनोगतान् । <br>आत्मन्येवात्मना तुष्टः स्थितप्रज्ञस्तदोच्यते ॥ ५५ ॥",
                         "roman": "śrī-bhagavān uvāca <br><em>prajahāti yadā kāmān</em> <br><em>sarvān pārtha mano-gatān</em> <br><em>ātmany evātmanā tuṣṭaḥ</em> <br><em>sthita-prajñas tadocyate</em>",
                         "synonyms": "<em>śrī bhagavān uvāca</em> — the Supreme Personality of Godhead said; <em>prajahāti</em> — gives up; <em>yadā</em> — when; <em>kāmān</em> — desires for sense gratification; <em>sarvān</em> — of all varieties; <em>pārtha</em> — O son of Pṛthā; <em>manaḥ-gatān</em> — of mental concoction; <em>ātmani</em> — in the pure state of the soul; <em>eva</em> — certainly; <em>ātmanā</em> — by the purified mind; <em>tuṣṭaḥ</em> — satisfied; <em>sthita-prajñaḥ</em> — transcendentally situated; <em>tadā</em> — at that time; <em>ucyate</em> — is said.",
                         "translation": "<strong><strong>The Blessed Lord said: O Pārtha, when a man gives up all varieties of sense desire which arise from mental concoction, and when his mind finds satisfaction in the self alone, then he is said to be in pure transcendental consciousness.</strong></strong>",
@@ -762,7 +762,7 @@
                     },
                     {
                         "text_number": "56",
-                        "devanagari": "दुःखेष्वनुद्विग्न‍मनाः सुखेषु विगतस्पृहः । <br><strong>वीतरागभयक्रोधः स्थिधीर्मुनिरुच्यते ॥ ५६ ॥</strong>",
+                        "devanagari": "दुःखेष्वनुद्विग्न‍मनाः सुखेषु विगतस्पृहः । <br>वीतरागभयक्रोधः स्थिधीर्मुनिरुच्यते ॥ ५६ ॥",
                         "roman": "duḥkheṣv anudvigna-manāḥ <br><em>sukheṣu vigata-spṛhaḥ</em> <br><em>vīta-rāga-bhaya-krodhaḥ</em> <br><em>sthita-dhīr munir ucyate</em>",
                         "synonyms": "<em>duḥkheṣu</em> — in the threefold miseries; <em>anudvigna-manāḥ</em> — without being agitated in mind; <em>sukheṣu</em> — in happiness; <em>vigata-spṛhaḥ</em> — without being too interested; <em>vīta</em> — free from; <em>rāga</em> — attachment; <em>bhaya</em> — fear; <em>krodhaḥ</em> — anger; <em>sthita-dhīḥ</em> — one who is steady; <em>muniḥ</em> — sage; <em>ucyate</em> — is called.",
                         "translation": "<strong><strong>One who is not disturbed in spite of the threefold miseries, who is not elated when there is happiness, and who is free from attachment, fear and anger, is called a sage of steady mind.</strong></strong>",
@@ -770,7 +770,7 @@
                     },
                     {
                         "text_number": "57",
-                        "devanagari": "यः सर्वत्रानभिस्नेहस्तत्तत्प्राप्य श‍ुभाश‍ुभम् । <br><strong>नाभिनन्दति न द्वेष्टि तस्य प्रज्ञा प्रतिष्ठिता ॥ ५७ ॥</strong>",
+                        "devanagari": "यः सर्वत्रानभिस्नेहस्तत्तत्प्राप्य श‍ुभाश‍ुभम् । <br>नाभिनन्दति न द्वेष्टि तस्य प्रज्ञा प्रतिष्ठिता ॥ ५७ ॥",
                         "roman": "yaḥ sarvatrānabhisnehas <br><em>tat tat prāpya śubhāśubham</em> <br><em>nābhinandati na dveṣṭi</em> <br><em>tasya prajñā pratiṣṭhitā</em>",
                         "synonyms": "<em>yaḥ</em> — one who; <em>sarvatra</em> — everywhere; <em>anabhisnehaḥ</em> — without affection; <em>tat</em> — that; <em>tat</em> — that; <em>prāpya</em> — achieving; <em>śubha</em> — good; <em>aśubham</em> — evil; <em>na</em> — never; <em>abhinandati</em> — prays; <em>na</em> — never; <em>dveṣṭi</em> — envies; <em>tasya</em> — his; <em>prajñā</em> — perfect knowledge; <em>pratiṣṭhita</em> — fixed.",
                         "translation": "<strong><strong>He who is without attachment, who does not rejoice when he obtains good, nor lament when he obtains evil, is firmly fixed in perfect knowledge.</strong></strong>",
@@ -778,7 +778,7 @@
                     },
                     {
                         "text_number": "58",
-                        "devanagari": "यदा संहरते चायं कूर्मोऽङ्गानीव सर्वशः । <br><strong>इन्द्रियाणीन्द्रियार्थेभ्यस्तस्य प्रज्ञा प्रतिष्ठिता ॥ ५८ ॥</strong>",
+                        "devanagari": "यदा संहरते चायं कूर्मोऽङ्गानीव सर्वशः । <br>इन्द्रियाणीन्द्रियार्थेभ्यस्तस्य प्रज्ञा प्रतिष्ठिता ॥ ५८ ॥",
                         "roman": "yadā saṁharate cāyaṁ <br><em>kūrmo ’ṅgānīva sarvaśaḥ</em> <br><em>indriyāṇīndriyārthebhyas</em> <br><em>tasya prajñā pratiṣṭhitā</em>",
                         "synonyms": "<em>yadā</em> — when; <em>saṁharate</em> — winds up; <em>ca</em> — also; <em>ayam</em> — all these; <em>kūrmaḥ</em> — tortoise; <em>aṅgāni</em> — limbs; <em>iva</em> — like; <em>sarvaśaḥ</em> — altogether; <em>indriyāni</em> — senses; <em>indriya-arthebhyaḥ</em> — from the sense objects; <em>tasya</em> — his; <em>prajñā</em> — consciousness; <em>pratiṣṭhitā</em> — fixed up.",
                         "translation": "<strong><strong>One who is able to withdraw his senses from sense objects, as the tortoise draws his limbs within the shell, is to be understood as truly situated in knowledge.</strong></strong>",
@@ -786,7 +786,7 @@
                     },
                     {
                         "text_number": "59",
-                        "devanagari": "विषया विनिवर्तन्ते निराहारस्य देहिनः । <br><strong>रसवर्जं रसोऽप्यस्य परं दृष्ट्वा निवर्तते ॥ ५९ ॥</strong>",
+                        "devanagari": "विषया विनिवर्तन्ते निराहारस्य देहिनः । <br>रसवर्जं रसोऽप्यस्य परं दृष्ट्वा निवर्तते ॥ ५९ ॥",
                         "roman": "viṣayā vinivartante <br><em>nirāhārasya dehinaḥ</em> <br><em>rasa-varjaṁ raso ’py asya</em> <br><em>paraṁ dṛṣṭvā nivartate</em>",
                         "synonyms": "<em>viṣayāḥ</em> — objects for sense enjoyment; <em>vinivartante</em> — are practiced to be refrained from; <em>nirāhārasya</em> — by negative restrictions; <em>dehinaḥ</em> — for the embodied; <em>rasa-varjam</em> — giving up the taste; <em>rasaḥ</em> — sense of enjoyment; <em>api</em> — although there is; <em>asya</em> — his; <em>param</em> — far superior things; <em>dṛṣṭvā</em> — by experiencing; <em>nivartate</em> — ceases from.",
                         "translation": "<strong><strong>The embodied soul may be restricted from sense enjoyment, though the taste for sense objects remains. But, ceasing such engagements by experiencing a higher taste, he is fixed in consciousness.</strong></strong>",
@@ -794,7 +794,7 @@
                     },
                     {
                         "text_number": "60",
-                        "devanagari": "यततो ह्यपि कौन्तेय पुरुषस्य विपश्चितः । <br><strong>इन्द्रियाणि प्रमाथीनि हरन्ति प्रसभं मनः ॥ ६० ॥</strong>",
+                        "devanagari": "यततो ह्यपि कौन्तेय पुरुषस्य विपश्चितः । <br>इन्द्रियाणि प्रमाथीनि हरन्ति प्रसभं मनः ॥ ६० ॥",
                         "roman": "yatato hy api kaunteya <br><em>puruṣasya vipaścitaḥ</em> <br><em>indriyāṇi pramāthīni</em> <br><em>haranti prasabhaṁ manaḥ</em>",
                         "synonyms": "<em>yatataḥ</em> — while endeavoring; <em>hi</em> — certainly; <em>api</em> — in spite of; <em>kaunteya</em> — O son of Kuntī; <em>puruṣasya</em> — of the man; <em>vipaścitaḥ</em> — full of discriminating knowledge; <em>indriyāṇi</em> — the senses; <em>pramāthīni</em> — stimulated; <em>haranti</em> — throws forcefully; <em>prasabhaṁ</em> — by force; <em>manaḥ</em> — the mind.",
                         "translation": "<strong><strong>The senses are so strong and impetuous, O Arjuna, that they forcibly carry away the mind even of a man of discrimination who is endeavoring to control them.</strong></strong>",
@@ -802,7 +802,7 @@
                     },
                     {
                         "text_number": "61",
-                        "devanagari": "तानि सर्वाणि संयम्य युक्त आसीत मत्परः । <br><strong>वशे हि यस्येन्द्रियाणि तस्य प्रज्ञा प्रतिष्ठिता ॥ ६१ ॥</strong>",
+                        "devanagari": "तानि सर्वाणि संयम्य युक्त आसीत मत्परः । <br>वशे हि यस्येन्द्रियाणि तस्य प्रज्ञा प्रतिष्ठिता ॥ ६१ ॥",
                         "roman": "tāni sarvāṇi saṁyamya <br><em>yukta āsīta mat-paraḥ</em> <br><em>vaśe hi yasyendriyāṇi</em> <br><em>tasya prajñā pratiṣṭhitā</em>",
                         "synonyms": "<em>tāni</em> — those senses; <em>sarvāṇi</em> — all; <em>saṁyamya</em> — keeping under control; <em>yuktaḥ</em> — being engaged; <em>āsīta</em> — being so situated; <em>mat-paraḥ</em> — in relationship with Me; <em>vaśe</em> — in full subjugation; <em>hi</em> — certainly; <em>yasya</em> — one whose; <em>indriyāṇi</em> — senses; <em>tasya</em> — his; <em>prajñā</em> — consciousness; <em>pratiṣṭhitā</em> — fixed.",
                         "translation": "<strong><strong>One who restrains his senses and fixes his consciousness upon Me is known as a man of steady intelligence.</strong></strong>",
@@ -810,7 +810,7 @@
                     },
                     {
                         "text_number": "62",
-                        "devanagari": "ध्यायतो विषयान्पुंसः सङ्गस्तेषूपजायते । <br><strong>सङ्गात्सञ्जायते कामः कामात्क्रोधोऽभिजायते ॥ ६२ ॥</strong>",
+                        "devanagari": "ध्यायतो विषयान्पुंसः सङ्गस्तेषूपजायते । <br>सङ्गात्सञ्जायते कामः कामात्क्रोधोऽभिजायते ॥ ६२ ॥",
                         "roman": "dhyāyato viṣayān puṁsaḥ <br><em>saṅgas teṣūpajāyate</em> <br><em>saṅgāt sañjāyate kāmaḥ</em> <br><em>kāmāt krodho ’bhijāyate</em>",
                         "synonyms": "<em>dhyayataḥ</em> — while contemplating; <em>viṣayān</em> — sense objects; <em>puṁsaḥ</em> — of the person; <em>saṅgaḥ</em> — attachment; <em>teṣu</em> — in the sense objects; <em>upajāyate</em> — develops; <em>saṅgāt</em> — attachment; <em>sañjāyate</em> — develops; <em>kāmaḥ</em> — desire; <em>kāmāt</em> — from desire; <em>krodhaḥ</em> — anger; <em>abhijāyate</em> — becomes manifest.",
                         "translation": "<strong><strong>While contemplating the objects of the senses, a person develops attachment for them, and from such attachment lust develops, and from lust anger arises.</strong></strong>",
@@ -818,7 +818,7 @@
                     },
                     {
                         "text_number": "63",
-                        "devanagari": "क्रोधाद्भ‍वति सम्मोहः सम्मोहात्स्मृतिविभ्रमः । <br><strong>स्मृतिभ्रंशाद्बुद्धिनाशो बुद्धिनाशात्प्रणश्यति ॥ ६३ ॥</strong>",
+                        "devanagari": "क्रोधाद्भ‍वति सम्मोहः सम्मोहात्स्मृतिविभ्रमः । <br>स्मृतिभ्रंशाद्बुद्धिनाशो बुद्धिनाशात्प्रणश्यति ॥ ६३ ॥",
                         "roman": "krodhād bhavati sammohaḥ <br><em>sammohāt smṛti-vibhramaḥ</em> <br><em>smṛti-bhraṁśād buddhi-nāśo</em> <br><em>buddhi-nāśāt praṇaśyati</em>",
                         "synonyms": "<em>krodhāt</em> — from anger; <em>bhavati</em> — takes place; <em>saṁmohaḥ</em> — perfect illusion; <em>saṁmohāt</em> — from illusion; <em>smṛti</em> — of memory; <em>vibhramaḥ</em> — bewilderment; <em>smṛti-bhraṁśāt</em> — after bewilderment of memory; <em>buddhi-nāśaḥ</em> — loss of intelligence; <em>buddhi-nāśāt</em> — and from loss of intelligence; <em>praṇaśyati</em> — falls down.",
                         "translation": "<strong><strong>From anger, delusion arises, and from delusion bewilderment of memory. When memory is bewildered, </strong><strong>intelligence is lost, and when intelligence is lost, one falls down again into the material pool.</strong></strong>",
@@ -826,7 +826,7 @@
                     },
                     {
                         "text_number": "64",
-                        "devanagari": "रागद्वेषविमुक्तैस्तु विषयनिन्द्रियैश्चरन् । <br><strong>आत्मवश्यैर्विधेयात्मा प्रसादमधिगच्छति ॥ ६४ ॥</strong>",
+                        "devanagari": "रागद्वेषविमुक्तैस्तु विषयनिन्द्रियैश्चरन् । <br>आत्मवश्यैर्विधेयात्मा प्रसादमधिगच्छति ॥ ६४ ॥",
                         "roman": "rāga-dveṣa-vimuktais tu <br><em>viṣayān indriyaiś caran</em> <br><em>ātma-vaśyair vidheyātmā</em> <br><em>prasādam adhigacchati</em>",
                         "synonyms": "<em>rāga</em> — attachment; <em>dveṣa</em> — detachment; <em>vimuktaiḥ</em> — by one who has been free from such things; <em>tu</em> — but; <em>viṣayān</em> — sense objects; <em>indriyaiḥ</em> — by the senses; <em>caran</em> — acting; <em>ātma-vaśyaiḥ</em> — one who has control over; <em>vidheyātmā</em> — one who follows regulated freedom; <em>prasādam</em> — the mercy of the Lord; <em>adhigacchati</em> — attains.",
                         "translation": "<strong><strong>One who can control his senses by practicing the regulated principles of freedom can obtain the complete mercy of the Lord and thus become free from all attachment and aversion.</strong></strong>",
@@ -834,7 +834,7 @@
                     },
                     {
                         "text_number": "65",
-                        "devanagari": "प्रसादे सर्वदुःखानां हानिरस्योपजायते । <br><strong>प्रसन्नचेतसो ह्याश‍ु बुद्धिः पर्यवतिष्ठते ॥ ६५ ॥</strong>",
+                        "devanagari": "प्रसादे सर्वदुःखानां हानिरस्योपजायते । <br>प्रसन्नचेतसो ह्याश‍ु बुद्धिः पर्यवतिष्ठते ॥ ६५ ॥",
                         "roman": "prasāde sarva-duḥkhānāṁ <br><em>hānir asyopajāyate</em> <br><em>prasanna-cetaso hy āśu</em> <br><em>buddhiḥ paryavatiṣṭhate</em>",
                         "synonyms": "<em>prasāde</em> — on achievement of the causeless mercy of the Lord; <em>sarva</em> — all; <em>duḥkhānām</em> — material miseries; <em>hāniḥ</em> — destruction; <em>asya</em> — his; <em>upajāyate</em> — takes place; <em>prasanna-cetasaḥ</em> — of the happy-minded; <em>hi</em> — certainly; <em>āśu</em> — very soon; <em>buddhiḥ</em> — intelligence; <em>pari</em> — sufficiently; <em>avatiṣṭhate</em> — established.",
                         "translation": "<strong><strong>For one who is so situated in the Divine consciousness, the threefold miseries of material existence exist no longer; in such a happy state, one’s intelligence soon becomes steady.</strong></strong>",
@@ -842,7 +842,7 @@
                     },
                     {
                         "text_number": "66",
-                        "devanagari": "नास्ति बुद्धिरयुक्तस्य न चायुक्तस्य भावना । <br><strong>न चाभावयतः शान्तिरशान्तस्य कुतः सुखम् ॥ ६६ ॥</strong>",
+                        "devanagari": "नास्ति बुद्धिरयुक्तस्य न चायुक्तस्य भावना । <br>न चाभावयतः शान्तिरशान्तस्य कुतः सुखम् ॥ ६६ ॥",
                         "roman": "nāsti buddhir ayuktasya <br><em>na cāyuktasya bhāvanā</em> <br><em>na cābhāvayataḥ śāntir</em> <br><em>aśāntasya kutaḥ sukham</em>",
                         "synonyms": "<em>na asti</em> — there cannot be; <em>buddhiḥ</em> — transcendental intelligence; <em>ayuktasya</em> — of one who is not connected (with Kṛṣṇa consciousness); <em>na</em> — neither; <em>ca</em> — and; <em>ayuktasya</em> — of one devoid of Kṛṣṇa consciousness; <em>bhāvanā</em> — mind fixed in happiness; <em>na</em> — neither; <em>ca</em> — and; <em>abhāvayataḥ</em> — one who is not fixed; <em>śāntiḥ</em> — peace; <em>aśāntasya</em> — of the unpeaceful; <em>kutaḥ</em> — where is; <em>sukham</em> — happiness.",
                         "translation": "<strong><strong>One who is not in transcendental consciousness can have neither a controlled mind nor steady intelligence, without which there is no possibility of peace. And how can there be any happiness without peace?</strong></strong>",
@@ -850,7 +850,7 @@
                     },
                     {
                         "text_number": "67",
-                        "devanagari": "इन्द्रियाणां हि चरतां यन्मनोऽनुविधीयते । <br><strong>तदस्य हरति प्रज्ञां वायुर्नावमिवाम्भसि ॥ ६७ ॥</strong>",
+                        "devanagari": "इन्द्रियाणां हि चरतां यन्मनोऽनुविधीयते । <br>तदस्य हरति प्रज्ञां वायुर्नावमिवाम्भसि ॥ ६७ ॥",
                         "roman": "indriyāṇāṁ hi caratāṁ <br><em>yan mano ’nuvidhīyate</em> <br><em>tad asya harati prajñāṁ</em> <br><em>vāyur nāvam ivāmbhasi</em>",
                         "synonyms": "<em>indriyāṇām</em> — of the senses; <em>hi</em> — certainly; <em>caratām</em> — while herding over; <em>yat</em> — that; <em>manaḥ</em> — mind; <em>anuvidhīyate</em> — becomes constantly engaged; <em>tat</em> — that; <em>asya</em> — his; <em>harati</em> — takes away; <em>prajñām</em> — intelligence; <em>vāyuḥ</em> — wind; <em>nāvam</em> — a boat; <em>iva</em> — like; <em>ambhasi</em> — on the water.",
                         "translation": "<strong><strong>As a boat on the water is swept away by a strong wind, even one of the senses on which the mind focuses can carry away a man’s intelligence.</strong></strong>",
@@ -858,7 +858,7 @@
                     },
                     {
                         "text_number": "68",
-                        "devanagari": "तस्माद्यस्य महाबाहो निगृहीतानि सर्वशः । <br><strong>इन्द्रियाणीन्द्रियार्थेभ्यस्तस्य प्रज्ञा प्रतिष्ठिता ॥ ६८ ॥</strong>",
+                        "devanagari": "तस्माद्यस्य महाबाहो निगृहीतानि सर्वशः । <br>इन्द्रियाणीन्द्रियार्थेभ्यस्तस्य प्रज्ञा प्रतिष्ठिता ॥ ६८ ॥",
                         "roman": "tasmād yasya mahā-bāho <br><em>nigṛhītāni sarvaśaḥ</em> <br><em>indriyāṇīndriyārthebhyas</em> <br><em>tasya prajñā pratiṣṭhitā</em>",
                         "synonyms": "<em>tasmāt</em> — therefore; <em>yasya</em> — of one’s; <em>mahā-bāho</em> — O mighty-armed one; <em>nigṛhītāni</em> — so curbed down; <em>sarvaśaḥ</em> — all around; <em>indriyāṇi</em> — the senses; <em>indriya-arthebhyaḥ</em> — for the sake of sense objects; <em>tasya</em> — his; <em>prajñā</em> — intelligence; <em>pratiṣṭhitā</em> — fixed.",
                         "translation": "<strong><strong>Therefore, O mighty-armed, one whose senses are restrained from their objects is certainly of steady intelligence.</strong></strong>",
@@ -866,7 +866,7 @@
                     },
                     {
                         "text_number": "69",
-                        "devanagari": "या निशा सर्वभूतानां तस्यां जागर्ति संयमी । <br><strong>यस्यां जाग्रति भूतानि सा निशा पश्यतो मुनेः ॥ ६९ ॥</strong>",
+                        "devanagari": "या निशा सर्वभूतानां तस्यां जागर्ति संयमी । <br>यस्यां जाग्रति भूतानि सा निशा पश्यतो मुनेः ॥ ६९ ॥",
                         "roman": "yā niśā sarva-bhūtānāṁ <br><em>tasyāṁ jāgarti saṁyamī</em> <br><em>yasyāṁ jāgrati bhūtāni</em> <br><em>sā niśā paśyato muneḥ</em>",
                         "synonyms": "<em>yā</em> — what; <em>niśā</em> — is night; <em>sarva</em> — all; <em>bhūtānām</em> — of living entities; <em>tasyām</em> — in that; <em>jāgarti</em> — wakeful; <em>saṁyamī</em> — the self-controlled; <em>yasyām</em> — in which; <em>jāgrati</em> — awake; <em>bhūtāni</em> — all beings; <em>sā</em> — that is; <em>niśā</em> — night; <em>paśyataḥ</em> — for the introspective; <em>muneḥ</em> — sage.",
                         "translation": "<strong><strong>What is night for all beings is the time of awakening for the self-controlled; and the time of awakening for all beings is night for the introspective sage.</strong></strong>",
@@ -874,7 +874,7 @@
                     },
                     {
                         "text_number": "70",
-                        "devanagari": "आपूर्यमाणमचलप्रतिष्ठं <br><strong>समुद्रमापः प्रविशन्ति यद्वत् ।</strong> <br><strong>तद्वत्कामा यं प्रविशन्ति सर्वे</strong> <br><strong>स शान्तिमाप्‍नोति न कामकामी ॥ ७० ॥</strong>",
+                        "devanagari": "आपूर्यमाणमचलप्रतिष्ठं <br>समुद्रमापः प्रविशन्ति यद्वत् । <br>तद्वत्कामा यं प्रविशन्ति सर्वे <br>स शान्तिमाप्‍नोति न कामकामी ॥ ७० ॥",
                         "roman": "āpūryamāṇam acala-pratiṣṭhaṁ <br><em>samudram āpaḥ praviśanti yadvat</em> <br><em>tadvat kāmā yaṁ praviśanti sarve</em> <br><em>sa śāntim āpnoti na kāma-kāmī</em>",
                         "synonyms": "<em>āpūryamāṇam</em> — always filled; <em>acala-pratiṣṭham</em> — steadily situated; <em>samudram</em> — the ocean; <em>āpaḥ</em> — water; <em>praviśanti</em> — enter; <em>yadvat</em> — as; <em>tadvat</em> — so; <em>kāmāḥ</em> — desires; <em>yam</em> — unto one; <em>praviśanti</em> — enter; <em>sarve</em> — all; <em>saḥ</em> — that person; <em>śāntim</em> — peace; <em>āpnoti</em> — achieves; <em>na</em> — not; <em>kāma-kāmī</em> — one who desires to fulfill desires.",
                         "translation": "<strong><strong>A person who is not disturbed by the incessant flow of desires — that enter like rivers into the ocean which is ever being filled but is always still — can alone achieve peace, and not the man who strives to satisfy such desires.</strong></strong>",
@@ -882,7 +882,7 @@
                     },
                     {
                         "text_number": "71",
-                        "devanagari": "विहाय कामान्यः सर्वान्पुमांश्चरति निःस्पृहः । <br><strong>निर्ममो निरहङ्कार स शान्तिमधिगच्छति ॥ ७१ ॥</strong>",
+                        "devanagari": "विहाय कामान्यः सर्वान्पुमांश्चरति निःस्पृहः । <br>निर्ममो निरहङ्कार स शान्तिमधिगच्छति ॥ ७१ ॥",
                         "roman": "vihāya kāmān yaḥ sarvān <br><em>pumāṁś carati niḥspṛhaḥ</em> <br><em>nirmamo nirahaṅkāraḥ</em> <br><em>sa śāntim adhigacchati</em>",
                         "synonyms": "<em>vihāya</em> — after giving up; <em>kāmān</em> — all material desires for sense gratification; <em>yaḥ</em> — the person; <em>sarvān</em> — all; <em>pumān</em> — a person; <em>carati</em> — lives; <em>nihṣpṛhaḥ</em> — desireless; <em>nirmamaḥ</em> — without a sense of proprietorship; <em>nirahaṅkāraḥ</em> — without false ego; <em>saḥ</em> — all; <em>śāntim</em> — perfect peace; <em>adhigacchati</em> — attains.",
                         "translation": "<strong><strong>A person who has given up all desires for sense gratification, who lives free from desires, who has given up all sense of proprietorship and is devoid of false ego — he alone can attain real peace.</strong></strong>",
@@ -890,7 +890,7 @@
                     },
                     {
                         "text_number": "72",
-                        "devanagari": "एषा ब्राह्मी स्थितिःपार्थ नैनां प्राप्य विमुह्यति । <br><strong>स्थित्वास्यामन्तकालेऽपि ब्रह्मनिर्वाणमृच्छति ॥ ७२ ॥</strong>",
+                        "devanagari": "एषा ब्राह्मी स्थितिःपार्थ नैनां प्राप्य विमुह्यति । <br>स्थित्वास्यामन्तकालेऽपि ब्रह्मनिर्वाणमृच्छति ॥ ७२ ॥",
                         "roman": "eṣā brāhmī sthitiḥ pārtha <br><em>naināṁ prāpya vimuhyati</em> <br><em>sthitvāsyām anta-kāle ’pi</em> <br><em>brahma-nirvāṇam ṛcchati</em>",
                         "synonyms": "<em>eṣā</em> — this; <em>brāhmī</em> — spiritual; <em>sthitiḥ</em> — situation; <em>pārtha</em> — O son of Pṛthā; <em>na</em> — never; <em>enām</em> — this; <em>prāpya</em> — achieving; <em>vimuhyati</em> — bewilders; <em>sthitvā</em> — being so situated; <em>asyām</em> — being so; <em>anta-kāle</em> — at the end of life; <em>api</em> — also; <em>brahma-nirvāṇam</em> — spiritual (kingdom of God); <em>ṛcchati</em> — attains.",
                         "translation": "<strong><strong>That is the way of the spiritual and godly life, after attaining which a man is not bewildered. Being so situated, even at the hour of death, one can enter into the kingdom of God.</strong></strong>",
