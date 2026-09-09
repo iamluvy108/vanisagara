@@ -24,30 +24,33 @@
         @property --hero-glow {
             syntax: '<color>';
             inherits: true;
-            initial-value: #5c4000;
+            initial-value: #4285F4;
         }
 
-        /* --- GOOGLE MATERIAL THEME VARIABLES --- */
+        /* --- STRICT GOOGLE MATERIAL THEME VARIABLES --- */
         :root {
             --bg-main: #202124;
             --bg-nav: rgba(32, 33, 36, 0.98);
-            --hero-glow: #5c4000; /* Antique Gold Default */
+            --hero-glow: #4285F4; /* Google Blue */
             --text-primary: #e8eaed;
             --text-secondary: #9aa0a6;
-            --accent: #ffffff;
-            --btn-bg: #ffffff; /* White button for dark mode */
-            --btn-text: #202124; /* Dark text on white button */
-            --btn-hover: #e8eaed; /* Light grey hover */
+            --accent: #8ab4f8;
+            --btn-bg: #8ab4f8; /* Google Workspace Dark Mode CTA */
+            --btn-text: #202124; 
+            --btn-hover: #aecbfa; 
             --card-bg: #303134;
             --border: #5f6368;
             --netflix-modal-bg: #202124;
             --sys-yellow: #fbbc04; /* Google Yellow */
-            --title-shadow: none; 
             --google-shadow: 0 1px 2px 0 rgba(0,0,0,0.3), 0 1px 3px 1px rgba(0,0,0,0.15);
-            --close-bg: rgba(255, 255, 255, 0.1);
-            --close-border: rgba(255, 255, 255, 0.2);
-            --close-color: #e8eaed;
-            --close-hover: #ffffff;
+            --google-shadow-hover: 0 1px 3px 0 rgba(0,0,0,0.3), 0 4px 8px 3px rgba(0,0,0,0.15);
+            --close-bg: transparent;
+            --close-border: transparent;
+            --close-color: #9aa0a6;
+            --close-hover-bg: rgba(255, 255, 255, 0.1);
+            --close-hover-color: #e8eaed;
+            --icon-hover: rgba(255, 255, 255, 0.1);
+            --nav-link-hover: rgba(255, 255, 255, 0.08);
         }
 
         [data-theme="light"] {
@@ -56,18 +59,22 @@
             --text-primary: #202124;
             --text-secondary: #5f6368;
             --accent: #1a73e8;
-            --btn-bg: #1a73e8; /* Google Blue button for light mode */
-            --btn-text: #ffffff; /* White text on blue button */
-            --btn-hover: #1558d6; /* Darker blue hover */
+            --btn-bg: #1a73e8; /* Google Workspace Light Mode CTA */
+            --btn-text: #ffffff; 
+            --btn-hover: #1558d6; 
             --card-bg: #ffffff;
             --border: #dadce0;
             --netflix-modal-bg: #ffffff;
             --sys-yellow: #fbbc04;
             --google-shadow: 0 1px 2px 0 rgba(60,64,67,0.3), 0 1px 3px 1px rgba(60,64,67,0.15);
-            --close-bg: rgba(0, 0, 0, 0.05);
-            --close-border: rgba(0, 0, 0, 0.1);
-            --close-color: #202124;
-            --close-hover: #202124;
+            --google-shadow-hover: 0 1px 3px 0 rgba(60,64,67,0.3), 0 4px 8px 3px rgba(60,64,67,0.15);
+            --close-bg: transparent;
+            --close-border: transparent;
+            --close-color: #5f6368;
+            --close-hover-bg: rgba(0, 0, 0, 0.05);
+            --close-hover-color: #202124;
+            --icon-hover: rgba(0, 0, 0, 0.05);
+            --nav-link-hover: rgba(0, 0, 0, 0.04);
         }
 
         html { scroll-behavior: smooth; }
@@ -77,7 +84,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Product Sans', Roboto, -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+            font-family: 'Google Sans', 'Product Sans', Roboto, -apple-system, Arial, sans-serif;
         }
 
         body {
@@ -105,9 +112,8 @@
             -webkit-font-smoothing: subpixel-antialiased;
         }
 
-        /* Override the Times New Roman lock for a clean modern sans */
         .vanisagara-text {
-            font-family: 'Product Sans', Roboto, sans-serif !important;
+            font-family: 'Google Sans', 'Product Sans', Roboto, sans-serif !important;
             font-weight: 500 !important;
             letter-spacing: -0.01em !important;
             -webkit-font-smoothing: auto !important;
@@ -131,20 +137,25 @@
             100% { transform: translateY(0); opacity: 1; }
         }
 
-        /* --- NAVIGATION --- */
-        nav { position: fixed; top: 0; width: 100%; height: 60px; background: var(--bg-nav); backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px); display: flex; align-items: center; justify-content: space-between; padding: 0 12%; z-index: 100; border-bottom: 1px solid var(--border); transition: background 0.4s ease; }
+        /* --- GOOGLE WORKSPACE NAVIGATION --- */
+        nav { position: fixed; top: 0; width: 100%; height: 64px; background: var(--bg-nav); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: space-between; padding: 0 12%; z-index: 100; border-bottom: 1px solid var(--border); transition: background 0.4s ease; }
         .nav-brand { display: inline-block; font-size: 22px; text-decoration: none; color: var(--text-primary); white-space: nowrap; }
         .brand-icon { width: 24px; height: 24px; object-fit: contain; vertical-align: middle; position: relative; top: -1px; }
-        .nav-controls { display: flex; align-items: center; gap: 20px; }
-        .nav-links { display: flex; list-style: none; gap: 24px; }
-        .nav-links a { text-decoration: none; color: var(--text-primary); font-size: 15px; font-weight: 500; transition: opacity 0.2s; }
-        .nav-links a:hover { opacity: 0.7; }
-        .nav-divider { width: 1px; height: 28px; background-color: var(--text-secondary); opacity: 0.4; }
-        .nav-icons { display: flex; align-items: center; gap: 12px; }
-        .theme-toggle, .color-toggle { background: none; border: none; color: var(--text-primary); cursor: pointer; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease, visibility 0.3s ease; }
+        .nav-controls { display: flex; align-items: center; gap: 8px; }
+        .nav-links { display: flex; list-style: none; gap: 4px; margin-right: 12px; }
+        
+        /* Material Nav Tabs */
+        .nav-links a { text-decoration: none; color: var(--text-primary); font-size: 14px; font-weight: 500; padding: 8px 16px; border-radius: 4px; transition: background-color 0.2s, color 0.2s; }
+        .nav-links a:hover { background-color: var(--nav-link-hover); }
+        
+        .nav-divider { width: 1px; height: 32px; background-color: var(--border); margin: 0 8px; }
+        .nav-icons { display: flex; align-items: center; gap: 4px; }
+        
+        /* Material Icon Buttons */
+        .theme-toggle, .color-toggle { background: transparent; border: none; color: var(--text-secondary); cursor: pointer; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: background-color 0.2s ease, transform 0.2s cubic-bezier(0.16, 1, 0.3, 1); }
         .hue-icon { width: 20px; height: 20px; object-fit: contain; }
-        .theme-toggle:active, .color-toggle:active { transform: scale(0.85) translateZ(0); }
-        .theme-toggle:hover, .color-toggle:hover { opacity: 0.7; }
+        .theme-toggle:active, .color-toggle:active { transform: scale(0.9) translateZ(0); }
+        .theme-toggle:hover, .color-toggle:hover { background-color: var(--icon-hover); color: var(--text-primary); }
 
         [data-theme="dark"] .logo-light, [data-theme="dark"] .hue-light { display: none; }
         [data-theme="light"] .logo-dark, [data-theme="light"] .hue-dark { display: none; }
@@ -152,101 +163,105 @@
 
         /* --- HERO SECTION --- */
         .hero { position: relative; height: 100vh; height: 100dvh; z-index: 1; background-color: var(--bg-main); overflow: hidden; transition: background-color 0.4s ease; display: flex; justify-content: center; }
-        .hero-glow { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: var(--hero-glow); -webkit-mask-image: radial-gradient(circle at 75% 50%, black 0%, transparent 70%); mask-image: radial-gradient(circle at 75% 50%, black 0%, transparent 70%); transition: --hero-glow 0.75s ease-in-out, background-color 0.75s ease-in-out, opacity 0.4s ease; pointer-events: none; z-index: 1; }
-        [data-theme="light"] .hero-glow { opacity: 0; }
-        .hero::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 150px; background: linear-gradient(to bottom, transparent, var(--bg-main)); pointer-events: none; z-index: 10; }
-        .hero-container { position: relative; display: flex; align-items: center; justify-content: flex-start; width: 100%; max-width: 1600px; height: 100%; margin: 0 auto; padding: 60px 5% 0 5%; }
+        .hero-glow { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: var(--hero-glow); -webkit-mask-image: radial-gradient(circle at 75% 50%, black 0%, transparent 65%); mask-image: radial-gradient(circle at 75% 50%, black 0%, transparent 65%); transition: --hero-glow 0.75s ease-in-out, background-color 0.75s ease-in-out, opacity 0.4s ease; pointer-events: none; z-index: 1; opacity: 0.15; }
+        [data-theme="light"] .hero-glow { opacity: 0.05; }
+        .hero::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 100px; background: linear-gradient(to bottom, transparent, var(--bg-main)); pointer-events: none; z-index: 10; }
+        .hero-container { position: relative; display: flex; align-items: center; justify-content: flex-start; width: 100%; max-width: 1600px; height: 100%; margin: 0 auto; padding: 60px 12% 0 12%; }
         .hero-content { flex: 1; max-width: 55%; z-index: 3; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding-bottom: 60px; }
-        .hero h1 { display: block; width: fit-content; font-size: clamp(48px, 7vw, 110px); line-height: 1; margin-bottom: 30px; }
-        .hero-title-text { display: block; white-space: nowrap; }
-        .hero-title-logo { height: 1.36em; width: auto; object-fit: contain; vertical-align: middle; margin-right: 0.06em; margin-top: -0.5em; margin-bottom: -0.5em; position: relative; top: -0.05em; }
-        .hero-subtitle { display: block; font-size: 0.545em; color: var(--text-secondary); margin-top: 8px; white-space: nowrap; letter-spacing: 0.5px; font-weight: 400; }
-        .divider { display: flex; align-items: center; gap: 10px; margin-bottom: 30px; }
-        .divider-line { height: 1px; width: 40px; background-color: var(--text-secondary); }
-        .divider-circle { width: 8px; height: 8px; border-radius: 50%; border: 1px solid var(--text-secondary); }
-        .hero p { font-size: 18px; color: var(--text-primary); opacity: 0.9; margin-bottom: 40px; line-height: 1.5; max-width: 500px; }
-        .btn-primary { background-color: var(--btn-bg); color: var(--btn-text); padding: 12px 24px; width: max-content; border: 1px solid transparent; border-radius: 24px; font-size: 16px; font-weight: 500; letter-spacing: 0.25px; cursor: pointer; transition: background-color 0.2s ease, transform 0.1s ease; }
+        .hero h1 { display: block; width: fit-content; font-size: clamp(48px, 7vw, 100px); line-height: 1.1; margin-bottom: 24px; letter-spacing: -1px; }
+        .hero-title-text { display: block; white-space: nowrap; font-weight: 500; }
+        .hero-title-logo { height: 1.2em; width: auto; object-fit: contain; vertical-align: middle; margin-right: 0.1em; position: relative; top: -0.05em; }
+        .hero-subtitle { display: block; font-size: 0.45em; color: var(--text-secondary); margin-top: 4px; white-space: nowrap; font-weight: 400; letter-spacing: 0; }
         
-        /* Only apply the hover color shift if the device has a physical mouse */
+        /* --- GOOGLE 4-COLOR BRANDING BAR --- */
+        .divider { display: flex; height: 4px; width: 80px; border-radius: 2px; overflow: hidden; margin-bottom: 30px; gap: 0; }
+        .divider-line { height: 100%; width: 25%; }
+        .divider-line:nth-child(1) { background-color: #4285F4; } /* Google Blue */
+        .divider-line:nth-child(3) { background-color: #FBBC05; } /* Google Yellow */
+        .divider-circle { height: 100%; width: 25%; border-radius: 0; border: none; background-color: #EA4335; } /* Google Red */
+        .divider::after { content: ''; width: 25%; height: 100%; background-color: #34A853; } /* Google Green */
+
+        .hero p { font-size: 16px; color: var(--text-primary); margin-bottom: 32px; line-height: 1.6; max-width: 480px; }
+        .btn-primary { background-color: var(--btn-bg); color: var(--btn-text); padding: 10px 24px; width: max-content; border: 1px solid transparent; border-radius: 24px; font-size: 14px; font-weight: 500; letter-spacing: 0.25px; cursor: pointer; transition: background-color 0.2s ease, box-shadow 0.2s ease; }
+        
         @media (hover: hover) {
-            .btn-primary:hover { transform: translateZ(0); background-color: var(--btn-hover); }
+            .btn-primary:hover { background-color: var(--btn-hover); box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3), 0 1px 3px 1px rgba(60,64,67,0.15); }
         }
         
-        /* The physical tap effect (snaps back instantly when released) */
-        .btn-primary:active { transform: translateZ(0); opacity: 0.7; transition: opacity 0.1s ease; }
-        .hero-image { position: absolute; bottom: 0; right: 5%; height: 85vh; max-height: 100%; width: auto; max-width: 45%; object-fit: contain; object-position: bottom right; display: block; z-index: 2; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.4)); pointer-events: none; transition: opacity 0.5s ease; }
+        .btn-primary:active { transform: scale(0.98); opacity: 0.9; transition: transform 0.1s; }
+        .hero-image { position: absolute; bottom: 0; right: 8%; height: 85vh; max-height: 100%; width: auto; max-width: 45%; object-fit: contain; object-position: bottom right; display: block; z-index: 2; filter: drop-shadow(0 10px 30px rgba(0,0,0,0.2)); pointer-events: none; transition: opacity 0.5s ease; }
 
-        /* --- NETFLIX-STYLE LIBRARY SECTION --- */
-        .library { position: relative; width: 100%; padding: 180px 0 120px; z-index: 11; background-color: var(--bg-main); transition: background-color 0.4s ease; min-height: 100vh; }
-        .library-title { font-size: 56px; font-weight: 700; margin-bottom: 50px; letter-spacing: -0.5px; padding: 0 5%; text-align: center; }
-        .netflix-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.5vw; padding: 40px 5% 60px 5%; width: 100%; }
+        /* --- NETFLIX-STYLE LIBRARY SECTION (MATERIAL CARDS) --- */
+        .library { position: relative; width: 100%; padding: 120px 0 120px; z-index: 11; background-color: var(--bg-main); transition: background-color 0.4s ease; min-height: 100vh; }
+        .library-title { font-size: 36px; font-weight: 400; margin-bottom: 40px; letter-spacing: 0; padding: 0 12%; text-align: left; }
+        .netflix-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 24px; padding: 0 12% 60px 12%; width: 100%; }
         .book-item { position: relative; width: 100%; aspect-ratio: 2 / 3; opacity: 0; transform: translateY(20px); animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), z-index 0.3s; z-index: 1; }
-        .book-item:nth-child(1) { animation-delay: 0.1s; } .book-item:nth-child(2) { animation-delay: 0.2s; } .book-item:nth-child(3) { animation-delay: 0.3s; } .book-item:nth-child(4) { animation-delay: 0.4s; } .book-item:nth-child(5) { animation-delay: 0.5s; }
-        .book-cover-wrapper { position: relative; display: block; width: 100%; height: 100%; transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        .book-item:nth-child(1) { animation-delay: 0.1s; } .book-item:nth-child(2) { animation-delay: 0.15s; } .book-item:nth-child(3) { animation-delay: 0.2s; } .book-item:nth-child(4) { animation-delay: 0.25s; } .book-item:nth-child(5) { animation-delay: 0.3s; }
+        .book-cover-wrapper { position: relative; display: block; width: 100%; height: 100%; transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1); }
         
-        /* GOOGLE CARD STYLING */
-        .book-cover { width: 100%; height: 100%; aspect-ratio: 2 / 3; object-fit: cover; border-radius: 8px; background-color: var(--card-bg); box-shadow: var(--google-shadow); transition: box-shadow 0.3s ease; border: 1px solid var(--border); display: block; }
-        .coming-soon-placeholder { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 24px; color: var(--text-secondary); font-weight: 600; font-size: 26px; cursor: default; text-align: center; }
-        .placeholder-logo { width: 168px; height: 168px; object-fit: contain; opacity: 0.5; }
+        /* GOOGLE MATERIAL CARD */
+        .book-cover { width: 100%; height: 100%; aspect-ratio: 2 / 3; object-fit: cover; border-radius: 8px; background-color: var(--card-bg); box-shadow: var(--google-shadow); transition: box-shadow 0.2s cubic-bezier(0.2, 0, 0, 1); border: 1px solid var(--border); display: block; }
+        .coming-soon-placeholder { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; color: var(--text-secondary); font-weight: 500; font-size: 18px; cursor: default; text-align: center; background-color: var(--card-bg); }
+        .placeholder-logo { width: 80px; height: 80px; object-fit: contain; opacity: 0.3; }
         .downloadable-book { cursor: pointer; }
         .book-item.downloadable-book:hover, .book-item.locked-hover { z-index: 10; }
-        .book-item.downloadable-book:hover .book-cover-wrapper, .book-item.locked-hover .book-cover-wrapper { transform: scale(1.05); }
-        
-        /* GOOGLE MATERIAL HOVER SHADOW */
-        .book-item.downloadable-book:hover .book-cover, .book-item.locked-hover .book-cover { box-shadow: 0 4px 6px -1px rgba(0,0,0,0.2), 0 2px 4px -1px rgba(0,0,0,0.14); }
+        .book-item.downloadable-book:hover .book-cover-wrapper, .book-item.locked-hover .book-cover-wrapper { transform: translateY(-4px); }
+        .book-item.downloadable-book:hover .book-cover, .book-item.locked-hover .book-cover { box-shadow: var(--google-shadow-hover); }
 
         /* --- DYNAMIC MODAL INFO BADGE --- */
-        .modal-info-badge { width: 36px; height: 36px; background-color: var(--sys-yellow); color: #000000; border-radius: 50%; display: none; align-items: center; justify-content: center; font-size: 20px; font-weight: 800; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.2); transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1); }
-        .modal-info-badge:hover { transform: scale(1.15) translateZ(0); }
+        .modal-info-badge { width: 36px; height: 36px; background-color: transparent; border: 1px solid var(--border); color: var(--sys-yellow); border-radius: 50%; display: none; align-items: center; justify-content: center; font-size: 16px; font-weight: 500; cursor: pointer; transition: background-color 0.2s ease; }
+        .modal-info-badge:hover { background-color: rgba(251, 188, 4, 0.1); }
 		.modal-info-badge:active { transform: scale(0.95) translateZ(0); }
 
-        /* --- DROPBOX STYLE FLAT ALERTS (Info Modal) converted to Material --- */
+        /* --- MATERIAL NOTIFICATION (Info Modal) --- */
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6); display: flex; align-items: center; justify-content: center; z-index: 99999 !important; opacity: 0; pointer-events: none; transition: opacity 0.2s ease; }
         #infoModal { z-index: 1001; }
         .modal-overlay.active { opacity: 1; pointer-events: auto; }
-        .modal-box { background-color: var(--card-bg); border-radius: 12px; width: 480px; max-width: 90vw; text-align: left; transform: translateY(15px); opacity: 0; transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease; display: flex; flex-direction: column; box-shadow: var(--google-shadow); border: 1px solid var(--border); }
-        .modal-overlay.active .modal-box { transform: translateY(0); opacity: 1; }
-        .modal-text-container { padding: 32px 32px 24px; }
-        .modal-title { font-size: 20px; font-weight: 600; color: var(--text-primary); letter-spacing: -0.3px; margin-bottom: 12px; }
-        .modal-message { font-size: 15px; font-weight: 400; color: var(--text-secondary); line-height: 1.5; }
-        .info-text { text-align: justify; text-justify: inter-word; }
-        .modal-actions { display: flex; justify-content: flex-end; gap: 12px; padding: 0 32px 32px; }
+        .modal-box { background-color: var(--card-bg); border-radius: 8px; width: 440px; max-width: 90vw; text-align: left; transform: scale(0.95); opacity: 0; transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1), opacity 0.2s ease; display: flex; flex-direction: column; box-shadow: var(--google-shadow-hover); }
+        .modal-overlay.active .modal-box { transform: scale(1); opacity: 1; }
+        .modal-text-container { padding: 24px 24px 20px; }
+        .modal-title { font-size: 22px; font-weight: 400; color: var(--text-primary); margin-bottom: 16px; }
+        .modal-message { font-size: 14px; font-weight: 400; color: var(--text-secondary); line-height: 1.5; letter-spacing: 0.2px; }
+        .modal-actions { display: flex; justify-content: flex-end; padding: 8px 16px 16px; }
         
-        /* Fully dynamic material button */
-        .modal-btn { height: auto; padding: 10px 24px; background: transparent; color: var(--text-primary); font-size: 14px; font-weight: 500; letter-spacing: 0.25px; cursor: pointer; border: 1px solid transparent; border-radius: 24px; outline: none; transition: background-color 0.2s ease; }
-        .modal-btn.confirm { background-color: var(--btn-bg); color: var(--btn-text); }
-        .modal-btn.confirm:hover { background-color: var(--btn-hover); }
+        /* Material Text Button */
+        .modal-btn.confirm { background: transparent; color: var(--accent); padding: 8px 16px; font-size: 14px; font-weight: 500; letter-spacing: 0.25px; border: none; border-radius: 4px; cursor: pointer; transition: background-color 0.2s ease; }
+        .modal-btn.confirm:hover { background-color: var(--icon-hover); }
 
-        /* --- NETFLIX ITEM MODAL converted to Material --- */
-        .netflix-modal-box { background-color: var(--netflix-modal-bg); border-radius: 12px; width: 720px; max-width: 90vw; text-align: left; transform: translateY(20px); opacity: 0; transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease; display: flex; flex-direction: column; box-shadow: var(--google-shadow); border: 1px solid var(--border); position: relative; overflow: hidden !important; height: auto !important; max-height: 90vh; }
-        .modal-overlay.active .netflix-modal-box { transform: translateY(0); opacity: 1; }
+        /* --- MATERIAL ITEM MODAL --- */
+        .netflix-modal-box { background-color: var(--netflix-modal-bg); border-radius: 12px; width: 720px; max-width: 90vw; text-align: left; transform: scale(0.95); opacity: 0; transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1), opacity 0.2s ease; display: flex; flex-direction: column; box-shadow: var(--google-shadow-hover); position: relative; overflow: hidden !important; height: auto !important; max-height: 90vh; }
+        .modal-overlay.active .netflix-modal-box { transform: scale(1); opacity: 1; }
         
-        /* Dynamic close button */
-        .netflix-close { position: absolute; top: 20px; right: 20px; width: 36px; height: 36px; border-radius: 50%; background: var(--close-bg); border: 2px solid var(--close-border); color: var(--close-color); display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 20; transition: border-color 0.2s, transform 0.2s, color 0.2s; }
-        .netflix-close:hover { border-color: var(--close-hover); color: var(--close-hover); transform: scale(1.05); }
+        /* Material Icon Close Button */
+        .netflix-close { position: absolute; top: 16px; right: 16px; width: 40px; height: 40px; border-radius: 50%; background: var(--close-bg); border: none; color: var(--close-color); display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 20; transition: background-color 0.2s, color 0.2s; }
+        .netflix-close:hover { background-color: var(--close-hover-bg); color: var(--close-hover-color); }
         
-        .netflix-banner { position: relative; width: 100%; height: 350px; background-size: cover; background-position: top center; background-repeat: no-repeat; flex-shrink: 0; }
-        .netflix-banner-fade { position: absolute; bottom: 0; width: 100%; height: 60%; background: linear-gradient(to top, var(--netflix-modal-bg) 0%, transparent 100%); }
-        .netflix-content { padding: 0 40px 40px 40px !important; position: relative; z-index: 2; margin-top: -80px; display: flex; flex-direction: column; flex: 1 1 auto !important; min-height: 0; }
-        .netflix-content > div:last-child { margin: 0 !important; padding: 0 !important; }
-        .netflix-title { font-size: clamp(32px, 5vw, 48px); font-weight: 700; color: var(--text-primary); margin-bottom: 20px; text-shadow: var(--title-shadow); line-height: 1.1; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; flex-shrink: 0; }
+        .netflix-banner { position: relative; width: 100%; height: 320px; background-size: cover; background-position: top center; background-repeat: no-repeat; flex-shrink: 0; border-bottom: 1px solid var(--border); }
+        .netflix-banner-fade { display: none; } /* Removed cinematic gradient */
+        
+        .netflix-content { padding: 32px 40px 40px 40px !important; position: relative; z-index: 2; display: flex; flex-direction: column; flex: 1 1 auto !important; min-height: 0; }
+        .netflix-title { font-size: 32px; font-weight: 400; color: var(--text-primary); margin-bottom: 16px; line-height: 1.2; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; flex-shrink: 0; }
+        
+        /* Google Search Chips */
         .netflix-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; flex-shrink: 0; }
-        .netflix-tag { background-color: rgba(128, 128, 128, 0.2); color: var(--text-primary); padding: 4px 10px; border-radius: 4px; font-size: 14px; font-weight: 500; }
-        .netflix-desc { font-size: 16px; color: var(--text-primary); line-height: 1.6; margin-bottom: 30px; width: 100%; text-align: justify; text-justify: inter-word; hyphens: none; -webkit-hyphens: none; overflow-y: auto; min-height: 0; padding-right: 12px; }
+        .netflix-tag { background-color: transparent; color: var(--text-primary); border: 1px solid var(--border); padding: 6px 12px; border-radius: 16px; font-size: 13px; font-weight: 500; }
+        
+        .netflix-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.5; margin-bottom: 32px; width: 100%; hyphens: none; -webkit-hyphens: none; overflow-y: auto; min-height: 0; padding-right: 12px; letter-spacing: 0.2px; }
         .netflix-desc::-webkit-scrollbar { width: 6px; }
         .netflix-desc::-webkit-scrollbar-track { background: transparent; }
         .netflix-desc::-webkit-scrollbar-thumb { background: rgba(128, 128, 128, 0.3); border-radius: 10px; }
         .netflix-content > div:last-child { margin: 0 !important; padding: 0 !important; flex-shrink: 0; }
         
-        /* Fully dynamic material download button */
-        .netflix-btn { background-color: var(--btn-bg); color: var(--btn-text); border: 1px solid transparent; padding: 12px 28px; font-size: 16px; font-weight: 500; letter-spacing: 0.25px; border-radius: 24px; display: inline-flex; align-items: center; gap: 12px; cursor: pointer; transition: background-color 0.2s ease; }
-        .netflix-btn:hover { background-color: var(--btn-hover); }
+        /* Material Primary Action */
+        .netflix-btn { background-color: var(--btn-bg); color: var(--btn-text); border: 1px solid transparent; padding: 10px 24px; font-size: 14px; font-weight: 500; letter-spacing: 0.25px; border-radius: 24px; display: inline-flex; align-items: center; gap: 8px; cursor: pointer; transition: background-color 0.2s ease, box-shadow 0.2s ease; }
+        .netflix-btn:hover { background-color: var(--btn-hover); box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3), 0 1px 3px 1px rgba(60,64,67,0.15); }
+        .netflix-btn svg { width: 18px; height: 18px; }
 
         @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
 
         /* --- DESKTOP PROTECTION FIREWALL --- */
         .hamburger, .mobile-menu-overlay { display: none; }
-        @media (max-width: 1200px) { .netflix-row { grid-template-columns: repeat(4, 1fr); } }
+        @media (max-width: 1200px) { .netflix-row { grid-template-columns: repeat(4, 1fr); padding: 0 8% 60px 8%; } nav { padding: 0 8%; } .hero-container { padding-left: 8%; } .library-title { padding-left: 8%; } }
 
         /* --- PREMIUM MOBILE APP MAKEOVER --- */
         @media (max-width: 900px) {
@@ -260,87 +275,73 @@
             html.no-scroll, body.no-scroll { overflow: hidden !important; scroll-snap-type: none !important; }
             .modal-overlay { overscroll-behavior: contain; }
 
-            /* Keeps mobile layout correctly proportioned */
-            nav { justify-content: space-between; padding: 0 5%; position: fixed; top: 0; width: 100%; height: 60px; z-index: 9999 !important; display: flex; align-items: center; }
+            nav { justify-content: space-between; padding: 0 5%; position: fixed; top: 0; width: 100%; height: 56px; z-index: 9999 !important; display: flex; align-items: center; border-bottom: 1px solid var(--border); }
             
-            .nav-brand { position: absolute; left: 50%; top: 55%; transform: translate(-50%, -50%); display: flex; align-items: center; justify-content: center; }
-            .brand-icon { width: 44px; height: 44px; margin-right: 0; }
+            .nav-brand { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); display: flex; align-items: center; justify-content: center; }
+            .brand-icon { width: 32px; height: 32px; margin-right: 0; }
             .nav-controls { width: 100%; height: 100%; display: flex; justify-content: space-between; align-items: center; }
-            .nav-icons { order: 1; display: flex; align-items: center; gap: 15px; }
-            .theme-toggle, .color-toggle, .hamburger { display: flex !important; align-items: center; justify-content: center; padding: 0 !important; margin: 0 !important; line-height: 0 !important; transform: translateY(1.5px) !important; }
-            .hamburger { order: 2; background: none; border: none; cursor: pointer; z-index: 10000; transition: transform 0.2s ease; }
-            .hamburger:active { transform: translateY(1.5px) scale(0.85) translateZ(0) !important; }
+            .nav-icons { order: 1; display: flex; align-items: center; gap: 4px; }
+            .theme-toggle, .color-toggle, .hamburger { display: flex !important; align-items: center; justify-content: center; padding: 0 !important; margin: 0 !important; line-height: 0 !important; transform: none !important; }
+            .hamburger { order: 2; background: none; border: none; cursor: pointer; z-index: 10000; transition: background-color 0.2s ease; width: 40px; height: 40px; border-radius: 50%; color: var(--text-secondary); }
+            .hamburger:active { transform: scale(0.9) translateZ(0) !important; }
+            .hamburger:hover { background-color: var(--icon-hover); color: var(--text-primary); }
             .hamburger svg, .theme-toggle svg, .color-toggle img { display: block; }
-            [data-theme="dark"] .theme-toggle, [data-theme="dark"] .color-toggle, [data-theme="dark"] .hamburger { color: #ffffff !important; }
             .nav-links, .nav-divider { display: none; }
 
-            .hero-glow { -webkit-mask-image: radial-gradient(circle at 50% 40%, black 0%, transparent 65%); mask-image: radial-gradient(circle at 50% 40%, black 0%, transparent 65%); }
+            .hero-glow { -webkit-mask-image: radial-gradient(circle at 50% 40%, black 0%, transparent 65%); mask-image: radial-gradient(circle at 50% 40%, black 0%, transparent 65%); opacity: 0.15; }
 
-            .mobile-menu-overlay { display: flex; position: fixed; top: 0; left: 0; width: 100%; height: 100dvh; background-color: var(--bg-main); z-index: 9998; flex-direction: column; justify-content: center; align-items: center; padding-top: 0; padding-bottom: 12vh; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; }
+            .mobile-menu-overlay { display: flex; position: fixed; top: 0; left: 0; width: 100%; height: 100dvh; background-color: var(--bg-main); z-index: 9998; flex-direction: column; justify-content: center; align-items: flex-start; padding: 0 8%; opacity: 0; visibility: hidden; transition: opacity 0.2s ease, visibility 0.2s ease; }
             .mobile-menu-overlay.active { opacity: 1; visibility: visible; }
-            .mobile-menu-content { display: flex; flex-direction: column; align-items: center; gap: 14px; }
+            .mobile-menu-content { display: flex; flex-direction: column; align-items: flex-start; gap: 24px; width: 100%; }
             .mobile-menu-content > * { opacity: 0; transform: translateY(-15px); transition: opacity 0.2s ease, transform 0.2s ease; }
-            .mobile-menu-overlay.active .mobile-menu-content > *:nth-child(1) { transition: opacity 0.4s ease 0.1s, transform 0.4s cubic-bezier(0.16,1,0.3,1) 0.1s; opacity: 1; transform: translateY(0); }
-            .mobile-menu-overlay.active .mobile-menu-content > *:nth-child(2) { transition: opacity 0.4s ease 0.2s, transform 0.4s cubic-bezier(0.16,1,0.3,1) 0.2s; opacity: 1; transform: translateY(0); }
-            .mobile-menu-overlay.active .mobile-menu-content > *:nth-child(3) { transition: opacity 0.4s ease 0.3s, transform 0.4s cubic-bezier(0.16,1,0.3,1) 0.3s; opacity: 1; transform: translateY(0); }
-            .mobile-menu-overlay.active .mobile-menu-content > *:nth-child(4) { transition: opacity 0.4s ease 0.4s, transform 0.4s cubic-bezier(0.16,1,0.3,1) 0.4s; opacity: 1; transform: translateY(0); }
-            .mobile-menu-content a { color: var(--text-primary); font-size: 22px; text-decoration: none; font-weight: 400; font-family: 'Product Sans', Roboto, -apple-system, BlinkMacSystemFont, Arial, sans-serif; }
-            .mobile-menu-divider { width: 180px; height: 1px; background: linear-gradient(90deg, transparent, var(--text-primary), transparent); opacity: 0.4; }
-            .mobile-menu-footer { position: absolute; bottom: 8vh; }
-            .menu-logo { width: 140px; height: auto; opacity: 0.95; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3)); }
+            .mobile-menu-overlay.active .mobile-menu-content > *:nth-child(1) { transition: opacity 0.3s ease 0.1s, transform 0.3s cubic-bezier(0.16,1,0.3,1) 0.1s; opacity: 1; transform: translateY(0); }
+            .mobile-menu-overlay.active .mobile-menu-content > *:nth-child(2) { transition: opacity 0.3s ease 0.15s, transform 0.3s cubic-bezier(0.16,1,0.3,1) 0.15s; opacity: 1; transform: translateY(0); }
+            .mobile-menu-overlay.active .mobile-menu-content > *:nth-child(3) { transition: opacity 0.3s ease 0.2s, transform 0.3s cubic-bezier(0.16,1,0.3,1) 0.2s; opacity: 1; transform: translateY(0); }
+            .mobile-menu-overlay.active .mobile-menu-content > *:nth-child(4) { transition: opacity 0.3s ease 0.25s, transform 0.3s cubic-bezier(0.16,1,0.3,1) 0.25s; opacity: 1; transform: translateY(0); }
+            .mobile-menu-content a { color: var(--text-primary); font-size: 24px; text-decoration: none; font-weight: 400; }
+            .mobile-menu-divider { width: 100%; height: 1px; background: var(--border); margin: 8px 0; }
+            .mobile-menu-footer { display: none; }
 
-            /* Hero Section (Titanium Pixel Lock Edition) */
+            /* Hero Section */
             .hero { height: var(--app-height, 100vh) !important; min-height: var(--app-height, 100vh) !important; max-height: var(--app-height, 100vh) !important; }
-            .hero-container { flex-direction: column; text-align: center; align-items: center; justify-content: flex-start; padding-top: 13vh; }
-            .hero-content { align-items: center; max-width: 100%; z-index: 15; padding-bottom: 43vh; }
+            .hero-container { flex-direction: column; text-align: center; align-items: center; justify-content: flex-start; padding-top: 15vh; padding-left: 5%; padding-right: 5%; }
+            .hero-content { align-items: center; max-width: 100%; z-index: 15; padding-bottom: 35vh; }
             .hero-title-logo { display: none !important; }
-            .hero h1 { font-size: clamp(38px, 11vw, 60px); margin-bottom: 20px; }
+            .hero h1 { font-size: clamp(38px, 11vw, 60px); margin-bottom: 24px; }
             
-            /* --- THE REPLICATION FIX + JUSTIFIED TEXT --- */
-            .hero p { 
-                display: block; 
-                font-size: clamp(13px, 3.85vw, 15px); 
-                margin-bottom: 30px; 
-                padding: 0 10px; 
-                line-height: 1.4; 
-                text-align: justify; 
-                text-justify: inter-word; 
-                hyphens: none; 
-                -webkit-hyphens: none; 
-            } 
+            .hero p { font-size: 15px; margin-bottom: 32px; padding: 0 10px; line-height: 1.5; color: var(--text-secondary); text-align: justify; text-justify: inter-word; hyphens: none; -webkit-hyphens: none; } 
             
-            .divider { justify-content: center; margin-bottom: 20px; }
+            .divider { justify-content: center; margin-bottom: 24px; width: 60px; }
             .hero-image { position: absolute; height: auto; max-height: 40vh; max-width: 80%; bottom: 0 !important; left: 50%; transform: translateX(-50%); z-index: 2; -webkit-mask-image: none !important; mask-image: none !important; }
-            .hero::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 25vh; background: linear-gradient(to bottom, transparent 0%, var(--bg-main) 85%, var(--bg-main) 100%); z-index: 10; pointer-events: none; }
+            .hero::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 20vh; background: linear-gradient(to bottom, transparent 0%, var(--bg-main) 85%, var(--bg-main) 100%); z-index: 10; pointer-events: none; }
 
-            /* Library Section (Fluid Scroll Edition) */
-            .library { position: relative; z-index: 20; background-color: var(--bg-main); padding-top: 40px !important; padding-bottom: 180px !important; scroll-margin-top: 60px !important; height: auto !important; }
-            .library-title { text-align: center; font-size: 26px; padding: 0; margin-bottom: 45px; }
+            /* Library Section */
+            .library { position: relative; z-index: 20; background-color: var(--bg-main); padding-top: 40px !important; padding-bottom: 180px !important; scroll-margin-top: 56px !important; height: auto !important; }
+            .library-title { text-align: left; font-size: 24px; font-weight: 500; padding: 0 5%; margin-bottom: 24px; }
             
-            .netflix-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 6vw; padding: 0 5% 20px 5% !important; justify-items: center; }
+            .netflix-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; padding: 0 5% 20px 5% !important; justify-items: center; }
             .book-item[style*="visibility: hidden"] { display: none !important; }
             .book-cover-wrapper { width: 100%; max-width: 160px; }
-            .coming-soon-placeholder { font-size: 15px; gap: 10px; }
-            .placeholder-logo { width: 60px; height: 60px; }
+            .coming-soon-placeholder { font-size: 14px; gap: 8px; }
+            .placeholder-logo { width: 40px; height: 40px; }
             .book-item.downloadable-book:hover .book-cover-wrapper, .book-item.locked-hover .book-cover-wrapper { transform: none !important; }
             
             .modal-overlay { align-items: center !important; justify-content: center !important; }
             .modal-box, .netflix-modal-box { position: absolute !important; top: 50% !important; left: 50% !important; width: 90vw !important; margin: 0 !important; border-radius: 12px; height: auto !important; max-height: 85vh; transform: translate(-50%, -50%) scale(0.95) !important; display: flex; flex-direction: column; overflow: hidden !important; }
             .modal-overlay.active .modal-box, .modal-overlay.active .netflix-modal-box { transform: translate(-50%, -50%) scale(1) !important; }
-            .netflix-banner { height: 200px; flex-shrink: 0; }
-            .netflix-banner-fade { bottom: -2px !important; height: 75% !important; background: linear-gradient(to top, var(--netflix-modal-bg) 5%, transparent 100%) !important; }
-            .netflix-content { padding: 0 24px 24px 24px !important; margin-top: -40px; display: flex; flex-direction: column; flex: 1 1 auto !important; min-height: 0; }
-            .netflix-title { font-size: 24px; margin-bottom: 12px; line-height: 1.2; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; flex-shrink: 0; }
+            .netflix-banner { height: 160px; flex-shrink: 0; border-bottom: 1px solid var(--border); }
+            .netflix-content { padding: 24px !important; margin-top: 0; display: flex; flex-direction: column; flex: 1 1 auto !important; min-height: 0; }
+            .netflix-title { font-size: 22px; font-weight: 500; margin-bottom: 12px; line-height: 1.2; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; flex-shrink: 0; }
             .netflix-tags { gap: 6px; margin-bottom: 16px; flex-shrink: 0; }
-            .netflix-tag { font-size: 12px; padding: 4px 8px; }
-            .netflix-desc { font-size: 14px; margin-bottom: 24px !important; line-height: 1.5; overflow-y: auto; min-height: 0; display: block !important; max-height: 12em; padding-right: 8px; }
+            .netflix-tag { font-size: 11px; padding: 4px 8px; border-radius: 12px; }
+            .netflix-desc { font-size: 14px; margin-bottom: 24px !important; line-height: 1.5; overflow-y: auto; min-height: 0; display: block !important; max-height: 12em; padding-right: 8px; letter-spacing: 0.1px; text-align: left; text-justify: none; }
             .netflix-desc::-webkit-scrollbar { width: 4px; }
             .netflix-desc::-webkit-scrollbar-track { background: transparent; }
             .netflix-desc::-webkit-scrollbar-thumb { background: rgba(128, 128, 128, 0.4); border-radius: 10px; }
             .netflix-content > div:last-child { margin: 0 !important; padding: 0 !important; flex-shrink: 0; }
             .netflix-btn { width: 100%; justify-content: center; }
-            .modal-info-badge:hover { transform: scale(1.15) translateZ(0); }
-			.modal-info-badge:active { transform: scale(0.95) translateZ(0); }
+            
+            .netflix-close { top: 12px; right: 12px; width: 36px; height: 36px; background: rgba(0, 0, 0, 0.4); color: white; border-radius: 50%; }
         }
     </style>
 </head>
@@ -353,7 +354,6 @@
         <div class="nav-controls">
             <ul class="nav-links">
                 <li><a href="/">Home</a></li>
-				<!-- <li><a href="/sanctum">Sanctum</a></li> -->
                 <li><a href="/about-us">About Us</a></li>
             </ul>
             <div class="nav-divider"></div>
@@ -361,7 +361,7 @@
             <div class="nav-icons">
                 <button class="theme-toggle" id="themeBtn" aria-label="Toggle Theme">
                     <svg id="theme-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <!-- SVGs omitted for brevity, keep yours! -->
+                        <!-- SVGs handled by JS -->
                     </svg>
                 </button>
                 
@@ -371,18 +371,17 @@
                 </button>
             </div>
 
-            <!-- NEW: HAMBURGER BUTTON -->
+            <!-- HAMBURGER BUTTON -->
             <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
             </button>
         </div>
     </nav>
 
-    <!-- NEW: FULL-SCREEN MOBILE MENU OVERLAY (SKETCH 4) -->
+    <!-- FULL-SCREEN MOBILE MENU OVERLAY -->
     <div class="mobile-menu-overlay" id="mobileMenu">
 		<div class="mobile-menu-content">
             <a href="/">Home</a>
-            <!-- <a href="/sanctum">Sanctum</a> -->
             <div class="mobile-menu-divider"></div>
             <a href="/about-us">About Us</a>
         </div>
@@ -392,7 +391,7 @@
         </div>
     </div>
 
-    <!-- WRAPPER FOR NETFLIX PAGE TRANSITIONS -->
+    <!-- WRAPPER FOR PAGE TRANSITIONS -->
     <main id="main-content">
         <header class="hero">
             <div class="hero-glow"></div>
@@ -402,18 +401,19 @@
                         <span class="hero-title-text"><img src="images/logos/website/transparent/vanisagara-white.webp" alt="Vāṇīsāgara Logo" class="hero-title-logo logo-dark"><img src="images/logos/website/transparent/vanisagara-black.webp" alt="Vāṇīsāgara Logo" class="hero-title-logo logo-light"><span class="vanisagara-text">Vāṇīsāgara</span></span>
                         <span class="hero-subtitle">The Ocean of Knowledge</span>
                     </h1>
+                    
+                    <!-- GOOGLE MATERIAL 4-COLOR BAR -->
                     <div class="divider">
                         <div class="divider-line"></div>
                         <div class="divider-circle"></div>
                         <div class="divider-line"></div>
                     </div>
+                    
                     <p>We deliver high-fidelity, scientifically typeset digital editions of Śrīla Prabhupāda's original books as PDFs in 4K resolution.</p>
                     <button class="btn-primary" onclick="scrollToLibrary()">Explore the Archive</button>
                 </div>
                 
-                <!-- Main Śrīla Prabhupāda Image -->
 				<img id="prabhupada-img" src="images/edited/prabhupada.webp" alt="Śrīla Prabhupāda" class="hero-image">
-
             </div>
         </header>
 
@@ -422,10 +422,8 @@
                 <h2 class="library-title">The Library</h2>
                 
                 <div class="netflix-row">
-				
-					<!-- Book Level Categories: (1) Foundational; (2) Keystone; (3) Advanced; (4) Apex; (5) Esoteric -->
                     
-                    <!-- Book 1 (With data-info set to true) -->
+                    <!-- Book 1 -->
                     <div class="book-item downloadable-book" 
                          data-filename="BG-1972"
                          data-title="Bhagavad-gītā As It Is"
@@ -465,7 +463,6 @@
                         </div>
                     </div>
                     
-                    <!-- Blank placeholders to keep the 5-grid structure stable -->
                     <div class="book-item" style="visibility: hidden;"></div>
                     <div class="book-item" style="visibility: hidden;"></div>
 
@@ -474,11 +471,11 @@
         </section>
     </main>
 
-    <!-- NETFLIX STYLE ITEM MENU -->
+    <!-- MATERIAL STYLE ITEM MENU -->
     <div id="netflixModal" class="modal-overlay">
         <div class="netflix-modal-box">
-            <button class="netflix-close" onclick="closeAllModals()">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            <button class="netflix-close" onclick="closeAllModals()" aria-label="Close">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
             </button>
             
             <div class="netflix-banner" id="netflixBanner">
@@ -491,10 +488,9 @@
                 <div class="netflix-tags" id="netflixTags"></div>
                 <div class="netflix-desc" id="netflixDesc">Description goes here.</div>
                 
-                <!-- Action Buttons Row -->
-                <div style="display: flex; align-items: center; gap: 16px;">
+                <div style="display: flex; align-items: center; gap: 12px;">
                     <button class="netflix-btn" id="btnNetflixDownload">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                             <polyline points="7 10 12 15 17 10"></polyline>
                             <line x1="12" y1="15" x2="12" y2="3"></line>
@@ -502,8 +498,13 @@
                         Download PDF
                     </button>
                     
-                    <!-- The new dynamic Exclamation Mark Button inside the Modal -->
-                    <div class="modal-info-badge" id="btnNetflixInfo" onclick="openInfoModal(event)" title="Important Notice">!</div>
+                    <div class="modal-info-badge" id="btnNetflixInfo" onclick="openInfoModal(event)" title="Important Notice">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="8" x2="12" y2="12"></line>
+                            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                        </svg>
+                    </div>
                 </div>
             </div>
         </div>
@@ -534,42 +535,32 @@
                 document.documentElement.style.setProperty('--app-height', `${window.innerHeight}px`);
             }
             
-            // KILLED the 'resize' event listener here! 
-            // Now, the URL bar hiding will NEVER trigger a height recalculation.
-            
-            // We only recalculate if the user physically rotates their phone sideways
             window.addEventListener('orientationchange', () => {
-                setTimeout(setMobileHeight, 150); // Small delay to let the OS finish rotating
+                setTimeout(setMobileHeight, 150); 
             });
             
-            // Set it once on initial load and lock it in forever
             setMobileHeight();
             
-            // --- 1. NETFLIX PAGE TRANSITION LOGIC ---
+            // --- 1. PAGE TRANSITION LOGIC ---
             const mainContent = document.getElementById('main-content');
             document.querySelectorAll('a').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
                     const target = this.getAttribute('href');
                     
-                    // Proceed if the link is internal (doesn't start with http) and not opening in a new tab
                     if (target && !target.startsWith('http') && this.getAttribute('target') !== '_blank') {
                         e.preventDefault();
                         
-                        // Normalize the current path (strip leading slashes and .html)
                         let currentPath = window.location.pathname.replace(/^\/|\.html$/g, '');
                         if (currentPath === 'index' || currentPath === '') currentPath = '/';
                         
-                        // Normalize the target path (strip leading slashes and .html)
                         let targetPath = target.replace(/^\/|\.html$/g, '');
                         if (targetPath === 'index' || targetPath === '') targetPath = '/';
 
-                        // If clicking the link of the page we are already on, just scroll to top
                         if (targetPath === currentPath) {
                             window.scrollTo({ top: 0, behavior: 'smooth' });
                             return;
                         }
 
-                        // Otherwise, trigger the Netflix exit animation
                         mainContent.classList.add('page-exit');
                         setTimeout(() => {
                             window.location.href = target;
@@ -636,11 +627,9 @@
                 const publicKey = 'sb_publishable_JnbZR8QXlz9UobvUllaC8g_AftASi9_'; 
 
                 const books = document.querySelectorAll('.book-item.downloadable-book');
-                console.log(`[Diagnostic] Found ${books.length} books to check.`);
-
+                
                 for (let book of books) {
                     const filename = book.getAttribute('data-filename');
-                    console.log(`[Diagnostic] Requesting downloads for: ${filename}`);
                     
                     try {
                         const safeFilename = encodeURIComponent(filename);
@@ -656,7 +645,6 @@
                         });
 
                         if (!response.ok) {
-                            console.error(`[Error] Supabase rejected request for ${filename}:`, await response.text());
                             continue;
                         }
 
@@ -669,22 +657,18 @@
                             count = data.length;
                         }
 
-                        console.log(`[Diagnostic] Database returned count: ${count} for ${filename}`);
                         const formattedString = formatDownloadCount(count);
-
                         let tags = JSON.parse(book.getAttribute('data-tags') || "[]");
                         tags = tags.filter(tag => !tag.includes('Download'));
                         tags.push(formattedString);
                         
                         book.setAttribute('data-tags', JSON.stringify(tags));
-                        console.log(`[Diagnostic] Successfully updated HTML tags to:`, tags);
                     } catch (error) {
-                        console.error(`[Error] Network/parsing failure for ${filename}:`, error);
+                        // Suppressed error log for cleaner console
                     }
                 }
             }
 
-            // Fire the fetch command as soon as the rest of the script is loaded
             fetchRealTimeDownloads();
 
             // --- 5. MODAL LOGIC ---
@@ -692,10 +676,8 @@
             const infoModal = document.getElementById('infoModal');
             let currentActiveBook = null; 
             
-            // NEW: Tracks if we pushed a fake state to the phone's history
             let isModalHistoryPushed = false;
 
-            // Updated: Accepts a flag so we don't accidentally double-trigger the back button
             window.closeAllModals = function(fromBackButton = false) {
                 netflixModal.classList.remove('active');
                 infoModal.classList.remove('active');
@@ -710,7 +692,6 @@
                     document.documentElement.classList.remove('no-scroll');
                 }
                 
-                // NEW: If closed manually via 'X' or background click, clean up the fake history
                 if (!fromBackButton && isModalHistoryPushed) {
                     isModalHistoryPushed = false;
                     history.back(); 
@@ -719,10 +700,8 @@
                 }
             }
 
-            // NEW: Listens for the physical Android Back Button
             window.addEventListener('popstate', function(event) {
                 if (isModalHistoryPushed) {
-                    // Triggers the close UI sequence, but tells it NOT to fire history.back() again
                     closeAllModals(true); 
                 }
             });
@@ -741,7 +720,6 @@
                 document.body.classList.add('no-scroll');
                 document.documentElement.classList.add('no-scroll');
                 
-                // NEW: Push a dummy state to the browser history to trap the back button
                 if (!isModalHistoryPushed) {
                     history.pushState({ modal: 'open' }, '');
                     isModalHistoryPushed = true;
@@ -833,30 +811,29 @@
                 }
             });
 
-            // --- 6. COLOR CYCLING LOGIC (ROYAL COLORS) ---
+            // --- 6. COLOR CYCLING LOGIC (GOOGLE CORE COLORS) ---
             const colorBtn = document.getElementById('colorBtn');
-            const royalColors = [
-                '#5c4000', // Antique Gold
-                '#800020', // Classic Burgundy
-                '#002147', // Royal Sapphire
-                '#3b1459', // Imperial Amethyst
-                '#0a3a2a'  // Emerald Forest
+            const googleColors = [
+                '#4285F4', // Google Blue
+                '#EA4335', // Google Red
+                '#FBBC05', // Google Yellow
+                '#34A853'  // Google Green
             ];
             
             let currentColorIndex = 0;
             const savedColor = localStorage.getItem('vanisagara_hero_glow');
             
             if (savedColor) {
-                const foundIndex = royalColors.indexOf(savedColor);
+                const foundIndex = googleColors.indexOf(savedColor);
                 if (foundIndex !== -1) {
                     currentColorIndex = foundIndex;
-                    document.documentElement.style.setProperty('--hero-glow', royalColors[currentColorIndex]);
+                    document.documentElement.style.setProperty('--hero-glow', googleColors[currentColorIndex]);
                 }
             }
 
             colorBtn.addEventListener('click', () => {
-                currentColorIndex = (currentColorIndex + 1) % royalColors.length;
-                const newColor = royalColors[currentColorIndex];
+                currentColorIndex = (currentColorIndex + 1) % googleColors.length;
+                const newColor = googleColors[currentColorIndex];
                 
                 document.documentElement.style.setProperty('--hero-glow', newColor);
                 localStorage.setItem('vanisagara_hero_glow', newColor);
@@ -870,39 +847,30 @@
                 hamburgerBtn.addEventListener('click', () => {
                     mobileMenu.classList.toggle('active');
                     
-                    // NEW: Toggle the scroll handbrake on the body
                     document.body.classList.toggle('no-scroll');
                     
-                    // Morph hamburger icon to 'X' when open
                     if (mobileMenu.classList.contains('active')) {
-                        hamburgerBtn.innerHTML = `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>`;
+                        hamburgerBtn.innerHTML = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>`;
                     } else {
-                        hamburgerBtn.innerHTML = `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>`;
+                        hamburgerBtn.innerHTML = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>`;
                     }
                 });
 
-                // Close menu if a link inside it is clicked
                 const menuLinks = mobileMenu.querySelectorAll('a');
                 menuLinks.forEach(link => {
                     link.addEventListener('click', () => {
                         mobileMenu.classList.remove('active');
-                        
-                        // NEW: Release the scroll handbrake
                         document.body.classList.remove('no-scroll');
-                        
-                        hamburgerBtn.innerHTML = `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>`;
+                        hamburgerBtn.innerHTML = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>`;
                     });
                 });
             }
             
-            // --- 8. UNIVERSAL SCROLL MEMORY (The Perfected App Mode) ---
-            
-            // 1. Shut down the browser's native scroll engine so it stops fighting our code
+            // --- 8. UNIVERSAL SCROLL MEMORY ---
             if ('scrollRestoration' in history) {
                 history.scrollRestoration = 'manual';
             }
 
-            // Normalize the URL path so "/" and "/index.html" share the exact same memory
             let currentPath = window.location.pathname;
             if (currentPath.endsWith('/')) {
                 currentPath += 'index.html';
@@ -910,7 +878,6 @@
             
             const scrollKey = 'vanisagara_scroll_' + currentPath;
             
-            // 2. Check the browser's flight recorder to see exactly HOW the user got here
             const navType = performance.getEntriesByType("navigation")[0]?.type;
             const previousPath = sessionStorage.getItem('vanisagara_current_page');
             
@@ -919,34 +886,27 @@
                                         (navType === 'navigate' && previousPath === currentPath);
             
             if (isRefreshEquivalent) {
-                // It's a refresh or back-button return: restore the scroll position
                 const savedScrollPosition = sessionStorage.getItem(scrollKey);
                 if (savedScrollPosition !== null) {
                     
-                    // Temporarily kill the CSS smooth scrolling so it doesn't fight the instant jump
                     document.documentElement.style.scrollBehavior = 'auto';
                     
-                    // Jump IMMEDIATELY before the browser paints the first frame (no setTimeout!)
                     window.scrollTo({
                         top: parseInt(savedScrollPosition, 10),
                         behavior: 'instant' 
                     });
                     
-                    // Turn CSS smooth scrolling back on a split-second later for normal navigation
                     setTimeout(() => {
                         document.documentElement.style.scrollBehavior = 'smooth';
                     }, 50);
                 }
             } else {
-                // Fresh visit from a link: wipe memory AND mathematically guarantee we start at the top
                 sessionStorage.removeItem(scrollKey);
                 window.scrollTo({ top: 0, behavior: 'instant' });
             }
 
-            // Update the "current page" tracker for the next navigation action
             sessionStorage.setItem('vanisagara_current_page', currentPath);
 
-            // 3. Quietly save the scroll position as the user scrolls
             let scrollTimeout;
             window.addEventListener('scroll', () => {
                 clearTimeout(scrollTimeout);
