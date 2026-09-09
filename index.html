@@ -175,7 +175,6 @@
         /* The physical tap effect (snaps back instantly when released) */
         .btn-primary:active { transform: translateZ(0); opacity: 0.7; transition: opacity 0.1s ease; }
         .hero-image { position: absolute; bottom: 0; right: 5%; height: 85vh; max-height: 100%; width: auto; max-width: 45%; object-fit: contain; object-position: bottom right; display: block; z-index: 2; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.4)); pointer-events: none; transition: opacity 0.5s ease; }
-        .rare-overlay { z-index: 3; opacity: 0; transition: opacity 1.5s ease-in-out; }
 
         /* --- NETFLIX-STYLE LIBRARY SECTION --- */
         .library { position: relative; width: 100%; padding: 180px 0 120px; z-index: 11; background-color: var(--bg-main); transition: background-color 0.4s ease; min-height: 100vh; }
@@ -413,9 +412,6 @@
                 <!-- Main Śrīla Prabhupāda Image -->
 				<img id="prabhupada-img" src="images/edited/prabhupada.webp" alt="Śrīla Prabhupāda" class="hero-image">
 
-				<!-- Rare Rādhā-Kṛṣṇa Overlay -->
-				<img id="prabhupada-rare-img" src="images/edited/prabhupada-rare.webp" alt="Śrī Śrī Rādhā-Kṛṣṇa Revelation" class="hero-image rare-overlay">
-
             </div>
         </header>
 
@@ -580,21 +576,7 @@
                 });
             });
 
-            // --- 2. EASTER EGG FADE LOGIC ---
-            const prabhupadaImage = document.getElementById('prabhupada-img');
-            function handleEasterEggRoll() {
-                const rareOverlay = document.getElementById('prabhupada-rare-img');
-                if (!rareOverlay) return;
-                const rareProbability = 1e-109;
-                const rollIsRare = Math.random() < rareProbability;
-                if (rollIsRare) {
-                    rareOverlay.style.opacity = '1';
-                } else {
-                    rareOverlay.style.opacity = '0';
-                }
-            }
-
-            // --- 3. LOCAL STORAGE THEME TOGGLE LOGIC ---
+            // --- 2. LOCAL STORAGE THEME TOGGLE LOGIC ---
             const themeBtn = document.getElementById('themeBtn');
             const root = document.documentElement;
             const icon = document.getElementById('theme-icon');
@@ -619,15 +601,14 @@
                     localStorage.setItem('vanisagara_theme', 'dark');
                     icon.innerHTML = sunSvg;
                 }
-                handleEasterEggRoll();
             });
 
-            // --- 4. SCROLL TO LIBRARY ---
+            // --- 3. SCROLL TO LIBRARY ---
             window.scrollToLibrary = function() {
                 document.getElementById('library-section').scrollIntoView({ behavior: 'smooth' });
             };
 
-            // --- 5. REAL-TIME DATABASE FETCH LOGIC ---
+            // --- 4. REAL-TIME DATABASE FETCH LOGIC ---
             function formatDownloadCount(num) {
                 if (num === 0) return "0 Downloads";
                 if (num === 1) return "1 Download"; 
@@ -704,7 +685,7 @@
             // Fire the fetch command as soon as the rest of the script is loaded
             fetchRealTimeDownloads();
 
-            // --- 6. MODAL LOGIC ---
+            // --- 5. MODAL LOGIC ---
             const netflixModal = document.getElementById('netflixModal');
             const infoModal = document.getElementById('infoModal');
             let currentActiveBook = null; 
@@ -850,7 +831,7 @@
                 }
             });
 
-            // --- 7. COLOR CYCLING LOGIC (ROYAL COLORS) ---
+            // --- 6. COLOR CYCLING LOGIC (ROYAL COLORS) ---
             const colorBtn = document.getElementById('colorBtn');
             const royalColors = [
                 '#5c4000', // Antique Gold
@@ -877,11 +858,9 @@
                 
                 document.documentElement.style.setProperty('--hero-glow', newColor);
                 localStorage.setItem('vanisagara_hero_glow', newColor);
-
-                handleEasterEggRoll();
             });
 		
-			// --- 8. MOBILE HAMBURGER MENU LOGIC ---
+			// --- 7. MOBILE HAMBURGER MENU LOGIC ---
             const hamburgerBtn = document.getElementById('hamburgerBtn');
             const mobileMenu = document.getElementById('mobileMenu');
             
@@ -914,7 +893,7 @@
                 });
             }
             
-            // --- 9. UNIVERSAL SCROLL MEMORY (The Perfected App Mode) ---
+            // --- 8. UNIVERSAL SCROLL MEMORY (The Perfected App Mode) ---
             
             // 1. Shut down the browser's native scroll engine so it stops fighting our code
             if ('scrollRestoration' in history) {
