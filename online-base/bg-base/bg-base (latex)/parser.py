@@ -10,25 +10,20 @@ OUTPUT_FILE = "chapters.json"
 def clean_latex_formatting(text):
     """Surgically cleans text, handles nested bold/italics, and strips raw LaTeX."""
     if not text: return ""
-    
-    # Strip raw layout commands and the document end tag
     text = text.replace('\\noindent', '').replace('\\devanagari\\setstretch{0.85}', '').replace('\\centering', '')
     text = text.replace('\\end{document}', '')
     
-    # Recursively un-nest bold and italics safely to prevent HTML bleeding
     while True:
         new_text = re.sub(r'\\textbf\{([^{}]+)\}', r'<strong>\1</strong>', text)
         new_text = re.sub(r'\\textit\{([^{}]+)\}', r'<em>\1</em>', new_text)
         if new_text == text: break
         text = new_text
         
-    # THE KILL SWITCH: Strip any remaining raw tags and braces
     text = text.replace('\\textbf', '').replace('\\textit', '')
     text = text.replace('{', '').replace('}', '')
     return text.strip()
 
 def process_inline(text):
-    """Processes simple text blocks (Synonyms, Translation, Devanagari)."""
     if not text: return ""
     text = re.sub(r'\\[vh]space\*?(?:\{[^}]*\}|\s*[0-9.]+[a-zA-Z]+)', '', text)
     text = re.sub(r'\\\\(?:\*)?\[.*?\]\s*', '<br><br>', text)
@@ -39,12 +34,9 @@ def process_inline(text):
     return text.strip()
 
 def process_purport(text):
-    """Processes complex purports, creating quote blocks and paragraph tags."""
     if not text: return ""
-    
     text = re.sub(r'\\vspace\*?(?:\{[^}]*\}|\s*[0-9.]+[a-zA-Z]+)?\s*\\textit\{Thus end the Bhaktivedanta.*', '', text, flags=re.DOTALL)
     text = re.sub(r'\\[vh]space\*?(?:\{[^}]*\}|\s*[0-9.]+[a-zA-Z]+)', '', text)
-    
     text = re.sub(r'\{\s*\\centering(.*?)\\par\}', r'\n\n<blockquote class="quote-block">\1</blockquote>\n\n', text, flags=re.DOTALL)
     text = re.sub(r'\{\s*\\centering(.*?)\}', r'\n\n<blockquote class="quote-block">\1</blockquote>\n\n', text, flags=re.DOTALL)
     
@@ -72,22 +64,22 @@ def process_purport(text):
             
     return '\n'.join(html_blocks)
 
-def parse_chapter(filepath):
+def parse_chapter(filepath, index):
     with open(filepath, 'r', encoding='utf-8') as f:
         content = f.read()
 
-    # Safely extract chapter number as a word (e.g., "ONE")
-    chapter_num_match = re.search(r'CHAPTER\s+([A-Za-z]+)', content)
-    chapter_title_match = re.search(r'\\fontsize\{19pt\}\{21pt\}\\selectfont\\textbf\{(.*?)\}', content, re.DOTALL)
+    # Automatically assign the correct word based on the file sequence
+    words = ["ONE", "TWO", "THREE", "FOUR", "FIVE", "SIX", "SEVEN", "EIGHT", "NINE", "TEN", "ELEVEN", "TWELVE", "THIRTEEN", "FOURTEEN", "FIFTEEN", "SIXTEEN", "SEVENTEEN", "EIGHTEEN"]
+    chapter_word = words[index] if index < len(words) else str(index + 1)
     
-    # Process \\* into HTML <br> tags natively in the JSON
+    chapter_title_match = re.search(r'\\fontsize\{19pt\}\{21pt\}\\selectfont\\textbf\{(.*?)\}', content, re.DOTALL)
     raw_title = chapter_title_match.group(1) if chapter_title_match else "UNKNOWN"
     title_with_br = re.sub(r'\\\\(?:\*)?\s*', '<br>', raw_title)
-    clean_title = clean_latex_formatting(title_with_br)
 
     chapter_data = {
-        "chapter_number": chapter_num_match.group(1) if chapter_num_match else "UNKNOWN",
-        "chapter_title": clean_title,
+        "chapter_id": index + 1,
+        "chapter_number": chapter_word,
+        "chapter_title": clean_latex_formatting(title_with_br),
         "verses": []
     }
 
@@ -145,7 +137,7 @@ def main():
     
     for idx, f in enumerate(files):
         print(f" -> Processing {os.path.basename(f)}...")
-        chapter_json = parse_chapter(f)
+        chapter_json = parse_chapter(f, idx)
         book_data["chapters"].append(chapter_json)
         
     with open(OUTPUT_FILE, 'w', encoding='utf-8') as f:

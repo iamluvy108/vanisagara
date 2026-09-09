@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vāṇīsāgara (The Sanctum)</title>
     
-    <!-- IMPORT NOTO SERIF -->
+    <!-- IMPORT NOTO SERIF & NOTO SERIF DEVANAGARI -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Devanagari:wght@400;600;700&family=Noto+Serif:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap" rel="stylesheet">
     
     <script>
         const savedTheme = localStorage.getItem('vanisagara_theme');
@@ -18,12 +18,12 @@
     <style>
         :root {
             /* DARK MODE */
-            --bg-main: #000000; /* Deep black system background */
+            --bg-main: #000000; 
             --bg-nav: rgba(0, 0, 0, 0.7); 
             --text-primary: #f5f5f7; 
             --text-secondary: #86868b; 
             --accent: #ffffff; 
-            --card-bg: #141414; /* Elevated dark card */
+            --card-bg: #141414; 
             --border: rgba(255, 255, 255, 0.1);
             --toc-link-color: #d1bfae; 
             --toc-hover-color: #ffffff;
@@ -34,12 +34,12 @@
 
         [data-theme="light"] {
             /* LIGHT MODE */
-            --bg-main: #f5f5f7; /* iOS Grey system background */
+            --bg-main: #f5f5f7; 
             --bg-nav: rgba(245, 245, 247, 0.7); 
             --text-primary: #000000; 
             --text-secondary: #5e5e60; 
             --accent: #1d1d1f; 
-            --card-bg: #ffffff; /* Elevated white card */
+            --card-bg: #ffffff; 
             --border: rgba(0, 0, 0, 0.08);
             --toc-link-color: #8c2318; 
             --toc-hover-color: #000000;
@@ -100,11 +100,13 @@
             display: flex;
             flex-direction: column;
             transition: background-color 0.4s ease, box-shadow 0.4s ease;
+            font-family: 'Noto Serif', serif; /* Enforce global Noto Serif inside card */
         }
         [data-theme="light"] .ios-card { box-shadow: 0 10px 40px rgba(0,0,0,0.06); }
+        .ios-card * { font-family: 'Noto Serif', serif; }
 
         .sanctum-header { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 50px; width: 100%; }
-        .sanctum-title { font-size: clamp(40px, 6vw, 72px); font-weight: 400; line-height: 1.1; margin-bottom: 16px; font-family: 'Noto Serif', serif; color: var(--text-primary); }
+        .sanctum-title { font-size: clamp(40px, 6vw, 72px); font-weight: 400; line-height: 1.1; margin-bottom: 16px; color: var(--text-primary); }
 
         .divider { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; justify-content: center; width: 100%; }
         .divider-line { height: 1px; width: 60px; background-color: var(--text-secondary); opacity: 0.5; }
@@ -119,13 +121,13 @@
 
         /* --- ADVANCED VIEW CONTROLS --- */
         .advanced-controls-bar { width: 100%; display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; flex-wrap: wrap; gap: 15px; border-bottom: 1px solid var(--border); padding-bottom: 20px; }
-        .control-btn { background: var(--btn-bg); border: 1px solid var(--border); color: var(--btn-text); padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 14px; font-weight: 600; transition: background 0.2s; font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+        .control-btn { background: var(--btn-bg); border: 1px solid var(--border); color: var(--btn-text); padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 14px; font-weight: 600; transition: background 0.2s; font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif !important; }
         .control-btn.active { background: var(--reader-red); color: white; border-color: var(--reader-red); }
         .filters-group { display: flex; gap: 10px; flex-wrap: wrap; }
 
         /* --- CHAPTER & VERSE READER VIEWS --- */
         .reader-container { width: 100%; z-index: 2; }
-        .back-btn { background: none; border: none; color: var(--text-secondary); font-size: 16px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; margin-bottom: 40px; font-weight: 500; transition: opacity 0.2s; font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif; padding: 0; }
+        .back-btn { background: none; border: none; color: var(--text-secondary); font-size: 16px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; margin-bottom: 40px; font-weight: 500; transition: opacity 0.2s; font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif !important; padding: 0; }
         @media (hover: hover) { .back-btn:hover { opacity: 0.7; } }
         .back-btn:active { opacity: 0.5; }
 
@@ -134,7 +136,7 @@
         .verse-block { margin-bottom: 100px; border-bottom: 1px solid var(--border); padding-bottom: 60px; }
         .verse-block:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
         
-        /* New Summary List Layout */
+        /* Summary List Layout */
         .verse-summary-item { font-size: 22px; line-height: 1.7; text-align: justify; text-justify: inter-word; padding-bottom: 30px; margin-bottom: 30px; border-bottom: 1px solid var(--border); }
         .verse-summary-item:last-child { border-bottom: none; }
         .verse-summary-link { color: var(--reader-red); font-weight: 700; text-decoration: none; cursor: pointer; transition: opacity 0.2s; letter-spacing: 0.05em; }
@@ -142,11 +144,14 @@
 
         .verse-number { color: var(--reader-red); font-size: 36px; font-weight: 700; text-align: center; margin-bottom: 40px; letter-spacing: 0.05em; cursor: pointer; display: inline-block; width: 100%; }
         .verse-number:hover { opacity: 0.8; text-decoration: underline; }
+        
+        /* Non-clickable Title for Single Verse View */
+        .verse-number-static { color: var(--reader-red); font-size: 36px; font-weight: 700; text-align: center; margin-bottom: 40px; letter-spacing: 0.05em; display: inline-block; width: 100%; }
 
         .section-label { font-size: 30px; font-weight: 700; text-align: center; margin-bottom: 12px; letter-spacing: 0.05em; margin-top: 55px; text-transform: uppercase; }
         
-        /* Unified Body Text (22px) and Increased Devanagari */
-        .devanagari-text { text-align: center; font-size: 37px; line-height: 1.8; margin-bottom: 32px; font-weight: 600; }
+        /* Explicit Devanagari Font Enforcement */
+        .devanagari-text { text-align: center; font-size: 35.4px; line-height: 1.8; margin-bottom: 32px; font-weight: 600; font-family: 'Noto Serif Devanagari', 'Noto Serif', serif !important; }
         .roman-text { text-align: center; font-size: 22px; line-height: 1.6; margin-bottom: 40px; font-style: italic; }
         
         .synonyms-text { font-size: 22px; line-height: 1.8; margin-bottom: 36px; text-align: justify; text-justify: inter-word; }
@@ -163,9 +168,12 @@
 
         /* --- PREMIUM NAVIGATION FOOTER BUTTONS --- */
         .verse-nav-footer { display: flex; justify-content: space-between; margin-top: 80px; padding-top: 40px; border-top: 1px solid var(--border); width: 100%; }
-        .nav-verse-btn { background: var(--btn-bg); color: var(--btn-text); border: none; padding: 14px 28px; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; text-decoration: none; transition: transform 0.2s ease, opacity 0.2s ease; font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-        @media (hover: hover) { .nav-verse-btn:hover { opacity: 0.85; transform: translateZ(0) scale(1.02); } }
-        .nav-verse-btn:active { transform: scale(0.98); opacity: 0.6; }
+        .nav-verse-btn { background: var(--btn-bg); color: var(--btn-text); border: none; padding: 14px 28px; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; text-decoration: none; transition: transform 0.2s ease, opacity 0.2s ease; font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif !important; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        @media (hover: hover) { .nav-verse-btn:hover:not(.locked-btn) { opacity: 0.85; transform: translateZ(0) scale(1.02); } }
+        .nav-verse-btn:active:not(.locked-btn) { transform: scale(0.98); opacity: 0.6; }
+        
+        /* Locked Navigation Button State */
+        .locked-btn { opacity: 0.3 !important; pointer-events: none; cursor: default; box-shadow: none; }
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
@@ -181,7 +189,6 @@
             
             nav { justify-content: space-between; padding: 0 5%; position: fixed; top: 0; width: 100%; height: 60px; z-index: 9999 !important; display: flex; align-items: center; }
             .nav-brand { position: absolute; left: 50%; top: 55%; transform: translate(-50%, -50%); display: flex; align-items: center; justify-content: center; }
-            nav .vanisagara-text { display: none !important; } 
             .brand-icon { width: 44px; height: 44px; margin-right: 0; }
             .nav-controls { width: 100%; height: 100%; display: flex; justify-content: space-between; align-items: center; }
             .nav-icons { order: 1; display: flex; align-items: center; gap: 15px; } 
@@ -196,7 +203,7 @@
             .mobile-menu-overlay { display: flex; position: fixed; top: 0; left: 0; width: 100%; height: 100dvh; background-color: var(--bg-main); z-index: 9998; flex-direction: column; justify-content: center; align-items: center; padding-top: 0; padding-bottom: 12vh; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; }
             .mobile-menu-overlay.active { opacity: 1; visibility: visible; }
             .mobile-menu-content { display: flex; flex-direction: column; align-items: center; gap: 14px; }
-            .mobile-menu-content > * { opacity: 0; transform: translateY(-15px); transition: opacity 0.2s ease, transform 0.2s ease; font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+            .mobile-menu-content > * { opacity: 0; transform: translateY(-15px); transition: opacity 0.2s ease, transform 0.2s ease; font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif !important; }
             .mobile-menu-overlay.active .mobile-menu-content > *:nth-child(1) { transition: opacity 0.4s ease 0.1s, transform 0.4s cubic-bezier(0.16,1,0.3,1) 0.1s; opacity: 1; transform: translateY(0); }
             .mobile-menu-overlay.active .mobile-menu-content > *:nth-child(2) { transition: opacity 0.4s ease 0.2s, transform 0.4s cubic-bezier(0.16,1,0.3,1) 0.2s; opacity: 1; transform: translateY(0); }
             .mobile-menu-overlay.active .mobile-menu-content > *:nth-child(3) { transition: opacity 0.4s ease 0.3s, transform 0.4s cubic-bezier(0.16,1,0.3,1) 0.3s; opacity: 1; transform: translateY(0); }
@@ -215,9 +222,10 @@
             .verse-block { margin-bottom: 60px; padding-bottom: 40px; }
             
             .verse-summary-item { font-size: 20px; }
-            .verse-number { font-size: 28px; margin-bottom: 30px; }
+            .verse-number, .verse-number-static { font-size: 28px; margin-bottom: 30px; }
             .section-label { font-size: 24px; margin-bottom: 10px; margin-top: 40px; }
-            .devanagari-text { font-size: 31px; }
+            
+            .devanagari-text { font-size: 29.4px; }
             .roman-text, .synonyms-text, .translation-text, .purport-text { font-size: 20px; }
             .quote-block { font-size: 20px; margin: 22px 0; }
         }
@@ -335,7 +343,6 @@
                     
                     <div id="single-verse-chapter-title" class="reader-chapter-title"></div>
                     
-                    <!-- Added margin to increase the gap from the title -->
                     <div id="single-verse-container" style="margin-top: 80px; width: 100%;"></div>
                     
                     <div class="verse-nav-footer">
@@ -393,7 +400,7 @@
                     viewBooks.classList.add('active');
                 } 
                 else if (path === "/sanctum/bg") {
-                    // Reset Advanced View safely whenever returning to Chapter choice
+                    // Turn off advanced view automatically when returning to chapters
                     isAdvancedView = false;
                     const advBtn = document.getElementById('adv-toggle-btn');
                     if (advBtn) { advBtn.textContent = 'Advanced View: Off'; advBtn.classList.remove('active'); }
@@ -440,10 +447,11 @@
                 book.chapters.forEach(chap => {
                     const link = document.createElement('a');
                     link.className = 'toc-link';
-                    // Replaces the <br> from the parsed JSON with a space for the list view
+                    // Strip the <br> for the list view layout
                     const cleanTitle = chap.chapter_title.replace(/<br>/g, ' ');
                     link.innerHTML = `Chapter ${chap.chapter_number}: ${cleanTitle}`;
-                    link.onclick = () => { router(`/sanctum/bg/${chap.chapter_number}/`); };
+                    // Route via the safe chapter_id (e.g. 1, 2)
+                    link.onclick = () => { router(`/sanctum/bg/${chap.chapter_id}/`); };
                     container.appendChild(link);
                 });
 
@@ -458,13 +466,12 @@
                 });
             }
 
-            function renderChapterContent(chapNum) {
+            function renderChapterContent(chapId) {
                 if (booksData.length === 0) return;
                 const book = booksData[0];
-                currentChapterObj = book.chapters.find(c => c.chapter_number == chapNum);
+                currentChapterObj = book.chapters.find(c => c.chapter_id == chapId);
                 if (!currentChapterObj) return;
 
-                // Swapped Font Sizes and Bolding Hierarchy
                 document.getElementById('content-chapter-title').innerHTML = `
                     <span style="font-size: 20px; font-weight: 500; display: block; margin-bottom: 12px; letter-spacing: 0.1em; color: var(--text-secondary); text-transform: uppercase;">Chapter ${currentChapterObj.chapter_number}</span>
                     <span style="font-size: 40px; font-weight: 700; line-height: 1.25; display: block; color: var(--text-primary);">${currentChapterObj.chapter_title}</span>
@@ -502,7 +509,7 @@
                         let cleanTranslation = verse.translation ? verse.translation.replace(/<\/?p[^>]*>/g, '') : '';
 
                         html += `<div class="verse-summary-item vanisagara-text">
-                            <a onclick="router('/sanctum/bg/${currentChapterObj.chapter_number}/${verse.text_number}')" class="verse-summary-link">${textLabel}</a>: 
+                            <a onclick="router('/sanctum/bg/${currentChapterObj.chapter_id}/${verse.text_number}')" class="verse-summary-link">[${textLabel}]</a> 
                             <span style="font-weight: 400;">${cleanTranslation}</span>
                         </div>`;
                     });
@@ -514,7 +521,7 @@
                         let numStr = verse.text_number.toUpperCase();
                         let textLabel = numStr.includes('-') ? `TEXTS ${numStr}` : `TEXT ${numStr}`;
                         
-                        html += `<a onclick="router('/sanctum/bg/${currentChapterObj.chapter_number}/${verse.text_number}')" style="text-decoration: none;"><div class="verse-number">${textLabel}</div></a>`;
+                        html += `<a onclick="router('/sanctum/bg/${currentChapterObj.chapter_id}/${verse.text_number}')" style="text-decoration: none;"><div class="verse-number">${textLabel}</div></a>`;
                         
                         if (verse.devanagari && activeFilters.devanagari) html += `<div class="devanagari-text">${verse.devanagari}</div>`;
                         if (verse.roman && activeFilters.roman) html += `<div class="roman-text">${verse.roman}</div>`;
@@ -528,23 +535,22 @@
                 }
             }
 
-            function renderSingleVerse(chapNum, textNum) {
+            function renderSingleVerse(chapId, textNum) {
                 if (booksData.length === 0) return;
                 const book = booksData[0];
-                const chapter = book.chapters.find(c => c.chapter_number == chapNum);
+                const chapter = book.chapters.find(c => c.chapter_id == chapId);
                 if (!chapter) return;
 
                 const verseIndex = chapter.verses.findIndex(v => v.text_number == textNum);
                 const verse = chapter.verses[verseIndex];
                 if (!verse) return;
 
-                // Swapped Font Sizes and Bolding Hierarchy
                 document.getElementById('single-verse-chapter-title').innerHTML = `
                     <span style="font-size: 20px; font-weight: 500; display: block; margin-bottom: 12px; letter-spacing: 0.1em; color: var(--text-secondary); text-transform: uppercase;">Chapter ${chapter.chapter_number}</span>
                     <span style="font-size: 40px; font-weight: 700; line-height: 1.25; display: block; color: var(--text-primary);">${chapter.chapter_title}</span>
                 `;
                 
-                document.getElementById('verse-back-btn').setAttribute('onclick', `router('/sanctum/bg/${chapter.chapter_number}/')`);
+                document.getElementById('verse-back-btn').setAttribute('onclick', `router('/sanctum/bg/${chapter.chapter_id}/')`);
 
                 const container = document.getElementById('single-verse-container');
                 container.innerHTML = '';
@@ -553,7 +559,8 @@
                 let numStr = verse.text_number.toUpperCase();
                 let textLabel = numStr.includes('-') ? `TEXTS ${numStr}` : `TEXT ${numStr}`;
                 
-                html += `<div class="verse-number" onclick="router('/sanctum/bg/${chapter.chapter_number}/')">${textLabel}</div>`;
+                // Uses the unclickable class for the single verse view
+                html += `<div class="verse-number-static">${textLabel}</div>`;
                 
                 if (verse.devanagari) html += `<div class="devanagari-text">${verse.devanagari}</div>`;
                 if (verse.roman) html += `<div class="roman-text">${verse.roman}</div>`;
@@ -568,17 +575,19 @@
                 const nextBtn = document.getElementById('next-verse-btn');
 
                 if (verseIndex > 0) {
-                    prevBtn.style.visibility = 'visible';
-                    prevBtn.onclick = () => router(`/sanctum/bg/${chapter.chapter_number}/${chapter.verses[verseIndex - 1].text_number}`);
+                    prevBtn.classList.remove('locked-btn');
+                    prevBtn.onclick = () => router(`/sanctum/bg/${chapter.chapter_id}/${chapter.verses[verseIndex - 1].text_number}`);
                 } else {
-                    prevBtn.style.visibility = 'hidden';
+                    prevBtn.classList.add('locked-btn');
+                    prevBtn.onclick = null;
                 }
 
                 if (verseIndex < chapter.verses.length - 1) {
-                    nextBtn.style.visibility = 'visible';
-                    nextBtn.onclick = () => router(`/sanctum/bg/${chapter.chapter_number}/${chapter.verses[verseIndex + 1].text_number}`);
+                    nextBtn.classList.remove('locked-btn');
+                    nextBtn.onclick = () => router(`/sanctum/bg/${chapter.chapter_id}/${chapter.verses[verseIndex + 1].text_number}`);
                 } else {
-                    nextBtn.style.visibility = 'hidden';
+                    nextBtn.classList.add('locked-btn');
+                    nextBtn.onclick = null;
                 }
             }
 
@@ -624,6 +633,33 @@
                     });
                 });
             }
+
+            if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
+            let currentPath = window.location.pathname;
+            if (currentPath.endsWith('/')) { currentPath += 'index.html'; }
+            const scrollKey = 'vanisagara_scroll_' + currentPath;
+            const navType = performance.getEntriesByType("navigation")[0]?.type;
+            const previousPath = sessionStorage.getItem('vanisagara_current_page');
+            const isRefreshEquivalent = (navType === 'reload') || (navType === 'back_forward') || (navType === 'navigate' && previousPath === currentPath);
+            
+            if (isRefreshEquivalent) {
+                const savedScrollPosition = sessionStorage.getItem(scrollKey);
+                if (savedScrollPosition !== null) {
+                    document.documentElement.style.scrollBehavior = 'auto';
+                    window.scrollTo({ top: parseInt(savedScrollPosition, 10), behavior: 'instant' });
+                    setTimeout(() => { document.documentElement.style.scrollBehavior = 'smooth'; }, 50);
+                }
+            } else {
+                sessionStorage.removeItem(scrollKey);
+                window.scrollTo({ top: 0, behavior: 'instant' });
+            }
+            sessionStorage.setItem('vanisagara_current_page', currentPath);
+
+            let scrollTimeout;
+            window.addEventListener('scroll', () => {
+                clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(() => { sessionStorage.setItem(scrollKey, window.scrollY); }, 150);
+            });
         });
     </script>
 </body>
