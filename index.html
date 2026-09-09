@@ -24,50 +24,52 @@
         @property --hero-glow {
             syntax: '<color>';
             inherits: true;
-            initial-value: #5c4000;
+            initial-value: #1a73e8;
         }
 
-        /* --- THEME VARIABLES --- */
+        /* --- GOOGLE MATERIAL THEME VARIABLES --- */
         :root {
-            --bg-main: #141414;
-            --bg-nav: rgba(20, 20, 20, 0.7);
-            --hero-glow: #5c4000;
-            --text-primary: #f5f5f7;
-            --text-secondary: #86868b;
-            --accent: #ffffff;
-            --btn-bg: #f5f5f7;
-            --btn-text: #000000;
-            --card-bg: #1e1e1e;
-            --border: rgba(255, 255, 255, 0.1);
-            --dropbox-blue: #0061FE;
-            --netflix-modal-bg: #181818;
-            --sys-yellow: #FFD60A;
-            --title-shadow: 0 2px 10px rgba(0,0,0,0.5); /* NEW: Cinematic shadow for Dark Mode */
+            --bg-main: #202124;
+            --bg-nav: rgba(32, 33, 36, 0.98);
+            --hero-glow: #1a73e8; /* Google Blue */
+            --text-primary: #e8eaed;
+            --text-secondary: #9aa0a6;
+            --accent: #8ab4f8;
+            --btn-bg: #8ab4f8;
+            --btn-text: #202124;
+            --card-bg: #303134;
+            --border: #5f6368;
+            --dropbox-blue: #8ab4f8; 
+            --netflix-modal-bg: #202124;
+            --sys-yellow: #fbbc04; /* Google Yellow */
+            --title-shadow: none; 
+            --google-shadow: 0 1px 2px 0 rgba(0,0,0,0.3), 0 1px 3px 1px rgba(0,0,0,0.15);
         }
 
         [data-theme="light"] {
             --bg-main: #ffffff;
-            --bg-nav: rgba(255, 255, 255, 0.7);
-            --text-primary: #000000;
-            --text-secondary: #5e5e60;
-            --accent: #1d1d1f;
-            --btn-bg: #1d1d1f;
+            --bg-nav: rgba(255, 255, 255, 0.98);
+            --text-primary: #202124;
+            --text-secondary: #5f6368;
+            --accent: #1a73e8;
+            --btn-bg: #1a73e8; /* Google Blue */
             --btn-text: #ffffff;
             --card-bg: #ffffff;
-            --border: rgba(0, 0, 0, 0.1);
-            --dropbox-blue: #0061FE;
+            --border: #dadce0;
+            --dropbox-blue: #1a73e8;
             --netflix-modal-bg: #ffffff;
-            --sys-yellow: #FFCC00;
-            --title-shadow: none; /* NEW: Removes muddy shadow in Light Mode */
+            --sys-yellow: #fbbc04;
+            --google-shadow: 0 1px 2px 0 rgba(60,64,67,0.3), 0 1px 3px 1px rgba(60,64,67,0.15);
         }
 
         html { scroll-behavior: smooth; }
 
+        /* --- GOOGLE TYPOGRAPHY --- */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-family: 'Product Sans', Roboto, -apple-system, BlinkMacSystemFont, Arial, sans-serif;
         }
 
         body {
@@ -95,10 +97,11 @@
             -webkit-font-smoothing: subpixel-antialiased;
         }
 
+        /* Override the Times New Roman lock for a clean modern sans */
         .vanisagara-text {
-            font-family: 'Times New Roman', Times, serif !important;
-            font-weight: 400 !important;
-            letter-spacing: 0.02em !important;
+            font-family: 'Product Sans', Roboto, sans-serif !important;
+            font-weight: 500 !important;
+            letter-spacing: -0.01em !important;
             -webkit-font-smoothing: auto !important;
             -moz-osx-font-smoothing: auto !important;
         }
@@ -149,12 +152,13 @@
         .hero h1 { display: block; width: fit-content; font-size: clamp(48px, 7vw, 110px); line-height: 1; margin-bottom: 30px; }
         .hero-title-text { display: block; white-space: nowrap; }
         .hero-title-logo { height: 1.36em; width: auto; object-fit: contain; vertical-align: middle; margin-right: 0.06em; margin-top: -0.5em; margin-bottom: -0.5em; position: relative; top: -0.05em; }
-        .hero-subtitle { display: block; font-size: 0.545em; color: var(--text-secondary); margin-top: 8px; white-space: nowrap; letter-spacing: 0.02em; font-family: 'Times New Roman', Times, serif; }
+        .hero-subtitle { display: block; font-size: 0.545em; color: var(--text-secondary); margin-top: 8px; white-space: nowrap; letter-spacing: 0.5px; font-weight: 400; }
         .divider { display: flex; align-items: center; gap: 10px; margin-bottom: 30px; }
         .divider-line { height: 1px; width: 40px; background-color: var(--text-secondary); }
         .divider-circle { width: 8px; height: 8px; border-radius: 50%; border: 1px solid var(--text-secondary); }
         .hero p { font-size: 18px; color: var(--text-primary); opacity: 0.9; margin-bottom: 40px; line-height: 1.5; max-width: 500px; }
-        .btn-primary { background: var(--btn-bg); color: var(--btn-text); padding: 12px 20px; width: max-content; border: none; border-radius: 4px; font-size: 16px; font-weight: 600; cursor: pointer; transition: opacity 0.2s ease; }
+        .btn-primary { background: var(--btn-bg); color: var(--btn-text); padding: 12px 24px; width: max-content; border: 1px solid transparent; border-radius: 24px; font-size: 16px; font-weight: 500; letter-spacing: 0.25px; cursor: pointer; transition: opacity 0.2s ease; }
+        
         /* Only apply the hover fade if the device has a physical mouse */
         @media (hover: hover) {
             .btn-primary:hover { transform: translateZ(0); opacity: 0.75; }
@@ -172,38 +176,42 @@
         .book-item { position: relative; width: 100%; aspect-ratio: 2 / 3; opacity: 0; transform: translateY(20px); animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), z-index 0.3s; z-index: 1; }
         .book-item:nth-child(1) { animation-delay: 0.1s; } .book-item:nth-child(2) { animation-delay: 0.2s; } .book-item:nth-child(3) { animation-delay: 0.3s; } .book-item:nth-child(4) { animation-delay: 0.4s; } .book-item:nth-child(5) { animation-delay: 0.5s; }
         .book-cover-wrapper { position: relative; display: block; width: 100%; height: 100%; transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
-        .book-cover { width: 100%; height: 100%; aspect-ratio: 2 / 3; object-fit: cover; border-radius: 4px; background-color: var(--card-bg); box-shadow: 0 4px 12px rgba(0,0,0,0.2); transition: box-shadow 0.3s ease; border: 1px solid var(--border); display: block; }
+        
+        /* GOOGLE CARD STYLING */
+        .book-cover { width: 100%; height: 100%; aspect-ratio: 2 / 3; object-fit: cover; border-radius: 8px; background-color: var(--card-bg); box-shadow: var(--google-shadow); transition: box-shadow 0.3s ease; border: 1px solid var(--border); display: block; }
         .coming-soon-placeholder { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 24px; color: var(--text-secondary); font-weight: 600; font-size: 26px; cursor: default; text-align: center; }
         .placeholder-logo { width: 168px; height: 168px; object-fit: contain; opacity: 0.5; }
         .downloadable-book { cursor: pointer; }
         .book-item.downloadable-book:hover, .book-item.locked-hover { z-index: 10; }
         .book-item.downloadable-book:hover .book-cover-wrapper, .book-item.locked-hover .book-cover-wrapper { transform: scale(1.05); }
-        .book-item.downloadable-book:hover .book-cover, .book-item.locked-hover .book-cover { box-shadow: 0 16px 40px rgba(0,0,0,0.5); }
+        
+        /* GOOGLE MATERIAL HOVER SHADOW */
+        .book-item.downloadable-book:hover .book-cover, .book-item.locked-hover .book-cover { box-shadow: 0 4px 6px -1px rgba(0,0,0,0.2), 0 2px 4px -1px rgba(0,0,0,0.14); }
 
         /* --- DYNAMIC MODAL INFO BADGE --- */
-        .modal-info-badge { width: 36px; height: 36px; background-color: var(--sys-yellow); color: #000000; border-radius: 50%; display: none; align-items: center; justify-content: center; font-size: 20px; font-weight: 800; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.3); transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1); }
+        .modal-info-badge { width: 36px; height: 36px; background-color: var(--sys-yellow); color: #000000; border-radius: 50%; display: none; align-items: center; justify-content: center; font-size: 20px; font-weight: 800; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.2); transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1); }
         .modal-info-badge:hover { transform: scale(1.15) translateZ(0); }
 		.modal-info-badge:active { transform: scale(0.95) translateZ(0); }
 
-        /* --- DROPBOX STYLE FLAT ALERTS (Info Modal) --- */
+        /* --- DROPBOX STYLE FLAT ALERTS (Info Modal) converted to Material --- */
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6); display: flex; align-items: center; justify-content: center; z-index: 99999 !important; opacity: 0; pointer-events: none; transition: opacity 0.2s ease; }
         #infoModal { z-index: 1001; }
         .modal-overlay.active { opacity: 1; pointer-events: auto; }
-        .modal-box { background-color: var(--card-bg); border-radius: 6px; width: 480px; max-width: 90vw; text-align: left; transform: translateY(15px); opacity: 0; transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease; display: flex; flex-direction: column; box-shadow: 0 10px 40px rgba(0,0,0,0.3); border: 1px solid var(--border); }
+        .modal-box { background-color: var(--card-bg); border-radius: 12px; width: 480px; max-width: 90vw; text-align: left; transform: translateY(15px); opacity: 0; transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease; display: flex; flex-direction: column; box-shadow: var(--google-shadow); border: 1px solid var(--border); }
         .modal-overlay.active .modal-box { transform: translateY(0); opacity: 1; }
         .modal-text-container { padding: 32px 32px 24px; }
         .modal-title { font-size: 20px; font-weight: 600; color: var(--text-primary); letter-spacing: -0.3px; margin-bottom: 12px; }
         .modal-message { font-size: 15px; font-weight: 400; color: var(--text-secondary); line-height: 1.5; }
         .info-text { text-align: justify; text-justify: inter-word; }
         .modal-actions { display: flex; justify-content: flex-end; gap: 12px; padding: 0 32px 32px; }
-        .modal-btn { height: auto; padding: 10px 20px; background: transparent; color: var(--text-primary); font-size: 14px; font-weight: 500; cursor: pointer; border: 1px solid transparent; border-radius: 4px; outline: none; transition: background-color 0.1s, border-color 0.1s; }
+        .modal-btn { height: auto; padding: 10px 24px; background: transparent; color: var(--text-primary); font-size: 14px; font-weight: 500; letter-spacing: 0.25px; cursor: pointer; border: 1px solid transparent; border-radius: 24px; outline: none; transition: background-color 0.1s, border-color 0.1s; }
         .modal-btn.confirm { background-color: var(--dropbox-blue); color: #ffffff; border: 1px solid var(--dropbox-blue); }
         .modal-btn.confirm:hover { background-color: #0050D1; border-color: #0050D1; }
 
-        /* --- NETFLIX ITEM MODAL --- */
-        .netflix-modal-box { background-color: var(--netflix-modal-bg); border-radius: 10px; width: 720px; max-width: 90vw; text-align: left; transform: translateY(20px); opacity: 0; transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease; display: flex; flex-direction: column; box-shadow: 0 20px 60px rgba(0,0,0,0.5); position: relative; overflow: hidden !important; height: auto !important; max-height: 90vh; }
+        /* --- NETFLIX ITEM MODAL converted to Material --- */
+        .netflix-modal-box { background-color: var(--netflix-modal-bg); border-radius: 12px; width: 720px; max-width: 90vw; text-align: left; transform: translateY(20px); opacity: 0; transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease; display: flex; flex-direction: column; box-shadow: var(--google-shadow); border: 1px solid var(--border); position: relative; overflow: hidden !important; height: auto !important; max-height: 90vh; }
         .modal-overlay.active .netflix-modal-box { transform: translateY(0); opacity: 1; }
-        .netflix-close { position: absolute; top: 20px; right: 20px; width: 36px; height: 36px; border-radius: 50%; background: rgba(20, 20, 20, 0.6); border: 2px solid rgba(255, 255, 255, 0.6); color: white; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 20; transition: border-color 0.2s, transform 0.2s; }
+        .netflix-close { position: absolute; top: 20px; right: 20px; width: 36px; height: 36px; border-radius: 50%; background: rgba(32, 33, 36, 0.6); border: 2px solid rgba(255, 255, 255, 0.6); color: white; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 20; transition: border-color 0.2s, transform 0.2s; }
         .netflix-close:hover { border-color: white; transform: scale(1.05); }
         .netflix-banner { position: relative; width: 100%; height: 350px; background-size: cover; background-position: top center; background-repeat: no-repeat; flex-shrink: 0; }
         .netflix-banner-fade { position: absolute; bottom: 0; width: 100%; height: 60%; background: linear-gradient(to top, var(--netflix-modal-bg) 0%, transparent 100%); }
@@ -217,7 +225,7 @@
         .netflix-desc::-webkit-scrollbar-track { background: transparent; }
         .netflix-desc::-webkit-scrollbar-thumb { background: rgba(128, 128, 128, 0.3); border-radius: 10px; }
         .netflix-content > div:last-child { margin: 0 !important; padding: 0 !important; flex-shrink: 0; }
-        .netflix-btn { background-color: var(--dropbox-blue); color: #ffffff; border: 1px solid var(--dropbox-blue); padding: 12px 28px; font-size: 16px; font-weight: 600; border-radius: 4px; display: inline-flex; align-items: center; gap: 12px; cursor: pointer; transition: background-color 0.2s, border-color 0.2s; }
+        .netflix-btn { background-color: var(--dropbox-blue); color: #ffffff; border: 1px solid var(--dropbox-blue); padding: 12px 28px; font-size: 16px; font-weight: 500; letter-spacing: 0.25px; border-radius: 24px; display: inline-flex; align-items: center; gap: 12px; cursor: pointer; transition: background-color 0.2s, border-color 0.2s; }
         .netflix-btn:hover { background-color: #0050D1; border-color: #0050D1; }
 
         @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
@@ -261,7 +269,7 @@
             .mobile-menu-overlay.active .mobile-menu-content > *:nth-child(2) { transition: opacity 0.4s ease 0.2s, transform 0.4s cubic-bezier(0.16,1,0.3,1) 0.2s; opacity: 1; transform: translateY(0); }
             .mobile-menu-overlay.active .mobile-menu-content > *:nth-child(3) { transition: opacity 0.4s ease 0.3s, transform 0.4s cubic-bezier(0.16,1,0.3,1) 0.3s; opacity: 1; transform: translateY(0); }
             .mobile-menu-overlay.active .mobile-menu-content > *:nth-child(4) { transition: opacity 0.4s ease 0.4s, transform 0.4s cubic-bezier(0.16,1,0.3,1) 0.4s; opacity: 1; transform: translateY(0); }
-            .mobile-menu-content a { color: var(--text-primary); font-size: 22px; text-decoration: none; font-weight: 400; font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+            .mobile-menu-content a { color: var(--text-primary); font-size: 22px; text-decoration: none; font-weight: 400; font-family: 'Product Sans', Roboto, -apple-system, BlinkMacSystemFont, Arial, sans-serif; }
             .mobile-menu-divider { width: 180px; height: 1px; background: linear-gradient(90deg, transparent, var(--text-primary), transparent); opacity: 0.4; }
             .mobile-menu-footer { position: absolute; bottom: 8vh; }
             .menu-logo { width: 140px; height: auto; opacity: 0.95; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3)); }
@@ -273,8 +281,6 @@
             .hero-title-logo { display: none !important; }
             .hero h1 { font-size: clamp(38px, 11vw, 60px); margin-bottom: 20px; }
             
-            /* --- THE REPLICATION FIX --- */
-            /* Replaced rigid 15px with clamp to dynamically preserve 3-line wrap on all phones! */
             /* --- THE REPLICATION FIX + JUSTIFIED TEXT --- */
             .hero p { 
                 display: block; 
@@ -282,12 +288,8 @@
                 margin-bottom: 30px; 
                 padding: 0 10px; 
                 line-height: 1.4; 
-                
-                /* The Justification Magic */
                 text-align: justify; 
                 text-justify: inter-word; 
-                
-                /* Prevents whole words from being cut or hyphenated */
                 hyphens: none; 
                 -webkit-hyphens: none; 
             } 
@@ -423,7 +425,6 @@
                         
                         <div class="book-cover-wrapper">
                             <img src="book covers/bg-cover.webp" alt="Bhagavad-gītā As It Is" class="book-cover" loading="lazy">
-                            <!-- Clean cover design: No exclamation mark here anymore! -->
                         </div>
                     </div>
 
@@ -496,7 +497,7 @@
         </div>
     </div>
 
-    <!-- DROPBOX STYLE INFO MODAL -->
+    <!-- MATERIAL STYLE INFO MODAL -->
     <div id="infoModal" class="modal-overlay">
         <div class="modal-box">
             <div class="modal-text-container">
@@ -615,7 +616,7 @@
             // --- 5. REAL-TIME DATABASE FETCH LOGIC ---
             function formatDownloadCount(num) {
                 if (num === 0) return "0 Downloads";
-                if (num === 1) return "1 Download"; // The grammatical fix!
+                if (num === 1) return "1 Download"; 
                 if (num < 1000) return num + " Downloads";
                 
                 const tiers = [
@@ -835,14 +836,13 @@
                 }
             });
 
-            // --- 7. COLOR CYCLING LOGIC ---
+            // --- 7. COLOR CYCLING LOGIC (GOOGLE MATERIAL COLORS) ---
             const colorBtn = document.getElementById('colorBtn');
             const royalColors = [
-                '#5c4000', // Antique Gold (Default)
-                '#800020', // Classic Burgundy
-                '#002147', // Royal Sapphire
-                '#3b1459', // Imperial Amethyst
-                '#0a3a2a'  // Emerald Forest
+                '#1a73e8', // Google Blue
+                '#ea4335', // Google Red
+                '#fbbc04', // Google Yellow
+                '#34a853'  // Google Green
             ];
             
             let currentColorIndex = 0;
