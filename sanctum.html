@@ -26,7 +26,6 @@
             --card-bg: #141414; 
             --border: rgba(255, 255, 255, 0.1);
             
-            /* Unified iOS Blue for Dark Mode */
             --toc-link-color: #0a84ff; 
             --toc-hover-color: #ffffff;
             --reader-red: #0a84ff; 
@@ -46,11 +45,10 @@
             --card-bg: #ffffff; 
             --border: rgba(0, 0, 0, 0.08);
             
-            /* Separated Colors for Light Mode */
             --toc-link-color: #8c2318; 
             --toc-hover-color: #000000;
             --reader-red: #7A1111; 
-            --filter-btn-active: #0061FE; /* iOS Blue for toggle buttons */
+            --filter-btn-active: #0061FE; 
             
             --btn-bg: #e5e5ea;
             --btn-text: #000000;
@@ -81,6 +79,15 @@
         .fade-in-up { animation: fadeInUp 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
         .fade-out-down { animation: fadeOutDown 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
         .fade-in-down { animation: fadeInDown 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+
+        /* Domino effect for filter buttons */
+        .filters-group.stagger-in .control-btn { opacity: 0; animation: fadeInUp 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        .filters-group.stagger-in .control-btn:nth-child(1) { animation-delay: 0.05s; }
+        .filters-group.stagger-in .control-btn:nth-child(2) { animation-delay: 0.10s; }
+        .filters-group.stagger-in .control-btn:nth-child(3) { animation-delay: 0.15s; }
+        .filters-group.stagger-in .control-btn:nth-child(4) { animation-delay: 0.20s; }
+        .filters-group.stagger-in .control-btn:nth-child(5) { animation-delay: 0.25s; }
+        .filters-group:not(.stagger-in) .control-btn { opacity: 1; animation: none; }
 
         /* --- NAVIGATION --- */
         nav { position: fixed; top: 0; width: 100%; height: 60px; background: var(--bg-nav); backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px); display: flex; align-items: center; justify-content: space-between; padding: 0 5%; z-index: 100; border-bottom: 1px solid var(--border); transition: background 0.4s ease; }
@@ -155,11 +162,14 @@
         .verse-summary-item { font-size: 22px; line-height: 1.7; text-align: justify; text-justify: inter-word; padding-bottom: 30px; margin-bottom: 30px; border-bottom: 1px solid var(--border); }
         .verse-summary-item:last-child { border-bottom: none; }
         .verse-summary-link { color: var(--reader-red); font-weight: 700; text-decoration: none; cursor: pointer; transition: opacity 0.2s; letter-spacing: 0.05em; }
-        .verse-summary-link:hover { opacity: 0.8; text-decoration: underline; }
+        @media (hover: hover) { .verse-summary-link:hover { opacity: 0.8; } }
 
-        .verse-number { color: var(--reader-red); font-size: 36px; font-weight: 700; text-align: center; margin-bottom: 40px; letter-spacing: 0.05em; cursor: pointer; display: inline-block; width: 100%; }
-        .verse-number:hover { opacity: 0.8; text-decoration: underline; }
-        .verse-number-static { color: var(--reader-red); font-size: 36px; font-weight: 700; text-align: center; margin-bottom: 40px; letter-spacing: 0.05em; display: inline-block; width: 100%; }
+        /* Replaced width 100% with inline-block so only the text is clickable */
+        .verse-number { color: var(--reader-red); font-size: 36px; font-weight: 700; margin-bottom: 40px; letter-spacing: 0.05em; cursor: pointer; display: inline-block; }
+        @media (hover: hover) { .verse-number:hover { opacity: 0.8; } }
+        
+        /* Non-clickable Title for Single Verse View */
+        .verse-number-static { color: var(--reader-red); font-size: 36px; font-weight: 700; margin-bottom: 40px; letter-spacing: 0.05em; display: inline-block; }
 
         .section-label { font-size: 30px; font-weight: 700; text-align: center; margin-bottom: 12px; letter-spacing: 0.05em; margin-top: 55px; text-transform: uppercase; }
         
@@ -178,13 +188,15 @@
         
         .quote-block { display: block; text-align: center; margin: 30px auto; font-size: 22px; line-height: 1.8; font-style: italic; width: 100%; }
 
-        /* --- PREMIUM NAVIGATION FOOTER BUTTONS (Tightened Gap) --- */
-        .verse-nav-footer { display: flex; justify-content: space-between; margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border); width: 100%; }
+        /* --- PREMIUM NAVIGATION FOOTER BUTTONS --- */
+        .verse-nav-footer { display: flex; justify-content: space-between; margin-top: 40px; padding-top: 40px; border-top: 1px solid var(--border); width: 100%; }
         .nav-verse-btn { background: var(--btn-bg); color: var(--btn-text); border: none; padding: 14px 28px; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; text-decoration: none; transition: transform 0.2s ease, opacity 0.2s ease; font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif !important; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
         @media (hover: hover) { .nav-verse-btn:hover:not(.locked-btn) { opacity: 0.85; transform: translateZ(0) scale(1.02); } }
         .nav-verse-btn:active:not(.locked-btn) { transform: scale(0.98); opacity: 0.6; }
         
         .locked-btn { opacity: 0.3 !important; pointer-events: none; cursor: default; box-shadow: none; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
         /* --- MOBILE FIREWALL --- */
         .hamburger, .mobile-menu-overlay { display: none; }
@@ -228,12 +240,13 @@
             .ios-card { padding: 40px 20px; border-radius: 16px; }
             .toc-container { gap: 24px; padding: 0 10px; }
             
-            .reader-chapter-title { font-size: 32px; margin-bottom: 40px; }
+            .reader-chapter-title { margin-bottom: 40px; }
             .verse-block { margin-bottom: 60px; padding-bottom: 40px; }
             
             .verse-summary-item { font-size: 20px; }
             .verse-number, .verse-number-static { font-size: 28px; margin-bottom: 30px; }
             .section-label { font-size: 24px; margin-bottom: 10px; margin-top: 40px; }
+            
             .devanagari-text { font-size: 31px; }
             .roman-text, .synonyms-text, .translation-text, .purport-text { font-size: 20px; }
             .quote-block { font-size: 20px; margin: 22px 0; }
@@ -350,8 +363,7 @@
                         Return to Chapter
                     </button>
                     
-                    <div id="single-verse-chapter-title" class="reader-chapter-title"></div>
-                    <div id="single-verse-container" style="margin-top: 80px; width: 100%;"></div>
+                    <div id="single-verse-container" style="width: 100%;"></div>
                     
                     <div class="verse-nav-footer">
                         <button class="nav-verse-btn" id="prev-verse-btn">< Previous Verse</button>
@@ -414,7 +426,7 @@
                     const filtersGroup = document.getElementById('filters-group');
                     if (filtersGroup) {
                         filtersGroup.style.display = 'none';
-                        filtersGroup.classList.remove('fade-in-up', 'fade-out-down');
+                        filtersGroup.classList.remove('stagger-in', 'fade-out-down');
                     }
                     const container = document.getElementById('chapter-content-container');
                     if (container) container.classList.remove('fade-in-up', 'fade-out-down', 'fade-in-down');
@@ -496,12 +508,11 @@
                 const container = document.getElementById('chapter-content-container');
 
                 if (isAdvancedView) {
-                    // Turn OFF
                     isAdvancedView = false;
                     btn.textContent = `Advanced View: Off`;
                     btn.classList.remove('active');
                     
-                    filtersGroup.classList.remove('fade-in-up');
+                    filtersGroup.classList.remove('stagger-in');
                     filtersGroup.classList.add('fade-out-down');
                     
                     container.classList.remove('fade-in-up');
@@ -514,19 +525,17 @@
                         container.classList.add('fade-in-down');
                     }, 250); 
                 } else {
-                    // Turn ON
                     isAdvancedView = true;
                     btn.textContent = `Advanced View: On`;
                     btn.classList.add('active');
                     
                     filtersGroup.style.display = 'flex';
                     filtersGroup.classList.remove('fade-out-down');
-                    filtersGroup.classList.add('fade-in-up');
+                    filtersGroup.classList.add('stagger-in');
                     
                     container.classList.remove('fade-in-down', 'fade-out-down');
                     reRenderChapterContent(); 
                     
-                    // Force reflow and animate
                     container.style.animation = 'none';
                     container.offsetHeight; 
                     container.style.animation = ''; 
@@ -565,7 +574,7 @@
                         let numStr = verse.text_number.toUpperCase();
                         let textLabel = numStr.includes('-') ? `TEXTS ${numStr}` : `TEXT ${numStr}`;
                         
-                        html += `<a onclick="router('/sanctum/bg/${currentChapterObj.chapter_id}/${verse.text_number}')" style="text-decoration: none;"><div class="verse-number">${textLabel}</div></a>`;
+                        html += `<div style="text-align: center;"><a onclick="router('/sanctum/bg/${currentChapterObj.chapter_id}/${verse.text_number}')" style="text-decoration: none; display: inline-block;"><div class="verse-number">${textLabel}</div></a></div>`;
                         
                         if (verse.devanagari && activeFilters.devanagari) html += `<div class="devanagari-text">${verse.devanagari}</div>`;
                         if (verse.roman && activeFilters.roman) html += `<div class="roman-text">${verse.roman}</div>`;
@@ -589,11 +598,6 @@
                 const verse = chapter.verses[verseIndex];
                 if (!verse) return;
 
-                document.getElementById('single-verse-chapter-title').innerHTML = `
-                    <span style="font-size: 20px; font-weight: 500; display: block; margin-bottom: 12px; letter-spacing: 0.1em; color: var(--text-secondary); text-transform: uppercase;">Chapter ${chapter.chapter_number}</span>
-                    <span style="font-size: 40px; font-weight: 700; line-height: 1.25; display: block; color: var(--text-primary);">${chapter.chapter_title}</span>
-                `;
-                
                 document.getElementById('verse-back-btn').setAttribute('onclick', `router('/sanctum/bg/${chapter.chapter_id}/')`);
 
                 const container = document.getElementById('single-verse-container');
@@ -601,9 +605,9 @@
 
                 let html = `<div class="verse-block" style="border: none; padding-bottom: 0; margin-bottom: 0;">`;
                 let numStr = verse.text_number.toUpperCase();
-                let textLabel = numStr.includes('-') ? `TEXTS ${numStr}` : `TEXT ${numStr}`;
+                let textLabel = `Bg. ${chapter.chapter_id}.${numStr}`;
                 
-                html += `<div class="verse-number-static">${textLabel}</div>`;
+                html += `<div style="text-align: center;"><div class="verse-number-static">${textLabel}</div></div>`;
                 
                 if (verse.devanagari) html += `<div class="devanagari-text">${verse.devanagari}</div>`;
                 if (verse.roman) html += `<div class="roman-text">${verse.roman}</div>`;
