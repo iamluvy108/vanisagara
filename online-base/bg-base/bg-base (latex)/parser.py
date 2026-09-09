@@ -31,7 +31,6 @@ def process_inline(text, is_devanagari=False):
     
     text = clean_latex_formatting(text)
     
-    # NEW: Eradicate stray bold/italic tags inside Devanagari to fix the first-line sizing bug
     if is_devanagari:
         text = text.replace('<strong>', '').replace('</strong>', '')
         text = text.replace('<em>', '').replace('</em>', '')
@@ -75,7 +74,8 @@ def parse_chapter(filepath, index):
     with open(filepath, 'r', encoding='utf-8') as f:
         content = f.read()
 
-    words = ["ONE", "TWO", "THREE", "FOUR", "FIVE", "SIX", "SEVEN", "EIGHT", "NINE", "TEN", "ELEVEN", "TWELVE", "THIRTEEN", "FOURTEEN", "FIFTEEN", "SIXTEEN", "SEVENTEEN", "EIGHTEEN"]
+    # Updated Title Casing logic
+    words = ["One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen"]
     chapter_word = words[index] if index < len(words) else str(index + 1)
     
     chapter_title_match = re.search(r'\\fontsize\{19pt\}\{21pt\}\\selectfont\\textbf\{(.*?)\}', content, re.DOTALL)
@@ -109,7 +109,6 @@ def parse_chapter(filepath, index):
         
         devanagari_match = re.search(r'\\devanagari.*?\\textbf\{(.*?)\\par\}', pre_sections, re.DOTALL)
         if devanagari_match:
-            # Pass True to activate the Devanagari strict-cleaning protocol
             verse_data["devanagari"] = process_inline(devanagari_match.group(1), is_devanagari=True)
             
         roman_match = re.search(r'\{\\centering\s*\\textit\{(.*?)\\par\}', pre_sections, re.DOTALL)

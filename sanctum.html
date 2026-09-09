@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vāṇīsāgara (The Sanctum)</title>
     
-    <!-- IMPORT NOTO SERIF & NOTO SERIF DEVANAGARI -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Devanagari:wght@400;600;700&family=Noto+Serif:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap" rel="stylesheet">
@@ -17,7 +16,6 @@
 
     <style>
         :root {
-            /* DARK MODE */
             --bg-main: #000000; 
             --bg-nav: rgba(0, 0, 0, 0.7); 
             --text-primary: #f5f5f7; 
@@ -26,20 +24,18 @@
             --card-bg: #141414; 
             --border: rgba(255, 255, 255, 0.1);
             
-            /* Custom Root Colors */
             --book-text-color: #0a84ff; 
             
             --toc-link-color: #0a84ff; 
             --toc-hover-color: #ffffff;
             --reader-red: #0a84ff; 
-            --filter-btn-active: #0a84ff; /* Apple System Blue (Dark) */
+            --filter-btn-active: #0A84FF; 
             
             --btn-bg: #2c2c2e;
             --btn-text: #ffffff;
         }
 
         [data-theme="light"] {
-            /* LIGHT MODE */
             --bg-main: #f5f5f7; 
             --bg-nav: rgba(245, 245, 247, 0.7); 
             --text-primary: #000000; 
@@ -48,13 +44,12 @@
             --card-bg: #ffffff; 
             --border: rgba(0, 0, 0, 0.08);
             
-            /* Custom Root Colors */
             --book-text-color: #000000;
             
             --toc-link-color: #8c2318; 
             --toc-hover-color: #000000;
             --reader-red: #7A1111; 
-            --filter-btn-active: #007aff; /* Apple System Blue (Light) */
+            --filter-btn-active: #007AFF; 
             
             --btn-bg: #e5e5ea;
             --btn-text: #000000;
@@ -77,7 +72,6 @@
         #main-content.page-exit { transform: translateY(-15px); opacity: 0; }
         @keyframes appEnter { 0% { transform: translateY(20px); opacity: 0; } 100% { transform: translateY(0); opacity: 1; } }
 
-        /* --- DYNAMIC ZIP ANIMATIONS --- */
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes fadeOutDown { from { opacity: 1; transform: translateY(0); } to { opacity: 0; transform: translateY(15px); } }
         @keyframes fadeInDown { from { opacity: 0; transform: translateY(-15px); } to { opacity: 1; transform: translateY(0); } }
@@ -86,7 +80,6 @@
         .fade-out-down { animation: fadeOutDown 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
         .fade-in-down { animation: fadeInDown 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
 
-        /* Domino effect for filter buttons */
         .filters-group.stagger-in .control-btn { opacity: 0; animation: fadeInUp 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
         .filters-group.stagger-in .control-btn:nth-child(1) { animation-delay: 0.05s; }
         .filters-group.stagger-in .control-btn:nth-child(2) { animation-delay: 0.10s; }
@@ -95,7 +88,6 @@
         .filters-group.stagger-in .control-btn:nth-child(5) { animation-delay: 0.25s; }
         .filters-group:not(.stagger-in) .control-btn { opacity: 1; animation: none; }
 
-        /* --- NAVIGATION --- */
         nav { position: fixed; top: 0; width: 100%; height: 60px; background: var(--bg-nav); backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px); display: flex; align-items: center; justify-content: space-between; padding: 0 5%; z-index: 100; border-bottom: 1px solid var(--border); transition: background 0.4s ease; }
         .nav-brand { display: inline-block; font-size: 22px; text-decoration: none; color: var(--text-primary); white-space: nowrap; }
         .brand-icon { width: 24px; height: 24px; object-fit: contain; vertical-align: middle; margin-right: 8px; position: relative; top: -1px; }
@@ -111,7 +103,6 @@
         [data-theme="dark"] .logo-light { display: none; }
         [data-theme="light"] .logo-dark { display: none; }
 
-        /* --- SANCTUM LOBBY & VIEWS --- */
         .sanctum-wrapper { position: relative; flex: 1; display: flex; flex-direction: column; align-items: center; padding: 120px 5% 100px 5%; overflow: hidden; z-index: 2; }
         
         .view-section { width: 100%; display: none; flex-direction: column; align-items: center; animation: fadeInUp 0.4s ease forwards; }
@@ -130,18 +121,23 @@
             flex-direction: column;
             transition: background-color 0.4s ease, box-shadow 0.4s ease;
             font-family: 'Noto Serif', serif;
+            position: relative; /* Anchor for Breadcrumbs */
         }
         [data-theme="light"] .ios-card { box-shadow: 0 10px 40px rgba(0,0,0,0.06); }
         .ios-card * { font-family: 'Noto Serif', serif; }
 
+        /* --- BREADCRUMBS --- */
+        .breadcrumb { position: absolute; top: 35px; right: 45px; font-size: 14px; font-weight: 500; color: var(--text-secondary); display: flex; align-items: center; gap: 8px; font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif; z-index: 10; }
+        .breadcrumb a { color: var(--text-secondary); text-decoration: none; cursor: pointer; transition: color 0.2s; }
+        @media (hover: hover) { .breadcrumb a:hover { color: var(--text-primary); } }
+        .breadcrumb .separator { font-size: 12px; opacity: 0.5; letter-spacing: -1px; }
+
         .sanctum-header { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 50px; width: 100%; }
         .sanctum-title { font-size: clamp(40px, 6vw, 72px); font-weight: 400; line-height: 1.1; margin-bottom: 16px; color: var(--text-primary); }
 
-        /* Dynamic Book Colors for View 1 */
-        #view-books .sanctum-title { color: var(--book-text-color); }
+        /* The book link retains its color, title dynamically shifts to white/black */
         #view-books .toc-link { color: var(--book-text-color); }
         
-        /* Reduced Chapter Title Size */
         #view-chapters .sanctum-title { font-size: clamp(28px, 4vw, 48px); margin-bottom: 20px; }
 
         .divider { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; justify-content: center; width: 100%; }
@@ -155,16 +151,12 @@
         .toc-link:active:not(.locked) { opacity: 0.5; transition: opacity 0.1s ease; }
         .toc-link.locked { opacity: 0.35; pointer-events: none; cursor: default; }
 
-        /* --- ADVANCED VIEW CONTROLS --- */
         .advanced-controls-bar { width: 100%; display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; flex-wrap: wrap; gap: 15px; border-bottom: 1px solid var(--border); padding-bottom: 20px; }
         .control-btn { background: var(--btn-bg); border: 1px solid var(--border); color: var(--btn-text); padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 14px; font-weight: 600; transition: background 0.2s, border-color 0.2s; font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif !important; }
         .control-btn.active { background: var(--filter-btn-active); color: white; border-color: var(--filter-btn-active); }
         .filters-group { display: flex; gap: 10px; flex-wrap: wrap; }
 
-        /* --- CHAPTER & VERSE READER VIEWS --- */
         .reader-container { width: 100%; z-index: 2; }
-        
-        /* Updated Premium Back Buttons */
         .back-btn { background: var(--btn-bg); color: var(--btn-text); border: none; padding: 12px 24px; border-radius: 8px; font-size: 15px; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; margin-bottom: 40px; transition: transform 0.2s ease, opacity 0.2s ease; font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif !important; box-shadow: 0 4px 12px rgba(0,0,0,0.1); width: fit-content; }
         @media (hover: hover) { .back-btn:hover { opacity: 0.85; transform: translateZ(0) scale(1.02); } }
         .back-btn:active { transform: scale(0.98); opacity: 0.6; }
@@ -186,7 +178,6 @@
 
         .section-label { font-size: 30px; font-weight: 700; text-align: center; margin-bottom: 12px; letter-spacing: 0.05em; margin-top: 55px; text-transform: uppercase; }
         
-        /* Forced overriding inheritance to guarantee first-line matching */
         .devanagari-text { text-align: center; font-size: 35.4px; line-height: 1.8; margin-bottom: 32px; font-weight: 600; font-family: 'Noto Serif Devanagari', 'Noto Serif', serif !important; }
         .devanagari-text * { font-size: inherit !important; font-weight: inherit !important; line-height: inherit !important; }
         
@@ -204,7 +195,6 @@
         
         .quote-block { display: block; text-align: center; margin: 30px auto; font-size: 22px; line-height: 1.8; font-style: italic; width: 100%; }
 
-        /* --- PREMIUM NAVIGATION FOOTER BUTTONS --- */
         .verse-nav-footer { display: flex; justify-content: space-between; margin-top: 40px; padding-top: 40px; border-top: 1px solid var(--border); width: 100%; }
         .nav-verse-btn { background: var(--btn-bg); color: var(--btn-text); border: none; padding: 14px 28px; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; text-decoration: none; transition: transform 0.2s ease, opacity 0.2s ease; font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif !important; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
         @media (hover: hover) { .nav-verse-btn:hover:not(.locked-btn) { opacity: 0.85; transform: translateZ(0) scale(1.02); } }
@@ -212,8 +202,6 @@
         
         .locked-btn { opacity: 0.3 !important; pointer-events: none; cursor: default; box-shadow: none; }
 
-        /* --- MOBILE FIREWALL --- */
-        .hamburger, .mobile-menu-overlay { display: none; }
         @media (max-width: 900px) {
             html { scroll-behavior: auto !important; }
             * { -webkit-tap-highlight-color: transparent; }
@@ -253,6 +241,9 @@
             
             .ios-card { padding: 40px 20px; border-radius: 16px; }
             .toc-container { gap: 24px; padding: 0 10px; }
+            
+            /* Center breadcrumbs on mobile */
+            .breadcrumb { position: relative; top: 0; right: 0; justify-content: center; width: 100%; margin-bottom: 25px; font-size: 13px; }
             
             .reader-chapter-title { font-size: 32px; margin-bottom: 40px; }
             #view-chapters .sanctum-title { font-size: 28px; }
@@ -331,6 +322,10 @@
         <!-- LEVEL 2: THE CHAPTER DIRECTORY (/sanctum/bg/) -->
         <div id="view-chapters" class="view-section">
             <div class="ios-card">
+                <div class="breadcrumb">
+                    <a onclick="router('/sanctum')">Encyclopedia</a> <span class="separator">&gt;&gt;</span>
+                    <span style="color: var(--text-primary);">Bhagavad-gītā</span>
+                </div>
                 <div class="reader-container">
                     <button class="back-btn" onclick="router('/sanctum')">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
@@ -347,6 +342,7 @@
         <!-- LEVEL 3: CHAPTER CONTENT & ADVANCED VIEW (/sanctum/bg/#/) -->
         <div id="view-chapter-content" class="view-section">
             <div class="ios-card">
+                <div id="content-breadcrumb" class="breadcrumb"></div>
                 <div class="reader-container">
                     <button class="back-btn" onclick="router('/sanctum/bg/')">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
@@ -373,6 +369,7 @@
         <!-- LEVEL 4: THE SINGLE VERSE READER (/sanctum/bg/#/#) -->
         <div id="view-verse" class="view-section">
             <div class="ios-card">
+                <div id="verse-breadcrumb" class="breadcrumb"></div>
                 <div class="reader-container">
                     <button class="back-btn" id="verse-back-btn" onclick="router('/sanctum/bg/')">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
@@ -510,8 +507,14 @@
                 currentChapterObj = book.chapters.find(c => c.chapter_id == chapId);
                 if (!currentChapterObj) return;
 
+                document.getElementById('content-breadcrumb').innerHTML = `
+                    <a onclick="router('/sanctum')">Encyclopedia</a> <span class="separator">&gt;&gt;</span>
+                    <a onclick="router('/sanctum/bg/')">Bhagavad-gītā</a> <span class="separator">&gt;&gt;</span>
+                    <span style="color: var(--text-primary);">Ch. ${currentChapterObj.chapter_id}</span>
+                `;
+
                 document.getElementById('content-chapter-title').innerHTML = `
-                    <span style="font-size: 20px; font-weight: 500; display: block; margin-bottom: 12px; letter-spacing: 0.1em; color: var(--text-secondary); text-transform: uppercase;">Chapter ${currentChapterObj.chapter_number}</span>
+                    <span style="font-size: 20px; font-weight: 500; display: block; margin-bottom: 12px; letter-spacing: 0.1em; color: var(--text-secondary);">Chapter ${currentChapterObj.chapter_number}</span>
                     <span style="font-size: 40px; font-weight: 700; line-height: 1.25; display: block; color: var(--text-primary);">${currentChapterObj.chapter_title}</span>
                 `;
                 
@@ -614,6 +617,12 @@
                 const verse = chapter.verses[verseIndex];
                 if (!verse) return;
                 
+                document.getElementById('verse-breadcrumb').innerHTML = `
+                    <a onclick="router('/sanctum')">Encyclopedia</a> <span class="separator">&gt;&gt;</span>
+                    <a onclick="router('/sanctum/bg/')">Bhagavad-gītā</a> <span class="separator">&gt;&gt;</span>
+                    <span style="color: var(--text-primary);">Ch. ${chapter.chapter_id}</span>
+                `;
+
                 document.getElementById('verse-back-btn').setAttribute('onclick', `router('/sanctum/bg/${chapter.chapter_id}/')`);
 
                 const container = document.getElementById('single-verse-container');
