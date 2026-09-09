@@ -84,7 +84,16 @@
             --info-hover-bg: #eab000;
         }
 
-        html { scroll-behavior: smooth; }
+        html { 
+            scroll-behavior: smooth; 
+            scrollbar-gutter: stable; /* Keeps PC scrollbar visible & prevents layout jump */
+        }
+        
+        /* --- GLOBAL SCROLL LOCK --- */
+        html.no-scroll, body.no-scroll { 
+            overflow: hidden !important; 
+            touch-action: none !important; /* Force locks background touch scrolling on mobile */
+        }
 
         /* --- GOOGLE TYPOGRAPHY --- */
         * {
@@ -224,7 +233,7 @@
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6); display: flex; align-items: center; justify-content: center; z-index: 99999 !important; opacity: 0; pointer-events: none; transition: opacity 0.2s ease; }
         #infoModal { z-index: 1001; }
         .modal-overlay.active { opacity: 1; pointer-events: auto; }
-        .modal-box { background-color: var(--modal-bg); border-radius: 28px; width: 440px; max-width: 90vw; text-align: left; transform: scale(0.95); opacity: 0; transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1), opacity 0.2s ease; display: flex; flex-direction: column; box-shadow: var(--google-shadow-hover); }
+        .modal-box { background-color: var(--modal-bg); border-radius: 28px; width: 440px; max-width: 90vw; text-align: left; transform: scale(0.95); opacity: 0; transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1), opacity 0.2s ease; display: flex; flex-direction: column; box-shadow: var(--google-shadow-hover); touch-action: auto !important; }
         .modal-overlay.active .modal-box { transform: scale(1); opacity: 1; }
         .modal-text-container { padding: 24px 24px 20px; }
         .modal-title { font-size: 24px; font-weight: 400; color: var(--text-primary); margin-bottom: 16px; }
@@ -235,7 +244,7 @@
         .modal-btn.confirm:hover { background-color: var(--icon-hover); }
 
         /* --- MATERIAL 3 ITEM DIALOG (Netflix Layout / M3 Specs) --- */
-        .google-modal-box { background-color: var(--modal-bg); border-radius: 28px; width: 600px; max-width: 90vw; text-align: left; transform: scale(0.95); opacity: 0; transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1), opacity 0.2s ease; display: flex; flex-direction: column; box-shadow: var(--google-shadow-hover); position: relative; overflow: hidden !important; height: auto !important; max-height: 90vh; }
+        .google-modal-box { background-color: var(--modal-bg); border-radius: 28px; width: 600px; max-width: 90vw; text-align: left; transform: scale(0.95); opacity: 0; transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1), opacity 0.2s ease; display: flex; flex-direction: column; box-shadow: var(--google-shadow-hover); position: relative; overflow: hidden !important; height: auto !important; max-height: 90vh; touch-action: auto !important; }
         .modal-overlay.active .google-modal-box { transform: scale(1); opacity: 1; }
         
         .google-close { position: absolute; top: 16px; right: 16px; width: 40px; height: 40px; border-radius: 50%; background: rgba(0, 0, 0, 0.4); border: none; color: white; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 20; transition: background-color 0.2s; backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
@@ -309,9 +318,10 @@
 
             .hero { height: var(--app-height, 100vh) !important; min-height: var(--app-height, 100vh) !important; max-height: var(--app-height, 100vh) !important; }
             
-            /* LIFTED CONTENT ON MOBILE */
+            /* LIFTED CONTENT ON MOBILE: Adjusted padding-top/bottom to shift everything upwards */
             .hero-container { flex-direction: column; text-align: center; align-items: center; justify-content: flex-start; padding-top: 10vh; padding-left: 5%; padding-right: 5%; }
             .hero-content { align-items: center; max-width: 100%; z-index: 15; padding-bottom: 40vh; }
+            
             .hero h1 { font-size: clamp(38px, 11vw, 60px); margin-bottom: 24px; }
             
             .hero p { font-size: 15px; margin-bottom: 32px; padding: 0 10px; line-height: 1.5; color: var(--text-secondary); text-align: justify; text-justify: inter-word; hyphens: none; -webkit-hyphens: none; } 
