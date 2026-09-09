@@ -6,16 +6,11 @@
     <title>Vāṇīsāgara (Homepage)</title>
 	<link rel="preload" as="image" href="images/edited/prabhupada.webp">
     
-    <!-- PREVENTS THEME & HUE FLASHING ON PAGE LOAD -->
+    <!-- PREVENTS THEME FLASHING ON PAGE LOAD -->
     <script>
         const savedTheme = localStorage.getItem('vanisagara_theme');
         if (savedTheme) {
             document.documentElement.setAttribute('data-theme', savedTheme);
-        }
-        
-        const savedColor = localStorage.getItem('vanisagara_hero_glow');
-        if (savedColor) {
-            document.documentElement.style.setProperty('--hero-glow', savedColor);
         }
     </script>
 
@@ -24,14 +19,14 @@
         @property --hero-glow {
             syntax: '<color>';
             inherits: true;
-            initial-value: #4285F4;
+            initial-value: #0288D1;
         }
 
         /* --- STRICT GOOGLE MATERIAL THEME VARIABLES --- */
         :root {
             --bg-main: #202124;
             --bg-nav: rgba(32, 33, 36, 0.98);
-            --hero-glow: #4285F4; /* Google Blue */
+            --hero-glow: #0288D1; /* Ocean Blue */
             --text-primary: #e8eaed;
             --text-secondary: #9aa0a6;
             --accent: #8ab4f8;
@@ -105,7 +100,7 @@
         }
 		
 		/* --- BUTTON HARDWARE ACCELERATION (Anti-Blur) --- */
-        .btn-primary, .theme-toggle, .color-toggle, .hamburger, .modal-info-badge {
+        .btn-primary, .theme-toggle, .hamburger, .modal-info-badge {
             backface-visibility: hidden;
             -webkit-backface-visibility: hidden;
             transform: translateZ(0);
@@ -140,7 +135,6 @@
         /* --- GOOGLE WORKSPACE NAVIGATION --- */
         nav { position: fixed; top: 0; width: 100%; height: 64px; background: var(--bg-nav); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: space-between; padding: 0 12%; z-index: 100; border-bottom: 1px solid var(--border); transition: background 0.4s ease; }
         .nav-brand { display: inline-block; font-size: 24px; text-decoration: none; color: var(--text-primary); white-space: nowrap; }
-        /* INCREASED LOGO SIZE */
         .brand-icon { width: 36px; height: 36px; object-fit: contain; vertical-align: middle; position: relative; top: -2px; margin-right: 4px; }
         .nav-controls { display: flex; align-items: center; gap: 8px; }
         .nav-links { display: flex; list-style: none; gap: 4px; margin-right: 12px; }
@@ -153,23 +147,20 @@
         .nav-icons { display: flex; align-items: center; gap: 4px; }
         
         /* Material Icon Buttons */
-        .theme-toggle, .color-toggle { background: transparent; border: none; color: var(--text-secondary); cursor: pointer; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: background-color 0.2s ease, transform 0.2s cubic-bezier(0.16, 1, 0.3, 1); }
-        .hue-icon { width: 20px; height: 20px; object-fit: contain; }
-        .theme-toggle:active, .color-toggle:active { transform: scale(0.9) translateZ(0); }
-        .theme-toggle:hover, .color-toggle:hover { background-color: var(--icon-hover); color: var(--text-primary); }
+        .theme-toggle { background: transparent; border: none; color: var(--text-secondary); cursor: pointer; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: background-color 0.2s ease, transform 0.2s cubic-bezier(0.16, 1, 0.3, 1); }
+        .theme-toggle:active { transform: scale(0.9) translateZ(0); }
+        .theme-toggle:hover { background-color: var(--icon-hover); color: var(--text-primary); }
 
-        [data-theme="dark"] .logo-light, [data-theme="dark"] .hue-light { display: none; }
-        [data-theme="light"] .logo-dark, [data-theme="light"] .hue-dark { display: none; }
-        [data-theme="light"] .color-toggle { opacity: 0; visibility: hidden; pointer-events: none; }
+        [data-theme="dark"] .logo-light { display: none; }
+        [data-theme="light"] .logo-dark { display: none; }
 
         /* --- HERO SECTION --- */
         .hero { position: relative; height: 100vh; height: 100dvh; z-index: 1; background-color: var(--bg-main); overflow: hidden; transition: background-color 0.4s ease; display: flex; justify-content: center; }
-        .hero-glow { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: var(--hero-glow); -webkit-mask-image: radial-gradient(circle at 75% 50%, black 0%, transparent 65%); mask-image: radial-gradient(circle at 75% 50%, black 0%, transparent 65%); transition: --hero-glow 0.75s ease-in-out, background-color 0.75s ease-in-out, opacity 0.4s ease; pointer-events: none; z-index: 1; opacity: 0.15; }
+        .hero-glow { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: var(--hero-glow); -webkit-mask-image: radial-gradient(circle at 75% 50%, black 0%, transparent 65%); mask-image: radial-gradient(circle at 75% 50%, black 0%, transparent 65%); transition: background-color 0.75s ease-in-out, opacity 0.4s ease; pointer-events: none; z-index: 1; opacity: 0.15; }
         [data-theme="light"] .hero-glow { opacity: 0.05; }
         .hero::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 100px; background: linear-gradient(to bottom, transparent, var(--bg-main)); pointer-events: none; z-index: 10; }
         .hero-container { position: relative; display: flex; align-items: center; justify-content: flex-start; width: 100%; max-width: 1600px; height: 100%; margin: 0 auto; padding: 60px 12% 0 12%; }
         
-        /* RESTRICTED MAX WIDTH FOR LARGER CENTER GAP */
         .hero-content { flex: 1; max-width: 42%; z-index: 3; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding-bottom: 60px; }
         .hero h1 { display: block; width: fit-content; font-size: clamp(48px, 7vw, 100px); line-height: 1.1; margin-bottom: 24px; letter-spacing: -1px; }
         .hero-title-text { display: block; white-space: nowrap; font-weight: 500; }
@@ -192,25 +183,22 @@
         }
         
         .btn-primary:active { transform: scale(0.98); opacity: 0.9; transition: transform 0.1s; }
-        
-        /* IMAGE PUSHED FURTHER RIGHT TO OPEN UP GAP */
         .hero-image { position: absolute; bottom: 0; right: 5%; height: 85vh; max-height: 100%; width: auto; max-width: 48%; object-fit: contain; object-position: bottom right; display: block; z-index: 2; filter: drop-shadow(0 10px 30px rgba(0,0,0,0.2)); pointer-events: none; transition: opacity 0.5s ease; }
 
-        /* --- NETFLIX-STYLE LIBRARY SECTION (MATERIAL CARDS) --- */
+        /* --- LIBRARY SECTION (MATERIAL CARDS) --- */
         .library { position: relative; width: 100%; padding: 120px 0 120px; z-index: 11; background-color: var(--bg-main); transition: background-color 0.4s ease; min-height: 100vh; }
         .library-title { font-size: 36px; font-weight: 400; margin-bottom: 40px; letter-spacing: 0; padding: 0 12%; text-align: left; }
         
-        /* UPGRADED TO 4 COLUMNS FOR LARGER BOOKS */
+        /* 4 COLUMNS FOR LARGER BOOKS */
         .netflix-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2.5vw; padding: 0 12% 60px 12%; width: 100%; }
         
         .book-item { position: relative; width: 100%; aspect-ratio: 2 / 3; opacity: 0; transform: translateY(20px); animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), z-index 0.3s; z-index: 1; }
         .book-item:nth-child(1) { animation-delay: 0.1s; } .book-item:nth-child(2) { animation-delay: 0.15s; } .book-item:nth-child(3) { animation-delay: 0.2s; } .book-item:nth-child(4) { animation-delay: 0.25s; }
         .book-cover-wrapper { position: relative; display: block; width: 100%; height: 100%; transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1); }
         
-        /* GOOGLE MATERIAL CARD */
         .book-cover { width: 100%; height: 100%; aspect-ratio: 2 / 3; object-fit: cover; border-radius: 8px; background-color: var(--card-bg); box-shadow: var(--google-shadow); transition: box-shadow 0.2s cubic-bezier(0.2, 0, 0, 1); border: 1px solid var(--border); display: block; }
-        .coming-soon-placeholder { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; color: var(--text-secondary); font-weight: 500; font-size: 18px; cursor: default; text-align: center; background-color: var(--card-bg); }
-        .placeholder-logo { width: 80px; height: 80px; object-fit: contain; opacity: 0.3; }
+        .coming-soon-placeholder { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 24px; color: var(--text-secondary); font-weight: 500; font-size: 24px; cursor: default; text-align: center; background-color: var(--card-bg); }
+        .placeholder-logo { width: 120px; height: 120px; object-fit: contain; opacity: 0.3; }
         .downloadable-book { cursor: pointer; }
         .book-item.downloadable-book:hover, .book-item.locked-hover { z-index: 10; }
         .book-item.downloadable-book:hover .book-cover-wrapper, .book-item.locked-hover .book-cover-wrapper { transform: translateY(-4px); }
@@ -228,43 +216,38 @@
         .modal-box { background-color: var(--modal-bg); border-radius: 28px; width: 440px; max-width: 90vw; text-align: left; transform: scale(0.95); opacity: 0; transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1), opacity 0.2s ease; display: flex; flex-direction: column; box-shadow: var(--google-shadow-hover); }
         .modal-overlay.active .modal-box { transform: scale(1); opacity: 1; }
         .modal-text-container { padding: 24px 24px 20px; }
-        .modal-title { font-size: 22px; font-weight: 400; color: var(--text-primary); margin-bottom: 16px; }
-        .modal-message { font-size: 14px; font-weight: 400; color: var(--text-secondary); line-height: 1.5; letter-spacing: 0.2px; }
-        .modal-actions { display: flex; justify-content: flex-end; padding: 8px 16px 16px; }
+        .modal-title { font-size: 24px; font-weight: 400; color: var(--text-primary); margin-bottom: 16px; }
+        .info-text { font-size: 14px; font-weight: 400; color: var(--text-secondary); line-height: 1.5; letter-spacing: 0.2px; text-align: justify; text-justify: inter-word; hyphens: none; -webkit-hyphens: none; }
+        .modal-actions { display: flex; justify-content: flex-end; padding: 8px 24px 24px; gap: 8px; }
         
-        /* Material Text Button */
         .modal-btn.confirm { background: transparent; color: var(--accent); padding: 8px 16px; font-size: 14px; font-weight: 500; letter-spacing: 0.25px; border: none; border-radius: 4px; cursor: pointer; transition: background-color 0.2s ease; }
         .modal-btn.confirm:hover { background-color: var(--icon-hover); }
 
-        /* --- MATERIAL 3 ITEM DIALOG (Netflix Structure / M3 Specs) --- */
-        .google-modal-box { background-color: var(--modal-bg); border-radius: 28px; width: 720px; max-width: 90vw; text-align: left; transform: scale(0.95); opacity: 0; transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1), opacity 0.2s ease; display: flex; flex-direction: column; box-shadow: var(--google-shadow-hover); position: relative; overflow: hidden !important; height: auto !important; max-height: 90vh; }
+        /* --- MATERIAL 3 ITEM DIALOG (Netflix Layout / M3 Specs) --- */
+        .google-modal-box { background-color: var(--modal-bg); border-radius: 28px; width: 600px; max-width: 90vw; text-align: left; transform: scale(0.95); opacity: 0; transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1), opacity 0.2s ease; display: flex; flex-direction: column; box-shadow: var(--google-shadow-hover); position: relative; overflow: hidden !important; height: auto !important; max-height: 90vh; }
         .modal-overlay.active .google-modal-box { transform: scale(1); opacity: 1; }
         
-        /* Material Icon Close Button */
         .google-close { position: absolute; top: 16px; right: 16px; width: 40px; height: 40px; border-radius: 50%; background: rgba(0, 0, 0, 0.4); border: none; color: white; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 20; transition: background-color 0.2s; backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
         .google-close:hover { background-color: rgba(0,0,0,0.6); }
         
         .google-banner { position: relative; width: 100%; height: 320px; background-size: cover; background-position: top center; background-repeat: no-repeat; flex-shrink: 0; }
-        
-        /* RESTORED GRADIENT FADE */
         .google-banner-fade { position: absolute; bottom: -2px; width: 100%; height: 60%; background: linear-gradient(to top, var(--modal-bg) 0%, transparent 100%); display: block; z-index: 1; }
         
-        /* RESTORED NEGATIVE MARGIN OVERLAP */
+        /* EXACT OVERLAP MARGINS TO KEEP TAGS IN SOLID BACKGROUND */
         .google-content { padding: 0 40px 40px 40px !important; margin-top: -80px; position: relative; z-index: 2; display: flex; flex-direction: column; flex: 1 1 auto !important; min-height: 0; }
-        .google-title { font-size: 32px; font-weight: 400; color: var(--text-primary); margin-bottom: 16px; line-height: 1.2; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; flex-shrink: 0; letter-spacing: -0.5px; }
+        .google-title { font-size: 38px; font-weight: 700; color: var(--text-primary); margin-bottom: 40px; line-height: 1.2; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; flex-shrink: 0; letter-spacing: -0.5px; }
         
-        /* Google Search Chips */
         .google-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; flex-shrink: 0; }
         .google-tag { background-color: transparent; color: var(--text-secondary); border: 1px solid var(--border); padding: 4px 12px; border-radius: 16px; font-size: 13px; font-weight: 500; }
         
-        .google-desc { font-size: 15px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 32px; width: 100%; hyphens: none; -webkit-hyphens: none; overflow-y: auto; min-height: 0; padding-right: 12px; letter-spacing: 0.2px; }
+        /* SCROLLABLE JUSTIFIED DESCRIPTION */
+        .google-desc { font-size: 15px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 32px; width: 100%; text-align: justify; text-justify: inter-word; hyphens: none; -webkit-hyphens: none; overflow-y: auto; max-height: 35vh; padding-right: 16px; letter-spacing: 0.2px; }
         .google-desc::-webkit-scrollbar { width: 6px; }
         .google-desc::-webkit-scrollbar-track { background: transparent; }
         .google-desc::-webkit-scrollbar-thumb { background: rgba(128, 128, 128, 0.3); border-radius: 10px; }
         
         .google-actions { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
         
-        /* Material Primary Action */
         .google-btn { background-color: var(--btn-bg); color: var(--btn-text); border: 1px solid transparent; padding: 10px 24px; font-size: 14px; font-weight: 500; letter-spacing: 0.25px; border-radius: 24px; display: inline-flex; align-items: center; gap: 8px; cursor: pointer; transition: background-color 0.2s ease, box-shadow 0.2s ease; }
         .google-btn:hover { background-color: var(--btn-hover); box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3), 0 1px 3px 1px rgba(60,64,67,0.15); }
         .google-btn svg { width: 18px; height: 18px; }
@@ -290,14 +273,14 @@
             nav { justify-content: space-between; padding: 0 5%; position: fixed; top: 0; width: 100%; height: 56px; z-index: 9999 !important; display: flex; align-items: center; border-bottom: 1px solid var(--border); }
             
             .nav-brand { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); display: flex; align-items: center; justify-content: center; }
-            .brand-icon { width: 32px; height: 32px; margin-right: 0; } /* Keep mobile icon slightly smaller */
+            .brand-icon { width: 32px; height: 32px; margin-right: 0; } 
             .nav-controls { width: 100%; height: 100%; display: flex; justify-content: space-between; align-items: center; }
             .nav-icons { order: 1; display: flex; align-items: center; gap: 4px; }
-            .theme-toggle, .color-toggle, .hamburger { display: flex !important; align-items: center; justify-content: center; padding: 0 !important; margin: 0 !important; line-height: 0 !important; transform: none !important; }
+            .theme-toggle, .hamburger { display: flex !important; align-items: center; justify-content: center; padding: 0 !important; margin: 0 !important; line-height: 0 !important; transform: none !important; }
             .hamburger { order: 2; background: none; border: none; cursor: pointer; z-index: 10000; transition: background-color 0.2s ease; width: 40px; height: 40px; border-radius: 50%; color: var(--text-secondary); }
             .hamburger:active { transform: scale(0.9) translateZ(0) !important; }
             .hamburger:hover { background-color: var(--icon-hover); color: var(--text-primary); }
-            .hamburger svg, .theme-toggle svg, .color-toggle img { display: block; }
+            .hamburger svg, .theme-toggle svg { display: block; }
             .nav-links, .nav-divider { display: none; }
 
             .hero-glow { -webkit-mask-image: radial-gradient(circle at 50% 40%, black 0%, transparent 65%); mask-image: radial-gradient(circle at 50% 40%, black 0%, transparent 65%); opacity: 0.15; }
@@ -314,7 +297,6 @@
             .mobile-menu-divider { width: 100%; height: 1px; background: var(--border); margin: 8px 0; }
             .mobile-menu-footer { display: none; }
 
-            /* Hero Section */
             .hero { height: var(--app-height, 100vh) !important; min-height: var(--app-height, 100vh) !important; max-height: var(--app-height, 100vh) !important; }
             .hero-container { flex-direction: column; text-align: center; align-items: center; justify-content: flex-start; padding-top: 15vh; padding-left: 5%; padding-right: 5%; }
             .hero-content { align-items: center; max-width: 100%; z-index: 15; padding-bottom: 35vh; }
@@ -327,29 +309,26 @@
             .hero-image { position: absolute; height: auto; max-height: 40vh; max-width: 80%; bottom: 0 !important; left: 50%; transform: translateX(-50%); z-index: 2; -webkit-mask-image: none !important; mask-image: none !important; }
             .hero::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 20vh; background: linear-gradient(to bottom, transparent 0%, var(--bg-main) 85%, var(--bg-main) 100%); z-index: 10; pointer-events: none; }
 
-            /* Library Section */
             .library { position: relative; z-index: 20; background-color: var(--bg-main); padding-top: 40px !important; padding-bottom: 180px !important; scroll-margin-top: 56px !important; height: auto !important; }
             .library-title { text-align: left; font-size: 24px; font-weight: 500; padding: 0 5%; margin-bottom: 24px; }
             
             .netflix-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; padding: 0 5% 20px 5% !important; justify-items: center; }
             .book-item[style*="visibility: hidden"] { display: none !important; }
             .book-cover-wrapper { width: 100%; max-width: 160px; }
-            .coming-soon-placeholder { font-size: 14px; gap: 8px; }
-            .placeholder-logo { width: 40px; height: 40px; }
+            .coming-soon-placeholder { font-size: 18px; gap: 12px; }
+            .placeholder-logo { width: 60px; height: 60px; }
             .book-item.downloadable-book:hover .book-cover-wrapper, .book-item.locked-hover .book-cover-wrapper { transform: none !important; }
             
             .modal-overlay { align-items: center !important; justify-content: center !important; }
             
-            /* Mobile Specific M3 Dialog */
             .google-modal-box { border-radius: 28px; width: 92vw !important; max-height: 85vh; transform: scale(0.95) !important; position: absolute !important; top: 50% !important; left: 50% !important; transform: translate(-50%, -50%) scale(0.95) !important; }
             .modal-overlay.active .google-modal-box { transform: translate(-50%, -50%) scale(1) !important; }
             .google-banner { height: 200px; }
             
-            /* Restore mobile fade */
             .google-banner-fade { display: block; height: 75% !important; bottom: -2px !important; background: linear-gradient(to top, var(--modal-bg) 5%, transparent 100%) !important; }
             
             .google-content { padding: 0 24px 24px 24px !important; margin-top: -40px; }
-            .google-title { font-size: 24px; margin-bottom: 12px; }
+            .google-title { font-size: 28px; font-weight: 700; margin-bottom: 16px; }
             .google-tags { margin-bottom: 16px; }
             .google-actions { width: 100%; display: grid; grid-template-columns: 1fr auto; gap: 12px; }
             .google-btn { width: 100%; justify-content: center; }
@@ -376,11 +355,6 @@
                     <svg id="theme-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <!-- SVGs handled by JS -->
                     </svg>
-                </button>
-                
-                <button class="color-toggle" id="colorBtn" aria-label="Cycle Glow Color" title="Change Background Hue">
-                    <img src="images/logos/nav-bar/hue-white.webp" alt="Hue Palette" class="hue-icon hue-dark">
-                    <img src="images/logos/nav-bar/hue-black.webp" alt="Hue Palette" class="hue-icon hue-light">
                 </button>
             </div>
 
@@ -432,7 +406,7 @@
 
         <section class="library" id="library-section">
             <div class="library-content">
-                <h2 class="library-title">The Library</h2>
+                <h2 class="library-title">Dive into the Archive</h2>
                 
                 <div class="netflix-row">
                     
@@ -476,7 +450,6 @@
                         </div>
                     </div>
                     
-                    <!-- 4th Placehoder item remains to keep 4-column layout intact -->
                     <div class="book-item" style="visibility: hidden;"></div>
 
                 </div>
@@ -823,36 +796,8 @@
                     closeAllModals();
                 }
             });
-
-            // --- 6. COLOR CYCLING LOGIC (GOOGLE CORE COLORS) ---
-            const colorBtn = document.getElementById('colorBtn');
-            const googleColors = [
-                '#4285F4', // Google Blue
-                '#EA4335', // Google Red
-                '#FBBC05', // Google Yellow
-                '#34A853'  // Google Green
-            ];
-            
-            let currentColorIndex = 0;
-            const savedColor = localStorage.getItem('vanisagara_hero_glow');
-            
-            if (savedColor) {
-                const foundIndex = googleColors.indexOf(savedColor);
-                if (foundIndex !== -1) {
-                    currentColorIndex = foundIndex;
-                    document.documentElement.style.setProperty('--hero-glow', googleColors[currentColorIndex]);
-                }
-            }
-
-            colorBtn.addEventListener('click', () => {
-                currentColorIndex = (currentColorIndex + 1) % googleColors.length;
-                const newColor = googleColors[currentColorIndex];
-                
-                document.documentElement.style.setProperty('--hero-glow', newColor);
-                localStorage.setItem('vanisagara_hero_glow', newColor);
-            });
 		
-			// --- 7. MOBILE HAMBURGER MENU LOGIC ---
+			// --- 6. MOBILE HAMBURGER MENU LOGIC ---
             const hamburgerBtn = document.getElementById('hamburgerBtn');
             const mobileMenu = document.getElementById('mobileMenu');
             
@@ -879,7 +824,7 @@
                 });
             }
             
-            // --- 8. UNIVERSAL SCROLL MEMORY ---
+            // --- 7. UNIVERSAL SCROLL MEMORY ---
             if ('scrollRestoration' in history) {
                 history.scrollRestoration = 'manual';
             }
