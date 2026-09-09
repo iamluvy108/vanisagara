@@ -276,7 +276,7 @@
         /* --- BRANDING DIVIDER --- */
         .divider { display: flex; align-items: center; gap: 10px; margin-bottom: 40px; }
         .divider-line { height: 1px; width: 40px; background-color: var(--text-secondary); }
-        .divider-circle { height: 8px; width: 8px; border-radius: 50%; border: 1px solid var(--text-secondary); background-color: transparent; }
+        .divider-circle { height: 8px; width: 8px; border-radius: 50%; border: 1px solid var(--text-secondary); background-color: transparent; flex-shrink: 0; }
 
         /* Prose / Text Block */
         .prose {
@@ -424,7 +424,7 @@
             /* ABOUT PAGE TEXT & SPACING */
             .about-wrapper { padding-top: 12vh; padding-bottom: 80px; padding-left: 5%; padding-right: 5%; }
             .about-title { font-size: clamp(38px, 11vw, 60px); margin-bottom: 24px; letter-spacing: 0; }
-            .divider { justify-content: center; margin-bottom: 32px; width: 60px; }
+            .divider { justify-content: center; margin-bottom: 32px; }
             .prose { font-size: 16px; line-height: 1.6; }
             .prose p { margin-bottom: 24px; padding: 0 5px; color: var(--text-primary); text-align: justify; text-justify: inter-word; hyphens: none; -webkit-hyphens: none; }
             .btn-primary { width: 100%; text-align: center; padding: 12px 20px; }
