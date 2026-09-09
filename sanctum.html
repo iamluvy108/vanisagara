@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vāṇīsāgara (The Sanctum)</title>
     
+    <!-- IMPORT NOTO SERIF & NOTO SERIF DEVANAGARI -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Devanagari:wght@400;600;700&family=Noto+Serif:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap" rel="stylesheet">
@@ -16,6 +17,7 @@
 
     <style>
         :root {
+            /* DARK MODE */
             --bg-main: #000000; 
             --bg-nav: rgba(0, 0, 0, 0.7); 
             --text-primary: #f5f5f7; 
@@ -36,6 +38,7 @@
         }
 
         [data-theme="light"] {
+            /* LIGHT MODE */
             --bg-main: #f5f5f7; 
             --bg-nav: rgba(245, 245, 247, 0.7); 
             --text-primary: #000000; 
@@ -121,7 +124,7 @@
             flex-direction: column;
             transition: background-color 0.4s ease, box-shadow 0.4s ease;
             font-family: 'Noto Serif', serif;
-            position: relative; /* Anchor for Breadcrumbs */
+            position: relative; 
         }
         [data-theme="light"] .ios-card { box-shadow: 0 10px 40px rgba(0,0,0,0.06); }
         .ios-card * { font-family: 'Noto Serif', serif; }
@@ -135,9 +138,7 @@
         .sanctum-header { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 50px; width: 100%; }
         .sanctum-title { font-size: clamp(40px, 6vw, 72px); font-weight: 400; line-height: 1.1; margin-bottom: 16px; color: var(--text-primary); }
 
-        /* The book link retains its color, title dynamically shifts to white/black */
         #view-books .toc-link { color: var(--book-text-color); }
-        
         #view-chapters .sanctum-title { font-size: clamp(28px, 4vw, 48px); margin-bottom: 20px; }
 
         .divider { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; justify-content: center; width: 100%; }
@@ -202,6 +203,8 @@
         
         .locked-btn { opacity: 0.3 !important; pointer-events: none; cursor: default; box-shadow: none; }
 
+        /* --- MOBILE FIREWALL --- */
+        .hamburger, .mobile-menu-overlay { display: none; }
         @media (max-width: 900px) {
             html { scroll-behavior: auto !important; }
             * { -webkit-tap-highlight-color: transparent; }
@@ -242,7 +245,6 @@
             .ios-card { padding: 40px 20px; border-radius: 16px; }
             .toc-container { gap: 24px; padding: 0 10px; }
             
-            /* Center breadcrumbs on mobile */
             .breadcrumb { position: relative; top: 0; right: 0; justify-content: center; width: 100%; margin-bottom: 25px; font-size: 13px; }
             
             .reader-chapter-title { font-size: 32px; margin-bottom: 40px; }
