@@ -16,57 +16,94 @@
     </script>
 
     <style>
+        /* --- ENABLE SMOOTH GRADIENT COLOR FADING --- */
+        @property --hero-glow {
+            syntax: '<color>';
+            inherits: true;
+            initial-value: #0288D1; 
+        }
+
+        /* --- STRICT GOOGLE MATERIAL THEME VARIABLES --- */
         :root {
-            /* DARK MODE */
-            --bg-main: #000000; 
-            --bg-nav: rgba(0, 0, 0, 0.7); 
-            --text-primary: #f5f5f7; 
-            --text-secondary: #86868b; 
-            --accent: #ffffff; 
-            --card-bg: #141414; 
-            --border: rgba(255, 255, 255, 0.1);
-            
-            --book-text-color: #0a84ff; 
-            
-            --toc-link-color: #0a84ff; 
+            --bg-main: #202124;
+            --bg-nav: rgba(32, 33, 36, 0.98);
+            --hero-glow: #0288D1; /* Ocean Blue */
+            --text-primary: #e8eaed;
+            --text-secondary: #9aa0a6;
+            --accent: #8ab4f8;
+            --btn-bg: #ffffff; /* Crisp white button for dark mode */
+            --btn-text: #202124; 
+            --btn-hover: #e8eaed; /* Soft Google-grey hover state */
+            --card-bg: #28292a; /* Slightly elevated Material Surface */
+            --modal-bg: #202124; 
+            --border: #5f6368;
+            --sys-yellow: #fbbc04; 
+            --google-shadow: 0 1px 2px 0 rgba(0,0,0,0.3), 0 1px 3px 1px rgba(0,0,0,0.15);
+            --google-shadow-hover: 0 1px 3px 0 rgba(0,0,0,0.3), 0 4px 8px 3px rgba(0,0,0,0.15);
+            --icon-hover: rgba(255, 255, 255, 0.1);
+            --nav-link-hover: rgba(255, 255, 255, 0.08);
+
+            /* Reader Specific Variables */
+            --book-text-color: #8ab4f8; 
+            --toc-link-color: #8ab4f8; 
             --toc-hover-color: #ffffff;
-            --reader-red: #0a84ff; 
-            --filter-btn-active: #0A84FF; 
-            
-            --btn-bg: #2c2c2e;
-            --btn-text: #ffffff;
+            --reader-red: #f28b82; /* Google Pastel Red */
         }
 
         [data-theme="light"] {
-            /* LIGHT MODE */
-            --bg-main: #f5f5f7; 
-            --bg-nav: rgba(245, 245, 247, 0.7); 
-            --text-primary: #000000; 
-            --text-secondary: #5e5e60; 
-            --accent: #1d1d1f; 
-            --card-bg: #ffffff; 
-            --border: rgba(0, 0, 0, 0.08);
-            
-            /* Book links are iOS blue, "The Sanctum" stays black natively */
-            --book-text-color: #007AFF;
-            
-            --toc-link-color: #8c2318; 
-            --toc-hover-color: #000000;
-            --reader-red: #7A1111; 
-            --filter-btn-active: #007AFF; 
-            
-            --btn-bg: #e5e5ea;
-            --btn-text: #000000;
+            --bg-main: #ffffff;
+            --bg-nav: rgba(255, 255, 255, 0.98);
+            --text-primary: #202124;
+            --text-secondary: #5f6368;
+            --accent: #1a73e8;
+            --btn-bg: #1a73e8; /* Google Workspace Light Mode CTA */
+            --btn-text: #ffffff; 
+            --btn-hover: #1558d6; 
+            --card-bg: #ffffff;
+            --modal-bg: #ffffff; 
+            --border: #dadce0;
+            --sys-yellow: #fbbc04;
+            --google-shadow: 0 1px 2px 0 rgba(60,64,67,0.3), 0 1px 3px 1px rgba(60,64,67,0.15);
+            --google-shadow-hover: 0 1px 3px 0 rgba(60,64,67,0.3), 0 4px 8px 3px rgba(60,64,67,0.15);
+            --icon-hover: rgba(0, 0, 0, 0.05);
+            --nav-link-hover: rgba(0, 0, 0, 0.04);
+
+            /* Reader Specific Variables */
+            --book-text-color: #1a73e8;
+            --toc-link-color: #1a73e8; 
+            --toc-hover-color: #202124;
+            --reader-red: #d93025; /* Google Red */
         }
 
-        html { scroll-behavior: smooth; }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Noto Serif', serif; }
+        html { 
+            scroll-behavior: smooth; 
+            scrollbar-gutter: stable; 
+        }
+
+        /* --- GLOBAL SCROLL LOCK --- */
+        html.no-scroll, body.no-scroll { 
+            overflow: hidden !important; 
+            touch-action: none !important; 
+        }
+
+        /* --- GOOGLE TYPOGRAPHY --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Google Sans', 'Product Sans', Roboto, -apple-system, Arial, sans-serif;
+        }
 
         body {
-            background-color: var(--bg-main); color: var(--text-primary);
+            background-color: var(--bg-main);
+            color: var(--text-primary);
             transition: background-color 0.4s ease, color 0.4s ease;
-            overflow-y: scroll; overflow-x: hidden; display: flex; flex-direction: column; min-height: 100vh;
-            -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         #main-content { backface-visibility: hidden; -webkit-backface-visibility: hidden; transform-style: preserve-3d; perspective: 1000px; will-change: transform, opacity; }
@@ -93,64 +130,70 @@
         .filters-group.stagger-in .control-btn:nth-child(6) { animation-delay: 0.25s; }
         .filters-group:not(.stagger-in) .control-btn { opacity: 1; animation: none; }
 
-        /* --- NAVIGATION --- */
-        nav { position: fixed; top: 0; width: 100%; height: 60px; background: var(--bg-nav); backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px); display: flex; align-items: center; justify-content: space-between; padding: 0 5%; z-index: 100; border-bottom: 1px solid var(--border); transition: background 0.4s ease; }
-        .nav-brand { display: inline-block; font-size: 22px; text-decoration: none; color: var(--text-primary); white-space: nowrap; }
-        .brand-icon { width: 24px; height: 24px; object-fit: contain; vertical-align: middle; margin-right: 8px; position: relative; top: -1px; }
-        .nav-controls { display: flex; align-items: center; gap: 20px; }
-        .nav-links { display: flex; list-style: none; gap: 24px; }
-        .nav-links a { text-decoration: none; color: var(--text-primary); font-size: 15px; font-weight: 500; transition: opacity 0.2s; font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif; }
-        .nav-links a:hover { opacity: 0.7; }
-        .nav-divider { width: 1px; height: 28px; background-color: var(--text-secondary); opacity: 0.4; }
-        .nav-icons { display: flex; align-items: center; gap: 12px; }
-        .theme-toggle { background: none; border: none; color: var(--text-primary); cursor: pointer; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease, visibility 0.3s ease; }
-        .theme-toggle:active { transform: scale(0.85) translateZ(0); }
-        .theme-toggle:hover { opacity: 0.7; }
+        /* --- GOOGLE WORKSPACE NAVIGATION --- */
+        nav { position: fixed; top: 0; width: 100%; height: 64px; background: var(--bg-nav); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: space-between; padding: 0 12%; z-index: 100; border-bottom: 1px solid var(--border); transition: background 0.4s ease; }
+        .nav-brand { display: flex; align-items: center; justify-content: center; height: 100%; text-decoration: none; }
+        .brand-icon { width: 48px; height: 48px; object-fit: contain; margin-right: 6px; display: block; }
+        .nav-controls { display: flex; align-items: center; gap: 8px; }
+        .nav-links { display: flex; list-style: none; gap: 4px; margin-right: 12px; }
+        .nav-links a { text-decoration: none; color: var(--text-primary); font-size: 14px; font-weight: 500; padding: 8px 16px; border-radius: 4px; transition: background-color 0.2s, color 0.2s; }
+        .nav-links a:hover { background-color: var(--nav-link-hover); }
+        .nav-divider { width: 1px; height: 32px; background-color: var(--border); margin: 0 8px; }
+        .nav-icons { display: flex; align-items: center; gap: 4px; }
+        
+        .theme-toggle { background: transparent; border: none; color: var(--text-secondary); cursor: pointer; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: background-color 0.2s ease, transform 0.2s cubic-bezier(0.16, 1, 0.3, 1); }
+        .theme-toggle:active { transform: scale(0.9) translateZ(0); }
+        .theme-toggle:hover { background-color: var(--icon-hover); color: var(--text-primary); }
+
         [data-theme="dark"] .logo-light { display: none; }
         [data-theme="light"] .logo-dark { display: none; }
 
         /* --- SANCTUM LOBBY & VIEWS --- */
-        .sanctum-wrapper { position: relative; flex: 1; display: flex; flex-direction: column; align-items: center; padding: 120px 5% 100px 5%; overflow: hidden; z-index: 2; }
+        .sanctum-wrapper { position: relative; flex: 1; display: flex; flex-direction: column; align-items: center; padding: 140px 12% 100px 12%; overflow: hidden; z-index: 2; }
         
         .view-section { width: 100%; display: none; flex-direction: column; align-items: center; animation: fadeInUp 0.4s ease forwards; }
         .view-section.active { display: flex; }
 
-        .ios-card {
+        /* --- MATERIAL 3 READER CARD --- */
+        .google-card {
             background-color: var(--card-bg);
             border: 1px solid var(--border);
-            border-radius: 24px;
-            padding: 70px 60px;
+            border-radius: 28px;
+            padding: 60px 60px;
             width: 100%;
             max-width: 960px;
             margin: 0 auto;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            box-shadow: var(--google-shadow);
             display: flex;
             flex-direction: column;
             transition: background-color 0.4s ease, box-shadow 0.4s ease;
-            font-family: 'Noto Serif', serif;
             position: relative; 
         }
-        [data-theme="light"] .ios-card { box-shadow: 0 10px 40px rgba(0,0,0,0.06); }
-        .ios-card * { font-family: 'Noto Serif', serif; }
+
+        /* Enforce elegant serif strictly on reading material */
+        .reader-container *, .toc-container *, .toc-link { font-family: 'Noto Serif', serif; }
+        
+        /* Ensure UI elements inside the card retain Google Sans */
+        .nav-header-row *, .breadcrumb *, .back-btn, .control-btn, .nav-verse-btn { font-family: 'Google Sans', 'Product Sans', Roboto, sans-serif !important; }
 
         /* --- NAVIGATION HEADER ROW --- */
-        /* Clean horizontal line added to separate nav buttons from content */
         .nav-header-row { display: flex; justify-content: space-between; align-items: center; width: 100%; margin-bottom: 40px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
 
-        .breadcrumb { font-size: 14px; font-weight: 500; color: var(--text-secondary); display: flex; align-items: center; gap: 8px; font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif; z-index: 10; }
+        .breadcrumb { font-size: 14px; font-weight: 500; color: var(--text-secondary); display: flex; align-items: center; gap: 8px; z-index: 10; }
         .breadcrumb a { color: var(--text-secondary); text-decoration: none; cursor: pointer; transition: color 0.2s; }
         @media (hover: hover) { .breadcrumb a:hover { color: var(--text-primary); } }
         .breadcrumb .separator { font-size: 12px; opacity: 0.5; letter-spacing: -1px; }
 
-        .sanctum-header { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 50px; width: 100%; }
-        .sanctum-title { font-size: clamp(40px, 6vw, 72px); font-weight: 400; line-height: 1.1; margin-bottom: 16px; color: var(--text-primary); }
+        .sanctum-header { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 50px; width: 100%; font-family: 'Google Sans', 'Product Sans', sans-serif !important; }
+        .sanctum-title { font-size: clamp(40px, 6vw, 72px); font-weight: 400; line-height: 1.1; margin-bottom: 16px; color: var(--text-primary); font-family: inherit; }
 
         #view-books .toc-link { color: var(--book-text-color); }
         #view-chapters .sanctum-title { font-size: clamp(28px, 4vw, 48px); margin-bottom: 20px; }
 
+        /* --- BRANDING DIVIDER --- */
         .divider { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; justify-content: center; width: 100%; }
-        .divider-line { height: 1px; width: 60px; background-color: var(--text-secondary); opacity: 0.5; }
-        .divider-circle { width: 6px; height: 6px; border-radius: 50%; border: 1px solid var(--text-secondary); opacity: 0.5; }
+        .divider-line { height: 1px; width: 40px; background-color: var(--text-secondary); opacity: 0.5; }
+        .divider-circle { width: 8px; height: 8px; border-radius: 50%; border: 1px solid var(--text-secondary); opacity: 0.5; background-color: transparent; flex-shrink: 0; }
 
         .toc-container { position: relative; z-index: 2; display: flex; flex-direction: column; gap: 22px; width: 100%; max-width: 900px; margin: 0 auto; text-align: left; }
         .toc-link { font-size: clamp(18px, 2.5vw, 24px); color: var(--toc-link-color); text-decoration: none; transition: opacity 0.2s ease, color 0.2s ease; display: block; line-height: 1.4; letter-spacing: 0.01em; cursor: pointer; }
@@ -159,21 +202,23 @@
         .toc-link:active:not(.locked) { opacity: 0.5; transition: opacity 0.1s ease; }
         .toc-link.locked { opacity: 0.35; pointer-events: none; cursor: default; }
 
-        /* --- ADVANCED VIEW CONTROLS --- */
-        .advanced-controls-bar { width: 100%; display: flex; justify-content: flex-start; align-items: center; margin-bottom: 40px; flex-wrap: wrap; gap: 15px; border-bottom: 1px solid var(--border); padding-bottom: 20px; }
+        /* --- MATERIAL SEARCH FILTERS (ADVANCED CONTROLS) --- */
+        .advanced-controls-bar { width: 100%; display: flex; justify-content: flex-start; align-items: center; margin-bottom: 40px; flex-wrap: wrap; gap: 12px; border-bottom: 1px solid var(--border); padding-bottom: 20px; }
         
-        .control-btn { background: var(--btn-bg); border: 1px solid var(--border); color: var(--btn-text); padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 14px; font-weight: 600; transition: background 0.2s, border-color 0.2s; font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif !important; }
-        .control-btn.active { background: var(--filter-btn-active); color: white; border-color: var(--filter-btn-active); }
+        /* Filter Chips */
+        .control-btn { background: transparent; border: 1px solid var(--border); color: var(--text-secondary); padding: 6px 16px; border-radius: 16px; cursor: pointer; font-size: 13px; font-weight: 700; transition: background-color 0.2s, color 0.2s, border-color 0.2s; }
+        .control-btn.active { background: var(--icon-hover); color: var(--text-primary); border-color: transparent; }
         
-        .filters-group { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+        .filters-group { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
         .adv-v-line { width: 1px; height: 24px; background-color: var(--text-secondary); opacity: 0.3; margin: 0 5px; }
 
         /* --- CHAPTER & VERSE READER VIEWS --- */
         .reader-container { width: 100%; z-index: 2; }
         
-        .back-btn { background: var(--btn-bg); color: var(--btn-text); border: none; padding: 12px 24px; border-radius: 8px; font-size: 15px; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; transition: transform 0.2s ease, opacity 0.2s ease; font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif !important; box-shadow: 0 4px 12px rgba(0,0,0,0.1); width: fit-content; margin-bottom: 0; }
-        @media (hover: hover) { .back-btn:hover { opacity: 0.85; transform: translateZ(0) scale(1.02); } }
-        .back-btn:active { transform: scale(0.98); opacity: 0.6; }
+        /* Flat Return Buttons */
+        .back-btn { background: transparent; color: var(--accent); border: none; padding: 8px 16px; border-radius: 24px; font-size: 14px; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; transition: background-color 0.2s ease; width: fit-content; margin-bottom: 0; }
+        @media (hover: hover) { .back-btn:hover { background-color: var(--icon-hover); } }
+        .back-btn:active { transform: scale(0.98); }
 
         .reader-chapter-title { text-align: center; margin-bottom: 60px; }
         
@@ -183,7 +228,6 @@
         .verse-summary-item { font-size: 22px; line-height: 1.7; text-align: justify; text-justify: inter-word; padding-bottom: 30px; margin-bottom: 30px; border-bottom: 1px solid var(--border); }
         .verse-summary-item:last-child { border-bottom: none; }
         .verse-summary-link { color: var(--reader-red); font-weight: 700; text-decoration: none; cursor: pointer; transition: opacity 0.2s; letter-spacing: 0.05em; }
-        /* Removed the hover underline! */
         @media (hover: hover) { .verse-summary-link:hover { opacity: 0.8; } }
 
         .verse-number { color: var(--reader-red); font-size: 30px; font-weight: 700; margin-bottom: 40px; letter-spacing: 0.05em; cursor: pointer; display: inline-block; }
@@ -210,59 +254,59 @@
         
         .quote-block { display: block; text-align: center; margin: 30px auto; font-size: 22px; line-height: 1.8; font-style: italic; width: 100%; }
 
-        /* --- PREMIUM NAVIGATION FOOTER BUTTONS WITH INLINE SVG --- */
+        /* --- MATERIAL NAVIGATION FOOTER BUTTONS --- */
         .verse-nav-footer { display: flex; justify-content: space-between; margin-top: 40px; padding-top: 40px; border-top: 1px solid var(--border); width: 100%; }
-        .nav-verse-btn { display: inline-flex; align-items: center; justify-content: center; background: var(--btn-bg); color: var(--btn-text); border: none; padding: 14px 28px; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; text-decoration: none; transition: transform 0.2s ease, opacity 0.2s ease; font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif !important; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-        @media (hover: hover) { .nav-verse-btn:hover:not(.locked-btn) { opacity: 0.85; transform: translateZ(0) scale(1.02); } }
-        .nav-verse-btn:active:not(.locked-btn) { transform: scale(0.98); opacity: 0.6; }
+        .nav-verse-btn { display: inline-flex; align-items: center; justify-content: center; background-color: var(--btn-bg); color: var(--btn-text); border: 1px solid transparent; padding: 12px 24px; border-radius: 24px; font-size: 15px; font-weight: 700; cursor: pointer; text-decoration: none; transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.1s ease; }
+        @media (hover: hover) { .nav-verse-btn:hover:not(.locked-btn) { background-color: var(--btn-hover); box-shadow: var(--google-shadow); } }
+        .nav-verse-btn:active:not(.locked-btn) { transform: scale(0.98); }
         
         .locked-btn { opacity: 0.3 !important; pointer-events: none; cursor: default; box-shadow: none; }
 
         /* --- MOBILE FIREWALL --- */
         .hamburger, .mobile-menu-overlay { display: none; }
+        
+        /* --- PREMIUM MOBILE APP MAKEOVER --- */
         @media (max-width: 900px) {
             html { scroll-behavior: auto !important; }
             * { -webkit-tap-highlight-color: transparent; }
             body { margin: 0; }
+            
             #main-content { animation: mobileFadeIn 0.5s ease forwards !important; transform: none !important; width: 100%; }
             @keyframes mobileFadeIn { 0% { opacity: 0; } 100% { opacity: 1; } }
-            html.no-scroll, body.no-scroll { overflow: hidden !important; scroll-snap-type: none !important; }
-            
-            nav { justify-content: space-between; padding: 0 5%; position: fixed; top: 0; width: 100%; height: 60px; z-index: 9999 !important; display: flex; align-items: center; }
-            .nav-brand { position: absolute; left: 50%; top: 55%; transform: translate(-50%, -50%); display: flex; align-items: center; justify-content: center; }
-            nav .vanisagara-text { display: none !important; } 
-            .brand-icon { width: 44px; height: 44px; margin-right: 0; }
+
+            nav { justify-content: space-between; padding: 0 5%; position: fixed; top: 0; width: 100%; height: 56px; z-index: 9999 !important; display: flex; align-items: center; border-bottom: 1px solid var(--border); }
+            .nav-brand { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); display: flex; align-items: center; justify-content: center; }
+            .brand-icon { width: 36px; height: 36px; margin-right: 0; }
             .nav-controls { width: 100%; height: 100%; display: flex; justify-content: space-between; align-items: center; }
-            .nav-icons { order: 1; display: flex; align-items: center; gap: 15px; } 
-            .theme-toggle:active { transform: scale(0.85) translateZ(0); }
+            .nav-icons { order: 1; display: flex; align-items: center; gap: 4px; } 
             
-            .hamburger { order: 2; background: none; border: none; cursor: pointer; z-index: 10000; transition: transform 0.2s ease; display: flex !important; align-items: center; justify-content: center; padding: 0 !important; margin: 0 !important; transform: translateY(1.5px) !important; }
-            .hamburger:active { transform: translateY(1.5px) scale(0.85) translateZ(0) !important; }
+            .theme-toggle, .hamburger { display: flex !important; align-items: center; justify-content: center; padding: 0 !important; margin: 0 !important; line-height: 0 !important; transform: none !important; }
+            .hamburger { order: 2; background: none; border: none; cursor: pointer; z-index: 10000; transition: background-color 0.2s ease; width: 40px; height: 40px; border-radius: 50%; color: var(--text-secondary); }
+            .hamburger:active { transform: scale(0.9) translateZ(0) !important; }
+            .hamburger:hover { background-color: var(--icon-hover); color: var(--text-primary); }
             .hamburger svg, .theme-toggle svg { display: block; }
-            [data-theme="dark"] .theme-toggle, [data-theme="dark"] .hamburger { color: #ffffff !important; }
             .nav-links, .nav-divider { display: none; }
 
-            .mobile-menu-overlay { display: flex; position: fixed; top: 0; left: 0; width: 100%; height: 100dvh; background-color: var(--bg-main); z-index: 9998; flex-direction: column; justify-content: center; align-items: center; padding-top: 0; padding-bottom: 12vh; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; }
+            .mobile-menu-overlay { display: flex; position: fixed; top: 0; left: 0; width: 100%; height: 100dvh; background-color: var(--bg-main); z-index: 9998; flex-direction: column; justify-content: center; align-items: flex-start; padding: 0 8%; opacity: 0; visibility: hidden; transition: opacity 0.2s ease, visibility 0.2s ease; }
             .mobile-menu-overlay.active { opacity: 1; visibility: visible; }
-            .mobile-menu-content { display: flex; flex-direction: column; align-items: center; gap: 14px; }
-            .mobile-menu-content > * { opacity: 0; transform: translateY(-15px); transition: opacity 0.2s ease, transform 0.2s ease; font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif !important; }
+            .mobile-menu-content { display: flex; flex-direction: column; align-items: flex-start; gap: 24px; width: 100%; }
+            .mobile-menu-content > * { opacity: 0; transform: translateY(-15px); transition: opacity 0.2s ease, transform 0.2s ease; font-family: 'Google Sans', 'Product Sans', sans-serif !important; }
             .mobile-menu-overlay.active .mobile-menu-content > *:nth-child(1) { transition: opacity 0.4s ease 0.1s, transform 0.4s cubic-bezier(0.16,1,0.3,1) 0.1s; opacity: 1; transform: translateY(0); }
-            .mobile-menu-overlay.active .mobile-menu-content > *:nth-child(2) { transition: opacity 0.4s ease 0.2s, transform 0.4s cubic-bezier(0.16,1,0.3,1) 0.2s; opacity: 1; transform: translateY(0); }
-            .mobile-menu-overlay.active .mobile-menu-content > *:nth-child(3) { transition: opacity 0.4s ease 0.3s, transform 0.4s cubic-bezier(0.16,1,0.3,1) 0.3s; opacity: 1; transform: translateY(0); }
-            .mobile-menu-overlay.active .mobile-menu-content > *:nth-child(4) { transition: opacity 0.4s ease 0.4s, transform 0.4s cubic-bezier(0.16,1,0.3,1) 0.4s; opacity: 1; transform: translateY(0); }
-            .mobile-menu-content a { color: var(--text-primary); font-size: 22px; text-decoration: none; font-weight: 400; }
-            .mobile-menu-divider { width: 180px; height: 1px; background: linear-gradient(90deg, transparent, var(--text-primary), transparent); opacity: 0.4; }
-            .mobile-menu-footer { position: absolute; bottom: 8vh; }
-            .menu-logo { width: 140px; height: auto; opacity: 0.95; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3)); }
+            .mobile-menu-overlay.active .mobile-menu-content > *:nth-child(2) { transition: opacity 0.4s ease 0.15s, transform 0.4s cubic-bezier(0.16,1,0.3,1) 0.15s; opacity: 1; transform: translateY(0); }
+            .mobile-menu-overlay.active .mobile-menu-content > *:nth-child(3) { transition: opacity 0.3s ease 0.2s, transform 0.4s cubic-bezier(0.16,1,0.3,1) 0.2s; opacity: 1; transform: translateY(0); }
+            .mobile-menu-content a { color: var(--text-primary); font-size: 24px; text-decoration: none; font-weight: 400; }
+            .mobile-menu-divider { width: 100%; height: 1px; background: var(--border); margin: 8px 0; }
+            .mobile-menu-footer { display: none; }
 
-            .sanctum-wrapper { padding-top: 90px; padding-bottom: 60px; }
+            .sanctum-wrapper { padding-top: 10vh; padding-bottom: 60px; padding-left: 5%; padding-right: 5%; }
             
-            .ios-card { padding: 40px 20px; border-radius: 16px; }
+            /* Compact mobile card specs */
+            .google-card { padding: 40px 20px; border-radius: 20px; }
             .toc-container { gap: 24px; padding: 0 10px; }
             
             .nav-header-row { flex-direction: column-reverse; align-items: flex-start; gap: 20px; margin-bottom: 30px; }
             .breadcrumb { justify-content: center; width: 100%; font-size: 13px; text-align: center; flex-wrap: wrap; margin-bottom: 0; }
-            .back-btn { margin-bottom: 0; }
+            .back-btn { margin-bottom: 0; padding: 8px 12px; }
             .adv-v-line { display: none; }
             
             .reader-chapter-title { font-size: 32px; margin-bottom: 40px; }
@@ -283,8 +327,8 @@
 <body>
 
     <nav>
-        <a href="/" class="nav-brand" style="text-decoration: none; color: inherit; font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif;">
-            <img src="images/logos/website/transparent/vanisagara-white.webp" alt="Vāṇīsāgara Logo" class="brand-icon logo-dark"><img src="images/logos/website/transparent/vanisagara-black.webp" alt="Vāṇīsāgara Logo" class="brand-icon logo-light"><span class="vanisagara-text" style="font-family: 'Noto Serif', serif !important;">Vāṇīsāgara</span>
+        <a href="/" class="nav-brand" style="text-decoration: none; color: inherit;">
+            <img src="images/logos/website/transparent/vanisagara-white.webp" alt="Vāṇīsāgara Logo" class="brand-icon logo-dark"><img src="images/logos/website/transparent/vanisagara-black.webp" alt="Vāṇīsāgara Logo" class="brand-icon logo-light">
         </a>
         <div class="nav-controls">
             <ul class="nav-links">
@@ -301,7 +345,7 @@
             </div>
 
             <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
             </button>
         </div>
     </nav>
@@ -324,7 +368,7 @@
         
         <!-- LEVEL 1: THE BOOK DIRECTORY (/sanctum) -->
         <div id="view-books" class="view-section">
-            <div class="ios-card">
+            <div class="google-card">
                 <section class="sanctum-header">
                     <h1 class="sanctum-title">The Sanctum</h1>
                     <div class="divider">
@@ -341,7 +385,7 @@
 
         <!-- LEVEL 2: THE CHAPTER DIRECTORY (/sanctum/bg/) -->
         <div id="view-chapters" class="view-section">
-            <div class="ios-card">
+            <div class="google-card">
                 <div class="reader-container">
                     <div class="nav-header-row">
                         <button class="back-btn" onclick="router('/sanctum')">
@@ -363,7 +407,7 @@
 
         <!-- LEVEL 3: CHAPTER CONTENT & ADVANCED VIEW (/sanctum/bg/#/) -->
         <div id="view-chapter-content" class="view-section">
-            <div class="ios-card">
+            <div class="google-card">
                 <div class="reader-container">
                     <div class="nav-header-row">
                         <button class="back-btn" onclick="router('/sanctum/bg/')">
@@ -393,7 +437,7 @@
 
         <!-- LEVEL 4: THE SINGLE VERSE READER (/sanctum/bg/#/#) -->
         <div id="view-verse" class="view-section">
-            <div class="ios-card">
+            <div class="google-card">
                 <div class="reader-container">
                     <div class="nav-header-row">
                         <button class="back-btn" id="verse-back-btn" onclick="router('/sanctum/bg/')">
@@ -613,7 +657,7 @@
                         let textLabel = numStr.includes('-') ? `TEXTS ${numStr}` : `TEXT ${numStr}`;
                         let cleanTranslation = verse.translation ? verse.translation.replace(/<\/?p[^>]*>/g, '') : '';
 
-                        html += `<div class="verse-summary-item vanisagara-text">
+                        html += `<div class="verse-summary-item">
                             <a onclick="router('/sanctum/bg/${currentChapterObj.chapter_id}/${verse.text_number}')" class="verse-summary-link">[${textLabel}]</a> 
                             <span style="font-weight: 400;">${cleanTranslation}</span>
                         </div>`;
@@ -727,9 +771,9 @@
                     mobileMenu.classList.toggle('active');
                     document.body.classList.toggle('no-scroll');
                     if (mobileMenu.classList.contains('active')) {
-                        hamburgerBtn.innerHTML = `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>`;
+                        hamburgerBtn.innerHTML = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>`;
                     } else {
-                        hamburgerBtn.innerHTML = `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>`;
+                        hamburgerBtn.innerHTML = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>`;
                     }
                 });
 
@@ -738,7 +782,7 @@
                     link.addEventListener('click', () => {
                         mobileMenu.classList.remove('active');
                         document.body.classList.remove('no-scroll');
-                        hamburgerBtn.innerHTML = `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>`;
+                        hamburgerBtn.innerHTML = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>`;
                     });
                 });
             }
