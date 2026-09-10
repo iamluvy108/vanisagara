@@ -174,7 +174,7 @@
         .reader-container *, .toc-container *, .toc-link { font-family: 'Noto Serif', serif; }
         
         /* Ensure UI elements inside the card retain Google Sans */
-        .nav-header-row *, .breadcrumb *, .back-btn, .control-btn, .nav-verse-btn { font-family: 'Google Sans', 'Product Sans', Roboto, sans-serif !important; }
+        .nav-header-row *, .breadcrumb *, .back-btn, .control-btn, .nav-verse-btn, .search-pill * { font-family: 'Google Sans', 'Product Sans', Roboto, sans-serif !important; }
 
         /* --- NAVIGATION HEADER ROW --- */
         .nav-header-row { display: flex; justify-content: space-between; align-items: center; width: 100%; margin-bottom: 40px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
@@ -194,6 +194,17 @@
         .divider { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; justify-content: center; width: 100%; }
         .divider-line { height: 1px; width: 40px; background-color: var(--text-secondary); opacity: 0.5; }
         .divider-circle { width: 8px; height: 8px; border-radius: 50%; border: 1px solid var(--text-secondary); opacity: 0.5; background-color: transparent; flex-shrink: 0; }
+
+        /* --- ENCYCLOPEDIA SEARCH BAR --- */
+        .search-container { width: 100%; display: flex; justify-content: center; margin-bottom: 30px; }
+        .search-pill { display: flex; align-items: center; background-color: var(--bg-main); border: 1px solid var(--border); border-radius: 24px; padding: 8px 16px; width: 100%; max-width: 500px; transition: background-color 0.2s, box-shadow 0.2s, border-color 0.2s; font-family: 'Google Sans', 'Product Sans', sans-serif !important; }
+        .search-pill:focus-within { background-color: var(--icon-hover); box-shadow: var(--google-shadow); border-color: transparent; }
+        .search-icon { color: var(--text-secondary); margin-right: 12px; flex-shrink: 0; }
+        .search-input { flex: 1; background: transparent; border: none; color: var(--text-primary); font-size: 15px; outline: none; min-width: 0; font-family: inherit; }
+        .search-input::placeholder { color: var(--text-secondary); opacity: 0.7; }
+        .search-divider { width: 1px; height: 20px; background-color: var(--border); margin: 0 12px; flex-shrink: 0; }
+        .search-dropdown { background: transparent; border: none; color: var(--text-secondary); font-size: 14px; font-weight: 600; outline: none; cursor: pointer; font-family: inherit; }
+        .search-dropdown option { background-color: var(--modal-bg); color: var(--text-primary); }
 
         .toc-container { position: relative; z-index: 2; display: flex; flex-direction: column; gap: 22px; width: 100%; max-width: 900px; margin: 0 auto; text-align: left; }
         .toc-link { font-size: clamp(18px, 2.5vw, 24px); color: var(--toc-link-color); text-decoration: none; transition: opacity 0.2s ease, color 0.2s ease; display: block; line-height: 1.4; letter-spacing: 0.01em; cursor: pointer; }
@@ -243,7 +254,7 @@
 
         .section-label { font-size: 30px; font-weight: 700; text-align: center; margin-bottom: 12px; letter-spacing: 0.05em; margin-top: 55px; text-transform: uppercase; }
         
-        .devanagari-text { text-align: center; font-size: 32px; line-height: 1.5; margin-bottom: 32px; font-weight: 600; font-family: 'Noto Serif Devanagari', 'Noto Serif', serif !important; }
+        .devanagari-text { text-align: center; font-size: calc(32px + 1pt); line-height: 1.5; margin-bottom: 32px; font-weight: 600; font-family: 'Noto Serif Devanagari', 'Noto Serif', serif !important; }
         .devanagari-text * { font-size: inherit !important; font-weight: inherit !important; line-height: inherit !important; }
         
         .roman-text { text-align: center; font-size: 22px; line-height: 1.6; margin-bottom: 40px; font-style: italic; }
@@ -317,6 +328,12 @@
             
             .reader-chapter-title { font-size: 32px; margin-bottom: 40px; }
             #view-chapters .sanctum-title { font-size: 28px; }
+
+            /* Mobile Search Pill */
+            .search-container { margin-bottom: 24px; }
+            .search-pill { padding: 6px 14px; border-radius: 20px; }
+            .search-input { font-size: 14px; }
+            .search-dropdown { font-size: 13px; }
             
             .verse-block { margin-bottom: 60px; padding-bottom: 40px; }
             
@@ -324,7 +341,7 @@
             .verse-number, .verse-number-static { font-size: 24px; margin-bottom: 30px; }
             .section-label { font-size: 24px; margin-bottom: 10px; margin-top: 40px; }
             
-            .devanagari-text { font-size: 29.4px; }
+            .devanagari-text { font-size: calc(29.4px + 1pt); }
             .roman-text, .synonyms-text, .translation-text, .purport-text { font-size: 20px; }
             .quote-block { font-size: 20px; margin: 22px 0; }
         }
@@ -382,6 +399,23 @@
                         <div class="divider-circle"></div>
                         <div class="divider-line"></div>
                     </div>
+
+                    <!-- ENCYCLOPEDIA SEARCH BAR -->
+                    <div class="search-container">
+                        <div class="search-pill">
+                            <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                            </svg>
+                            <input type="text" class="search-input" placeholder="Search the archive..." onkeydown="if(event.key==='Enter') event.preventDefault();">
+                            <div class="search-divider"></div>
+                            <select class="search-dropdown" onchange="this.blur();">
+                                <option value="verse">Verse</option>
+                                <option value="synonym">Synonym</option>
+                            </select>
+                        </div>
+                    </div>
+
                 </section>
                 <section class="toc-container">
                     <a onclick="router('/encyclopedia/bg/')" class="toc-link">Bhagavad-gītā As It Is (1972 Edition)</a>
