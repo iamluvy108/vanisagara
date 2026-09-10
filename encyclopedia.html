@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vāṇīsāgara (The Sanctum)</title>
+    <title>Vāṇīsāgara (The Encyclopedia)</title>
     
     <!-- IMPORT NOTO SERIF & NOTO SERIF DEVANAGARI -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,14 +27,14 @@
         :root {
             --bg-main: #202124;
             --bg-nav: rgba(32, 33, 36, 0.98);
-            --hero-glow: #0288D1; /* Ocean Blue */
+            --hero-glow: #0288D1; 
             --text-primary: #e8eaed;
             --text-secondary: #9aa0a6;
             --accent: #8ab4f8;
-            --btn-bg: #ffffff; /* Crisp white button for dark mode */
+            --btn-bg: #ffffff; 
             --btn-text: #202124; 
-            --btn-hover: #e8eaed; /* Soft Google-grey hover state */
-            --card-bg: #28292a; /* Slightly elevated Material Surface */
+            --btn-hover: #e8eaed; 
+            --card-bg: #28292a; 
             --modal-bg: #202124; 
             --border: #5f6368;
             --sys-yellow: #fbbc04; 
@@ -47,7 +47,7 @@
             --book-text-color: #8ab4f8; 
             --toc-link-color: #8ab4f8; 
             --toc-hover-color: #ffffff;
-            --reader-red: #f28b82; /* Google Pastel Red */
+            --reader-accent: #8ab4f8; /* Dark Mode Blue Accent */
         }
 
         [data-theme="light"] {
@@ -56,7 +56,7 @@
             --text-primary: #202124;
             --text-secondary: #5f6368;
             --accent: #1a73e8;
-            --btn-bg: #1a73e8; /* Google Workspace Light Mode CTA */
+            --btn-bg: #1a73e8; 
             --btn-text: #ffffff; 
             --btn-hover: #1558d6; 
             --card-bg: #ffffff;
@@ -72,7 +72,7 @@
             --book-text-color: #1a73e8;
             --toc-link-color: #1a73e8; 
             --toc-hover-color: #202124;
-            --reader-red: #d93025; /* Google Red */
+            --reader-accent: #800020; /* Light Mode Burgundy Accent */
         }
 
         html { 
@@ -148,7 +148,7 @@
         [data-theme="dark"] .logo-light { display: none; }
         [data-theme="light"] .logo-dark { display: none; }
 
-        /* --- SANCTUM LOBBY & VIEWS --- */
+        /* --- ENCYCLOPEDIA LOBBY & VIEWS --- */
         .sanctum-wrapper { position: relative; flex: 1; display: flex; flex-direction: column; align-items: center; padding: 140px 12% 100px 12%; overflow: hidden; z-index: 2; }
         
         .view-section { width: 100%; display: none; flex-direction: column; align-items: center; animation: fadeInUp 0.4s ease forwards; }
@@ -206,8 +206,14 @@
         .advanced-controls-bar { width: 100%; display: flex; justify-content: flex-start; align-items: center; margin-bottom: 40px; flex-wrap: wrap; gap: 12px; border-bottom: 1px solid var(--border); padding-bottom: 20px; }
         
         /* Filter Chips */
-        .control-btn { background: transparent; border: 1px solid var(--border); color: var(--text-secondary); padding: 6px 16px; border-radius: 16px; cursor: pointer; font-size: 13px; font-weight: 700; transition: background-color 0.2s, color 0.2s, border-color 0.2s; }
+        .control-btn { display: inline-flex; align-items: center; gap: 6px; background: transparent; border: 1px solid var(--border); color: var(--text-secondary); padding: 6px 16px; border-radius: 16px; cursor: pointer; font-size: 13px; font-weight: 700; transition: background-color 0.2s, color 0.2s, border-color 0.2s; }
         .control-btn.active { background: var(--icon-hover); color: var(--text-primary); border-color: transparent; }
+        
+        /* Filter Button Icons logic */
+        .control-btn .icon-tick { display: none; }
+        .control-btn .icon-cross { display: block; opacity: 0.7; }
+        .control-btn.active .icon-tick { display: block; }
+        .control-btn.active .icon-cross { display: none; }
         
         .filters-group { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
         .adv-v-line { width: 1px; height: 24px; background-color: var(--text-secondary); opacity: 0.3; margin: 0 5px; }
@@ -227,13 +233,13 @@
         
         .verse-summary-item { font-size: 22px; line-height: 1.7; text-align: justify; text-justify: inter-word; padding-bottom: 30px; margin-bottom: 30px; border-bottom: 1px solid var(--border); }
         .verse-summary-item:last-child { border-bottom: none; }
-        .verse-summary-link { color: var(--reader-red); font-weight: 700; text-decoration: none; cursor: pointer; transition: opacity 0.2s; letter-spacing: 0.05em; }
+        .verse-summary-link { color: var(--reader-accent); font-weight: 700; text-decoration: none; cursor: pointer; transition: opacity 0.2s; letter-spacing: 0.05em; }
         @media (hover: hover) { .verse-summary-link:hover { opacity: 0.8; } }
 
-        .verse-number { color: var(--reader-red); font-size: 30px; font-weight: 700; margin-bottom: 40px; letter-spacing: 0.05em; cursor: pointer; display: inline-block; }
+        .verse-number { color: var(--reader-accent); font-size: 30px; font-weight: 700; margin-bottom: 40px; letter-spacing: 0.05em; cursor: pointer; display: inline-block; }
         @media (hover: hover) { .verse-number:hover { opacity: 0.8; } }
         
-        .verse-number-static { color: var(--reader-red); font-size: 30px; font-weight: 700; margin-bottom: 40px; letter-spacing: 0.05em; display: inline-block; }
+        .verse-number-static { color: var(--reader-accent); font-size: 30px; font-weight: 700; margin-bottom: 40px; letter-spacing: 0.05em; display: inline-block; }
 
         .section-label { font-size: 30px; font-weight: 700; text-align: center; margin-bottom: 12px; letter-spacing: 0.05em; margin-top: 55px; text-transform: uppercase; }
         
@@ -243,7 +249,7 @@
         .roman-text { text-align: center; font-size: 22px; line-height: 1.6; margin-bottom: 40px; font-style: italic; }
         
         .synonyms-text { font-size: 22px; line-height: 1.8; margin-bottom: 36px; text-align: justify; text-justify: inter-word; }
-        .synonyms-text em { color: var(--reader-red); font-weight: 600; font-style: italic; }
+        .synonyms-text em { color: var(--reader-accent); font-weight: 600; font-style: italic; }
         
         .translation-text { font-size: 22px; font-weight: 700; line-height: 1.7; margin-bottom: 40px; text-align: justify; text-justify: inter-word; }
         
@@ -333,7 +339,7 @@
         <div class="nav-controls">
             <ul class="nav-links">
                 <li><a href="/">Home</a></li>
-                <li><a href="/sanctum">Sanctum</a></li>
+                <li><a href="/encyclopedia">Encyclopedia</a></li>
                 <li><a href="/about-us">About Us</a></li>
             </ul>
             <div class="nav-divider"></div>
@@ -353,7 +359,7 @@
     <div class="mobile-menu-overlay" id="mobileMenu">
         <div class="mobile-menu-content">
             <a href="/">Home</a>
-            <a href="/sanctum">Sanctum</a>
+            <a href="/encyclopedia">Encyclopedia</a>
             <div class="mobile-menu-divider"></div>
             <a href="/about-us">About Us</a>
         </div>
@@ -363,14 +369,14 @@
         </div>
     </div>
 
-    <!-- MAIN SANCTUM ROUTER WRAPPER -->
+    <!-- MAIN ENCYCLOPEDIA ROUTER WRAPPER -->
     <main class="sanctum-wrapper" id="main-content">
         
-        <!-- LEVEL 1: THE BOOK DIRECTORY (/sanctum) -->
+        <!-- LEVEL 1: THE BOOK DIRECTORY (/encyclopedia) -->
         <div id="view-books" class="view-section">
             <div class="google-card">
                 <section class="sanctum-header">
-                    <h1 class="sanctum-title">The Sanctum</h1>
+                    <h1 class="sanctum-title">The Encyclopedia</h1>
                     <div class="divider">
                         <div class="divider-line"></div>
                         <div class="divider-circle"></div>
@@ -378,22 +384,22 @@
                     </div>
                 </section>
                 <section class="toc-container">
-                    <a onclick="router('/sanctum/bg/')" class="toc-link">Bhagavad-gītā As It Is (1972 Edition)</a>
+                    <a onclick="router('/encyclopedia/bg/')" class="toc-link">Bhagavad-gītā As It Is (1972 Edition)</a>
                 </section>
             </div>
         </div>
 
-        <!-- LEVEL 2: THE CHAPTER DIRECTORY (/sanctum/bg/) -->
+        <!-- LEVEL 2: THE CHAPTER DIRECTORY (/encyclopedia/bg/) -->
         <div id="view-chapters" class="view-section">
             <div class="google-card">
                 <div class="reader-container">
                     <div class="nav-header-row">
-                        <button class="back-btn" onclick="router('/sanctum')">
+                        <button class="back-btn" onclick="router('/encyclopedia')">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
                             Return to Encyclopedia
                         </button>
                         <div class="breadcrumb">
-                            <a onclick="router('/sanctum')">Encyclopedia</a> <span class="separator">&gt;&gt;</span>
+                            <a onclick="router('/encyclopedia')">Encyclopedia</a> <span class="separator">&gt;&gt;</span>
                             <span style="color: var(--text-primary);">Bhagavad-gītā As It Is</span>
                         </div>
                     </div>
@@ -405,12 +411,12 @@
             </div>
         </div>
 
-        <!-- LEVEL 3: CHAPTER CONTENT & ADVANCED VIEW (/sanctum/bg/#/) -->
+        <!-- LEVEL 3: CHAPTER CONTENT & ADVANCED VIEW (/encyclopedia/bg/#/) -->
         <div id="view-chapter-content" class="view-section">
             <div class="google-card">
                 <div class="reader-container">
                     <div class="nav-header-row">
-                        <button class="back-btn" onclick="router('/sanctum/bg/')">
+                        <button class="back-btn" onclick="router('/encyclopedia/bg/')">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
                             Return to Main Chapter
                         </button>
@@ -419,14 +425,34 @@
                     <h2 id="content-chapter-title" class="reader-chapter-title"></h2>
 
                     <div class="advanced-controls-bar">
-                        <button class="control-btn" id="adv-toggle-btn" onclick="toggleAdvancedView()">Advanced View: Off</button>
+                        <button class="control-btn" id="adv-toggle-btn" onclick="toggleAdvancedView()" style="justify-content: center;">Advanced View: Off</button>
                         <div class="filters-group" id="filters-group" style="display: none;">
                             <div class="adv-v-line"></div>
-                            <button class="control-btn active" onclick="toggleFilter('devanagari')">Devanagari</button>
-                            <button class="control-btn active" onclick="toggleFilter('roman')">Transliteration</button>
-                            <button class="control-btn active" onclick="toggleFilter('synonyms')">Synonyms</button>
-                            <button class="control-btn active" onclick="toggleFilter('translation')">Translation</button>
-                            <button class="control-btn active" onclick="toggleFilter('purport')">Purport</button>
+                            <button class="control-btn active" onclick="toggleFilter('devanagari')">
+                                <svg class="icon-tick" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <svg class="icon-cross" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                                Devanagari
+                            </button>
+                            <button class="control-btn active" onclick="toggleFilter('roman')">
+                                <svg class="icon-tick" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <svg class="icon-cross" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                                Transliteration
+                            </button>
+                            <button class="control-btn active" onclick="toggleFilter('synonyms')">
+                                <svg class="icon-tick" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <svg class="icon-cross" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                                Synonyms
+                            </button>
+                            <button class="control-btn active" onclick="toggleFilter('translation')">
+                                <svg class="icon-tick" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <svg class="icon-cross" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                                Translation
+                            </button>
+                            <button class="control-btn active" onclick="toggleFilter('purport')">
+                                <svg class="icon-tick" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <svg class="icon-cross" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                                Purport
+                            </button>
                         </div>
                     </div>
 
@@ -435,12 +461,12 @@
             </div>
         </div>
 
-        <!-- LEVEL 4: THE SINGLE VERSE READER (/sanctum/bg/#/#) -->
+        <!-- LEVEL 4: THE SINGLE VERSE READER (/encyclopedia/bg/#/#) -->
         <div id="view-verse" class="view-section">
             <div class="google-card">
                 <div class="reader-container">
                     <div class="nav-header-row">
-                        <button class="back-btn" id="verse-back-btn" onclick="router('/sanctum/bg/')">
+                        <button class="back-btn" id="verse-back-btn" onclick="router('/encyclopedia/bg/')">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
                             Return to Main Chapter
                         </button>
@@ -494,7 +520,7 @@
 
             function handleRoute() {
                 let path = window.location.pathname.replace(/\/$/, ""); 
-                if (path === "/index" || path === "/index.html" || path === "/sanctum.html") path = "/sanctum";
+                if (path === "/index" || path === "/index.html" || path === "/encyclopedia.html") path = "/encyclopedia";
                 
                 const viewBooks = document.getElementById('view-books');
                 const viewChapters = document.getElementById('view-chapters');
@@ -506,10 +532,10 @@
                 viewChapterContent.classList.remove('active');
                 viewVerse.classList.remove('active');
 
-                if (path === "" || path === "/sanctum") {
+                if (path === "" || path === "/encyclopedia") {
                     viewBooks.classList.add('active');
                 } 
-                else if (path === "/sanctum/bg") {
+                else if (path === "/encyclopedia/bg") {
                     isAdvancedView = false;
                     const advBtn = document.getElementById('adv-toggle-btn');
                     if (advBtn) { advBtn.textContent = 'Advanced View: Off'; advBtn.classList.remove('active'); }
@@ -563,7 +589,7 @@
                     link.className = 'toc-link';
                     const cleanTitle = chap.chapter_title.replace(/<br>/g, ' ');
                     link.innerHTML = `Chapter ${chap.chapter_number}: ${cleanTitle}`;
-                    link.onclick = () => { router(`/sanctum/bg/${chap.chapter_id}/`); };
+                    link.onclick = () => { router(`/encyclopedia/bg/${chap.chapter_id}/`); };
                     container.appendChild(link);
                 });
 
@@ -585,8 +611,8 @@
                 if (!currentChapterObj) return;
 
                 document.getElementById('content-breadcrumb').innerHTML = `
-                    <a onclick="router('/sanctum')">Encyclopedia</a> <span class="separator">&gt;&gt;</span>
-                    <a onclick="router('/sanctum/bg/')">Bhagavad-gītā As It Is</a> <span class="separator">&gt;&gt;</span>
+                    <a onclick="router('/encyclopedia')">Encyclopedia</a> <span class="separator">&gt;&gt;</span>
+                    <a onclick="router('/encyclopedia/bg/')">Bhagavad-gītā As It Is</a> <span class="separator">&gt;&gt;</span>
                     <span style="color: var(--text-primary);">Ch. ${currentChapterObj.chapter_id}</span>
                 `;
 
@@ -658,7 +684,7 @@
                         let cleanTranslation = verse.translation ? verse.translation.replace(/<\/?p[^>]*>/g, '') : '';
 
                         html += `<div class="verse-summary-item">
-                            <a onclick="router('/sanctum/bg/${currentChapterObj.chapter_id}/${verse.text_number}')" class="verse-summary-link">[${textLabel}]</a> 
+                            <a onclick="router('/encyclopedia/bg/${currentChapterObj.chapter_id}/${verse.text_number}')" class="verse-summary-link">[${textLabel}]</a> 
                             <span style="font-weight: 400;">${cleanTranslation}</span>
                         </div>`;
                     });
@@ -670,7 +696,7 @@
                         let numStr = verse.text_number.toUpperCase();
                         let textLabel = numStr.includes('-') ? `TEXTS ${numStr}` : `TEXT ${numStr}`;
                         
-                        html += `<div style="text-align: center;"><a onclick="router('/sanctum/bg/${currentChapterObj.chapter_id}/${verse.text_number}')" style="text-decoration: none; display: inline-block;"><div class="verse-number">${textLabel}</div></a></div>`;
+                        html += `<div style="text-align: center;"><a onclick="router('/encyclopedia/bg/${currentChapterObj.chapter_id}/${verse.text_number}')" style="text-decoration: none; display: inline-block;"><div class="verse-number">${textLabel}</div></a></div>`;
                         
                         if (verse.devanagari && activeFilters.devanagari) html += `<div class="devanagari-text">${verse.devanagari}</div>`;
                         if (verse.roman && activeFilters.roman) html += `<div class="roman-text">${verse.roman}</div>`;
@@ -695,12 +721,12 @@
                 if (!verse) return;
                 
                 document.getElementById('verse-breadcrumb').innerHTML = `
-                    <a onclick="router('/sanctum')">Encyclopedia</a> <span class="separator">&gt;&gt;</span>
-                    <a onclick="router('/sanctum/bg/')">Bhagavad-gītā As It Is</a> <span class="separator">&gt;&gt;</span>
+                    <a onclick="router('/encyclopedia')">Encyclopedia</a> <span class="separator">&gt;&gt;</span>
+                    <a onclick="router('/encyclopedia/bg/')">Bhagavad-gītā As It Is</a> <span class="separator">&gt;&gt;</span>
                     <span style="color: var(--text-primary);">Ch. ${chapter.chapter_id}</span>
                 `;
 
-                document.getElementById('verse-back-btn').setAttribute('onclick', `router('/sanctum/bg/${chapter.chapter_id}/')`);
+                document.getElementById('verse-back-btn').setAttribute('onclick', `router('/encyclopedia/bg/${chapter.chapter_id}/')`);
 
                 const container = document.getElementById('single-verse-container');
                 container.innerHTML = '';
@@ -729,7 +755,7 @@
 
                 if (verseIndex > 0) {
                     prevBtn.classList.remove('locked-btn');
-                    prevBtn.onclick = () => router(`/sanctum/bg/${chapter.chapter_id}/${chapter.verses[verseIndex - 1].text_number}`);
+                    prevBtn.onclick = () => router(`/encyclopedia/bg/${chapter.chapter_id}/${chapter.verses[verseIndex - 1].text_number}`);
                 } else {
                     prevBtn.classList.add('locked-btn');
                     prevBtn.onclick = null;
@@ -737,7 +763,7 @@
 
                 if (verseIndex < chapter.verses.length - 1) {
                     nextBtn.classList.remove('locked-btn');
-                    nextBtn.onclick = () => router(`/sanctum/bg/${chapter.chapter_id}/${chapter.verses[verseIndex + 1].text_number}`);
+                    nextBtn.onclick = () => router(`/encyclopedia/bg/${chapter.chapter_id}/${chapter.verses[verseIndex + 1].text_number}`);
                 } else {
                     nextBtn.classList.add('locked-btn');
                     nextBtn.onclick = null;
@@ -771,9 +797,9 @@
                     mobileMenu.classList.toggle('active');
                     document.body.classList.toggle('no-scroll');
                     if (mobileMenu.classList.contains('active')) {
-                        hamburgerBtn.innerHTML = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>`;
+                        hamburgerBtn.innerHTML = `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>`;
                     } else {
-                        hamburgerBtn.innerHTML = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>`;
+                        hamburgerBtn.innerHTML = `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>`;
                     }
                 });
 
@@ -782,7 +808,7 @@
                     link.addEventListener('click', () => {
                         mobileMenu.classList.remove('active');
                         document.body.classList.remove('no-scroll');
-                        hamburgerBtn.innerHTML = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>`;
+                        hamburgerBtn.innerHTML = `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>`;
                     });
                 });
             }
