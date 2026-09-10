@@ -195,16 +195,32 @@
         .divider-line { height: 1px; width: 40px; background-color: var(--text-secondary); opacity: 0.5; }
         .divider-circle { width: 8px; height: 8px; border-radius: 50%; border: 1px solid var(--text-secondary); opacity: 0.5; background-color: transparent; flex-shrink: 0; }
 
-        /* --- ENCYCLOPEDIA SEARCH BAR --- */
+        /* --- DYNAMIC ENCYCLOPEDIA SEARCH BAR --- */
         .search-container { width: 100%; display: flex; justify-content: center; margin-bottom: 30px; }
-        .search-pill { display: flex; align-items: center; background-color: var(--bg-main); border: 1px solid var(--border); border-radius: 24px; padding: 8px 16px; width: 100%; max-width: 500px; transition: background-color 0.2s, box-shadow 0.2s, border-color 0.2s; font-family: 'Google Sans', 'Product Sans', sans-serif !important; }
+        
+        .search-pill { display: flex; align-items: center; background-color: var(--bg-main); border: 1px solid var(--border); border-radius: 24px; padding: 8px 16px; width: 100%; max-width: 500px; transition: background-color 0.2s, box-shadow 0.2s, border-color 0.2s, max-width 0.4s cubic-bezier(0.16, 1, 0.3, 1); font-family: 'Google Sans', 'Product Sans', sans-serif !important; }
         .search-pill:focus-within { background-color: var(--icon-hover); box-shadow: var(--google-shadow); border-color: transparent; }
+        .search-pill.synonym-active { max-width: 800px; } /* Expands pill on PC when synonym is selected */
+
+        .search-mode-verse { display: flex; flex: 1; align-items: center; min-width: 0; }
+        .search-mode-verse.hidden { display: none; }
+
+        .search-mode-synonym { display: none; flex: 1; align-items: center; min-width: 0; gap: 4px; }
+        .search-mode-synonym.active { display: flex; animation: fadeInUp 0.3s ease; }
+
         .search-icon { color: var(--text-secondary); margin-right: 12px; flex-shrink: 0; }
+        
         .search-input { flex: 1; background: transparent; border: none; color: var(--text-primary); font-size: 15px; outline: none; min-width: 0; font-family: inherit; }
         .search-input::placeholder { color: var(--text-secondary); opacity: 0.7; }
+        
         .search-divider { width: 1px; height: 20px; background-color: var(--border); margin: 0 12px; flex-shrink: 0; }
+        
         .search-dropdown { background: transparent; border: none; color: var(--text-secondary); font-size: 14px; font-weight: 600; outline: none; cursor: pointer; font-family: inherit; }
         .search-dropdown option { background-color: var(--modal-bg); color: var(--text-primary); }
+
+        .search-btn { background-color: var(--accent); color: var(--bg-main); border: none; padding: 6px 16px; border-radius: 16px; font-weight: 700; font-size: 13px; cursor: pointer; margin-left: 8px; transition: opacity 0.2s; }
+        .search-btn:active { transform: scale(0.95); }
+        @media (hover: hover) { .search-btn:hover { opacity: 0.85; } }
 
         .toc-container { position: relative; z-index: 2; display: flex; flex-direction: column; gap: 22px; width: 100%; max-width: 900px; margin: 0 auto; text-align: left; }
         .toc-link { font-size: clamp(18px, 2.5vw, 24px); color: var(--toc-link-color); text-decoration: none; transition: opacity 0.2s ease, color 0.2s ease; display: block; line-height: 1.4; letter-spacing: 0.01em; cursor: pointer; }
@@ -216,11 +232,9 @@
         /* --- MATERIAL SEARCH FILTERS (ADVANCED CONTROLS) --- */
         .advanced-controls-bar { width: 100%; display: flex; justify-content: flex-start; align-items: center; margin-bottom: 40px; flex-wrap: wrap; gap: 12px; border-bottom: 1px solid var(--border); padding-bottom: 20px; }
         
-        /* Filter Chips */
         .control-btn { display: inline-flex; align-items: center; gap: 6px; background: transparent; border: 1px solid rgba(128, 128, 128, 0.25); color: var(--text-secondary); padding: 6px 16px; border-radius: 16px; cursor: pointer; font-size: 13px; font-weight: 700; transition: background-color 0.2s, color 0.2s; backdrop-filter: saturate(180%) blur(12px); -webkit-backdrop-filter: saturate(180%) blur(12px); }
 		.control-btn.active { background-color: var(--icon-hover); color: var(--text-primary); }
         
-        /* Filter Button Icons logic */
         .control-btn .icon-tick { display: none; }
         .control-btn .icon-cross { display: block; opacity: 0.7; }
         .control-btn.active .icon-tick { display: block; }
@@ -232,7 +246,6 @@
         /* --- CHAPTER & VERSE READER VIEWS --- */
         .reader-container { width: 100%; z-index: 2; }
         
-        /* Flat Return Buttons */
         .back-btn { background: transparent; color: var(--accent); border: none; padding: 8px 16px; border-radius: 24px; font-size: 14px; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; transition: background-color 0.2s ease; width: fit-content; margin-bottom: 0; }
         @media (hover: hover) { .back-btn:hover { background-color: var(--icon-hover); } }
         .back-btn:active { transform: scale(0.98); }
@@ -317,7 +330,6 @@
 
             .sanctum-wrapper { padding-top: 10vh; padding-bottom: 60px; padding-left: 5%; padding-right: 5%; }
             
-            /* Compact mobile card specs */
             .google-card { padding: 40px 20px; border-radius: 20px; }
             .toc-container { gap: 24px; padding: 0 10px; }
             
@@ -329,11 +341,14 @@
             .reader-chapter-title { font-size: 32px; margin-bottom: 40px; }
             #view-chapters .sanctum-title { font-size: 28px; }
 
-            /* Mobile Search Pill */
+            /* Mobile Search Pill Transformation */
             .search-container { margin-bottom: 24px; }
             .search-pill { padding: 6px 14px; border-radius: 20px; }
-            .search-input { font-size: 14px; }
-            .search-dropdown { font-size: 13px; }
+            .search-pill.synonym-active { flex-direction: column; align-items: stretch; border-radius: 20px; padding: 16px; gap: 12px; background-color: var(--icon-hover); box-shadow: var(--google-shadow); }
+            .search-pill.synonym-active .search-mode-synonym.active { flex-direction: column; align-items: stretch; gap: 12px; }
+            .search-pill.synonym-active .search-divider { width: 100%; height: 1px; margin: 0; background-color: var(--border); opacity: 0.5; }
+            .search-pill.synonym-active .search-input, .search-pill.synonym-active .search-dropdown { text-align: center; font-size: 15px; padding: 4px; }
+            .search-pill.synonym-active .search-btn { margin-left: 0; padding: 10px; border-radius: 12px; font-size: 14px; }
             
             .verse-block { margin-bottom: 60px; padding-bottom: 40px; }
             
@@ -403,13 +418,35 @@
                     <!-- ENCYCLOPEDIA SEARCH BAR -->
                     <div class="search-container">
                         <div class="search-pill">
-                            <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="11" cy="11" r="8"></circle>
-                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                            </svg>
-                            <input type="text" class="search-input" placeholder="Search the archive..." onkeydown="if(event.key==='Enter') event.preventDefault();">
-                            <div class="search-divider"></div>
-                            <select class="search-dropdown" onchange="this.blur();">
+                            
+                            <!-- Mode: Verse Search -->
+                            <div class="search-mode-verse">
+                                <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="11" cy="11" r="8"></circle>
+                                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                </svg>
+                                <input type="text" class="search-input" placeholder="Search the archive..." onkeydown="if(event.key==='Enter') event.preventDefault();">
+                            </div>
+
+                            <!-- Mode: Synonym Search -->
+                            <div class="search-mode-synonym">
+                                <input type="text" class="search-input" placeholder="Sanskrit..." onkeydown="if(event.key==='Enter') event.preventDefault();">
+                                <div class="search-divider"></div>
+                                <select class="search-dropdown">
+                                    <option value="exact_word">Exact word</option>
+                                    <option value="exact">Exact</option>
+                                    <option value="contains">Contains</option>
+                                    <option value="starts_with">Starts with</option>
+                                </select>
+                                <div class="search-divider"></div>
+                                <input type="text" class="search-input" placeholder="English..." onkeydown="if(event.key==='Enter') event.preventDefault();">
+                                <button class="search-btn" onclick="event.preventDefault();">Search</button>
+                            </div>
+
+                            <div class="search-divider main-search-divider"></div>
+                            
+                            <!-- Master Toggle -->
+                            <select class="search-dropdown mode-dropdown" onchange="toggleSearchMode(this)">
                                 <option value="verse">Verse</option>
                                 <option value="synonym">Synonym</option>
                             </select>
@@ -441,13 +478,32 @@
                     <!-- ENCYCLOPEDIA SEARCH BAR -->
                     <div class="search-container">
                         <div class="search-pill">
-                            <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="11" cy="11" r="8"></circle>
-                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                            </svg>
-                            <input type="text" class="search-input" placeholder="Search the archive..." onkeydown="if(event.key==='Enter') event.preventDefault();">
-                            <div class="search-divider"></div>
-                            <select class="search-dropdown" onchange="this.blur();">
+                            
+                            <div class="search-mode-verse">
+                                <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="11" cy="11" r="8"></circle>
+                                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                </svg>
+                                <input type="text" class="search-input" placeholder="Search the archive..." onkeydown="if(event.key==='Enter') event.preventDefault();">
+                            </div>
+
+                            <div class="search-mode-synonym">
+                                <input type="text" class="search-input" placeholder="Sanskrit..." onkeydown="if(event.key==='Enter') event.preventDefault();">
+                                <div class="search-divider"></div>
+                                <select class="search-dropdown">
+                                    <option value="exact_word">Exact word</option>
+                                    <option value="exact">Exact</option>
+                                    <option value="contains">Contains</option>
+                                    <option value="starts_with">Starts with</option>
+                                </select>
+                                <div class="search-divider"></div>
+                                <input type="text" class="search-input" placeholder="English..." onkeydown="if(event.key==='Enter') event.preventDefault();">
+                                <button class="search-btn" onclick="event.preventDefault();">Search</button>
+                            </div>
+
+                            <div class="search-divider main-search-divider"></div>
+                            
+                            <select class="search-dropdown mode-dropdown" onchange="toggleSearchMode(this)">
                                 <option value="verse">Verse</option>
                                 <option value="synonym">Synonym</option>
                             </select>
@@ -477,13 +533,32 @@
                     <!-- ENCYCLOPEDIA SEARCH BAR -->
                     <div class="search-container">
                         <div class="search-pill">
-                            <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="11" cy="11" r="8"></circle>
-                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                            </svg>
-                            <input type="text" class="search-input" placeholder="Search the archive..." onkeydown="if(event.key==='Enter') event.preventDefault();">
-                            <div class="search-divider"></div>
-                            <select class="search-dropdown" onchange="this.blur();">
+                            
+                            <div class="search-mode-verse">
+                                <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="11" cy="11" r="8"></circle>
+                                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                </svg>
+                                <input type="text" class="search-input" placeholder="Search the archive..." onkeydown="if(event.key==='Enter') event.preventDefault();">
+                            </div>
+
+                            <div class="search-mode-synonym">
+                                <input type="text" class="search-input" placeholder="Sanskrit..." onkeydown="if(event.key==='Enter') event.preventDefault();">
+                                <div class="search-divider"></div>
+                                <select class="search-dropdown">
+                                    <option value="exact_word">Exact word</option>
+                                    <option value="exact">Exact</option>
+                                    <option value="contains">Contains</option>
+                                    <option value="starts_with">Starts with</option>
+                                </select>
+                                <div class="search-divider"></div>
+                                <input type="text" class="search-input" placeholder="English..." onkeydown="if(event.key==='Enter') event.preventDefault();">
+                                <button class="search-btn" onclick="event.preventDefault();">Search</button>
+                            </div>
+
+                            <div class="search-divider main-search-divider"></div>
+                            
+                            <select class="search-dropdown mode-dropdown" onchange="toggleSearchMode(this)">
                                 <option value="verse">Verse</option>
                                 <option value="synonym">Synonym</option>
                             </select>
@@ -544,13 +619,32 @@
                     <!-- ENCYCLOPEDIA SEARCH BAR -->
                     <div class="search-container">
                         <div class="search-pill">
-                            <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="11" cy="11" r="8"></circle>
-                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                            </svg>
-                            <input type="text" class="search-input" placeholder="Search the archive..." onkeydown="if(event.key==='Enter') event.preventDefault();">
-                            <div class="search-divider"></div>
-                            <select class="search-dropdown" onchange="this.blur();">
+                            
+                            <div class="search-mode-verse">
+                                <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="11" cy="11" r="8"></circle>
+                                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                </svg>
+                                <input type="text" class="search-input" placeholder="Search the archive..." onkeydown="if(event.key==='Enter') event.preventDefault();">
+                            </div>
+
+                            <div class="search-mode-synonym">
+                                <input type="text" class="search-input" placeholder="Sanskrit..." onkeydown="if(event.key==='Enter') event.preventDefault();">
+                                <div class="search-divider"></div>
+                                <select class="search-dropdown">
+                                    <option value="exact_word">Exact word</option>
+                                    <option value="exact">Exact</option>
+                                    <option value="contains">Contains</option>
+                                    <option value="starts_with">Starts with</option>
+                                </select>
+                                <div class="search-divider"></div>
+                                <input type="text" class="search-input" placeholder="English..." onkeydown="if(event.key==='Enter') event.preventDefault();">
+                                <button class="search-btn" onclick="event.preventDefault();">Search</button>
+                            </div>
+
+                            <div class="search-divider main-search-divider"></div>
+                            
+                            <select class="search-dropdown mode-dropdown" onchange="toggleSearchMode(this)">
                                 <option value="verse">Verse</option>
                                 <option value="synonym">Synonym</option>
                             </select>
@@ -753,6 +847,25 @@
                 activeFilters[filterName] = !activeFilters[filterName];
                 event.target.classList.toggle('active', activeFilters[filterName]);
                 reRenderChapterContent(); 
+            };
+
+            // Dynamic Search Mode Toggler for UI
+            window.toggleSearchMode = function(selectElem) {
+                const pill = selectElem.closest('.search-pill');
+                const mode = selectElem.value;
+                const verseContainer = pill.querySelector('.search-mode-verse');
+                const synonymContainer = pill.querySelector('.search-mode-synonym');
+                
+                if (mode === 'synonym') {
+                    verseContainer.classList.add('hidden');
+                    synonymContainer.classList.add('active');
+                    pill.classList.add('synonym-active');
+                } else {
+                    verseContainer.classList.remove('hidden');
+                    synonymContainer.classList.remove('active');
+                    pill.classList.remove('synonym-active');
+                }
+                selectElem.blur();
             };
 
             function reRenderChapterContent() {
